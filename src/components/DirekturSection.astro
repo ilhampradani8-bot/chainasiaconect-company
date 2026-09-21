@@ -4,9 +4,9 @@
 <section class="fullwidth-section direktur-section-clean" id="leadership">
   <div class="container">
     <div class="editorial-grid">
-      <!-- Left Column: Owner Photo (4x4 ratio display) -->
+      <!-- Left Column: Owner Photo (Uncropped left-aligned display) -->
       <div class="direktur-photo-clean">
-        <img src="/images/hero-owner.jpg" alt="Ilham Pradani, S.H. (Cand.) - President Director of PT CHAIN ASIA CONECT" class="photo-4x4" />
+        <img src="/images/hero-owner.jpg" alt="Ilham Pradani, S.H. (Cand.) - President Director of PT CHAIN ASIA CONECT" class="photo-fullwidth-clean" />
       </div>
 
       <!-- Right Column: Biography -->
@@ -22,10 +22,6 @@
 
         <div class="owner-info-clean">
           <div class="info-row">
-            <span class="info-label">Business Entity:</span>
-            <strong class="info-val">PT CHAIN ASIA CONECT</strong>
-          </div>
-          <div class="info-row">
             <span class="info-label">Corporate Title:</span>
             <strong class="info-val">President Director (Direktur Utama)</strong>
           </div>
@@ -36,10 +32,6 @@
           <div class="info-row">
             <span class="info-label">Executive Email:</span>
             <a href="mailto:hello@ilhampradani.me" class="info-link">hello@ilhampradani.me</a>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Legal Decree:</span>
-            <span class="info-val">SK Kemenkumham AHU-A117353.AH.01.30.Year 2026</span>
           </div>
         </div>
 
@@ -82,18 +74,17 @@
 
   .direktur-photo-clean {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
   }
 
-  /* Strict 4x4 (1:1 ratio) photo display */
-  .photo-4x4 {
+  /* Fullwidth uncropped photo display matching left text alignment */
+  .photo-fullwidth-clean {
     width: 100%;
-    max-width: 350px;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+    max-width: 420px;
+    height: auto;
+    object-fit: contain;
     display: block;
-    border-radius: 4px;
   }
 
   .direktur-text-clean {
@@ -252,5 +243,6 @@
     }
   }
 </style>
+
 
 
