@@ -59,9 +59,15 @@
       </ul>
     </div>
 
-    <!-- Column 4: Newsletter -->
+    <!-- Column 4: Newsletter & Banking Relationship -->
     <div class="footer-col">
-      <h4 class="footer-heading">Launch Notifications</h4>
+      <h4 class="footer-heading">Banking Relationship</h4>
+      <div class="banking-partner-box">
+        <span class="banking-label">Corporate Banking Partner:</span>
+        <img src="/images/logo-ocbc.png" alt="OCBC Bank Logo" class="ocbc-logo" />
+      </div>
+
+      <h4 class="footer-heading" style="margin-top: 1.5rem;">Launch Notifications</h4>
       <p class="footer-subtext">Get official updates on B2B partnership openings & physical service releases.</p>
       <form class="footer-subscribe-form" onsubmit="event.preventDefault(); alert('Thank you! Your email has been registered.');">
         <input type="email" placeholder="Your business email..." required class="subscribe-input" />
@@ -158,6 +164,26 @@
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 1.1rem;
+  }
+
+  /* Banking Partner OCBC Box */
+  .banking-partner-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .banking-label {
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .ocbc-logo {
+    height: 38px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
   }
 
   .footer-links {

@@ -49,6 +49,22 @@
         </div>
       </div>
     </div>
+
+    <!-- Who is Next CFO Section (Clean SVG & Text) -->
+    <div class="cfo-expansion-block">
+      <div class="cfo-svg-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </div>
+      <div class="cfo-content">
+        <h3 class="cfo-title">Who is Next CFO?</h3>
+        <p class="cfo-desc">
+          As PT CHAIN ASIA CONECT expands its physical business ecosystem and regional supply chain networks, we are actively structuring our Executive Board. We welcome strategic Chief Financial Officer (CFO) leadership inquiries and institutional advisory partnerships.
+        </p>
+        <a href="mailto:sales@chainasiaconect.company" class="cfo-link red-text">
+          <span>Inquire Executive Recruitment & Board Relations →</span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -170,7 +186,52 @@
     background: var(--red-dark);
   }
 
+  /* Who is Next CFO Expansion Block */
+  .cfo-expansion-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px dashed var(--border-light);
+  }
+
+  .cfo-svg-wrapper {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .cfo-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .cfo-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-dark);
+  }
+
+  .cfo-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-body);
+    max-width: 820px;
+  }
+
+  .cfo-link {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    text-decoration: underline;
+  }
+
   @media (max-width: 768px) {
+    .cfo-expansion-block {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
     .info-row {
       flex-direction: column;
       align-items: flex-start;
