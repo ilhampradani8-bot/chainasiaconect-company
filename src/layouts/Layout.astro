@@ -4,12 +4,77 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
 }
 
 const {
   title = "PT CHAIN ASIA CONECT | Official Corporate Portal",
-  description = "PT CHAIN ASIA CONECT - Officially registered legal entity (SK Kemenkumham AHU-A117353.AH.01.30, NIB 0709260109599, KBLI 62193, NPWP 10.000.000.1-094.6336). President Director: Ilham Pradani, S.H. (Cand.). Supply Chain & Real Business Ecosystem in Indonesia and Asia Region."
+  description = "PT CHAIN ASIA CONECT - Officially registered legal entity (SK Kemenkumham AHU-A117353.AH.01.30, NIB 0709260109599, KBLI 62193, NPWP 10.000.000.1-094.6336). President Director: Ilham Pradani, S.H. (Cand.). Enterprise Supply Chain, Medical Engineering Machine & Diagnostic Software Systems Licensing across Indonesia & Asia Region.",
+  canonical = "https://www.chainasiaconect.company/"
 } = Astro.props;
+
+// JSON-LD Structured Data Schema for Google indexing
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.chainasiaconect.company/#organization",
+      "name": "PT CHAIN ASIA CONECT",
+      "legalName": "PT CHAIN ASIA CONECT",
+      "url": "https://www.chainasiaconect.company/",
+      "logo": "https://www.chainasiaconect.company/images/CAC-LOGO.jpg",
+      "description": description,
+      "foundingDate": "2026-09-01",
+      "taxID": "10.000.000.1-094.6336",
+      "identifier": "NIB: 0709260109599",
+      "sameAs": [
+        "https://ilhampradani.me"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Ilham Pradani, S.H. (Cand.)",
+        "jobTitle": "President Director & Founder",
+        "url": "https://ilhampradani.me"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "ID",
+        "addressRegion": "Indonesia & Asia Region"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "email": "info@chainasiaconect.company",
+          "contactType": "customer service",
+          "availableLanguage": ["English", "Indonesian"]
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "sales@chainasiaconect.company",
+          "contactType": "sales",
+          "availableLanguage": ["English", "Indonesian"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+6288971071138",
+          "contactType": "executive support",
+          "availableLanguage": ["English", "Indonesian"]
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.chainasiaconect.company/#website",
+      "url": "https://www.chainasiaconect.company/",
+      "name": "PT CHAIN ASIA CONECT",
+      "publisher": {
+        "@id": "https://www.chainasiaconect.company/#organization"
+      },
+      "inLanguage": "en-US"
+    }
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -18,28 +83,39 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/jpg" href="/images/CAC-LOGO.jpg" />
+    <link rel="canonical" href={canonical} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#dc2626" />
 
-    <!-- SEO Meta Tags -->
+    <!-- Google Directives & Indexing Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="PT CHAIN ASIA CONECT, Ilham Pradani, Supply Chain Indonesia, Business Ecosystem Asia, NIB 0709260109599, SK Kemenkumham AHU-A117353, chainasiaconect.company" />
-    <meta name="author" content="Ilham Pradani - PT CHAIN ASIA CONECT" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="keywords" content="PT CHAIN ASIA CONECT, Ilham Pradani, Medical Engineering Machine, Diagnostic Software Licensing, DICOM PACS Licensing, Supply Chain Indonesia, Real Business Ecosystem Asia, NIB 0709260109599, SK Kemenkumham AHU-A117353, chainasiaconect.company" />
+    <meta name="author" content="Ilham Pradani, S.H. (Cand.) - PT CHAIN ASIA CONECT" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.chainasiaconect.company/" />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/images/CAC-LOGO.jpg" />
+    <meta property="og:image" content="https://www.chainasiaconect.company/images/CAC-LOGO.jpg" />
+    <meta property="og:site_name" content="PT CHAIN ASIA CONECT" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter -->
+    <!-- Twitter Cards -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="/images/CAC-LOGO.jpg" />
+    <meta property="twitter:image" content="https://www.chainasiaconect.company/images/CAC-LOGO.jpg" />
+
+    <!-- Schema.org Structured Data for Google Rich Results -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   </head>
   <body>
     <slot />
   </body>
 </html>
+

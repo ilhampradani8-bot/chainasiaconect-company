@@ -1,0 +1,21 @@
+# robots.txt for PT CHAIN ASIA CONECT
+# Website: https://www.chainasiaconect.company/
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+Allow: /images/
+Allow: /docs/
+
+# Bingbot specific directives
+User-agent: Bingbot
+Allow: /
+
+# Sitemap Index Declaration
+Sitemap: https://www.chainasiaconect.company/sitemap.xml
