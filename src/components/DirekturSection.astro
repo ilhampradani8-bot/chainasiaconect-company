@@ -3,10 +3,10 @@
 
 <section class="fullwidth-section direktur-section-clean" id="leadership">
   <div class="container">
-    <div class="editorial-grid">
-      <!-- Left Column: Owner Photo (Pure original image display) -->
+    <div class="direktur-grid">
+      <!-- Left Column: Owner Photo (Compact 240px left-aligned display) -->
       <div class="direktur-photo-clean">
-        <img src="/images/hero-owner.jpg" alt="Ilham Pradani, S.H. (Cand.) - President Director of PT CHAIN ASIA CONECT" class="photo-pure-original" />
+        <img src="/images/hero-owner.jpg" alt="Ilham Pradani, S.H. (Cand.) - President Director of PT CHAIN ASIA CONECT" class="photo-compact-natural" />
       </div>
 
       <!-- Right Column: Biography -->
@@ -72,16 +72,28 @@
     border-bottom: 1px solid var(--border-light);
   }
 
+  .direktur-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
   .direktur-photo-clean {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 240px;
+    flex-shrink: 0;
   }
 
-  /* 100% Pure original image display without artificial size constraints */
-  .photo-pure-original {
-    display: block;
+  /* Scaled compact natural photo without vertical grid stretching */
+  .photo-compact-natural {
+    width: 240px;
+    height: auto;
     max-width: 100%;
+    display: block;
+    border-radius: 4px;
   }
 
   .direktur-text-clean {
@@ -226,6 +238,13 @@
   }
 
   @media (max-width: 768px) {
+    .direktur-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .direktur-photo-clean {
+      width: 100%;
+    }
     .cfo-expansion-block {
       flex-direction: column;
       gap: 0.75rem;
@@ -240,6 +259,7 @@
     }
   }
 </style>
+
 
 
 
