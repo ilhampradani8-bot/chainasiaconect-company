@@ -4,12 +4,12 @@
 <section class="fullwidth-section direktur-section-clean" id="leadership">
   <div class="container">
     <div class="editorial-grid">
-      <!-- Left Column: Owner Photo (Clean photo, no card/frame box) -->
+      <!-- Left Column: Owner Photo (Clean photo with natural aspect ratio, no stretching/distortion) -->
       <div class="direktur-photo-clean">
-        <img src="/images/hero-owner.jpg" alt="Ilham Pradani - Chief Executive Officer of PT CHAIN ASIA CONECT" class="photo-clean" />
+        <img src="/images/hero-owner.jpg" alt="Ilham Pradani - Chief Executive Officer of PT CHAIN ASIA CONECT" class="photo-natural" />
       </div>
 
-      <!-- Right Column: Biography (Pure English text, no capsule cards) -->
+      <!-- Right Column: Biography -->
       <div class="direktur-text-clean">
         <span class="section-tag-clean red-text">EXECUTIVE LEADERSHIP</span>
 
@@ -62,15 +62,19 @@
   .direktur-photo-clean {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
   }
 
-  .photo-clean {
+  /* Photo with natural aspect ratio to prevent any distortion or stretching */
+  .photo-natural {
     width: 100%;
-    max-width: 380px;
-    height: 440px;
+    max-width: 340px;
+    height: auto;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
     display: block;
-    border-radius: 4px;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
 
   .direktur-text-clean {

@@ -12,7 +12,7 @@
       </div>
     </a>
 
-    <!-- Desktop Navigation (English) -->
+    <!-- Desktop Navigation -->
     <nav class="desktop-nav">
       <a href="#hero" class="nav-item active">Home</a>
       <a href="#leadership" class="nav-item">Leadership</a>
@@ -23,7 +23,7 @@
 
     <!-- Right Header Actions -->
     <div class="header-right">
-      <a href="https://wa.me/6288971071138" target="_blank" rel="noopener" class="btn-red btn-header">
+      <a href="https://wa.me/6288971071138" target="_blank" rel="noopener" class="btn-red btn-header desktop-contact-btn">
         <span>Contact Us</span>
       </a>
       <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation">
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <!-- Mobile Drawer Nav (English) -->
+  <!-- Mobile Drawer Nav -->
   <div class="mobile-drawer" id="mobile-drawer-nav">
     <a href="#hero" class="mobile-item">Home</a>
     <a href="#leadership" class="mobile-item">Executive Leadership (Ilham Pradani)</a>
@@ -85,7 +85,6 @@
     text-decoration: none;
   }
 
-  /* Logo strictly without card box, frame or border */
   .logo-clean {
     width: 34px;
     height: 34px;
@@ -199,6 +198,9 @@
     }
     .desktop-nav {
       display: none;
+    }
+    .desktop-contact-btn {
+      display: none !important; /* Hide contact button on mobile screen */
     }
     .mobile-menu-btn {
       display: flex;

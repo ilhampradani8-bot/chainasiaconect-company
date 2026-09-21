@@ -1,64 +1,52 @@
 ---
 ---
 
-<section class="fullwidth-section hero-section-clean" id="hero">
-  <div class="container hero-container-clean">
-    <!-- Pure English Text Content (No Image in Hero 1) -->
-    <div class="hero-content-clean">
+<section class="fullwidth-section hero-section-lux" id="hero">
+  <!-- Lux background image layer -->
+  <div class="hero-bg-overlay"></div>
+
+  <div class="container hero-container-lux">
+    <div class="hero-content-lux">
       <span class="hero-tag-text red-text">PT CHAIN ASIA CONECT • WE ARE LAUNCHING SOON</span>
 
-      <h1 class="hero-title-clean">
-        Supply Chain Solutions <br /><span class="red-text">& Real Business Ecosystem</span>
+      <h1 class="hero-title-lux">
+        Solusi Rantai Pasok <br /><span class="red-text">& Ekosistem Usaha Riil</span>
       </h1>
 
-      <p class="hero-lead-clean">
-        PT CHAIN ASIA CONECT solidifies a strategic transformation towards sustainable physical business operations in <strong>Krui, Pesisir Barat, Lampung</strong>. Integrating supply chain reliability with stable and measurable real physical value.
-      </p>
+      <div class="red-line-small"></div>
 
-      <!-- Clean Subscription Input (No Capsule Card) -->
-      <div class="subscribe-clean">
-        <form class="clean-form" id="hero-notify-form">
-          <input type="email" placeholder="Enter your corporate email..." required class="clean-input" id="hero-email-input" />
-          <button type="submit" class="btn-red-clean">
-            <span>Get Access</span>
-          </button>
-        </form>
-        <div class="form-notice-clean" id="hero-form-notice">
-          🔒 Official B2B partnership & operational updates will be delivered exclusively.
-        </div>
-      </div>
+      <p class="hero-lead-lux">
+        PT CHAIN ASIA CONECT mengukuhkan langkah transformasi strategis berorientasi keberlanjutan usaha fisik di wilayah <strong>Krui, Pesisir Barat, Lampung</strong>. Mengintegrasikan keandalan Rantai Pasok (Supply Chain) dan nilai tambah layanan fisik yang stabil dan terukur.
+      </p>
     </div>
   </div>
 </section>
 
-<script>
-  const form = document.getElementById('hero-notify-form');
-  const notice = document.getElementById('hero-form-notice');
-
-  if (form && notice) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = document.getElementById('hero-email-input') as HTMLInputElement;
-      if (input && input.value) {
-        notice.innerHTML = `<span style="color: #16a34a; font-weight: 600;">✓ Thank you! Email <strong>${input.value}</strong> has been registered for priority access.</span>`;
-        emailInput.value = '';
-      }
-    });
-  }
-</script>
-
 <style>
-  .hero-section-clean {
-    padding: 5rem 0 4rem 0;
-    background: #ffffff;
+  .hero-section-lux {
+    position: relative;
+    padding: 6rem 0;
+    background-image: url('/images/lux-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-bottom: 1px solid var(--border-light);
   }
 
-  .hero-container-clean {
+  .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.92); /* Light translucent overlay for clean text legibility */
+    z-index: 0;
+  }
+
+  .hero-container-lux {
+    position: relative;
+    z-index: 1;
     max-width: 900px;
   }
 
-  .hero-content-clean {
+  .hero-content-lux {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -72,73 +60,23 @@
     margin-bottom: 0.75rem;
   }
 
-  .hero-title-clean {
+  .hero-title-lux {
     font-size: clamp(2.4rem, 5vw, 3.8rem);
     font-weight: 800;
-    margin: 0.5rem 0 1.25rem 0;
+    margin: 0.5rem 0 1rem 0;
     line-height: 1.15;
     color: var(--text-dark);
   }
 
-  .hero-lead-clean {
+  .hero-lead-lux {
     font-size: 1.15rem;
-    line-height: 1.8;
+    line-height: 1.85;
     color: var(--text-body);
-    margin-bottom: 2.25rem;
   }
 
-  .subscribe-clean {
-    width: 100%;
-  }
-
-  .clean-form {
-    display: flex;
-    gap: 0.75rem;
-    max-width: 580px;
-  }
-
-  .clean-input {
-    flex: 1;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    padding: 0.75rem 1rem;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    outline: none;
-    border-radius: 4px;
-  }
-
-  .clean-input:focus {
-    border-color: var(--red-primary);
-  }
-
-  .btn-red-clean {
-    padding: 0.75rem 1.75rem;
-    background: var(--red-primary);
-    color: #ffffff;
-    border: none;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background var(--transition-smooth);
-  }
-
-  .btn-red-clean:hover {
-    background: var(--red-dark);
-  }
-
-  .form-notice-clean {
-    font-size: 0.825rem;
-    color: var(--text-muted);
-    margin-top: 0.65rem;
-  }
-
-  @media (max-width: 640px) {
-    .clean-form {
-      flex-direction: column;
+  @media (max-width: 768px) {
+    .hero-section-lux {
+      padding: 4rem 0;
     }
   }
 </style>
