@@ -14,7 +14,7 @@
       </p>
     </div>
 
-    <!-- Service Detail Block (Fullwidth Clean Editorial Layout, No Cards) -->
+    <!-- Service Detail Block (Fullwidth Clean Editorial Layout, No Cards, No inner lines) -->
     <div class="service-detail-block">
       <div class="service-main-info">
         <span class="service-code red-text">SERVICE DIVISION 01</span>
@@ -63,13 +63,14 @@
 <style>
   .services-section-clean {
     background: #ffffff;
-    padding: 5rem 0;
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
   }
 
   .services-header-clean {
     max-width: 820px;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
   }
 
   .services-tag {
@@ -81,21 +82,20 @@
   }
 
   .services-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 4vw, 2.7rem);
     color: var(--text-dark);
     line-height: 1.15;
   }
 
   .services-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--text-muted);
-    margin-top: 0.75rem;
+    margin-top: 0.35rem;
   }
 
-  /* Service Detail Block (Clean Fullwidth, No Card) */
+  /* Service Detail Block */
   .service-detail-block {
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-light);
+    padding-top: 1rem;
   }
 
   .service-main-info {
@@ -108,68 +108,65 @@
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.1em;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
   }
 
   .service-name {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: var(--text-dark);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .service-description {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.75;
     color: var(--text-body);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .service-highlights-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.15rem;
     width: 100%;
-    margin-bottom: 2.25rem;
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 1.75rem;
   }
 
   .highlight-item {
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
   .highlight-num {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1;
     flex-shrink: 0;
   }
 
   .highlight-item strong {
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text-dark);
     display: block;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
   }
 
   .highlight-item p {
-    font-size: 0.95rem;
+    font-size: 0.925rem;
     color: var(--text-body);
     margin: 0;
   }
 
   .service-action {
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
   }
 
   .btn-red-simple {
-    padding: 0.75rem 1.6rem;
+    padding: 0.65rem 1.4rem;
     background: var(--red-primary);
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     border-radius: 4px;
     transition: background var(--transition-smooth);
     display: inline-flex;
@@ -180,3 +177,4 @@
     background: var(--red-dark);
   }
 </style>
+

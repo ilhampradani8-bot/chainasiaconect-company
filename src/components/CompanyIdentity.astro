@@ -14,19 +14,19 @@
       </p>
     </div>
 
-    <!-- Strategic Pivot Text Block (No cards) -->
+    <!-- Strategic Pivot Text Block (No cards, no inner lines) -->
     <div class="pivot-text-block">
       <span class="pivot-tag red-text">STRATEGIC PIVOT BACKGROUND</span>
       <h3 class="pivot-title">Transformation to Real Business Sector</h3>
       <p class="paragraph">
         The strategic decision to expand into the real physical business sector represents a measured and sustainability-oriented transformation. Unlike high-speculation business models, physical business operations in high-potential markets provide a solid foundation through <strong>stable daily cash flow (real cash flow)</strong>, tangible <strong>physical asset availability</strong>, and a measurably real market share.
       </p>
-      <p class="paragraph" style="margin-top: 1rem;">
+      <p class="paragraph" style="margin-top: 0.75rem;">
         Retaining the entity name PT CHAIN ASIA CONECT preserves strategic brand equity. The word <strong>"Chain"</strong> is professionally reoriented to represent <em>Supply Chain</em> reliability and Business Value Chain integration that mutually reinforce local and regional business ecosystems.
       </p>
     </div>
 
-    <!-- 3 Pillars Breakdown (No Cards) -->
+    <!-- 3 Pillars Breakdown (No Cards, No inner border lines) -->
     <div class="pillars-clean" id="pilar">
       <h3 class="pillars-heading">Entity Naming & Operational Philosophy</h3>
 
@@ -66,12 +66,13 @@
 <style>
   .identity-section-clean {
     background: #ffffff;
-    padding: 5rem 0;
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
   }
 
   .section-title-clean {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
   }
 
   .sub-tag {
@@ -83,21 +84,19 @@
   }
 
   .main-title {
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(2rem, 4vw, 2.7rem);
     color: var(--text-dark);
   }
 
   .subtitle-text {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--text-muted);
-    margin-top: 0.5rem;
+    margin-top: 0.35rem;
   }
 
   /* Pivot Block */
   .pivot-text-block {
-    padding: 2.25rem 0;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 2.25rem;
   }
 
   .pivot-tag {
@@ -109,45 +108,40 @@
   }
 
   .pivot-title {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     color: var(--text-dark);
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.65rem;
   }
 
   .paragraph {
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.75;
     color: var(--text-body);
   }
 
   /* Pillars Clean Row */
   .pillars-clean {
-    padding-top: 3rem;
+    padding-top: 1rem;
   }
 
   .pillars-heading {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     color: var(--text-dark);
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
   }
 
   .pillar-clean-row {
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
-    padding: 1.75rem 0;
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .pillar-clean-row:last-child {
-    border-bottom: none;
+    gap: 1.5rem;
+    padding: 1rem 0;
   }
 
   .pillar-number {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 800;
-    width: 45px;
+    width: 35px;
     flex-shrink: 0;
   }
 
@@ -156,27 +150,28 @@
   }
 
   .pillar-name-text {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: var(--text-dark);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
   }
 
   .pillar-sub {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-family: var(--font-body);
     font-weight: 600;
   }
 
   .pillar-desc-text {
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 0.95rem;
+    line-height: 1.65;
     color: var(--text-body);
   }
 
   @media (max-width: 640px) {
     .pillar-clean-row {
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.25rem;
     }
   }
 </style>
+

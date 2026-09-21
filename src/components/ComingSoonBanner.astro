@@ -26,10 +26,11 @@
 
 <style>
   .coming-soon-banner-section {
-    background: #f8fafc;
-    padding: 5.5rem 0;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
+    background: linear-gradient(rgba(10, 10, 12, 0.85), rgba(10, 10, 12, 0.92)), url('/images/ornate-bg.jpg') center/cover no-repeat;
+    padding: 3.5rem 0;
+    border-top: 1px solid rgba(239, 68, 68, 0.4);
+    border-bottom: 1px solid rgba(239, 68, 68, 0.4);
+    color: #ffffff;
   }
 
   .text-center {
@@ -44,22 +45,27 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     display: block;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+    color: #ef4444;
   }
 
   .banner-title {
-    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
-    color: var(--text-dark);
-    margin-bottom: 1.25rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
     line-height: 1.2;
   }
 
+  .banner-title .red-text {
+    color: #ef4444;
+  }
+
   .banner-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-body);
-    margin-bottom: 2.25rem;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #e2e8f0;
+    margin-bottom: 1.75rem;
   }
 
   .banner-actions {
@@ -71,33 +77,33 @@
   }
 
   .btn-red-large {
-    padding: 0.85rem 1.85rem;
-    background: var(--red-primary);
+    padding: 0.75rem 1.75rem;
+    background: #dc2626;
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.925rem;
     border-radius: 4px;
     transition: background var(--transition-smooth);
   }
 
   .btn-red-large:hover {
-    background: var(--red-dark);
+    background: #b91c1c;
   }
 
   .btn-outline-large {
-    padding: 0.85rem 1.85rem;
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    color: var(--text-dark);
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.925rem;
     border-radius: 4px;
-    transition: border-color var(--transition-smooth);
+    transition: all var(--transition-smooth);
   }
 
   .btn-outline-large:hover {
-    border-color: var(--red-primary);
-    color: var(--red-primary);
+    border-color: #ef4444;
+    color: #ef4444;
   }
 
   @media (max-width: 640px) {
@@ -106,3 +112,4 @@
     }
   }
 </style>
+
