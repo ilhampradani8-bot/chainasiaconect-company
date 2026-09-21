@@ -1,52 +1,30 @@
 ---
 ---
 
-<section class="fullwidth-section red-hero-section" id="hero">
-  <!-- Typography Watermark Background -->
-  <div class="bg-watermark" aria-hidden="true">CHAIN ASIA CONECT</div>
+<section class="fullwidth-section hero-section-clean" id="hero">
+  <div class="container hero-container-clean">
+    <!-- Pure Text Content (No Image in Hero 1) -->
+    <div class="hero-content-clean">
+      <span class="hero-tag-text red-text">PT CHAIN ASIA CONECT • WE ARE LAUNCHING SOON</span>
 
-  <div class="container relative-z">
-    <div class="editorial-grid">
-      <!-- Left Hero Text Content -->
-      <div class="hero-text-col">
-        <div class="red-badge">
-          <span class="red-badge-dot"></span>
-          <span>PT CHAIN ASIA CONECT • WE ARE LAUNCHING SOON</span>
-        </div>
+      <h1 class="hero-title-clean">
+        Solusi Rantai Pasok <br /><span class="red-text">& Ekosistem Usaha Riil</span>
+      </h1>
 
-        <h1 class="hero-title">
-          Solusi Rantai Pasok <br /><span class="red-gradient-text">& Ekosistem Usaha Riil</span>
-        </h1>
+      <p class="hero-lead-clean">
+        PT CHAIN ASIA CONECT mengukuhkan langkah transformasi strategis berorientasi keberlanjutan usaha fisik di wilayah <strong>Krui, Pesisir Barat, Lampung</strong>. Mengintegrasikan keandalan Rantai Pasok (Supply Chain) dan nilai tambah layanan fisik yang stabil dan terukur.
+      </p>
 
-        <div class="red-line-small"></div>
-
-        <p class="hero-lead">
-          PT CHAIN ASIA CONECT mengukuhkan langkah transformasi strategis berorientasi keberlanjutan usaha fisik di wilayah <strong>Krui, Pesisir Barat, Lampung</strong>. Mengintegrasikan keandalan Rantai Pasok (<em>Supply Chain</em>) dan nilai tambah layanan fisik yang stabil dan terukur.
-        </p>
-
-        <!-- Subscription Form -->
-        <div class="subscribe-wrapper">
-          <form class="hero-form" id="hero-notify-form">
-            <input type="email" placeholder="Masukkan email bisnis untuk notifikasi peluncuran..." required class="hero-input" id="hero-email-input" />
-            <button type="submit" class="btn-red">
-              <span>Dapatkan Akses</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
-          </form>
-          <div class="form-feedback" id="hero-form-notice">
-            🔒 Informasi kemitraan B2B & operasional resmi akan dikirimkan secara terbatas.
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Side Visual Branding -->
-      <div class="hero-visual-col">
-        <div class="logo-hero-frame">
-          <img src="/images/CAC-LOGO.jpg" alt="PT CHAIN ASIA CONECT Official Emblem" class="hero-logo-img" />
-          <div class="hero-logo-caption">
-            <span class="caption-brand">PT CHAIN ASIA CONECT</span>
-            <span class="caption-sub red-text">NIB 0709260109599 • SK Kemenkumham RI</span>
-          </div>
+      <!-- Clean Subscription Input (No Capsule Card) -->
+      <div class="subscribe-clean">
+        <form class="clean-form" id="hero-notify-form">
+          <input type="email" placeholder="Masukkan email bisnis Anda..." required class="clean-input" id="hero-email-input" />
+          <button type="submit" class="btn-red-clean">
+            <span>Dapatkan Akses</span>
+          </button>
+        </form>
+        <div class="form-notice-clean" id="hero-form-notice">
+          Informasi kemitraan B2B & operasional resmi akan dikirimkan secara terbatas.
         </div>
       </div>
     </div>
@@ -62,7 +40,7 @@
       e.preventDefault();
       const input = document.getElementById('hero-email-input') as HTMLInputElement;
       if (input && input.value) {
-        notice.innerHTML = `<span style="color: #16a34a; font-weight: 600;">✓ Terima kasih! Email <strong>${input.value}</strong> telah terdaftar dalam daftar mitra prioritas.</span>`;
+        notice.innerHTML = `<span style="color: #16a34a; font-weight: 600;">✓ Terima kasih! Email <strong>${input.value}</strong> telah terdaftar.</span>`;
         input.value = '';
       }
     });
@@ -70,125 +48,96 @@
 </script>
 
 <style>
-  .red-hero-section {
-    padding: 5rem 0 5.5rem 0;
-    overflow: hidden;
+  .hero-section-clean {
+    padding: 5rem 0 4rem 0;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-light);
   }
 
-  .bg-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font-heading);
-    font-size: clamp(3rem, 12vw, 10rem);
-    font-weight: 900;
-    color: rgba(220, 38, 38, 0.03);
-    white-space: nowrap;
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
+  .hero-container-clean {
+    max-width: 900px;
   }
 
-  .relative-z {
-    position: relative;
-    z-index: 1;
+  .hero-content-clean {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .hero-title {
-    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-    margin: 1.25rem 0 0.85rem 0;
+  .hero-tag-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title-clean {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    margin: 0.5rem 0 1.25rem 0;
     line-height: 1.15;
+    color: var(--text-dark);
   }
 
-  .hero-lead {
-    font-size: 1.1rem;
-    line-height: 1.75;
+  .hero-lead-clean {
+    font-size: 1.15rem;
+    line-height: 1.8;
     color: var(--text-body);
-    margin-bottom: 2rem;
+    margin-bottom: 2.25rem;
   }
 
-  .subscribe-wrapper {
-    margin-top: 1.5rem;
+  .subscribe-clean {
+    width: 100%;
   }
 
-  .hero-form {
+  .clean-form {
     display: flex;
     gap: 0.75rem;
-    max-width: 560px;
+    max-width: 580px;
   }
 
-  .hero-input {
+  .clean-input {
     flex: 1;
     background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 9999px;
-    padding: 0.75rem 1.25rem;
+    border: 1px solid #cbd5e1;
+    padding: 0.75rem 1rem;
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-dark);
     outline: none;
-    transition: all var(--transition-smooth);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    border-radius: 4px;
   }
 
-  .hero-input:focus {
+  .clean-input:focus {
     border-color: var(--red-primary);
-    box-shadow: 0 0 12px rgba(220, 38, 38, 0.15);
   }
 
-  .form-feedback {
-    font-size: 0.8rem;
+  .btn-red-clean {
+    padding: 0.75rem 1.75rem;
+    background: var(--red-primary);
+    color: #ffffff;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background var(--transition-smooth);
+  }
+
+  .btn-red-clean:hover {
+    background: var(--red-dark);
+  }
+
+  .form-notice-clean {
+    font-size: 0.825rem;
     color: var(--text-muted);
     margin-top: 0.65rem;
   }
 
-  /* Right Visual Emblem */
-  .hero-visual-col {
-    display: flex;
-    justify-content: center;
-  }
-
-  .logo-hero-frame {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem;
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    max-width: 360px;
-    width: 100%;
-  }
-
-  .hero-logo-img {
-    width: 220px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid var(--border-red);
-    margin-bottom: 1.25rem;
-  }
-
-  .caption-brand {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    display: block;
-  }
-
-  .caption-sub {
-    font-size: 0.775rem;
-    font-weight: 600;
-    margin-top: 0.2rem;
-    display: block;
-  }
-
-  @media (max-width: 768px) {
-    .hero-form {
+  @media (max-width: 640px) {
+    .clean-form {
       flex-direction: column;
     }
   }

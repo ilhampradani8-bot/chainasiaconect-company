@@ -1,62 +1,49 @@
 ---
 ---
 
-<section class="fullwidth-section alt-section direktur-section" id="direktur">
+<section class="fullwidth-section direktur-section-clean" id="direktur">
   <div class="container">
     <div class="editorial-grid">
-      <!-- Left Column: Owner Photo -->
-      <div class="direktur-photo-col">
-        <div class="direktur-image-frame">
-          <img src="/images/hero-owner.jpg" alt="Ilham Pradani - Direktur Utama PT CHAIN ASIA CONECT" class="owner-photo" />
-        </div>
-        <div class="owner-tag">
-          <span class="tag-title">ILHAM PRADANI</span>
-          <span class="tag-role red-text">Direktur Utama & Pemilik Entitas</span>
-        </div>
+      <!-- Left Column: Owner Photo (Clean photo, no card/frame box) -->
+      <div class="direktur-photo-clean">
+        <img src="/images/hero-owner.jpg" alt="Ilham Pradani - Direktur Utama PT CHAIN ASIA CONECT" class="photo-clean" />
       </div>
 
-      <!-- Right Column: Biography & Quote -->
-      <div class="direktur-text-col">
-        <div class="red-badge">
-          <span>Kepemimpinan Eksekutif</span>
-        </div>
+      <!-- Right Column: Biography (Pure text, no capsule cards) -->
+      <div class="direktur-text-clean">
+        <span class="section-tag-clean red-text">KEPEMIMPINAN EKSEKUTIF</span>
 
-        <h2 class="direktur-heading">
-          Ilham Pradani
-        </h2>
-        <span class="direktur-subtitle red-text">Direktur Utama PT CHAIN ASIA CONECT</span>
+        <h2 class="owner-name-clean">Ilham Pradani</h2>
+        <span class="owner-title-clean">Direktur Utama & Pemilik Entitas</span>
 
-        <div class="red-line-small"></div>
-
-        <blockquote class="direktur-quote">
+        <p class="owner-quote-clean">
           “Keputusan strategis untuk merambah ke sektor bisnis riil di kawasan Krui, Pesisir Barat, merupakan langkah transformasi usaha yang terukur dan berorientasi pada keberlanjutan. Melalui keselarasan filosofi identitas korporat dan standar operasional yang profesional, perusahaan berkomitmen menjadi mitra strategis yang andal dalam mendukung pertumbuhan industri lokal dan regional.”
-        </blockquote>
+        </p>
 
-        <div class="direktur-specs">
-          <div class="spec-item">
-            <span class="spec-label">Perusahaan:</span>
-            <strong class="spec-val">PT CHAIN ASIA CONECT</strong>
+        <div class="owner-info-clean">
+          <div class="info-row">
+            <span class="info-label">Entitas Usaha:</span>
+            <strong class="info-val">PT CHAIN ASIA CONECT</strong>
           </div>
-          <div class="spec-item">
-            <span class="spec-label">Website Owner:</span>
-            <a href="https://ilhampradani.me" target="_blank" rel="noopener" class="spec-link red-text">https://ilhampradani.me</a>
+          <div class="info-row">
+            <span class="info-label">Website Owner:</span>
+            <a href="https://ilhampradani.me" target="_blank" rel="noopener" class="info-link red-text">https://ilhampradani.me</a>
           </div>
-          <div class="spec-item">
-            <span class="spec-label">Email Direksi:</span>
-            <a href="mailto:hello@ilhampradani.me" class="spec-link">hello@ilhampradani.me</a>
+          <div class="info-row">
+            <span class="info-label">Email Direksi:</span>
+            <a href="mailto:hello@ilhampradani.me" class="info-link">hello@ilhampradani.me</a>
           </div>
-          <div class="spec-item">
-            <span class="spec-label">SK Legalitas:</span>
-            <span class="spec-val">AHU-A117353.AH.01.30.Tahun 2026</span>
+          <div class="info-row">
+            <span class="info-label">SK Legalitas:</span>
+            <span class="info-val">AHU-A117353.AH.01.30.Tahun 2026</span>
           </div>
         </div>
 
-        <div class="direktur-actions">
-          <a href="https://ilhampradani.me" target="_blank" rel="noopener" class="btn-red btn-red-outline">
-            <span>Profil Owner</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <div class="owner-actions-clean">
+          <a href="https://ilhampradani.me" target="_blank" rel="noopener" class="btn-text-link red-text">
+            <span>Profil Lengkap Owner (ilhampradani.me) →</span>
           </a>
-          <a href="https://wa.me/6288971071138" target="_blank" rel="noopener" class="btn-red">
+          <a href="https://wa.me/6288971071138" target="_blank" rel="noopener" class="btn-red-simple">
             <span>Hubungi Direksi (WhatsApp)</span>
           </a>
         </div>
@@ -66,92 +53,81 @@
 </section>
 
 <style>
-  .direktur-section {
-    position: relative;
+  .direktur-section-clean {
+    background: #ffffff;
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border-light);
   }
 
-  .direktur-photo-col {
+  .direktur-photo-clean {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
   }
 
-  .direktur-image-frame {
+  .photo-clean {
     width: 100%;
     max-width: 380px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 3px solid #ffffff;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  }
-
-  .owner-photo {
-    width: 100%;
     height: 440px;
     object-fit: cover;
     display: block;
+    border-radius: 4px;
   }
 
-  .owner-tag {
-    margin-top: 1rem;
+  .direktur-text-clean {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
   }
 
-  .tag-title {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
+  .section-tag-clean {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .owner-name-clean {
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     color: var(--text-dark);
+    line-height: 1.1;
   }
 
-  .tag-role {
-    font-size: 0.8rem;
+  .owner-title-clean {
+    font-size: 1rem;
     font-weight: 600;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
   }
 
-  .direktur-heading {
-    font-size: clamp(2rem, 3.8vw, 3rem);
-    margin-top: 0.85rem;
-  }
-
-  .direktur-subtitle {
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
-
-  .direktur-quote {
-    font-size: 1.1rem;
+  .owner-quote-clean {
+    font-size: 1.05rem;
     font-style: italic;
     line-height: 1.75;
     color: var(--text-body);
     margin: 1.5rem 0;
-    padding-left: 1.25rem;
-    border-left: 3px solid var(--red-primary);
+    padding-left: 1rem;
+    border-left: 2px solid var(--red-primary);
   }
 
-  .direktur-specs {
+  .owner-info-clean {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.25rem 0;
-    margin-bottom: 2rem;
+    gap: 0.65rem;
+    width: 100%;
+    margin-bottom: 1.75rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
   }
 
-  .spec-item {
+  .info-row {
     display: flex;
     align-items: center;
     gap: 1rem;
     font-size: 0.925rem;
   }
 
-  .spec-label {
+  .info-label {
     width: 130px;
     font-size: 0.8rem;
     font-weight: 700;
@@ -160,27 +136,45 @@
     flex-shrink: 0;
   }
 
-  .spec-val, .spec-link {
+  .info-val, .info-link {
     font-weight: 600;
   }
 
-  .direktur-actions {
+  .owner-actions-clean {
     display: flex;
+    align-items: center;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    gap: 0.85rem;
+  }
+
+  .btn-text-link {
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: underline;
+  }
+
+  .btn-red-simple {
+    padding: 0.65rem 1.4rem;
+    background: var(--red-primary);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    transition: background var(--transition-smooth);
+  }
+
+  .btn-red-simple:hover {
+    background: var(--red-dark);
   }
 
   @media (max-width: 768px) {
-    .spec-item {
+    .info-row {
       flex-direction: column;
       align-items: flex-start;
       gap: 0.15rem;
     }
-    .spec-label {
+    .info-label {
       width: 100%;
-    }
-    .direktur-actions {
-      flex-direction: column;
     }
   }
 </style>
