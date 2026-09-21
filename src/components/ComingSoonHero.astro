@@ -1,32 +1,36 @@
 ---
 ---
 
-<section class="fullwidth-section hero-classic" id="hero">
-  <div class="container">
+<section class="fullwidth-section red-hero-section" id="hero">
+  <!-- Typography Watermark Background -->
+  <div class="bg-watermark" aria-hidden="true">CHAIN ASIA CONECT</div>
+
+  <div class="container relative-z">
     <div class="editorial-grid">
       <!-- Left Hero Text Content -->
-      <div class="hero-editorial">
-        <div class="classic-badge">
-          <span class="classic-badge-dot"></span>
+      <div class="hero-text-col">
+        <div class="red-badge">
+          <span class="red-badge-dot"></span>
           <span>PT CHAIN ASIA CONECT • WE ARE LAUNCHING SOON</span>
         </div>
 
-        <h1 class="hero-heading">
-          Ekosistem Rantai Pasok <br /><span class="gold-text">& Layanan Fisik Terintegrasi</span>
+        <h1 class="hero-title">
+          Solusi Rantai Pasok <br /><span class="red-gradient-text">& Ekosistem Usaha Riil</span>
         </h1>
 
-        <div class="gold-divider-small"></div>
+        <div class="red-line-small"></div>
 
         <p class="hero-lead">
           PT CHAIN ASIA CONECT mengukuhkan langkah transformasi strategis berorientasi keberlanjutan usaha fisik di wilayah <strong>Krui, Pesisir Barat, Lampung</strong>. Mengintegrasikan keandalan Rantai Pasok (<em>Supply Chain</em>) dan nilai tambah layanan fisik yang stabil dan terukur.
         </p>
 
-        <!-- Subscription Form Fullwidth Style -->
+        <!-- Subscription Form -->
         <div class="subscribe-wrapper">
-          <form class="classic-form" id="hero-notify-form">
-            <input type="email" placeholder="Email bisnis Anda untuk akses kemitraan..." required class="classic-input" id="hero-email-input" />
-            <button type="submit" class="btn-classic btn-classic-filled">
+          <form class="hero-form" id="hero-notify-form">
+            <input type="email" placeholder="Masukkan email bisnis untuk notifikasi peluncuran..." required class="hero-input" id="hero-email-input" />
+            <button type="submit" class="btn-red">
               <span>Dapatkan Akses</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
           </form>
           <div class="form-feedback" id="hero-form-notice">
@@ -35,15 +39,14 @@
         </div>
       </div>
 
-      <!-- Right Editorial Image Visual -->
-      <div class="hero-visual-frame">
-        <div class="image-wrapper-classic">
-          <img src="/images/CAC-LOGO.jpg" alt="PT CHAIN ASIA CONECT Official Emblem" class="hero-main-img" />
-          <div class="image-gold-border"></div>
-        </div>
-        <div class="visual-caption">
-          <span class="caption-title gold-text">PT CHAIN ASIA CONECT</span>
-          <span class="caption-subtitle">Terdaftar Resmi Kemenkumham RI & NIB 0709260109599</span>
+      <!-- Right Side Visual Branding -->
+      <div class="hero-visual-col">
+        <div class="logo-hero-frame">
+          <img src="/images/CAC-LOGO.jpg" alt="PT CHAIN ASIA CONECT Official Emblem" class="hero-logo-img" />
+          <div class="hero-logo-caption">
+            <span class="caption-brand">PT CHAIN ASIA CONECT</span>
+            <span class="caption-sub red-text">NIB 0709260109599 • SK Kemenkumham RI</span>
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +62,7 @@
       e.preventDefault();
       const input = document.getElementById('hero-email-input') as HTMLInputElement;
       if (input && input.value) {
-        notice.innerHTML = `<span style="color: #10b981; font-weight: 600;">✓ Terima kasih! Email <strong>${input.value}</strong> telah didaftarkan dalam daftar prioritas mitra.</span>`;
+        notice.innerHTML = `<span style="color: #16a34a; font-weight: 600;">✓ Terima kasih! Email <strong>${input.value}</strong> telah terdaftar dalam daftar mitra prioritas.</span>`;
         input.value = '';
       }
     });
@@ -67,113 +70,125 @@
 </script>
 
 <style>
-  .hero-classic {
-    padding: 7rem 0 6rem 0;
-    background: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(13, 16, 28, 0.9) 0%, transparent 50%);
+  .red-hero-section {
+    padding: 5rem 0 5.5rem 0;
+    overflow: hidden;
   }
 
-  .hero-heading {
-    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-    margin: 1.5rem 0 1rem 0;
+  .bg-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 12vw, 10rem);
+    font-weight: 900;
+    color: rgba(220, 38, 38, 0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .relative-z {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    margin: 1.25rem 0 0.85rem 0;
     line-height: 1.15;
   }
 
   .hero-lead {
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    margin-bottom: 2rem;
   }
 
   .subscribe-wrapper {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 
-  .classic-form {
+  .hero-form {
     display: flex;
     gap: 0.75rem;
-    max-width: 580px;
+    max-width: 560px;
   }
 
-  .classic-input {
+  .hero-input {
     flex: 1;
-    background: rgba(13, 16, 28, 0.9);
-    border: 1px solid var(--border-classic);
-    padding: 0.9rem 1.25rem;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 9999px;
+    padding: 0.75rem 1.25rem;
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--text-primary);
+    font-size: 0.9rem;
+    color: var(--text-dark);
     outline: none;
     transition: all var(--transition-smooth);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   }
 
-  .classic-input:focus {
-    border-color: var(--gold-primary);
-    box-shadow: 0 0 15px var(--gold-glow);
+  .hero-input:focus {
+    border-color: var(--red-primary);
+    box-shadow: 0 0 12px rgba(220, 38, 38, 0.15);
   }
 
   .form-feedback {
-    font-size: 0.825rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 0.75rem;
+    margin-top: 0.65rem;
   }
 
-  /* Right Visual Frame */
-  .hero-visual-frame {
+  /* Right Visual Emblem */
+  .hero-visual-col {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
   }
 
-  .image-wrapper-classic {
-    position: relative;
-    width: 100%;
-    max-width: 440px;
-    padding: 12px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-classic);
-  }
-
-  .hero-main-img {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-    display: block;
-    filter: brightness(0.95);
-  }
-
-  .image-gold-border {
-    position: absolute;
-    inset: 6px;
-    border: 1px solid var(--gold-primary);
-    pointer-events: none;
-    opacity: 0.6;
-  }
-
-  .visual-caption {
-    margin-top: 1.25rem;
+  .logo-hero-frame {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 1.5rem;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    max-width: 360px;
+    width: 100%;
   }
 
-  .caption-title {
+  .hero-logo-img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border-red);
+    margin-bottom: 1.25rem;
+  }
+
+  .caption-brand {
     font-family: var(--font-heading);
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 800;
+    color: var(--text-dark);
+    display: block;
   }
 
-  .caption-subtitle {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
+  .caption-sub {
+    font-size: 0.775rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+    display: block;
   }
 
   @media (max-width: 768px) {
-    .classic-form {
+    .hero-form {
       flex-direction: column;
     }
   }

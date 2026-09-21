@@ -3,23 +3,23 @@
 
 <section class="fullwidth-section identity-section" id="filosofi">
   <div class="container">
-    <!-- Section Title -->
+    <!-- Section Header -->
     <div class="section-header text-center">
-      <div class="classic-badge">
+      <div class="red-badge">
         <span>Filosofi & Identitas Merek</span>
       </div>
       <h2 class="section-title">
-        Nilai Strategis <span class="gold-text">PT CHAIN ASIA CONECT</span>
+        Nilai Strategis <span class="red-text">PT CHAIN ASIA CONECT</span>
       </h2>
-      <div class="gold-divider-small gold-divider-center"></div>
+      <div class="red-line-small red-line-center"></div>
       <p class="section-subtitle">
         Transformasi usaha terukur berorientasi keberlanjutan sektor riil di kawasan Krui, Pesisir Barat.
       </p>
     </div>
 
-    <!-- Fullwidth Strategic Pivot Banner -->
+    <!-- Strategic Pivot Block (Fullwidth, No card) -->
     <div class="pivot-block">
-      <div class="pivot-badge-tag">Latar Belakang Pivot Strategis</div>
+      <span class="pivot-tag red-text">LATAR BELAKANG PIVOT STRATEGIS</span>
       <h3 class="pivot-heading">Transformasi Usaha ke Sektor Bisnis Riil (Krui, Pesisir Barat)</h3>
       <p class="pivot-text">
         Keputusan strategis untuk merambah ke sektor bisnis riil di kawasan Krui, Pesisir Barat, merupakan langkah transformasi usaha yang terukur dan berorientasi pada keberlanjutan. Berbeda dengan karakteristik bisnis berbasis spekulasi tinggi, operasional bisnis fisik di kawasan potensial ini memberikan fondasi yang solid melalui <strong>arus kas harian yang stabil (real cash flow)</strong>, ketersediaan <strong>aset terwujud</strong>, serta pangsa pasar yang terukur secara riil.
@@ -29,37 +29,37 @@
       </p>
     </div>
 
-    <div class="gold-divider"></div>
+    <div class="red-divider"></div>
 
-    <!-- 3 Pillars Editorial Layout (NO CARDS - Clean split rows) -->
-    <div class="pillars-editorial" id="pilar">
-      <h3 class="pillars-heading text-center">Filosofi Nama & Operasional Entitas</h3>
+    <!-- 3 Pillars Row Layout (NO CARDS) -->
+    <div class="pillars-container" id="pilar">
+      <h3 class="pillars-title text-center">Filosofi Nama & Operasional Entitas</h3>
 
-      <div class="pillar-row">
-        <div class="pillar-num gold-text">01</div>
-        <div class="pillar-main">
-          <h4 class="pillar-name">CHAIN <span class="pillar-sub">(Rantai Pasok & Kemitraan)</span></h4>
-          <p class="pillar-body">
+      <div class="pillar-item">
+        <div class="pillar-badge-num">01</div>
+        <div class="pillar-content">
+          <h4 class="pillar-title-text">CHAIN <span class="pillar-sub-text red-text">(Rantai Pasok & Kemitraan)</span></h4>
+          <p class="pillar-desc">
             <strong>Perspektif Operasional:</strong> Melambangkan kekuatan rantai pasok yang terintegrasi, keandalan mutu layanan, serta komitmen kemitraan B2B yang strategis dan berjangka panjang bersama para pelaku industri akomodasi, perhotelan, dan jaringan mitra lokal.
           </p>
         </div>
       </div>
 
-      <div class="pillar-row">
-        <div class="pillar-num gold-text">02</div>
-        <div class="pillar-main">
-          <h4 class="pillar-name">ASIA <span class="pillar-sub">(Visi & Standar Profesional)</span></h4>
-          <p class="pillar-body">
+      <div class="pillar-item">
+        <div class="pillar-badge-num">02</div>
+        <div class="pillar-content">
+          <h4 class="pillar-title-text">ASIA <span class="pillar-sub-text red-text">(Visi & Standar Profesional)</span></h4>
+          <p class="pillar-desc">
             <strong>Perspektif Operasional:</strong> Melambangkan penerapan standar operasional berkelas profesional, wawasan pengembangan bisnis yang luas, serta kesiapan fasilitas dalam melayani segmen pasar domestik maupun internasional.
           </p>
         </div>
       </div>
 
-      <div class="pillar-row">
-        <div class="pillar-num gold-text">03</div>
-        <div class="pillar-main">
-          <h4 class="pillar-name">CONECT <span class="pillar-sub">(Jembatan Solusi Fisik)</span></h4>
-          <p class="pillar-body">
+      <div class="pillar-item">
+        <div class="pillar-badge-num">03</div>
+        <div class="pillar-content">
+          <h4 class="pillar-title-text">CONECT <span class="pillar-sub-text red-text">(Jembatan Solusi Fisik)</span></h4>
+          <p class="pillar-desc">
             <strong>Perspektif Operasional:</strong> Melambangkan peran perusahaan sebagai penyedia solusi komprehensif yang menghubungkan kebutuhan operasional di lapangan dengan ketersediaan layanan fisik yang responsif dan efisien.
           </p>
         </div>
@@ -71,7 +71,7 @@
 <style>
   .identity-section {
     position: relative;
-    background: #060810;
+    background: #ffffff;
   }
 
   .text-center {
@@ -79,108 +79,102 @@
   }
 
   .section-header {
-    max-width: 760px;
-    margin: 0 auto 4rem auto;
+    max-width: 720px;
+    margin: 0 auto 3.5rem auto;
   }
 
   .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-top: 1rem;
+    font-size: clamp(2rem, 3.8vw, 2.8rem);
+    margin-top: 0.85rem;
   }
 
   .section-subtitle {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    color: var(--text-secondary);
+    font-size: 1.1rem;
+    color: var(--text-muted);
   }
 
-  /* Pivot Block (Fullwidth Layout, No Card) */
+  /* Pivot Block */
   .pivot-block {
-    padding: 3rem 0;
-    border-top: 1px solid var(--border-classic);
-    border-bottom: 1px solid var(--border-classic);
-    position: relative;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
   }
 
-  .pivot-badge-tag {
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    color: var(--gold-light);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
+  .pivot-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5rem;
   }
 
   .pivot-heading {
-    font-size: 1.6rem;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.85rem;
   }
 
   .pivot-text {
     font-size: 1.05rem;
     line-height: 1.8;
-    color: var(--text-secondary);
+    color: var(--text-body);
   }
 
-  /* Pillars Editorial Section */
-  .pillars-editorial {
-    padding: 2rem 0;
+  /* Pillars Row */
+  .pillars-container {
+    padding: 1.5rem 0;
   }
 
-  .pillars-heading {
-    font-size: 1.8rem;
-    margin-bottom: 3.5rem;
+  .pillars-title {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
   }
 
-  .pillar-row {
+  .pillar-item {
     display: flex;
     align-items: flex-start;
-    gap: 2.5rem;
-    padding: 2.25rem 0;
-    border-bottom: 1px solid var(--border-faint);
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-light);
   }
 
-  .pillar-row:last-child {
+  .pillar-item:last-child {
     border-bottom: none;
   }
 
-  .pillar-num {
+  .pillar-badge-num {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1;
-    width: 60px;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--red-primary);
+    width: 50px;
     flex-shrink: 0;
   }
 
-  .pillar-main {
+  .pillar-content {
     flex: 1;
   }
 
-  .pillar-name {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
+  .pillar-title-text {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
   }
 
-  .pillar-sub {
-    font-size: 0.95rem;
-    color: var(--gold-light);
+  .pillar-sub-text {
     font-family: var(--font-body);
-    font-weight: 500;
+    font-size: 0.925rem;
+    font-weight: 600;
   }
 
-  .pillar-body {
-    font-size: 1.05rem;
+  .pillar-desc {
+    font-size: 1.025rem;
     line-height: 1.75;
-    color: var(--text-secondary);
+    color: var(--text-body);
   }
 
   @media (max-width: 768px) {
-    .pillar-row {
+    .pillar-item {
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
   }
 </style>

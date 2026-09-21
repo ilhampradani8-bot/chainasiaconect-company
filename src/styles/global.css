@@ -1,38 +1,37 @@
-/* Classic Luxury Full-Width Design System - PT CHAIN ASIA CONECT */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+/* Red & White Luxury Corporate Theme - PT CHAIN ASIA CONECT */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800;900&display=swap');
 
 :root {
-  /* Classic Luxury Color Palette */
-  --bg-dark: #080a12;
-  --bg-darker: #040509;
-  --bg-section-alt: #0d101c;
-  --bg-surface: #121626;
+  /* Red & White Color Palette */
+  --bg-white: #ffffff;
+  --bg-light: #f8fafc;
+  --bg-alt: #f1f5f9;
   
-  /* Gold & Metallic Accents */
-  --gold-primary: #d4af37;
-  --gold-light: #f3e5ab;
-  --gold-dark: #aa8c2c;
-  --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8c2c 100%);
-  --gold-glow: rgba(212, 175, 55, 0.2);
+  /* Brand Red Palette (Merah Corporate) */
+  --red-primary: #dc2626;
+  --red-dark: #991b1b;
+  --red-deep: #7f1d1d;
+  --red-light: #fef2f2;
+  --red-gradient: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #7f1d1d 100%);
+  --red-soft-bg: rgba(220, 38, 38, 0.04);
 
   /* Typography Colors */
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-gold: #e2c66d;
+  --text-dark: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-light-muted: #94a3b8;
 
-  /* Divider & Border */
-  --border-classic: rgba(212, 175, 55, 0.22);
-  --border-faint: rgba(255, 255, 255, 0.08);
+  /* Borders & Dividers */
+  --border-light: #e2e8f0;
+  --border-red: rgba(220, 38, 38, 0.25);
 
   /* Fonts */
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-heading: 'Cinzel', 'Times New Roman', serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
 
-  /* Layout */
-  --container-width: 1280px;
-  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Spacing & Layout */
+  --container-width: 1240px;
+  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after {
@@ -43,8 +42,8 @@
 
 html {
   font-family: var(--font-body);
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
+  background-color: var(--bg-white);
+  color: var(--text-dark);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
@@ -54,41 +53,38 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  background-color: var(--bg-dark);
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 100% 50%, rgba(13, 16, 28, 0.8) 0%, transparent 50%);
-  background-attachment: fixed;
+  background-color: var(--bg-white);
+  color: var(--text-body);
 }
 
-/* Custom Classic Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-darker);
+  background: var(--bg-light);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--gold-dark);
+  background: var(--red-primary);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-primary);
+  background: var(--red-dark);
 }
 
-/* Typography Base */
+/* Base Typography */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
-  color: var(--text-primary);
-  letter-spacing: 0.02em;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
   font-weight: 700;
   line-height: 1.2;
 }
 
 p {
-  line-height: 1.8;
-  color: var(--text-secondary);
-  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  font-size: 1rem;
 }
 
 a {
@@ -96,135 +92,137 @@ a {
   text-decoration: none;
 }
 
-/* Container Utility */
+/* Container */
 .container {
   width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
-/* Fullwidth Section Layout (No cards) */
+/* Fullwidth Sections */
 .fullwidth-section {
   width: 100%;
-  padding: 6rem 0;
-  border-bottom: 1px solid var(--border-classic);
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--border-light);
   position: relative;
+  background: var(--bg-white);
 }
 
-.fullwidth-section.alt-bg {
-  background-color: var(--bg-section-alt);
+.fullwidth-section.alt-section {
+  background-color: var(--bg-light);
 }
 
-/* Classic Golden Line Divider */
-.gold-divider {
+.fullwidth-section.red-hero-section {
+  background: linear-gradient(180deg, var(--red-light) 0%, var(--bg-white) 100%);
+}
+
+/* Red & Light Accent Dividers */
+.red-divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold-primary) 50%, transparent 100%);
-  opacity: 0.4;
-  margin: 2.5rem 0;
+  background: linear-gradient(90deg, transparent 0%, var(--red-primary) 50%, transparent 100%);
+  opacity: 0.3;
+  margin: 2rem 0;
 }
 
-.gold-divider-small {
-  width: 80px;
-  height: 2px;
-  background: var(--gold-gradient);
-  margin: 1.25rem 0;
+.red-line-small {
+  width: 60px;
+  height: 3px;
+  background: var(--red-gradient);
+  margin: 1rem 0;
 }
 
-.gold-divider-center {
-  margin: 1.25rem auto;
+.red-line-center {
+  margin: 1rem auto;
 }
 
-/* Classic Metallic Text */
-.gold-text {
-  background: var(--gold-gradient);
+/* Red Text Utility */
+.red-text {
+  color: var(--red-primary);
+}
+
+.red-gradient-text {
+  background: var(--red-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Classic Badge & Pills */
-.classic-badge {
+/* Badges & Buttons */
+.red-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 1.2rem;
-  border: 1px solid var(--gold-primary);
-  background: rgba(212, 175, 55, 0.05);
-  color: var(--gold-light);
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid var(--red-primary);
+  background: var(--red-light);
+  color: var(--red-dark);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  border-radius: 9999px;
 }
 
-.classic-badge-dot {
+.red-badge-dot {
   width: 6px;
   height: 6px;
-  background-color: var(--gold-primary);
+  background-color: var(--red-primary);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--gold-primary);
 }
 
-/* Classic Buttons */
-.btn-classic {
+.btn-red {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 0.9rem 2.2rem;
-  font-family: var(--font-heading);
+  gap: 0.6rem;
+  padding: 0.7rem 1.6rem;
+  font-family: var(--font-body);
   font-size: 0.875rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-smooth);
-  border: 1px solid var(--gold-primary);
+  border: 1px solid var(--red-primary);
+  background: var(--red-gradient);
+  color: #ffffff;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.25);
+}
+
+.btn-red:hover {
+  background: var(--red-dark);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-red-outline {
   background: transparent;
-  color: var(--gold-light);
+  color: var(--red-dark);
+  border: 1px solid var(--red-primary);
+  box-shadow: none;
 }
 
-.btn-classic:hover {
-  background: var(--gold-gradient);
-  color: #040509;
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+.btn-red-outline:hover {
+  background: var(--red-light);
+  color: var(--red-deep);
   transform: translateY(-2px);
 }
 
-.btn-classic-filled {
-  background: var(--gold-gradient);
-  color: #040509;
-  border: 1px solid var(--gold-primary);
-}
-
-.btn-classic-filled:hover {
-  background: #ffffff;
-  color: #040509;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
-}
-
-/* Fullwidth Editorial Grid (No Cards) */
+/* Editorial Fullwidth Layout (No cards) */
 .editorial-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
+  gap: 3.5rem;
   align-items: center;
 }
 
-.editorial-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-}
-
 @media (max-width: 992px) {
-  .editorial-grid, .editorial-grid-3 {
+  .editorial-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
   .fullwidth-section {
-    padding: 4rem 0;
+    padding: 3.5rem 0;
   }
 }
