@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "PT CHAIN ASIA CONECT | Real Ecosystem & Supply Chain Solutions",
+  description = "PT CHAIN ASIA CONECT - Perusahaan terdaftar resmi (NIB 0709260109599 & SK Kemenkumham) fokus pada Rantai Pasok (Supply Chain), Ekosistem Usaha Riil di Krui, Pesisir Barat, dan Solusi Teknologi Terintegrasi."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="PT CHAIN ASIA CONECT, Chain Asia Conect, Supply Chain Krui, Business Ecosystem Pesisir Barat, Legalitas PT Perorangan, NIB 0709260109599, SK Kemenkumham AHU-A117353" />
+    <meta name="author" content="PT CHAIN ASIA CONECT" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chainasiaconect.com/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/CAC-LOGO.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/images/CAC-LOGO.jpg" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
