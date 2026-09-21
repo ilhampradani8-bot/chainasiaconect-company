@@ -1,0 +1,209 @@
+---
+---
+
+<section class="fullwidth-section alt-bg direktur-section" id="direktur">
+  <div class="container">
+    <div class="editorial-grid">
+      <!-- Left Column: Owner Photo Frame -->
+      <div class="direktur-photo-col">
+        <div class="direktur-frame">
+          <img src="/images/hero-owner.jpg" alt="Ilham Pradani - Direktur Utama PT CHAIN ASIA CONECT" class="direktur-img" />
+          <div class="frame-accent-line"></div>
+        </div>
+        <div class="direktur-badge-bar">
+          <span class="badge-role gold-text">EXECUTIVE LEADERSHIP</span>
+          <span class="badge-loc">JAKARTA & KRUI</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Editorial Text & Biography -->
+      <div class="direktur-info-col">
+        <div class="classic-badge">
+          <span>Kepemimpinan Eksekutif</span>
+        </div>
+
+        <h2 class="direktur-name">
+          Ilham Pradani
+        </h2>
+        <span class="direktur-title gold-text">Direktur Utama & Pemilik Entitas</span>
+
+        <div class="gold-divider-small"></div>
+
+        <p class="direktur-quote">
+          “Keputusan strategis untuk merambah ke sektor bisnis riil di kawasan Krui, Pesisir Barat, merupakan langkah transformasi usaha yang terukur dan berorientasi pada keberlanjutan. Melalui keselarasan filosofi identitas korporat dan standar operasional yang profesional, perusahaan berkomitmen menjadi mitra strategis yang andal dalam mendukung pertumbuhan industri lokal dan regional.”
+        </p>
+
+        <div class="direktur-details">
+          <div class="detail-row">
+            <span class="detail-label">Entitas Hukum:</span>
+            <strong class="detail-val">PT CHAIN ASIA CONECT</strong>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Personal Website:</span>
+            <a href="https://ilhampradani.me" target="_blank" rel="noopener" class="detail-link gold-text">https://ilhampradani.me</a>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Email Direksi:</span>
+            <a href="mailto:hello@ilhampradani.me" class="detail-link">hello@ilhampradani.me</a>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Status Legal:</span>
+            <span class="detail-val">SK Kemenkumham AHU-A117353.AH.01.30.Tahun 2026</span>
+          </div>
+        </div>
+
+        <div class="action-bar">
+          <a href="https://ilhampradani.me" target="_blank" rel="noopener" class="btn-classic">
+            <span>Profil Lengkap Owner</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+          <a href="https://wa.me/6288971071138" target="_blank" rel="noopener" class="btn-classic btn-classic-filled">
+            <span>Hubungi Direksi (WhatsApp)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .direktur-section {
+    position: relative;
+    border-top: 1px solid var(--border-classic);
+  }
+
+  .direktur-photo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .direktur-frame {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    padding: 10px;
+    background: var(--bg-dark);
+    border: 1px solid var(--gold-primary);
+  }
+
+  .direktur-img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+    transition: filter var(--transition-smooth);
+  }
+
+  .direktur-img:hover {
+    filter: grayscale(0%) contrast(1.05);
+  }
+
+  .frame-accent-line {
+    position: absolute;
+    inset: 4px;
+    border: 1px dashed var(--gold-dark);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .direktur-badge-bar {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    font-family: var(--font-heading);
+  }
+
+  .badge-role {
+    font-weight: 700;
+  }
+
+  .badge-loc {
+    color: var(--text-muted);
+  }
+
+  .direktur-name {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    margin: 1rem 0 0.25rem 0;
+  }
+
+  .direktur-title {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .direktur-quote {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--text-primary);
+    margin: 1.5rem 0 2rem 0;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--gold-primary);
+  }
+
+  .direktur-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 2.25rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-faint);
+    border-bottom: 1px solid var(--border-faint);
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .detail-label {
+    width: 140px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .detail-val {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .detail-link {
+    transition: color var(--transition-smooth);
+  }
+
+  .detail-link:hover {
+    text-decoration: underline;
+  }
+
+  .action-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .detail-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+    }
+    .detail-label {
+      width: 100%;
+    }
+    .action-bar {
+      flex-direction: column;
+    }
+  }
+</style>
