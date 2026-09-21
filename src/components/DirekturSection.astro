@@ -4,17 +4,17 @@
 <section class="fullwidth-section direktur-section-clean" id="leadership">
   <div class="container">
     <div class="editorial-grid">
-      <!-- Left Column: Owner Photo (Clean photo with true natural aspect ratio) -->
+      <!-- Left Column: Owner Photo (Raw, unedited image display) -->
       <div class="direktur-photo-clean">
-        <img src="/images/hero-owner.jpg" alt="Ilham Pradani - Chief Executive Officer of PT CHAIN ASIA CONECT" class="photo-natural" />
+        <img src="/images/hero-owner.jpg" alt="Ilham Pradani, S.H. - President Director of PT CHAIN ASIA CONECT" class="photo-raw" />
       </div>
 
       <!-- Right Column: Biography -->
       <div class="direktur-text-clean">
-        <span class="section-tag-clean red-text">EXECUTIVE LEADERSHIP</span>
+        <span class="section-tag-clean red-text">CORPORATE LEADERSHIP</span>
 
-        <h2 class="owner-name-clean">Ilham Pradani</h2>
-        <span class="owner-title-clean">Chief Executive Officer & Entity Owner</span>
+        <h2 class="owner-name-clean">Ilham Pradani, S.H.</h2>
+        <span class="owner-title-clean">President Director & Founder</span>
 
         <p class="owner-quote-clean">
           “The strategic decision to expand into the real physical business sector represents a measured and sustainability-driven transformation. Through alignment of corporate identity philosophy and professional operational standards, the company is committed to becoming a reliable strategic partner supporting local and regional industrial growth.”
@@ -24,6 +24,10 @@
           <div class="info-row">
             <span class="info-label">Business Entity:</span>
             <strong class="info-val">PT CHAIN ASIA CONECT</strong>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Corporate Title:</span>
+            <strong class="info-val">President Director (Direktur Utama)</strong>
           </div>
           <div class="info-row">
             <span class="info-label">Owner Website:</span>
@@ -53,7 +57,7 @@
     <!-- Who is Next CFO Section (Clean SVG & Text) -->
     <div class="cfo-expansion-block">
       <div class="cfo-svg-wrapper">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
       </div>
       <div class="cfo-content">
         <h3 class="cfo-title">Who is Next CFO?</h3>
@@ -70,11 +74,10 @@
 
 <style>
   .direktur-section-clean {
-    background: linear-gradient(rgba(10, 10, 12, 0.82), rgba(10, 10, 12, 0.90)), url('/images/ornate-bg.jpg') center/cover no-repeat;
+    background: #ffffff;
     padding: 3.5rem 0;
-    border-top: 1px solid rgba(239, 68, 68, 0.4);
-    border-bottom: 1px solid rgba(239, 68, 68, 0.4);
-    color: #ffffff;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
   }
 
   .direktur-photo-clean {
@@ -83,15 +86,13 @@
     align-items: flex-start;
   }
 
-  .photo-natural {
-    width: 100%;
-    max-width: 320px;
+  /* Raw photo display without artificial layout frame/crop */
+  .photo-raw {
+    max-width: 100%;
+    max-height: 480px;
     height: auto;
-    object-fit: contain;
+    width: auto;
     display: block;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
   }
 
   .direktur-text-clean {
@@ -105,20 +106,19 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     margin-bottom: 0.35rem;
-    color: #ef4444;
   }
 
   .owner-name-clean {
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(2rem, 4vw, 2.7rem);
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-dark);
     line-height: 1.1;
   }
 
   .owner-title-clean {
     font-size: 1rem;
     font-weight: 600;
-    color: #cbd5e1;
+    color: var(--text-muted);
     margin-top: 0.25rem;
   }
 
@@ -126,10 +126,10 @@
     font-size: 1rem;
     font-style: italic;
     line-height: 1.7;
-    color: #e2e8f0;
+    color: var(--text-body);
     margin: 1.25rem 0;
     padding-left: 1rem;
-    border-left: 2px solid #ef4444;
+    border-left: 2px solid var(--red-primary);
   }
 
   .owner-info-clean {
@@ -148,26 +148,26 @@
   }
 
   .info-label {
-    width: 130px;
+    width: 140px;
     font-size: 0.775rem;
     font-weight: 700;
-    color: #94a3b8;
+    color: var(--text-muted);
     text-transform: uppercase;
     flex-shrink: 0;
   }
 
   .info-val {
     font-weight: 600;
-    color: #f1f5f9;
+    color: var(--text-dark);
   }
 
   .info-link {
     font-weight: 600;
-    color: #ffffff;
+    color: var(--text-dark);
   }
 
   .info-link.red-text {
-    color: #ef4444;
+    color: var(--red-primary);
   }
 
   .owner-actions-clean {
@@ -180,13 +180,12 @@
   .btn-text-link {
     font-weight: 700;
     font-size: 0.9rem;
-    color: #ef4444;
     text-decoration: underline;
   }
 
   .btn-red-simple {
     padding: 0.6rem 1.3rem;
-    background: #dc2626;
+    background: var(--red-primary);
     color: #ffffff;
     font-weight: 600;
     font-size: 0.875rem;
@@ -195,7 +194,7 @@
   }
 
   .btn-red-simple:hover {
-    background: #b91c1c;
+    background: var(--red-dark);
   }
 
   /* Who is Next CFO Expansion Block */
@@ -220,20 +219,19 @@
   .cfo-title {
     font-size: 1.3rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--text-dark);
   }
 
   .cfo-desc {
     font-size: 0.95rem;
     line-height: 1.65;
-    color: #cbd5e1;
+    color: var(--text-body);
     max-width: 820px;
   }
 
   .cfo-link {
     font-weight: 700;
     font-size: 0.875rem;
-    color: #ef4444;
     margin-top: 0.2rem;
     text-decoration: underline;
   }
@@ -253,4 +251,5 @@
     }
   }
 </style>
+
 
