@@ -3,28 +3,28 @@
 
 <header class="header">
   <div class="container header-inner">
-    <!-- Corporate Brand / Logo -->
+    <!-- Corporate Brand / Logo (Direct image without any card box or border) -->
     <a href="/" class="brand-link">
-      <img src="/images/CAC-LOGO.jpg" alt="PT CHAIN ASIA CONECT Logo" class="logo-image" />
+      <img src="/images/CAC-LOGO.jpg" alt="PT CHAIN ASIA CONECT Logo" class="logo-clean" />
       <div class="brand-info">
         <span class="brand-name">PT CHAIN ASIA CONECT</span>
-        <span class="brand-tagline">Rantai Pasok & Ekosistem Usaha</span>
+        <span class="brand-tagline">Supply Chain & Real Business Ecosystem</span>
       </div>
     </a>
 
-    <!-- Desktop Navigation -->
+    <!-- Desktop Navigation (English) -->
     <nav class="desktop-nav">
-      <a href="#hero" class="nav-item active">Beranda</a>
-      <a href="#direktur" class="nav-item">Direktur Utama</a>
-      <a href="#filosofi" class="nav-item">Filosofi CHAIN</a>
-      <a href="#legalitas" class="nav-item">Legalitas</a>
-      <a href="#kontak" class="nav-item">Kontak</a>
+      <a href="#hero" class="nav-item active">Home</a>
+      <a href="#leadership" class="nav-item">Leadership</a>
+      <a href="#philosophy" class="nav-item">Philosophy (CHAIN)</a>
+      <a href="#legal" class="nav-item">Legal Verification</a>
+      <a href="#contact" class="nav-item">Contact</a>
     </nav>
 
     <!-- Right Header Actions -->
     <div class="header-right">
       <a href="https://wa.me/6288971071138" target="_blank" rel="noopener" class="btn-red btn-header">
-        <span>Hubungi Kami</span>
+        <span>Contact Us</span>
       </a>
       <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -32,13 +32,13 @@
     </div>
   </div>
 
-  <!-- Mobile Drawer Nav -->
+  <!-- Mobile Drawer Nav (English) -->
   <div class="mobile-drawer" id="mobile-drawer-nav">
-    <a href="#hero" class="mobile-item">Beranda</a>
-    <a href="#direktur" class="mobile-item">Direktur Utama (Ilham Pradani)</a>
-    <a href="#filosofi" class="mobile-item">Filosofi & Identitas CHAIN</a>
-    <a href="#legalitas" class="mobile-item">SK Kemenkumham & Legalitas</a>
-    <a href="#kontak" class="mobile-item">Kontak Resmi & WhatsApp</a>
+    <a href="#hero" class="mobile-item">Home</a>
+    <a href="#leadership" class="mobile-item">Executive Leadership (Ilham Pradani)</a>
+    <a href="#philosophy" class="mobile-item">Philosophy & CHAIN Identity</a>
+    <a href="#legal" class="mobile-item">SK Kemenkumham & Legal Status</a>
+    <a href="#contact" class="mobile-item">Official Contact & WhatsApp</a>
   </div>
 </header>
 
@@ -75,7 +75,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 58px; /* Slim and compact */
+    height: 58px;
   }
 
   .brand-link {
@@ -85,12 +85,15 @@
     text-decoration: none;
   }
 
-  .logo-image {
-    width: 32px;
-    height: 32px;
+  /* Logo strictly without card box, frame or border */
+  .logo-clean {
+    width: 34px;
+    height: 34px;
     object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid rgba(220, 38, 38, 0.3);
+    border-radius: 2px;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 
   .brand-info {
@@ -101,7 +104,7 @@
   .brand-name {
     font-family: var(--font-heading);
     font-size: 0.95rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--text-dark);
     letter-spacing: -0.01em;
     line-height: 1.1;
@@ -123,7 +126,7 @@
 
   .nav-item {
     font-family: var(--font-body);
-    font-size: 0.825rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-body);
     transition: color var(--transition-smooth);
@@ -143,7 +146,6 @@
     right: 0;
     height: 2px;
     background: var(--red-primary);
-    border-radius: 2px;
   }
 
   .header-right {
@@ -154,14 +156,14 @@
 
   .btn-header {
     padding: 0.45rem 1.1rem;
-    font-size: 0.775rem;
+    font-size: 0.8rem;
   }
 
   .mobile-menu-btn {
     display: none;
     background: transparent;
     border: 1px solid var(--border-light);
-    border-radius: 6px;
+    border-radius: 4px;
     padding: 0.3rem;
     cursor: pointer;
   }
@@ -173,7 +175,6 @@
     border-bottom: 1px solid var(--border-light);
     padding: 0.75rem 1.5rem;
     gap: 0.5rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   }
 
   .mobile-drawer.active {
