@@ -14,46 +14,57 @@
       </p>
     </div>
 
-    <!-- Service Detail Block (Fullwidth Clean Editorial Layout, No Cards, No inner lines) -->
+    <!-- Service Detail Block (2 Column Layout with 3D Data Visualization Image on Right) -->
     <div class="service-detail-block">
-      <div class="service-main-info">
-        <span class="service-code red-text">SERVICE DIVISION 01</span>
-        <h3 class="service-name">Advanced Medical Engineering Machines & Precision Diagnostic Software</h3>
+      <div class="service-split-container">
+        <!-- Left Text Column -->
+        <div class="service-main-info">
+          <span class="service-code red-text">SERVICE DIVISION 01</span>
+          <h3 class="service-name">Advanced Medical Engineering Machines & Precision Diagnostic Software</h3>
 
-        <p class="service-description">
-          PT CHAIN ASIA CONECT delivers specialized procurement, engineering integration, and official software licensing for high-value medical diagnostic machinery and healthcare software infrastructure. We connect medical institutions with world-class engineering systems designed for critical diagnostic accuracy and operational reliability.
-        </p>
+          <p class="service-description">
+            PT CHAIN ASIA CONECT delivers specialized procurement, engineering integration, and official software licensing for high-value medical diagnostic machinery and healthcare software infrastructure. We connect medical institutions with world-class engineering systems designed for critical diagnostic accuracy and operational reliability.
+          </p>
 
-        <div class="service-highlights-list">
-          <div class="highlight-item">
-            <span class="highlight-num red-text">•</span>
-            <div>
-              <strong>Medical Diagnostic Machine Engineering</strong>
-              <p>Turnkey integration, maintenance, and technical calibration for advanced precision medical machinery and imaging equipment.</p>
+          <div class="service-highlights-list">
+            <div class="highlight-item">
+              <span class="highlight-num red-text">•</span>
+              <div>
+                <strong>Medical Diagnostic Machine Engineering</strong>
+                <p>Turnkey integration, maintenance, and technical calibration for advanced precision medical machinery and imaging equipment.</p>
+              </div>
+            </div>
+
+            <div class="highlight-item">
+              <span class="highlight-num red-text">•</span>
+              <div>
+                <strong>Enterprise Healthcare Software & DICOM/PACS Licensing</strong>
+                <p>Official enterprise software licensing for medical imaging, diagnostic AI analysis software, and high-security hospital information systems.</p>
+              </div>
+            </div>
+
+            <div class="highlight-item">
+              <span class="highlight-num red-text">•</span>
+              <div>
+                <strong>Regulated Medical Equipment Procurement & Compliance</strong>
+                <p>End-to-end supply chain management for certified medical devices and software engineering systems compliant with international healthcare standards.</p>
+              </div>
             </div>
           </div>
 
-          <div class="highlight-item">
-            <span class="highlight-num red-text">•</span>
-            <div>
-              <strong>Enterprise Healthcare Software & DICOM/PACS Licensing</strong>
-              <p>Official enterprise software licensing for medical imaging, diagnostic AI analysis software, and high-security hospital information systems.</p>
-            </div>
-          </div>
-
-          <div class="highlight-item">
-            <span class="highlight-num red-text">•</span>
-            <div>
-              <strong>Regulated Medical Equipment Procurement & Compliance</strong>
-              <p>End-to-end supply chain management for certified medical devices and software engineering systems compliant with international healthcare standards.</p>
-            </div>
+          <div class="service-action">
+            <a href="mailto:sales@chainasiaconect.company" class="btn-red-simple">
+              <span>Inquire Medical Engineering & Software Licensing →</span>
+            </a>
           </div>
         </div>
 
-        <div class="service-action">
-          <a href="mailto:sales@chainasiaconect.company" class="btn-red-simple">
-            <span>Inquire Medical Engineering & Software Licensing →</span>
-          </a>
+        <!-- Right Column: Official 3D Data Visualization Graphic -->
+        <div class="service-image-col">
+          <div class="service-image-frame">
+            <img src="/images/visualization-tutorial-data-loading-and-3d-visualization.png" alt="Medical Systems 3D Data Loading & Visualization Graphic" class="service-3d-img" />
+            <span class="img-caption">Medical Software DICOM/PACS 3D Visualization System Integration</span>
+          </div>
         </div>
       </div>
     </div>
@@ -93,9 +104,12 @@
     margin-top: 0.35rem;
   }
 
-  /* Service Detail Block */
-  .service-detail-block {
-    padding-top: 1rem;
+  /* Service Split Container (Left Info, Right Image) */
+  .service-split-container {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
   }
 
   .service-main-info {
@@ -171,10 +185,55 @@
     transition: background var(--transition-smooth);
     display: inline-flex;
     align-items: center;
+    text-decoration: none;
   }
 
   .btn-red-simple:hover {
     background: var(--red-dark);
   }
-</style>
 
+  /* Right Image Column */
+  .service-image-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-image-frame {
+    background: #f8fafc;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 0.75rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease;
+  }
+
+  .service-image-frame:hover {
+    transform: translateY(-4px);
+  }
+
+  .service-3d-img {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+  }
+
+  .img-caption {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 0.65rem;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 992px) {
+    .service-split-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Newsroom & Press Releases | PT CHAIN ASIA CONECT" description="Official press releases, corporate announcements, media relations, and company milestones from PT CHAIN ASIA CONECT.">
+  <Header />
+  <main>
+    <!-- Page Hero Banner -->
+    <section class="page-hero-banner">
+      <div class="container">
+        <span class="hero-tag red-text">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
+        <h1 class="page-hero-title">Newsroom <span class="red-text">& Press Releases</span></h1>
+        <p class="page-hero-desc">
+          Official media releases, strategic announcements, corporate milestones, and institutional press coverage for PT CHAIN ASIA CONECT.
+        </p>
+      </div>
+    </section>
+
+    <!-- News List -->
+    <section class="fullwidth-section">
+      <div class="container">
+        <div class="news-grid">
+          <article class="news-card">
+            <span class="news-tag red-text">PRESS RELEASE</span>
+            <span class="news-date">SEPTEMBER 18, 2026</span>
+            <h2>PT CHAIN ASIA CONECT Expands Diagnostic PACS Cloud Software Licensing Partnerships</h2>
+            <p>
+              PT CHAIN ASIA CONECT officially announces the deployment expansion of DICOM PACS diagnostic cloud software systems, strengthening regional health center digital infrastructure across Indonesia.
+            </p>
+            <a href="#" class="news-link red-text" onclick="alert('Opening official press release document...'); return false;">Read Full Release →</a>
+          </article>
+
+          <article class="news-card">
+            <span class="news-tag red-text">CORPORATE MILESTONE</span>
+            <span class="news-date">SEPTEMBER 1, 2026</span>
+            <h2>Formal Entity Registration Completed Under SK Kemenkumham AHU-A117353.AH.01.30.Year 2026</h2>
+            <p>
+              The company achieves complete legal standing as a registered Individual Limited Liability Company (PT Perorangan) under the Ministry of Law and Human Rights RI and NIB 0709260109599.
+            </p>
+            <a href="#" class="news-link red-text" onclick="alert('Opening legal milestone release...'); return false;">Read Full Release →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero-banner {
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-light);
+    padding: 4rem 0 3rem 0;
+  }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.15;
+  }
+
+  .page-hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-body);
+    max-width: 800px;
+    margin-top: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .news-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    padding: 2rem;
+    border-radius: 4px;
+  }
+
+  .news-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .news-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-left: 1rem;
+  }
+
+  .news-card h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0.5rem 0 0.75rem 0;
+  }
+
+  .news-card p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-body);
+    margin-bottom: 1rem;
+  }
+
+  .news-link {
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+</style>

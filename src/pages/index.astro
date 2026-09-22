@@ -10,16 +10,550 @@ import ComingSoonBanner from '../components/ComingSoonBanner.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="PT CHAIN ASIA CONECT | Official Corporate Portal">
+<Layout title="PT CHAIN ASIA CONECT | Official Corporate Portal" description="Official Corporate Portal for PT CHAIN ASIA CONECT (SK Kemenkumham AHU-A117353, NIB 0709260109599). President Director: Ilham Pradani, S.H. (Cand.), Financial Director: Putri Wulan, S.T. Enterprise Supply Chain & Medical Software Licensing.">
   <Header />
   <main>
+    <!-- Section 1: Home Hero -->
     <ComingSoonHero />
-    <DirekturSection />
-    <CompanyIdentity />
-    <ServicesSection />
+
+    <!-- Section 2: Interactive 3D Corporate Directory Slider -->
+    <section class="fullwidth-section corporate-portal-section" id="portal-directory">
+      <div class="container">
+        <div class="section-header-slider">
+          <div class="header-text">
+            <span class="section-tag red-text">INTERACTIVE 3D CORPORATE DIRECTORY</span>
+            <h2>Corporate Portal & Operations</h2>
+            <p>Slide left and right to explore our corporate identity, 3D medical software licensing, executive governance, and IPO roadmap.</p>
+          </div>
+
+          <!-- Slider Controls (Left / Right) -->
+          <div class="slider-controls">
+            <button class="slider-btn" id="slide-left-btn" aria-label="Slide Left">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <span>Prev</span>
+            </button>
+            <button class="slider-btn red-btn" id="slide-right-btn" aria-label="Slide Right">
+              <span>Next</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Perspective Card Carousel Viewport -->
+        <div class="cards-3d-viewport">
+          <div class="cards-3d-track" id="portal-slider-track">
+            
+            <!-- Card 01: About Us -->
+            <div class="portal-card-3d">
+              <div class="card-inner-3d">
+                <div class="card-img-box">
+                  <img src="/images/CAC-LOGOremovebg-preview.png" alt="PT CHAIN ASIA CONECT Logo" class="card-img-graphic contain-fit" />
+                  <span class="card-tag-badge">DIRECTORATE</span>
+                </div>
+                <div class="card-content-3d">
+                  <span class="card-num red-text">01</span>
+                  <h3>About Us (Tentang Kami)</h3>
+                  <p>Company history, vision, mission, C-H-A-I-N core values, Board of Directors profiles, and legal standing.</p>
+                  <a href="/about" class="card-arrow red-text">Learn More About Us →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 02: Business & 3D Medical Software -->
+            <div class="portal-card-3d">
+              <div class="card-inner-3d">
+                <div class="card-img-box">
+                  <img src="/images/visualization-tutorial-data-loading-and-3d-visualization.png" alt="3D Medical Diagnostic Cloud" class="card-img-graphic" />
+                  <span class="card-tag-badge red-bg">3D MEDICAL SYSTEM</span>
+                </div>
+                <div class="card-content-3d">
+                  <span class="card-num red-text">02</span>
+                  <h3>Business & Services (Lini Bisnis)</h3>
+                  <p>Enterprise supply chain infrastructure, medical machine engineering, and PACS software 3D cloud licensing.</p>
+                  <a href="/business" class="card-arrow red-text">Explore All Services →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 03: Investor Relations (IPO Roadmap 2029) -->
+            <div class="portal-card-3d featured-3d">
+              <div class="card-inner-3d">
+                <div class="card-img-box">
+                  <img src="/images/logo-ocbc.png" alt="Corporate Banking & Capital" class="card-img-graphic contain-fit" />
+                  <span class="card-tag-badge red-bg">IPO 2029 ROADMAP</span>
+                </div>
+                <div class="card-content-3d">
+                  <span class="card-num red-text">03</span>
+                  <h3>Investor Relations & Capital</h3>
+                  <p>Founders agreement, 10% Mitra Langit Tabarru' fund, and Go Public (Tbk) initial public offering roadmap: <strong>Coming Soon 2029</strong>.</p>
+                  <a href="/investor-relations" class="card-arrow red-text">View Investor Portal →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 04: Corporate Governance -->
+            <div class="portal-card-3d">
+              <div class="card-inner-3d">
+                <div class="card-img-box">
+                  <img src="/images/kememnkeu-logo.png" alt="Ministry Authority Emblem" class="card-img-graphic contain-fit" />
+                  <span class="card-tag-badge">GOVERNANCE</span>
+                </div>
+                <div class="card-content-3d">
+                  <span class="card-num red-text">04</span>
+                  <h3>Corporate Governance (Tata Kelola)</h3>
+                  <p>Board Charters, Audit Committee, Corporate Secretary liaison, and Whistleblowing System (WBS).</p>
+                  <a href="/governance" class="card-arrow red-text">View Governance Details →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 05: Sustainability / ESG -->
+            <div class="portal-card-3d">
+              <div class="card-inner-3d">
+                <div class="card-img-box">
+                  <img src="/images/logo-oss-pemerintah.png" alt="OSS ESG Verification" class="card-img-graphic contain-fit" />
+                  <span class="card-tag-badge">SUSTAINABILITY</span>
+                </div>
+                <div class="card-content-3d">
+                  <span class="card-num red-text">05</span>
+                  <h3>Sustainability & ESG (Keberlanjutan)</h3>
+                  <p>Environmental policy, paperless PACS cloud diagnostics, social impact initiatives, and 10% Mitra Langit CSR fund.</p>
+                  <a href="/sustainability" class="card-arrow red-text">Read Sustainability Report →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 06: Media & Newsroom -->
+            <div class="portal-card-3d">
+              <div class="card-inner-3d">
+                <div class="card-img-box">
+                  <img src="/images/CAC-LOGOremovebg-preview.png" alt="Official Newsroom Media Kit" class="card-img-graphic contain-fit" />
+                  <span class="card-tag-badge">PRESS RELEASE</span>
+                </div>
+                <div class="card-content-3d">
+                  <span class="card-num red-text">06</span>
+                  <h3>Media & Newsroom (Siaran Pers)</h3>
+                  <p>Official corporate announcements, press releases, media kits, and institutional achievements.</p>
+                  <a href="/newsroom" class="card-arrow red-text">Visit Newsroom →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 07: Careers -->
+            <div class="portal-card-3d">
+              <div class="card-inner-3d">
+                <div class="card-img-box">
+                  <img src="/images/visualization-tutorial-data-loading-and-3d-visualization.png" alt="Financial Leadership" class="card-img-graphic" />
+                  <span class="card-tag-badge red-bg">CAREERS</span>
+                </div>
+                <div class="card-content-3d">
+                  <span class="card-num red-text">07</span>
+                  <h3>Careers & Recruitment (Karier)</h3>
+                  <p>Executive Board structuring and medical diagnostic software specialist technical talent acquisition.</p>
+                  <a href="/careers" class="card-arrow red-text">View Career Openings →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 08: Contact Us -->
+            <div class="portal-card-3d">
+              <div class="card-inner-3d">
+                <div class="card-img-box">
+                  <img src="/images/kememnkeu-logo.png" alt="Headquarters Contact" class="card-img-graphic contain-fit" />
+                  <span class="card-tag-badge">HEADQUARTERS</span>
+                </div>
+                <div class="card-content-3d">
+                  <span class="card-num red-text">08</span>
+                  <h3>Contact Us (Hubungi Kami)</h3>
+                  <p>Registered headquarters, Corporate Secretary contact, Investor Relations helpline, and inquiry form.</p>
+                  <a href="/contact" class="card-arrow red-text">Contact Executive Office →</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: About Us Summary (Board of Directors & Philosophy) -->
+    <section class="home-summary-section" id="home-about-summary">
+      <div class="container">
+        <DirekturSection />
+        <CompanyIdentity />
+        <div class="section-more-action">
+          <a href="/about" class="btn-more-red">
+            <span>Learn More About Us & Legal Standing →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Business & Services Summary -->
+    <section class="home-summary-section bg-light-clean" id="home-services-summary">
+      <div class="container">
+        <ServicesSection />
+        <div class="section-more-action">
+          <a href="/business" class="btn-more-red">
+            <span>Explore All Business Lines & 3D Licensing →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Investor Relations & IPO 2029 Summary -->
+    <section class="home-summary-section" id="home-investor-summary">
+      <div class="container">
+        <div class="home-summary-card">
+          <span class="section-tag red-text">INVESTOR RELATIONS & IPO ROADMAP</span>
+          <h2>Founders Agreement & Go Public Plan 2029</h2>
+          <p class="summary-desc">
+            PT CHAIN ASIA CONECT operates under an executive founders agreement between President Director <strong>Ilham Pradani, S.H. (Cand.)</strong> and Financial Director <strong>Putri Wulan, S.T.</strong>, allocating <strong>10% of Net Profit to Mitra Langit Tabarru' Fund</strong> and targeting <strong>Initial Public Offering (IPO) in 2029</strong>.
+          </p>
+          <div class="section-more-action text-left">
+            <a href="/investor-relations" class="btn-more-red">
+              <span>View Full Investor Relations Portal →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Governance Summary -->
+    <section class="home-summary-section bg-light-clean" id="home-governance-summary">
+      <div class="container">
+        <div class="home-summary-card">
+          <span class="section-tag red-text">GOOD CORPORATE GOVERNANCE</span>
+          <h2>5 Pillars of Governance & Corporate Secretary</h2>
+          <p class="summary-desc">
+            Operating under strict transparency, accountability, and legal compliance (SK Kemenkumham AHU-A117353, NIB 0709260109599) with dedicated Corporate Secretary liaison and confidential Whistleblowing System (WBS).
+          </p>
+          <div class="section-more-action text-left">
+            <a href="/governance" class="btn-more-red">
+              <span>View Corporate Governance Details →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Sustainability & ESG Summary -->
+    <section class="home-summary-section" id="home-esg-summary">
+      <div class="container">
+        <div class="home-summary-card">
+          <span class="section-tag red-text">SUSTAINABILITY & MITRA LANGIT</span>
+          <h2>ESG Strategy & 10% Tabarru' Social Welfare</h2>
+          <p class="summary-desc">
+            Empowering regional communities in Krui, Pesisir Barat, Lampung through monthly social welfare support, paperless DICOM/PACS medical software cloud licensing, and micro-business guidance.
+          </p>
+          <div class="section-more-action text-left">
+            <a href="/sustainability" class="btn-more-red">
+              <span>Read Full Sustainability & ESG Report →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Legal Verification Section with Official Authority Logos -->
     <LegalSection />
+
+    <!-- Coming Soon Banner -->
     <ComingSoonBanner />
   </main>
   <Footer />
 </Layout>
 
+<script>
+  // 3D Card Carousel Slider Interactivity
+  const track = document.getElementById('portal-slider-track');
+  const btnLeft = document.getElementById('slide-left-btn');
+  const btnRight = document.getElementById('slide-right-btn');
+
+  if (track && btnLeft && btnRight) {
+    const scrollAmount = 340; // width of card + gap
+
+    btnLeft.addEventListener('click', () => {
+      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+</script>
+
+<style>
+  .corporate-portal-section {
+    background: #ffffff;
+    padding: 4rem 0;
+    border-top: 1px solid var(--border-light);
+    perspective: 1200px;
+  }
+
+  .section-header-slider {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .header-text {
+    max-width: 750px;
+  }
+
+  .header-text h2 {
+    font-size: clamp(2rem, 3.8vw, 2.7rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-top: 0.35rem;
+  }
+
+  .header-text p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+  }
+
+  /* Slider Controls */
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .slider-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .slider-btn:hover {
+    border-color: var(--red-primary);
+    color: var(--red-primary);
+    transform: translateY(-1px);
+  }
+
+  .slider-btn.red-btn {
+    background: var(--red-primary);
+    color: #ffffff;
+    border-color: var(--red-primary);
+  }
+
+  .slider-btn.red-btn:hover {
+    background: var(--red-dark);
+  }
+
+  /* 3D Cards Viewport & Track */
+  .cards-3d-viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: 1.5rem 0 2rem 0;
+  }
+
+  .cards-3d-track {
+    display: flex;
+    gap: 1.75rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--red-primary) transparent;
+  }
+
+  .cards-3d-track::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .cards-3d-track::-webkit-scrollbar-thumb {
+    background: var(--red-primary);
+    border-radius: 3px;
+  }
+
+  /* 3D Individual Card Styling */
+  .portal-card-3d {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    perspective: 1000px;
+  }
+
+  .card-inner-3d {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  }
+
+  .portal-card-3d:hover .card-inner-3d {
+    transform: rotateY(-6deg) rotateX(3deg) translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 35px rgba(220, 38, 38, 0.12);
+    border-color: var(--red-primary);
+  }
+
+  .portal-card-3d.featured-3d .card-inner-3d {
+    border-top: 4px solid var(--red-primary);
+    background: #fef2f2;
+  }
+
+  .card-img-box {
+    position: relative;
+    height: 160px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .card-img-graphic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .card-img-graphic.contain-fit {
+    object-fit: contain;
+    max-height: 110px;
+  }
+
+  .portal-card-3d:hover .card-img-graphic {
+    transform: scale(1.06);
+  }
+
+  .card-tag-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.2rem 0.5rem;
+    background: #1e293b;
+    color: #ffffff;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .card-tag-badge.red-bg {
+    background: var(--red-primary);
+  }
+
+  .card-content-3d {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-num {
+    font-size: 0.775rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .card-content-3d h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0.35rem 0 0.5rem 0;
+    line-height: 1.25;
+  }
+
+  .card-content-3d p {
+    font-size: 0.875rem;
+    color: var(--text-body);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+
+  .card-arrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: auto;
+  }
+
+  /* Home Summary Sections */
+  .home-summary-section {
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .home-summary-section.bg-light-clean {
+    background: #f8fafc;
+  }
+
+  .home-summary-card {
+    max-width: 850px;
+  }
+
+  .home-summary-card h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0.35rem 0 0.75rem 0;
+  }
+
+  .summary-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-body);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-more-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .section-more-action.text-left {
+    justify-content: flex-start;
+  }
+
+  .btn-more-red {
+    padding: 0.7rem 1.6rem;
+    background: var(--red-primary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-more-red:hover {
+    background: var(--red-dark);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 640px) {
+    .portal-card-3d {
+      flex: 0 0 280px;
+    }
+  }
+</style>

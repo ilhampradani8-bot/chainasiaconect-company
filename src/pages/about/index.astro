@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import DirekturSection from '../../components/DirekturSection.astro';
+import CompanyIdentity from '../../components/CompanyIdentity.astro';
+import LegalSection from '../../components/LegalSection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="About Us | PT CHAIN ASIA CONECT Official Portal" description="Learn about PT CHAIN ASIA CONECT history, vision, mission, Board of Directors (President Director Ilham Pradani, S.H. (Cand.)), and corporate legal credentials.">
+  <Header />
+  <main>
+    <!-- Page Hero Banner -->
+    <section class="page-hero-banner">
+      <div class="container">
+        <span class="hero-tag red-text">ABOUT OUR CORPORATE ENTITY</span>
+        <h1 class="page-hero-title">About <span class="red-text">PT CHAIN ASIA CONECT</span></h1>
+        <p class="page-hero-desc">
+          Established to bridge physical business ecosystem growth, medical engineering software licensing, and supply chain infrastructure with complete legal integrity across Indonesia and Asia Region.
+        </p>
+      </div>
+    </section>
+
+    <!-- Company History & Legal Foundation -->
+    <section class="fullwidth-section" id="history">
+      <div class="container">
+        <div class="section-intro">
+          <span class="section-tag red-text">CORPORATE HISTORY & FOUNDATION</span>
+          <h2>Founded on Integrity & Sustainable Growth</h2>
+          <p>
+            Officially incorporated on <strong>September 1, 2026</strong> as an Individual Limited Liability Company (PT Perorangan), <strong>PT CHAIN ASIA CONECT</strong> was founded by <strong>Ilham Pradani, S.H. (Cand.)</strong> to establish a transparent, sustainable physical enterprise. We integrate regional supply chains with medical machine engineering systems and PACS software diagnostic cloud licensing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Board of Directors Section (Preserved 2 Directors Text Layout) -->
+    <div id="leadership">
+      <DirekturSection />
+    </div>
+
+    <!-- Company Philosophy & Values (Preserved CHAIN Identity) -->
+    <div id="vision">
+      <CompanyIdentity />
+    </div>
+
+    <!-- Legal Verification & Authority Logos Section -->
+    <div id="legality">
+      <LegalSection />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero-banner {
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-light);
+    padding: 4rem 0 3rem 0;
+  }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.15;
+  }
+
+  .page-hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-body);
+    max-width: 800px;
+    margin-top: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .section-intro {
+    max-width: 850px;
+    padding: 3rem 0;
+  }
+
+  .section-intro h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0.35rem 0 1rem 0;
+    color: var(--text-dark);
+  }
+
+  .section-intro p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-body);
+  }
+</style>
