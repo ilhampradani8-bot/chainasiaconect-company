@@ -94,6 +94,18 @@ a {
   text-decoration: none;
 }
 
+/* Email text wrapping for Mobile HP Screens (Prevents overflow/clipping) */
+a[href^="mailto:"],
+.dir-email,
+.info-link,
+.footer-info-list a,
+.email-stack a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
 /* Container */
 .container {
   width: 100%;
