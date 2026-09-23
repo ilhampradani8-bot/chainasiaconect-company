@@ -188,4 +188,23 @@
       display: flex;
     }
   }
+
+  @media (max-width: 640px) {
+    .header {
+      padding: 0.45rem 0;
+    }
+    .logo-transparent-large {
+      height: clamp(36px, 9vw, 44px);
+    }
+    .mobile-drawer {
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+    }
+    .mobile-item {
+      font-size: clamp(0.75rem, 3.5vw, 0.85rem);
+      padding: 0.45rem 0;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+  }
 </style>

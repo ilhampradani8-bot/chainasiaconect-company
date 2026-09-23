@@ -270,11 +270,45 @@
   @media (max-width: 640px) {
     .footer-top {
       grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding-bottom: 2rem;
+    }
+    .footer-brand-title {
+      font-size: clamp(0.9rem, 3.8vw, 1.05rem);
+      overflow-wrap: anywhere;
+    }
+    .footer-desc {
+      font-size: clamp(0.8rem, 3.2vw, 0.875rem);
+      overflow-wrap: anywhere;
+    }
+    .executive-tag {
+      font-size: clamp(0.75rem, 3vw, 0.825rem);
+      overflow-wrap: anywhere;
+    }
+    .footer-heading {
+      font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+      margin-bottom: 0.75rem;
+    }
+    .footer-links a {
+      font-size: clamp(0.8rem, 3.2vw, 0.875rem);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .email-stack a {
+      font-size: clamp(0.75rem, 3.2vw, 0.825rem);
+      overflow-wrap: anywhere !important;
+      word-break: break-word !important;
     }
     .footer-bottom-container {
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.65rem;
       text-align: center;
+      font-size: clamp(0.7rem, 2.8vw, 0.8rem);
+    }
+    .footer-legal-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem 0.75rem;
     }
   }
 </style>
