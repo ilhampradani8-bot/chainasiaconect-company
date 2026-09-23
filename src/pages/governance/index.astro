@@ -396,14 +396,32 @@ import Footer from '../../components/Footer.astro';
     font-weight: 700;
   }
 
-  .wbs-email {
-    font-size: 1.1rem;
+  .c-link {
+    font-weight: 700;
+    color: var(--text-dark);
     text-decoration: none;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
   }
 
-  @media (max-width: 768px) {
+  .wbs-email {
+    font-size: clamp(0.9rem, 3.8vw, 1.1rem);
+    text-decoration: none;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  @media (max-width: 640px) {
     .charters-grid {
       grid-template-columns: 1fr;
+    }
+    .contact-row, .wbs-channel {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+    }
+    .c-label {
+      width: 100%;
     }
   }
 </style>

@@ -94,16 +94,37 @@ a {
   text-decoration: none;
 }
 
-/* Email text wrapping for Mobile HP Screens (Prevents overflow/clipping) */
+/* Universal Mobile Overflow Prevention & Email Text Wrapping Rules */
+a, span, p, h1, h2, h3, h4, h5, h6, li, button, td, th {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 a[href^="mailto:"],
+a[href^="http"],
 .dir-email,
 .info-link,
+.c-link,
+.wbs-email,
+.apply-btn,
 .footer-info-list a,
-.email-stack a {
-  overflow-wrap: anywhere;
-  word-break: break-word;
+.email-stack a,
+.footer-links a {
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  word-wrap: break-word !important;
   hyphens: auto;
-  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  a[href^="mailto:"],
+  .dir-email,
+  .info-link,
+  .c-link,
+  .wbs-email,
+  .apply-btn {
+    font-size: clamp(0.85rem, 3.8vw, 1.1rem) !important;
+  }
 }
 
 /* Container */

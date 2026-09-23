@@ -190,7 +190,17 @@ import Footer from '../../components/Footer.astro';
   }
 
   .apply-btn {
-    font-size: 1.05rem;
+    font-size: clamp(0.9rem, 3.8vw, 1.05rem);
     text-decoration: none;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  @media (max-width: 640px) {
+    .c-apply {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+    }
   }
 </style>
