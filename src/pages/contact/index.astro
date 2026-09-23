@@ -71,7 +71,7 @@ import Footer from '../../components/Footer.astro';
               <p class="hq-address">
                 Registered Individual Limited Liability Company (PT Perorangan)<br />
                 <strong>SK Kemenkumham RI:</strong> AHU-A117353.AH.01.30.Year 2026<br />
-                <strong>NIB:</strong> 0709260109599 | <strong>NPWP:</strong> 10.000.000.1-094.6336<br />
+                <span class="legal-id-row"><span><strong>NIB:</strong> 0709260109599</span> <span class="id-sep">•</span> <span><strong>NPWP:</strong> 10.000.000.1-094.6336</span></span><br />
                 Operating across Indonesia & Asia Region.
               </p>
 
@@ -285,7 +285,17 @@ import Footer from '../../components/Footer.astro';
     color: var(--text-dark);
   }
 
+  .legal-id-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
   .form-input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     padding: 0.65rem 0.85rem;
     border: 1px solid var(--border-light);
     border-radius: 4px;
@@ -308,6 +318,68 @@ import Footer from '../../components/Footer.astro';
   @media (max-width: 992px) {
     .contact-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-hero-banner {
+      padding: 2.5rem 0 2rem 0;
+    }
+    .hero-tag {
+      font-size: clamp(0.7rem, 2.8vw, 0.8rem);
+      overflow-wrap: anywhere;
+    }
+    .page-hero-title {
+      font-size: clamp(1.65rem, 5vw, 2.5rem);
+    }
+    .page-hero-desc {
+      font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+    }
+    .contact-grid {
+      padding: 1rem 0;
+      gap: 1.75rem;
+    }
+    .contact-info-col h2 {
+      font-size: clamp(1.3rem, 4vw, 1.75rem);
+    }
+    .email-directory-stack {
+      gap: 1rem;
+    }
+    .dir-item {
+      padding: 1rem;
+    }
+    .dir-role {
+      font-size: clamp(0.7rem, 2.6vw, 0.775rem);
+      overflow-wrap: anywhere;
+    }
+    .dir-desc {
+      font-size: clamp(0.8rem, 3vw, 0.875rem);
+    }
+    .hq-box {
+      padding: 1.25rem 1rem;
+    }
+    .hq-box h3 {
+      font-size: clamp(1.15rem, 3.8vw, 1.4rem);
+    }
+    .hq-address {
+      font-size: clamp(0.825rem, 3vw, 0.925rem);
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .inquiry-form-wrapper {
+      padding: 1.25rem 1rem;
+    }
+    .form-input {
+      font-size: clamp(0.825rem, 3vw, 0.9rem);
+      padding: 0.55rem 0.75rem;
+    }
+    .id-sep {
+      display: none;
+    }
+    .legal-id-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.1rem;
     }
   }
 </style>
