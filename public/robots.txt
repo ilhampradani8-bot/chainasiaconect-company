@@ -1,20 +1,54 @@
 # robots.txt for PT CHAIN ASIA CONECT
 # Website: https://www.chainasiaconect.company/
 
+# Default Crawlers (Allow Full Indexing)
 User-agent: *
 Allow: /
+Allow: /images/
+Allow: /docs/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json$
 
-# Googlebot specific directives
+# Googlebot & Google AI Crawlers
 User-agent: Googlebot
 Allow: /
-Allow: /images/
-Allow: /docs/
 
-# Bingbot specific directives
+User-agent: Google-Extended
+Allow: /
+
+# Bing & Microsoft Copilot
 User-agent: Bingbot
+Allow: /
+
+# OpenAI / ChatGPT / SearchGPT Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity AI Crawler
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude Crawlers
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Apple Intelligence Crawler
+User-agent: Applebot
+Allow: /
+
+# ByteDance / TikTok AI Crawler
+User-agent: Bytespider
+Allow: /
+
+# Common Crawl AI Training Data
+User-agent: CCBot
 Allow: /
 
 # Sitemap Index Declaration

@@ -52,7 +52,7 @@ const schemaData = {
         {
           "@type": "ContactPoint",
           "email": "wulanputri@chainasiaconect.company",
-          "contactType": "chief financial officer desk",
+          "contactType": "financial director desk",
           "availableLanguage": ["English", "Indonesian"]
         },
         {
@@ -82,6 +82,10 @@ const schemaData = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- AI Search Engines (SearchGPT, Perplexity, Gemini, Claude Context Document) -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="AI Machine Readable Context" />
+
     <!-- Google Search & Browser Circular Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
@@ -100,6 +104,10 @@ const schemaData = {
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="keywords" content="PT CHAIN ASIA CONECT, Ilham Pradani, Medical Engineering Machine, Diagnostic Software Licensing, DICOM PACS Licensing, Supply Chain Indonesia, Real Business Ecosystem Asia, NIB 0709260109599, SK Kemenkumham AHU-A117353, chainasiaconect.company" />
     <meta name="author" content="Ilham Pradani, S.H. (Cand.) - PT CHAIN ASIA CONECT" />
+    <meta name="publisher" content="PT CHAIN ASIA CONECT" />
+    <meta name="copyright" content="PT CHAIN ASIA CONECT" />
+    <meta name="geo.region" content="ID" />
+    <meta name="geo.placename" content="Indonesia" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -110,14 +118,14 @@ const schemaData = {
     <meta property="og:site_name" content="PT CHAIN ASIA CONECT" />
     <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter Cards -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonical} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="https://www.chainasiaconect.company/images/CAC-LOGO.jpg" />
+    <!-- Twitter Cards (Generative AI & Social Rich Cards) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.chainasiaconect.company/images/CAC-LOGO.jpg" />
 
-    <!-- Schema.org Structured Data for Google Rich Results -->
+    <!-- Schema.org Structured Data for Google Rich Results & AI Search Engine Graph -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   </head>
   <body>
