@@ -10,45 +10,74 @@
     </a>
 
     <!-- Right: Inset Neumorphic Capsule Navigation Pill (Desktop PC) -->
-    <nav class="desktop-right-capsule-inset">
-      <a href="/" class="nav-capsule-item">Home</a>
-      <a href="/about" class="nav-capsule-item">About Us</a>
-      <a href="/business" class="nav-capsule-item">Business & Services</a>
-      <a href="/investor-relations" class="nav-capsule-item">Investor Relations</a>
-      <a href="/governance" class="nav-capsule-item">Governance</a>
-      <a href="/sustainability" class="nav-capsule-item">ESG & CSR</a>
-      <a href="/newsroom" class="nav-capsule-item">Newsroom</a>
-      <a href="/careers" class="nav-capsule-item">Careers</a>
-      <a href="/contact" class="nav-capsule-item">Contact</a>
-    </nav>
+    <div class="header-right-group">
+      <nav class="desktop-right-capsule-inset">
+        <a href="/" class="nav-capsule-item" data-i18n="nav_home">Home</a>
+        <a href="/about" class="nav-capsule-item" data-i18n="nav_about">About Us</a>
+        <a href="/business" class="nav-capsule-item" data-i18n="nav_business">Business & Services</a>
+        <a href="/investor-relations" class="nav-capsule-item" data-i18n="nav_investor">Investor Relations</a>
+        <a href="/scf" class="nav-capsule-item" data-i18n="nav_scf">SCF (Coming Soon)</a>
+        <a href="/governance" class="nav-capsule-item" data-i18n="nav_governance">Governance</a>
+        <a href="/sustainability" class="nav-capsule-item" data-i18n="nav_esg">ESG & CSR</a>
+        <a href="/newsroom" class="nav-capsule-item" data-i18n="nav_newsroom">Newsroom</a>
+        <a href="/careers" class="nav-capsule-item" data-i18n="nav_careers">Careers</a>
+        <a href="/contact" class="nav-capsule-item" data-i18n="nav_contact">Contact</a>
+      </nav>
 
-    <!-- Mobile Menu Toggle Button -->
+      <!-- Neumorphic Language Selector [ EN | ID ] for Desktop -->
+      <div class="lang-switcher-neumorphic" id="lang-switcher">
+        <button type="button" class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+        <span class="lang-divider">|</span>
+        <button type="button" class="lang-btn" data-lang="id" aria-label="Indonesian">ID</button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Hamburger Button Only -->
     <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
     </button>
 
   </div>
 
-  <!-- Mobile Drawer Nav -->
-  <div class="mobile-drawer" id="mobile-drawer-nav">
-    <a href="/" class="mobile-item">Home</a>
-    <a href="/about" class="mobile-item">About Us</a>
-    <a href="/business" class="mobile-item">Business & Services</a>
-    <a href="/investor-relations" class="mobile-item">Investor Relations (IPO Coming Soon 2029)</a>
-    <a href="/governance" class="mobile-item">Corporate Governance</a>
-    <a href="/sustainability" class="mobile-item">Sustainability & ESG</a>
-    <a href="/newsroom" class="mobile-item">Newsroom</a>
-    <a href="/careers" class="mobile-item">Careers</a>
-    <a href="/contact" class="mobile-item">Contact Us</a>
+  <!-- Mobile Drawer Nav Dropdown (Centered & Fullwidth Below Navbar) -->
+  <div class="container mobile-drawer-container">
+    <div class="mobile-drawer" id="mobile-drawer-nav">
+      <!-- Language Switcher in Dropdown -->
+      <div class="mobile-drawer-lang-row">
+        <span class="mobile-lang-title" data-i18n="select_language">Language / Bahasa:</span>
+        <div class="lang-switcher-neumorphic">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang="id">ID</button>
+        </div>
+      </div>
+
+      <a href="/" class="mobile-item" data-i18n="nav_home">Home</a>
+      <a href="/about" class="mobile-item" data-i18n="nav_about">About Us</a>
+      <a href="/business" class="mobile-item" data-i18n="nav_business">Business & Services</a>
+      <a href="/investor-relations" class="mobile-item" data-i18n="nav_investor">Investor Relations</a>
+      <a href="/scf" class="mobile-item" style="color: #dc2626; font-weight: 800;" data-i18n="nav_scf">SCF Platform (Coming Soon)</a>
+      <a href="/governance" class="mobile-item" data-i18n="nav_governance">Corporate Governance</a>
+      <a href="/sustainability" class="mobile-item" data-i18n="nav_esg">Sustainability & ESG</a>
+      <a href="/newsroom" class="mobile-item" data-i18n="nav_newsroom">Newsroom</a>
+      <a href="/careers" class="mobile-item" data-i18n="nav_careers">Careers</a>
+      <a href="/contact" class="mobile-item" data-i18n="nav_contact">Contact Us</a>
+    </div>
   </div>
 </header>
 
 <script>
+  // Mobile Drawer Toggle
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const drawer = document.getElementById('mobile-drawer-nav');
 
   if (toggleBtn && drawer) {
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       drawer.classList.toggle('active');
     });
 
@@ -56,6 +85,13 @@
       link.addEventListener('click', () => {
         drawer.classList.remove('active');
       });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+        drawer.classList.remove('active');
+      }
     });
   }
 </script>
@@ -68,18 +104,19 @@
     right: 0;
     z-index: 1000;
     padding: 0.65rem 0;
-    background: transparent;
-    pointer-events: none; /* Allows click through except on active items */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   }
 
   .header-inner-flex {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    pointer-events: auto;
+    width: 100%;
   }
 
-  /* Left: Transparent CAC Logo (Large, No Background) */
   .brand-logo-only {
     text-decoration: none;
     display: flex;
@@ -92,13 +129,19 @@
   }
 
   .logo-transparent-large {
-    height: 54px;
+    height: 52px;
     width: auto;
     object-fit: contain;
     display: block;
   }
 
-  /* Right: Inset Neumorphic Capsule Navigation Pill (Desain Neumorphic Kedalam) */
+  .header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Inset Neumorphic Capsule Navigation Pill */
   .desktop-right-capsule-inset {
     display: flex;
     align-items: center;
@@ -107,7 +150,6 @@
     border-radius: 9999px;
     padding: 0.35rem 0.6rem;
     border: 1px solid rgba(203, 213, 225, 0.7);
-    /* Inset Neumorphism (Soft Inner Shadow Depth) */
     box-shadow: 
       inset 3px 3px 6px rgba(0, 0, 0, 0.08),
       inset -3px -3px 6px rgba(255, 255, 255, 0.9),
@@ -129,51 +171,125 @@
   .nav-capsule-item:hover {
     color: var(--red-primary);
     background: #ffffff;
-    /* Soft Pressed Outset Pill on Hover */
     box-shadow: 
       0 3px 8px rgba(0, 0, 0, 0.06),
       inset 0 1px 1px rgba(255, 255, 255, 1);
     transform: translateY(-1px);
   }
 
+  /* Neumorphic Language Switcher [ EN | ID ] */
+  .lang-switcher-neumorphic {
+    display: flex;
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: 9999px;
+    padding: 0.2rem 0.35rem;
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    box-shadow: 
+      inset 2px 2px 5px rgba(0, 0, 0, 0.08),
+      inset -2px -2px 5px rgba(255, 255, 255, 0.95);
+    gap: 0.15rem;
+  }
+
+  .lang-btn {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    border: none;
+    background: transparent;
+    padding: 0.35rem 0.65rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1;
+  }
+
+  .lang-btn.active {
+    color: #dc2626;
+    background: #ffffff;
+    box-shadow: 
+      2px 2px 6px rgba(0, 0, 0, 0.08),
+      -1px -1px 4px rgba(255, 255, 255, 0.9);
+  }
+
+  .lang-divider {
+    font-size: 0.7rem;
+    color: #cbd5e1;
+    user-select: none;
+  }
+
   /* Mobile Toggle Button */
   .mobile-menu-btn {
     display: none;
     background: #f1f5f9;
-    border: 1px solid rgba(203, 213, 225, 0.7);
+    border: 1px solid rgba(203, 213, 225, 0.8);
     border-radius: 50%;
-    padding: 0.5rem;
+    padding: 0.55rem;
     cursor: pointer;
     box-shadow: 
-      inset 2px 2px 4px rgba(0, 0, 0, 0.08),
-      inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+      3px 3px 8px rgba(0, 0, 0, 0.08),
+      -3px -3px 8px rgba(255, 255, 255, 0.9);
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
   }
 
-  /* Mobile Drawer Nav */
+  .mobile-menu-btn:active {
+    transform: scale(0.94);
+  }
+
+  /* Mobile Drawer Dropdown */
+  .mobile-drawer-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .mobile-drawer {
     display: none;
     flex-direction: column;
+    width: 100%;
     background: #ffffff;
     border: 1px solid var(--border-light);
-    border-radius: 12px;
-    padding: 0.85rem 1.25rem;
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
     gap: 0.35rem;
-    margin-top: 0.5rem;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    pointer-events: auto;
+    margin-top: 0.75rem;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), -4px -4px 12px rgba(255, 255, 255, 0.9);
+    box-sizing: border-box;
   }
 
   .mobile-drawer.active {
+    display: flex !important;
+  }
+
+  .mobile-drawer-lang-row {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .mobile-lang-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-dark);
   }
 
   .mobile-item {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-dark);
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border-light);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
     text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-item:last-child {
+    border-bottom: none;
   }
 
   .mobile-item:hover {
@@ -181,11 +297,11 @@
   }
 
   @media (max-width: 1120px) {
-    .desktop-right-capsule-inset {
-      display: none;
+    .header-right-group {
+      display: none !important;
     }
     .mobile-menu-btn {
-      display: flex;
+      display: flex !important;
     }
   }
 
@@ -194,17 +310,15 @@
       padding: 0.45rem 0;
     }
     .logo-transparent-large {
-      height: clamp(36px, 9vw, 44px);
+      height: clamp(38px, 9vw, 46px);
     }
     .mobile-drawer {
-      padding: 0.65rem 1rem;
-      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      border-radius: 10px;
     }
     .mobile-item {
-      font-size: clamp(0.75rem, 3.5vw, 0.85rem);
-      padding: 0.45rem 0;
-      overflow-wrap: anywhere;
-      word-break: break-word;
+      font-size: 0.85rem;
+      padding: 0.5rem 0;
     }
   }
 </style>

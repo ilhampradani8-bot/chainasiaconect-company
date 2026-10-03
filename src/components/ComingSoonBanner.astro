@@ -1,71 +1,111 @@
 ---
 ---
 
-<section class="fullwidth-section coming-soon-banner-section" id="coming-soon">
+<section class="fullwidth-section expansion-banner-section" id="expansion-banner">
   <div class="container text-center">
-    <span class="banner-tag red-text">OFFICIAL LAUNCHING SOON • Q4 2026</span>
+    <div class="neu-card-raised banner-neu-box">
+      <div class="neu-pill-inset banner-badge-neu">
+        <span class="neu-dot red-dot"></span>
+        <span class="banner-tag red-text" data-i18n="banner_tag">STRATEGIC EXPANSION & ENTERPRISE SCALING</span>
+      </div>
 
-    <h2 class="banner-title">
-      PT CHAIN ASIA CONECT <br /><span class="red-text">Is Preparing For Full Operational Launch</span>
-    </h2>
+      <h2 class="banner-title" data-i18n="banner_title">
+        PT CHAIN ASIA CONECT <br /><span class="red-text">Strategic Expansion & Enterprise Scaling Phase</span>
+      </h2>
 
-    <p class="banner-text">
-      We are actively preparing our physical service ecosystem, long-term B2B supply chain infrastructure, and strategic partnerships across Indonesia and the Asian region. Stay tuned for our official grand launch.
-    </p>
+      <p class="banner-text" data-i18n="banner_desc">
+        As a principal business entity focused on sustainable diversification and enterprise scaling, we are open for strategic B2B collaborations in integrated supply chain infrastructure, high-precision medical machinery engineering & 3D PACS software licensing, and new regional branch operations across Indonesia and Asia.
+      </p>
 
-    <div class="banner-actions">
-      <a href="mailto:sales@chainasiaconect.company" class="btn-red-large">
-        <span>Inquire B2B Access (sales@chainasiaconect.company)</span>
-      </a>
-      <a href="mailto:info@chainasiaconect.company" class="btn-outline-large">
-        <span>info@chainasiaconect.company</span>
-      </a>
+      <div class="banner-actions">
+        <a href="mailto:sales@chainasiaconect.company" class="neu-btn-primary">
+          <span data-i18n="btn_partnership">Inquire Strategic Partnership (sales@chainasiaconect.company)</span>
+        </a>
+        <a href="mailto:info@chainasiaconect.company" class="neu-btn-secondary">
+          <span data-i18n="btn_contact">info@chainasiaconect.company</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .coming-soon-banner-section {
-    background: linear-gradient(rgba(10, 10, 12, 0.85), rgba(10, 10, 12, 0.92)), url('/images/ornate-bg.jpg') center/cover no-repeat;
-    padding: 3.5rem 0;
-    border-top: 1px solid rgba(239, 68, 68, 0.4);
-    border-bottom: 1px solid rgba(239, 68, 68, 0.4);
-    color: #ffffff;
+  .expansion-banner-section {
+    background: #edf2f7;
+    padding: 4.5rem 0;
+    border-top: 1px solid rgba(203, 213, 225, 0.7);
+    border-bottom: 1px solid rgba(203, 213, 225, 0.7);
   }
 
   .text-center {
     text-align: center;
-    max-width: 820px;
+    max-width: 900px;
     margin: 0 auto;
   }
 
+  /* Solid Neumorphic Raised Card */
+  .banner-neu-box {
+    background: #edf2f7;
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      9px 9px 22px rgba(166, 175, 195, 0.5),
+      -9px -9px 22px rgba(255, 255, 255, 0.95);
+  }
+
+  /* Inset Badge */
+  .banner-badge-neu {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #edf2f7;
+    border-radius: 9999px;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid rgba(203, 213, 225, 0.7);
+    box-shadow: 
+      inset 2px 2px 5px rgba(166, 175, 195, 0.5),
+      inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+  }
+
+  .neu-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .red-dot {
+    background: #dc2626;
+  }
+
   .banner-tag {
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #ef4444;
   }
 
   .banner-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.85rem, 4vw, 2.6rem);
     font-weight: 800;
-    color: #ffffff;
+    color: #0f172a;
     margin-bottom: 1rem;
     line-height: 1.2;
   }
 
   .banner-title .red-text {
-    color: #ef4444;
+    color: #dc2626;
   }
 
   .banner-text {
-    font-size: 1.05rem;
+    font-size: 1.025rem;
     line-height: 1.75;
-    color: #e2e8f0;
-    margin-bottom: 1.75rem;
+    color: #475569;
+    margin-bottom: 2rem;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .banner-actions {
@@ -76,53 +116,63 @@
     flex-wrap: wrap;
   }
 
-  .btn-red-large {
-    padding: 0.75rem 1.75rem;
+  .neu-btn-primary {
+    padding: 0.85rem 1.6rem;
     background: #dc2626;
     color: #ffffff;
     font-weight: 700;
     font-size: 0.925rem;
-    border-radius: 4px;
-    transition: background var(--transition-smooth);
-    max-width: 100%;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 
+      4px 4px 10px rgba(220, 38, 38, 0.35),
+      -2px -2px 6px rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
   }
 
-  .btn-red-large:hover {
+  .neu-btn-primary:hover {
     background: #b91c1c;
+    box-shadow: 
+      2px 2px 6px rgba(220, 38, 38, 0.4),
+      inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
   }
 
-  .btn-outline-large {
-    padding: 0.75rem 1.75rem;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    font-weight: 600;
+  .neu-btn-secondary {
+    padding: 0.85rem 1.6rem;
+    background: #edf2f7;
+    color: #334155;
+    font-weight: 700;
     font-size: 0.925rem;
-    border-radius: 4px;
-    transition: all var(--transition-smooth);
-    max-width: 100%;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid rgba(203, 213, 225, 0.7);
+    box-shadow: 
+      3px 3px 8px rgba(166, 175, 195, 0.35),
+      -3px -3px 8px rgba(255, 255, 255, 0.9);
+    transition: all 0.2s ease;
   }
 
-  .btn-outline-large:hover {
-    border-color: #ef4444;
-    color: #ef4444;
+  .neu-btn-secondary:hover {
+    color: #dc2626;
+    background: #ffffff;
+    box-shadow: 
+      1px 1px 4px rgba(166, 175, 195, 0.4),
+      inset 1px 1px 2px rgba(255, 255, 255, 1);
   }
 
   @media (max-width: 640px) {
+    .banner-neu-box {
+      padding: 2rem 1.25rem;
+    }
     .banner-actions {
       flex-direction: column;
       width: 100%;
     }
-    .btn-red-large,
-    .btn-outline-large {
+    .neu-btn-primary,
+    .neu-btn-secondary {
       width: 100%;
       text-align: center;
-      padding: 0.75rem 1rem;
-      font-size: clamp(0.8rem, 3.5vw, 0.9rem);
     }
   }
 </style>

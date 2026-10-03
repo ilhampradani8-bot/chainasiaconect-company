@@ -4,69 +4,55 @@
 <section class="fullwidth-section direktur-section-clean" id="leadership">
   <div class="container">
     <div class="leadership-header-clean">
-      <span class="section-tag-clean red-text">BOARD OF DIRECTORS & EXECUTIVE LEADERSHIP</span>
-      <h2 class="section-title-clean">
+      <span class="section-tag-clean red-text" data-i18n="leadership_tag">BOARD OF DIRECTORS & EXECUTIVE LEADERSHIP</span>
+      <h2 class="section-title-clean" data-i18n="leadership_title">
         Executive Governance <span class="red-text">& Entity Leadership</span>
       </h2>
-      <p class="section-subtitle-clean">
+      <p class="section-subtitle-clean" data-i18n="leadership_subtitle">
         Driven by strategic vision, legal compliance, and operational excellence across regional physical business ecosystems.
       </p>
     </div>
 
-    <!-- 2 Directors Text Layout (Clean Editorial) -->
+    <!-- 2 Directors Text Layout (Pure Clean Typography, No Card) -->
     <div class="directors-stack">
       <!-- Director 01: President Director -->
       <div class="director-block">
-        <div class="director-meta">
-          <span class="director-num red-text">DIRECTOR 01</span>
-          <span class="director-badge">President Director</span>
-        </div>
+        <h3 class="owner-name-clean">Ilham Pradani, S.H. (Cand.)</h3>
+        <span class="owner-title-clean" data-i18n="owner1_title">President Director & Founder (Direktur Utama)</span>
 
-        <div class="director-main">
-          <h3 class="owner-name-clean">Ilham Pradani, S.H. (Cand.)</h3>
-          <span class="owner-title-clean">President Director & Founder (Direktur Utama)</span>
+        <p class="owner-quote-clean" data-i18n="owner1_quote">
+          “The strategic decision to expand into the real physical business sector represents a measured and sustainability-driven transformation. Through alignment of corporate identity philosophy and professional operational standards, the company is committed to becoming a reliable strategic partner supporting local and regional industrial growth.”
+        </p>
 
-          <p class="owner-quote-clean">
-            “The strategic decision to expand into the real physical business sector represents a measured and sustainability-driven transformation. Through alignment of corporate identity philosophy and professional operational standards, the company is committed to becoming a reliable strategic partner supporting local and regional industrial growth.”
-          </p>
-
-          <div class="owner-info-clean">
-            <div class="info-row">
-              <span class="info-label">Executive Email:</span>
-              <a href="mailto:ilhampradani@chainasiaconect.company" class="info-link red-text">ilhampradani@chainasiaconect.company</a>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Founder Website:</span>
-              <a href="https://ilhampradani.me" target="_blank" rel="noopener" class="info-link">https://ilhampradani.me</a>
-            </div>
+        <div class="owner-info-clean">
+          <div class="info-row">
+            <span class="info-label" data-i18n="label_email">Executive Email:</span>
+            <a href="mailto:ilhampradani@chainasiaconect.company" class="info-link red-text">ilhampradani@chainasiaconect.company</a>
+          </div>
+          <div class="info-row">
+            <span class="info-label" data-i18n="label_website">Founder Website:</span>
+            <a href="https://ilhampradani.me" target="_blank" rel="noopener" class="info-link">https://ilhampradani.me</a>
           </div>
         </div>
       </div>
 
-      <!-- Director 02: Financial Director (Putri Wulan, S.T.) -->
+      <!-- Director 02: Vice President Director (Putri Wulan, S.T.) -->
       <div class="director-block">
-        <div class="director-meta">
-          <span class="director-num red-text">DIRECTOR 02</span>
-          <span class="director-badge badge-finance">Financial Director</span>
-        </div>
+        <h3 class="owner-name-clean">Putri Wulan, S.T.</h3>
+        <span class="owner-title-clean" data-i18n="owner2_title">Vice President Director (Wakil Direktur Utama)</span>
 
-        <div class="director-main">
-          <h3 class="owner-name-clean">Putri Wulan, S.T.</h3>
-          <span class="owner-title-clean">Financial Director (Direktur Keuangan)</span>
+        <p class="owner-quote-clean" data-i18n="owner2_quote">
+          “Directing company operational policies, business diversification expansion, and strategic partnerships with the highest professional standards, full integrity, and sustainable corporate transparency.”
+        </p>
 
-          <p class="owner-quote-clean">
-            “Overseeing financial governance, capital allocation, re-investment reserves, and ethical profit distribution. Directing institutional financial compliance and managing company assets with complete transparency and social responsibility.”
-          </p>
-
-          <div class="owner-info-clean">
-            <div class="info-row">
-              <span class="info-label">Executive Email:</span>
-              <a href="mailto:wulanputri@chainasiaconect.company" class="info-link red-text">wulanputri@chainasiaconect.company</a>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Executive Standing:</span>
-              <strong class="info-val">Financial Director & Executive Board Member</strong>
-            </div>
+        <div class="owner-info-clean">
+          <div class="info-row">
+            <span class="info-label" data-i18n="label_email">Executive Email:</span>
+            <a href="mailto:putriwulandari@chainasiaconect.company" class="info-link red-text">putriwulandari@chainasiaconect.company</a>
+          </div>
+          <div class="info-row">
+            <span class="info-label" data-i18n="label_standing">Executive Standing:</span>
+            <strong class="info-val" data-i18n="owner2_standing">Vice President Director & Executive Board Member</strong>
           </div>
         </div>
       </div>
@@ -108,11 +94,11 @@
     margin-top: 0.35rem;
   }
 
-  /* 2 Directors Stack */
+  /* 2 Directors Stack - Pure Typography Layout */
   .directors-stack {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 3rem;
   }
 
   .director-block {
@@ -121,66 +107,37 @@
     align-items: flex-start;
   }
 
-  .director-meta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .director-num {
-    font-size: 0.775rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-  }
-
-  .director-badge {
-    font-size: 0.725rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.2rem 0.6rem;
-    background: #fef2f2;
-    color: var(--red-primary);
-    border-radius: 4px;
-  }
-
-  .director-badge.badge-finance {
-    background: #f8fafc;
-    color: var(--red-primary);
-    border: 1px solid var(--border-light);
-  }
-
   .owner-name-clean {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
     font-weight: 800;
     color: var(--text-dark);
     line-height: 1.15;
+    margin-bottom: 0.2rem;
   }
 
   .owner-title-clean {
     font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-top: 0.2rem;
+    font-weight: 700;
+    color: var(--red-primary);
     display: block;
+    letter-spacing: 0.02em;
   }
 
   .owner-quote-clean {
     font-size: 1rem;
     font-style: italic;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--text-body);
     margin: 1rem 0 1.25rem 0;
-    padding-left: 1rem;
-    border-left: 2px solid var(--red-primary);
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--red-primary);
     max-width: 900px;
   }
 
   .owner-info-clean {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.5rem;
     width: 100%;
   }
 

@@ -18,73 +18,110 @@ import Footer from '../../components/Footer.astro';
       </div>
     </section>
 
-    <!-- Executive Founders & Profit Distribution Section -->
+    <!-- Executive Founders & Profit Distribution Section (Fullwidth Editorial, No Cards) -->
     <section class="fullwidth-section profit-policy-section">
       <div class="container">
         <div class="section-header-clean">
           <span class="section-tag red-text">EXECUTIVE PARTNERSHIP & PROFIT DISTRIBUTION</span>
           <h2>Founders Agreement & Profit Allocation Policy</h2>
-          <p>Established under the formal MoU between President Director <strong>Ilham Pradani, S.H. (Cand.)</strong> and Financial Director <strong>Putri Wulan, S.T.</strong></p>
+          <p>Established under the formal MoU between President Director <strong>Ilham Pradani, S.H. (Cand.)</strong> and Vice President Director <strong>Putri Wulan, S.T.</strong></p>
         </div>
 
-        <div class="profit-policy-grid">
-          <!-- Policy Card 1: 10% Mitra Langit -->
-          <div class="policy-card featured-ml">
-            <span class="policy-num red-text">10% ALLOCATION</span>
-            <h3>Mitra Langit (Dana Tabarru' & Sedekah)</h3>
-            <p>
-              10% of monthly Net Profit is dedicated to Dana Tabarru' & Sedekah for social impact, aiding orphans, dhuafa, and micro-business empowerment in Pekon Seray / Pesisir Tengah, Pesisir Barat, Krui, Lampung.
-            </p>
-            <div class="policy-footer">
-              <span class="p-status green-text">✓ Active Commitment</span>
+        <div class="profit-policy-linear">
+          <!-- Allocation 01: 10% Mitra Langit -->
+          <div class="policy-row-item featured-ml-row">
+            <div class="policy-meta-col">
+              <span class="policy-pct-tag red-text">10% ALLOCATION</span>
+              <span class="p-status-pill green-badge">✓ Active Social Compact</span>
+            </div>
+            <div class="policy-body-col">
+              <h3 class="policy-heading">Mitra Langit (Dana Tabarru' & Sedekah)</h3>
+              <p class="policy-text">
+                10% of monthly Net Profit is dedicated to Dana Tabarru' & Sedekah for social impact, aiding orphans, dhuafa, and micro-business empowerment in Pekon Seray / Pesisir Tengah, Pesisir Barat, Krui, Lampung.
+              </p>
             </div>
           </div>
 
-          <!-- Policy Card 2: 90% Operational & Dividends -->
-          <div class="policy-card">
-            <span class="policy-num red-text">90% ALLOCATION</span>
-            <h3>Re-investment & Founders Dividend Shareout</h3>
-            <p>
-              90% of Net Profit is allocated for Operational Reserves, Physical Business Re-investment, and Dividend Distribution between President Director (Ilham Pradani, S.H. (Cand.)) and Financial Director (Putri Wulan, S.T.) based on agreed equity standing.
-            </p>
-            <div class="policy-footer">
-              <span class="p-status">✓ Audited Net Distribution</span>
+          <!-- Allocation 02: 90% Operational & Dividends -->
+          <div class="policy-row-item">
+            <div class="policy-meta-col">
+              <span class="policy-pct-tag red-text">90% ALLOCATION</span>
+              <span class="p-status-pill slate-badge">✓ Audited Distribution</span>
+            </div>
+            <div class="policy-body-col">
+              <h3 class="policy-heading">Re-investment & Founders Dividend Shareout</h3>
+              <p class="policy-text">
+                90% of Net Profit is allocated for Operational Reserves, Physical Business Re-investment, and Dividend Distribution between President Director (Ilham Pradani, S.H. (Cand.)) and Vice President Director (Putri Wulan, S.T.) based on agreed equity standing.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Prominent Coming Soon 2029 IPO Banner -->
+    <!-- Prominent Coming Soon 2029 IPO Section (Fullwidth Editorial, No Cards) -->
     <section class="fullwidth-section ipo-banner-section">
       <div class="container">
-        <div class="ipo-coming-soon-card">
+        <div class="ipo-editorial-wrap">
           <div class="ipo-badge-row">
             <span class="ipo-tag red-bg">INITIAL PUBLIC OFFERING (IPO) ROADMAP</span>
-            <span class="ipo-year red-text">COMING SOON 2029</span>
+            <span class="ipo-year red-text">TARGET LISTING: COMING SOON 2029</span>
           </div>
-          <h2>Transforming towards Public Listed Corporation (Tbk)</h2>
-          <p>
+          
+          <h2 class="ipo-main-title">Transforming towards Public Listed Corporation (Tbk)</h2>
+          
+          <p class="ipo-lead-desc">
             As a registered Individual Limited Liability Company (PT Perorangan) under SK Kemenkumham AHU-A117353.AH.01.30.Year 2026, <strong>PT CHAIN ASIA CONECT</strong> is executing a strategic multi-year roadmap. We are establishing audit frameworks, corporate secretary functions, and financial accounting standards targeting public listing (Tbk) on Bursa Efek Indonesia (IDX) in <strong>2029</strong>.
           </p>
 
-          <div class="roadmap-grid">
-            <div class="roadmap-step">
-              <span class="step-num red-text">PHASE 01 (2026)</span>
-              <h4>Entity Establishment</h4>
-              <p>Legal foundation, SK Kemenkumham, NIB 0709260109599, and initial business ecosystem setup.</p>
+          <!-- Roadmap Linear Stages with Subheadings -->
+          <div class="roadmap-editorial-list">
+            
+            <div class="roadmap-row-item">
+              <div class="roadmap-seq-col">
+                <span class="phase-code red-text">PHASE 01</span>
+                <span class="phase-year-badge">2026</span>
+              </div>
+              <div class="roadmap-info-col">
+                <h4 class="phase-title">Entity Establishment & Legal Governance</h4>
+                <p class="phase-detail">Legal foundation, SK Kemenkumham, NIB 0709260109599, and initial business ecosystem setup.</p>
+              </div>
             </div>
-            <div class="roadmap-step">
-              <span class="step-num red-text">PHASE 02 (2027-2028)</span>
-              <h4>Ecosystem Expansion & Audit</h4>
-              <p>Scaling medical machine engineering, PACS software cloud licensing, and annual KAP auditing.</p>
+
+            <div class="roadmap-row-item">
+              <div class="roadmap-seq-col">
+                <span class="phase-code red-text">PHASE 02</span>
+                <span class="phase-year-badge">2027 – 2028</span>
+              </div>
+              <div class="roadmap-info-col">
+                <h4 class="phase-title">Ecosystem Scaling & Financial Audit</h4>
+                <p class="phase-detail">Scaling medical machine engineering, PACS software cloud licensing, and annual KAP auditing.</p>
+              </div>
             </div>
-            <div class="roadmap-step featured-step">
-              <span class="step-num red-text">PHASE 03 (2029)</span>
-              <h4>Tbk Transformation (IPO)</h4>
-              <p>Registration filing with OJK and Bursa Efek Indonesia (BEI / IDX) for Initial Public Offering.</p>
+
+            <div class="roadmap-row-item active-roadmap-row">
+              <div class="roadmap-seq-col">
+                <span class="phase-code red-text">PHASE 03</span>
+                <span class="phase-year-badge red-badge">2029 (TARGET)</span>
+              </div>
+              <div class="roadmap-info-col">
+                <h4 class="phase-title">Tbk Transformation (Initial Public Offering)</h4>
+                <p class="phase-detail">Registration filing with OJK and Bursa Efek Indonesia (BEI / IDX) for Initial Public Offering.</p>
+              </div>
             </div>
+
           </div>
+
+          <!-- Neumorphic Action Buttons -->
+          <div class="ipo-action-buttons">
+            <a href="mailto:corsec@chainasiaconect.company" class="btn-more-red">
+              <span>Inquire Investor Relations Desk →</span>
+            </a>
+            <a href="mailto:ilhampradani@chainasiaconect.company" class="btn-secondary-clean">
+              <span>President Director Office</span>
+            </a>
+          </div>
+
         </div>
       </div>
     </section>
@@ -124,91 +161,108 @@ import Footer from '../../components/Footer.astro';
 
   /* Profit Policy Section */
   .profit-policy-section {
-    padding: 3.5rem 0;
+    padding: 4.5rem 0;
     background: #ffffff;
     border-bottom: 1px solid var(--border-light);
   }
 
   .section-header-clean {
-    max-width: 800px;
-    margin-bottom: 2rem;
+    max-width: 860px;
+    margin-bottom: 2.5rem;
   }
 
   .section-header-clean h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: var(--text-dark);
     margin-top: 0.35rem;
   }
 
   .section-header-clean p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--text-muted);
     margin-top: 0.35rem;
   }
 
-  .profit-policy-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  /* Linear Policy Breakdown (No Cards) */
+  .profit-policy-linear {
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
   }
 
-  .policy-card {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    padding: 2rem;
+  .policy-row-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-light);
+    align-items: flex-start;
+  }
+
+  .policy-row-item:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .policy-meta-col {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
   }
 
-  .policy-card.featured-ml {
-    border-left: 4px solid var(--red-primary);
-    background: #fef2f2;
-  }
-
-  .policy-num {
-    font-size: 0.775rem;
+  .policy-pct-tag {
+    font-size: 1.25rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
   }
 
-  .policy-card h3 {
+  .p-status-pill {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .green-badge {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #dcfce7;
+  }
+
+  .slate-badge {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+  }
+
+  .red-badge {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fee2e2;
+  }
+
+  .policy-heading {
     font-size: 1.35rem;
     font-weight: 800;
     color: var(--text-dark);
-    margin: 0.35rem 0 0.5rem 0;
+    margin-bottom: 0.65rem;
   }
 
-  .policy-card p {
-    font-size: 0.95rem;
-    line-height: 1.65;
+  .policy-text {
+    font-size: 1rem;
+    line-height: 1.75;
     color: var(--text-body);
-    margin-bottom: 1.5rem;
-    flex: 1;
+    margin: 0;
   }
 
-  .policy-footer {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-
-  .green-text {
-    color: #16a34a !important;
-  }
-
-  /* IPO Banner Section */
+  /* Fullwidth IPO Roadmap Section */
   .ipo-banner-section {
     background: #f8fafc;
-    padding: 3.5rem 0;
-  }
-
-  .ipo-coming-soon-card {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    padding: 2.5rem;
+    padding: 4.5rem 0;
+    border-bottom: 1px solid var(--border-light);
   }
 
   .ipo-badge-row {
@@ -222,8 +276,8 @@ import Footer from '../../components/Footer.astro';
   .ipo-tag {
     font-size: 0.75rem;
     font-weight: 800;
-    padding: 0.25rem 0.6rem;
-    border-radius: 3px;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
   }
 
   .ipo-tag.red-bg {
@@ -232,67 +286,102 @@ import Footer from '../../components/Footer.astro';
   }
 
   .ipo-year {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 800;
     letter-spacing: 0.05em;
   }
 
-  .ipo-coming-soon-card h2 {
-    font-size: 2.2rem;
+  .ipo-main-title {
+    font-size: clamp(2rem, 4vw, 2.7rem);
     font-weight: 800;
     color: var(--text-dark);
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
   }
 
-  .ipo-coming-soon-card p {
+  .ipo-lead-desc {
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text-body);
     max-width: 900px;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 
-  .roadmap-grid {
+  /* Linear Roadmap (No Cards) */
+  .roadmap-editorial-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .roadmap-row-item {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--border-light);
+    align-items: flex-start;
   }
 
-  .roadmap-step {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
-    padding: 1.5rem;
+  .roadmap-row-item:first-child {
+    border-top: none;
+    padding-top: 0;
   }
 
-  .roadmap-step.featured-step {
-    border-color: var(--red-primary);
-    background: #fef2f2;
+  .roadmap-seq-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
   }
 
-  .step-num {
-    font-size: 0.75rem;
+  .phase-code {
+    font-size: 1.25rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
   }
 
-  .roadmap-step h4 {
-    font-size: 1.2rem;
+  .phase-year-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .phase-title {
+    font-size: 1.25rem;
     font-weight: 800;
     color: var(--text-dark);
-    margin: 0.35rem 0 0.5rem 0;
+    margin-bottom: 0.4rem;
   }
 
-  .roadmap-step p {
-    font-size: 0.9rem;
+  .phase-detail {
+    font-size: 0.95rem;
     color: var(--text-body);
-    line-height: 1.5;
-    margin-bottom: 0;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .ipo-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
   }
 
   @media (max-width: 768px) {
-    .profit-policy-grid {
+    .policy-row-item,
+    .roadmap-row-item {
       grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .ipo-action-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .ipo-action-buttons .btn-more-red,
+    .ipo-action-buttons .btn-secondary-clean {
+      width: 100%;
+      text-align: center;
     }
   }
 </style>
