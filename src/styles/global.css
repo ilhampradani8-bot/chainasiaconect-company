@@ -304,3 +304,14 @@ a[href^="http"],
   }
 }
 
+/* Global Subpage Hero Top Clearance for Fixed Transparent Navbar */
+.page-hero-banner {
+  padding-top: clamp(7.5rem, 12vh, 9rem) !important;
+}
+
+@media (max-width: 640px) {
+  .page-hero-banner {
+    padding-top: 6.5rem !important;
+  }
+}
+
