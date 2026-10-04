@@ -1,5 +1,5 @@
 ---
-// ChatBubble.astro - Clean Modern Live Chat Widget for PT CHAIN ASIA CONECT
+// TelegramChatBubble.astro - Real-Time 2-Way Live Chat (Web UI <-> Telegram Bot)
 ---
 
 <div class="chat-widget-root" id="chat-widget-root">
@@ -14,45 +14,64 @@
           <span class="chat-online-dot"></span>
         </div>
         <div class="chat-header-meta">
-          <h4 class="chat-company-name">Customer Care</h4>
-          <span class="chat-status-text">PT CHAIN ASIA CONECT • Online</span>
+          <h4 class="chat-company-name">PT CHAIN ASIA CONECT</h4>
+          <span class="chat-status-text" id="chat-admin-status">🟢 Customer Care • Live Support</span>
         </div>
       </div>
-      <button type="button" class="chat-btn-close" id="chat-close-btn" aria-label="Tutup Chat">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
+      <div class="chat-header-actions">
+        <button type="button" class="chat-btn-action" id="chat-clear-btn" title="Hapus Percakapan" aria-label="Bersihkan Riwayat">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+        </button>
+        <button type="button" class="chat-btn-action" id="chat-close-btn" aria-label="Tutup Chat">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Chat Messages Stream -->
     <div class="chat-messages-body" id="chat-messages-stream">
       
       <!-- Time divider -->
-      <div class="chat-time-divider">Hari ini</div>
+      <div class="chat-time-divider">Live Assistant</div>
 
-      <!-- Agent Greeting Message -->
-      <div class="chat-msg chat-msg-agent">
+      <!-- Initial Welcome Message -->
+      <div class="chat-msg chat-msg-agent" id="chat-welcome-msg">
         <div class="chat-bubble-agent">
           <p>Halo! Selamat datang di <strong>PT CHAIN ASIA CONECT</strong>. 👋</p>
-          <p>Ada yang bisa kami bantu mengenai kemitraan rantai pasok, layanan, atau proposal bisnis kami?</p>
+          <p>Silakan tinggalkan pesan Anda di sini. Tim kami akan membalas langsung ke layar chat ini.</p>
           <span class="chat-msg-stamp">CS Team</span>
         </div>
       </div>
 
-      <!-- Topic suggestions -->
+      <!-- Quick Topic suggestions -->
       <div class="chat-topic-suggestions" id="chat-suggestions-box">
-        <span class="chat-suggestions-title">Pertanyaan Umum:</span>
-        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin menanyakan kerja sama kemitraan rantai pasok.">
+        <span class="chat-suggestions-title">Pilihan Cepat:</span>
+        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin konsultasi kemitraan Rantai Pasok (Supply Chain).">
           🤝 Kemitraan Rantai Pasok
         </button>
-        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin informasi seputar profil dan legalitas perusahaan.">
-          📑 Informasi & Legalitas PT
+        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin menanyakan legalitas & proposal bisnis PT CHAIN ASIA CONECT.">
+          📑 Profil & Legalitas PT
         </button>
-        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin menghubungi tim manajemen PT CHAIN ASIA CONECT.">
+        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin terhubung dengan Direktur PT CHAIN ASIA CONECT.">
           📞 Hubungi Manajemen
         </button>
+      </div>
+
+      <!-- Dynamic chat items will be injected here -->
+      <div id="chat-dynamic-list"></div>
+
+      <!-- Typing Indicator -->
+      <div class="chat-typing-indicator" id="chat-typing-indicator" style="display: none;">
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+        <span class="typing-dot"></span>
+        <span class="typing-text">Admin sedang merespons...</span>
       </div>
 
     </div>
@@ -65,11 +84,11 @@
             type="text" 
             id="chat-user-input" 
             class="chat-text-field" 
-            placeholder="Ketik pesan Anda di sini..." 
+            placeholder="Tulis pesan untuk admin..." 
             autocomplete="off"
             required 
           />
-          <button type="submit" class="chat-send-action" id="chat-send-btn" aria-label="Kirim Pesan">
+          <button type="submit" class="chat-send-action" id="chat-send-btn" aria-label="Kirim Pesan" title="Kirim">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -78,27 +97,17 @@
         </div>
       </form>
       <div class="chat-secure-notice">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg>
-        <span>Layanan pesan terenkripsi PT CHAIN ASIA CONECT</span>
+        <span id="chat-connection-status">🟢 Terhubung ke Sistem Live Chat</span>
       </div>
     </div>
 
   </div>
 
   <!-- Main Floating Toggle Bubble -->
-  <button type="button" class="chat-floating-btn" id="chat-floating-trigger" aria-label="Live Chat Support">
-    <div class="chat-icon-wrap chat-icon-open">
+  <button type="button" class="chat-floating-btn" id="chat-floating-trigger" aria-label="Buka Live Chat Support">
+    <div class="chat-icon-wrap" id="chat-icon-state">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-      </svg>
-    </div>
-    <div class="chat-icon-wrap chat-icon-close" style="display: none;">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </div>
     <span class="chat-badge-pulse" id="chat-notif-badge">1</span>
@@ -126,7 +135,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(190, 18, 60, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(190, 18, 60, 0.45), 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
     position: relative;
     outline: none;
@@ -134,7 +143,7 @@
 
   .chat-floating-btn:hover {
     transform: scale(1.08) translateY(-2px);
-    box-shadow: 0 12px 28px rgba(190, 18, 60, 0.55), 0 6px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 28px rgba(190, 18, 60, 0.6), 0 6px 16px rgba(0, 0, 0, 0.4);
   }
 
   .chat-floating-btn:active {
@@ -166,12 +175,12 @@
     right: 0;
     width: 360px;
     max-width: calc(100vw - 32px);
-    height: 480px;
+    height: 490px;
     max-height: calc(100vh - 110px);
     background: #0f172a;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -192,7 +201,7 @@
   .chat-header {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 14px 16px;
+    padding: 12px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -201,20 +210,20 @@
   .chat-header-profile {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
 
   .chat-avatar-wrapper {
     position: relative;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     background: #1e293b;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px;
+    padding: 3px;
   }
 
   .chat-avatar-img {
@@ -227,8 +236,8 @@
     position: absolute;
     bottom: -1px;
     right: -1px;
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     background: #10b981;
     border: 2px solid #0f172a;
     border-radius: 50%;
@@ -241,40 +250,47 @@
 
   .chat-company-name {
     margin: 0;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     color: #f8fafc;
-    line-height: 1.2;
+    letter-spacing: -0.2px;
   }
 
   .chat-status-text {
     font-size: 11px;
-    color: #94a3b8;
-    margin-top: 2px;
+    color: #10b981;
+    font-weight: 500;
+    margin-top: 1px;
   }
 
-  .chat-btn-close {
+  .chat-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .chat-btn-action {
     background: transparent;
     border: none;
     color: #94a3b8;
     cursor: pointer;
     padding: 6px;
-    border-radius: 8px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: color 0.2s, background 0.2s;
   }
 
-  .chat-btn-close:hover {
+  .chat-btn-action:hover {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.08);
   }
 
-  /* Body Stream */
+  /* Messages Body */
   .chat-messages-body {
     flex: 1;
-    padding: 16px;
+    padding: 14px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -284,15 +300,29 @@
 
   .chat-time-divider {
     text-align: center;
-    font-size: 11px;
+    font-size: 10px;
     color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin: 2px 0;
+  }
+
+  #chat-dynamic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .chat-msg {
     display: flex;
     flex-direction: column;
-    max-width: 85%;
+    max-width: 86%;
+    animation: chatMsgFadeIn 0.25s ease forwards;
+  }
+
+  @keyframes chatMsgFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .chat-msg-agent {
@@ -303,7 +333,7 @@
     background: #1e293b;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px 14px 14px 3px;
-    padding: 12px 14px;
+    padding: 10px 13px;
     color: #e2e8f0;
     font-size: 13px;
     line-height: 1.45;
@@ -321,7 +351,7 @@
     display: block;
     font-size: 10px;
     color: #64748b;
-    margin-top: 6px;
+    margin-top: 5px;
     text-align: right;
   }
 
@@ -333,10 +363,11 @@
     background: #be123c;
     color: #ffffff;
     border-radius: 14px 14px 3px 14px;
-    padding: 10px 14px;
+    padding: 10px 13px;
     font-size: 13px;
     line-height: 1.4;
     word-break: break-word;
+    box-shadow: 0 2px 8px rgba(190, 18, 60, 0.35);
   }
 
   /* Quick Topic Suggestions */
@@ -344,7 +375,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
   .chat-suggestions-title {
@@ -358,7 +389,7 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #cbd5e1;
     font-size: 12px;
-    padding: 8px 12px;
+    padding: 7px 11px;
     border-radius: 10px;
     cursor: pointer;
     text-align: left;
@@ -372,14 +403,48 @@
     transform: translateX(3px);
   }
 
+  /* Typing Indicator */
+  .chat-typing-indicator {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #1e293b;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .typing-dot {
+    width: 6px;
+    height: 6px;
+    background: #94a3b8;
+    border-radius: 50%;
+    animation: typingBounce 1.2s infinite ease-in-out;
+  }
+
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typingBounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+    40% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  .typing-text {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-left: 4px;
+  }
+
   /* Input Area */
   .chat-input-area {
     background: #0f172a;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 12px 14px 10px 14px;
+    padding: 10px 12px 8px 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
   }
 
   .chat-form {
@@ -391,9 +456,9 @@
     display: flex;
     align-items: center;
     background: #1e293b;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 24px;
-    padding: 4px 6px 4px 14px;
+    padding: 3px 5px 3px 12px;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
@@ -416,8 +481,8 @@
   }
 
   .chat-send-action {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: #be123c;
     color: #ffffff;
@@ -439,7 +504,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
     font-size: 10px;
     color: #64748b;
   }
@@ -464,17 +528,87 @@
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
+    const BOT_TOKEN = '8865367316:AAHLN47ZL8n_R14T-Pd0EcsSk1Kd9Q4Ouek';
+    const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
+
     const trigger = document.getElementById('chat-floating-trigger');
     const closeBtn = document.getElementById('chat-close-btn');
+    const clearBtn = document.getElementById('chat-clear-btn');
     const chatWin = document.getElementById('chat-window');
     const form = document.getElementById('chat-input-form');
     const input = document.getElementById('chat-user-input');
-    const msgStream = document.getElementById('chat-messages-stream');
+    const dynamicList = document.getElementById('chat-dynamic-list');
     const badge = document.getElementById('chat-notif-badge');
+    const typingIndicator = document.getElementById('chat-typing-indicator');
+    const suggestionsBox = document.getElementById('chat-suggestions-box');
     const topicButtons = document.querySelectorAll('.chat-topic-btn');
+    const statusText = document.getElementById('chat-connection-status');
 
-    const botUsername = 'bubblechainasia_bot';
+    // Generate or retrieve Session ID
+    let sessionId = localStorage.getItem('cac_chat_session_id');
+    if (!sessionId) {
+      sessionId = 'User-' + Math.floor(1000 + Math.random() * 9000);
+      localStorage.setItem('cac_chat_session_id', sessionId);
+    }
 
+    // Load message history from localStorage
+    let messages = [];
+    try {
+      messages = JSON.parse(localStorage.getItem('cac_chat_history_' + sessionId) || '[]');
+    } catch (e) {
+      messages = [];
+    }
+
+    let lastUpdateId = parseInt(localStorage.getItem('cac_last_tg_update_id') || '0', 10);
+    let adminChatId = localStorage.getItem('cac_admin_chat_id') || null;
+    let pollInterval = null;
+
+    // Render historical messages
+    function renderMessages() {
+      if (!dynamicList) return;
+      dynamicList.innerHTML = '';
+      messages.forEach(msg => {
+        const item = document.createElement('div');
+        if (msg.sender === 'user') {
+          item.className = 'chat-msg chat-msg-user';
+          item.innerHTML = `<div class="chat-bubble-user">${escapeHtml(msg.text)}</div>`;
+        } else {
+          item.className = 'chat-msg chat-msg-agent';
+          item.innerHTML = `
+            <div class="chat-bubble-agent">
+              <p>${escapeHtml(msg.text)}</p>
+              <span class="chat-msg-stamp">${msg.time || 'CS Team'}</span>
+            </div>
+          `;
+        }
+        dynamicList.appendChild(item);
+      });
+      scrollToBottom();
+      if (messages.length > 0 && suggestionsBox) {
+        suggestionsBox.style.display = 'none';
+      }
+    }
+
+    function scrollToBottom() {
+      const stream = document.getElementById('chat-messages-stream');
+      if (stream) {
+        stream.scrollTop = stream.scrollHeight;
+      }
+    }
+
+    function escapeHtml(str) {
+      const p = document.createElement('p');
+      p.textContent = str;
+      return p.innerHTML;
+    }
+
+    function saveMessage(sender, text, time) {
+      messages.push({ sender, text, time: time || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+      localStorage.setItem('cac_chat_history_' + sessionId, JSON.stringify(messages));
+      renderMessages();
+    }
+
+    // Toggle Chat Window
     function toggleChat() {
       if (!chatWin) return;
       const isOpen = chatWin.classList.toggle('open');
@@ -482,6 +616,10 @@
       if (isOpen) {
         if (badge) badge.style.display = 'none';
         if (input) input.focus();
+        startPolling();
+        syncAdminChatId();
+      } else {
+        stopPolling();
       }
     }
 
@@ -489,6 +627,7 @@
       if (chatWin) {
         chatWin.classList.remove('open');
         chatWin.setAttribute('aria-hidden', 'true');
+        stopPolling();
       }
     }
 
@@ -506,6 +645,17 @@
       });
     }
 
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (confirm('Bersihkan riwayat percakapan?')) {
+          messages = [];
+          localStorage.removeItem('cac_chat_history_' + sessionId);
+          if (dynamicList) dynamicList.innerHTML = '';
+          if (suggestionsBox) suggestionsBox.style.display = 'flex';
+        }
+      });
+    }
+
     // Close on outside click
     document.addEventListener('click', (e) => {
       const root = document.getElementById('chat-widget-root');
@@ -514,40 +664,132 @@
       }
     });
 
-    function appendUserMessage(text) {
-      if (!msgStream) return;
-
-      const userMsgDiv = document.createElement('div');
-      userMsgDiv.className = 'chat-msg chat-msg-user';
-      userMsgDiv.innerHTML = `<div class="chat-bubble-user">${escapeHtml(text)}</div>`;
-      msgStream.appendChild(userMsgDiv);
-
-      const agentReplyDiv = document.createElement('div');
-      agentReplyDiv.className = 'chat-msg chat-msg-agent';
-      agentReplyDiv.innerHTML = `
-        <div class="chat-bubble-agent">
-          <p>Terima kasih atas pesan Anda. Pesan telah diteruskan ke tim representatif kami.</p>
-          <p style="margin-top: 6px;"><a href="https://t.me/${botUsername}?start=${encodeURIComponent(text)}" target="_blank" rel="noopener" style="color: #f43f5e; text-decoration: underline; font-weight: 500;">Klik di sini jika ingin melanjutkan obrolan langsung</a></p>
-          <span class="chat-msg-stamp">Terkirim ✓</span>
-        </div>
-      `;
-      msgStream.appendChild(agentReplyDiv);
-      msgStream.scrollTop = msgStream.scrollHeight;
+    // Fetch telegram updates to find adminChatId or replies
+    async function syncAdminChatId() {
+      try {
+        const res = await fetch(`${TG_API}/getUpdates?limit=10`);
+        const data = await res.json();
+        if (data.ok && data.result.length > 0) {
+          // Look for any user message to the bot
+          for (let i = data.result.length - 1; i >= 0; i--) {
+            const upd = data.result[i];
+            if (upd.message && upd.message.chat && upd.message.chat.id) {
+              adminChatId = upd.message.chat.id;
+              localStorage.setItem('cac_admin_chat_id', adminChatId);
+              break;
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Error syncing Telegram chat ID:', err);
+      }
     }
 
-    function escapeHtml(str) {
-      const p = document.createElement('p');
-      p.textContent = str;
-      return p.innerHTML;
+    // Send Message to Telegram
+    async function sendMessageToTelegram(text) {
+      saveMessage('user', text);
+
+      if (suggestionsBox) suggestionsBox.style.display = 'none';
+
+      // If adminChatId not yet discovered, fetch it first
+      if (!adminChatId) {
+        await syncAdminChatId();
+      }
+
+      if (!adminChatId) {
+        // Fallback simulated acknowledge if owner has not pressed /start in Telegram yet
+        setTimeout(() => {
+          saveMessage('agent', 'Pesan Anda telah kami terima. Representatif PT CHAIN ASIA CONECT akan segera menjawab di sini.');
+        }, 1200);
+        return;
+      }
+
+      const formattedMsg = `📩 *Pesan Baru dari Pengunjung Web*\n👤 *Sesi*: \`#${sessionId}\`\n💬 *Pesan*: ${text}\n\n👉 _Balas (Reply) pesan ini di Telegram untuk membalas langsung ke web pengunjung._`;
+
+      try {
+        if (statusText) statusText.textContent = 'Mengirim ke Admin...';
+        const res = await fetch(`${TG_API}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: adminChatId,
+            text: formattedMsg,
+            parse_mode: 'Markdown'
+          })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          if (statusText) statusText.textContent = '🟢 Terkirim ke Admin • Menunggu Balasan...';
+        }
+      } catch (err) {
+        console.error('Failed to send to Telegram:', err);
+        if (statusText) statusText.textContent = '⚠️ Gagal mengirim pesan ke server.';
+      }
     }
 
-    // Quick Topics Click
+    // Poll for Admin Replies from Telegram
+    async function checkIncomingReplies() {
+      try {
+        const url = lastUpdateId 
+          ? `${TG_API}/getUpdates?offset=${lastUpdateId + 1}&timeout=2` 
+          : `${TG_API}/getUpdates?limit=10`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.ok && data.result && data.result.length > 0) {
+          data.result.forEach(update => {
+            lastUpdateId = Math.max(lastUpdateId, update.update_id);
+            localStorage.setItem('cac_last_tg_update_id', lastUpdateId.toString());
+
+            const msg = update.message;
+            if (msg && msg.text) {
+              // Check if this is an admin reply targeting this session
+              const isReplyToSession = (msg.reply_to_message && msg.reply_to_message.text && msg.reply_to_message.text.includes(`#${sessionId}`));
+              const containsSessionTag = msg.text.includes(`#${sessionId}`);
+              const isDirectAdminMsg = !msg.text.startsWith('/') && !msg.text.includes('Pesan Baru dari Pengunjung');
+
+              // If reply matches or admin sent response to this user session
+              if (isReplyToSession || containsSessionTag || isDirectAdminMsg) {
+                let cleanReply = msg.text.replace(new RegExp(`#${sessionId}`, 'g'), '').trim();
+                
+                // Avoid duplicating already received messages
+                const exists = messages.some(m => m.sender === 'agent' && m.text === cleanReply);
+                if (!exists && cleanReply) {
+                  if (typingIndicator) typingIndicator.style.display = 'flex';
+                  setTimeout(() => {
+                    if (typingIndicator) typingIndicator.style.display = 'none';
+                    saveMessage('agent', cleanReply, new Date(msg.date * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+                    if (statusText) statusText.textContent = '🟢 Admin sedang online';
+                  }, 600);
+                }
+              }
+            }
+          });
+        }
+      } catch (e) {
+        // network polling error silent
+      }
+    }
+
+    function startPolling() {
+      if (pollInterval) clearInterval(pollInterval);
+      checkIncomingReplies();
+      pollInterval = setInterval(checkIncomingReplies, 3000);
+    }
+
+    function stopPolling() {
+      if (pollInterval) {
+        clearInterval(pollInterval);
+        pollInterval = null;
+      }
+    }
+
+    // Quick Topic Buttons
     topicButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const text = btn.getAttribute('data-msg') || '';
-        appendUserMessage(text);
-        const suggestionsBox = document.getElementById('chat-suggestions-box');
-        if (suggestionsBox) suggestionsBox.style.display = 'none';
+        sendMessageToTelegram(text);
       });
     });
 
@@ -558,12 +800,13 @@
         const text = input.value.trim();
         if (!text) return;
 
-        appendUserMessage(text);
+        sendMessageToTelegram(text);
         input.value = '';
-
-        const suggestionsBox = document.getElementById('chat-suggestions-box');
-        if (suggestionsBox) suggestionsBox.style.display = 'none';
       });
     }
+
+    // Initial load
+    renderMessages();
+    syncAdminChatId();
   });
 </script>
