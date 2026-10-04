@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import TelegramChatBubble from '../components/TelegramChatBubble.astro';
 
 interface Props {
   title?: string;
@@ -130,6 +131,7 @@ const schemaData = {
   </head>
   <body>
     <slot />
+    <TelegramChatBubble />
     <script is:inline src="/js/i18n.js"></script>
   </body>
 </html>
