@@ -1,27 +1,24 @@
 ---
-// TelegramChatBubble.astro - Floating Telegram Chat Widget for PT CHAIN ASIA CONECT
+// ChatBubble.astro - Clean Modern Live Chat Widget for PT CHAIN ASIA CONECT
 ---
 
-<div class="tg-bubble-container" id="tg-bubble-root">
-  <!-- Chat Popup Window -->
-  <div class="tg-chat-window" id="tg-chat-window" aria-hidden="true">
-    <!-- Header -->
-    <div class="tg-header">
-      <div class="tg-header-info">
-        <div class="tg-avatar-wrap">
-          <div class="tg-avatar">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
-            </svg>
-            <span class="tg-status-dot"></span>
-          </div>
+<div class="chat-widget-root" id="chat-widget-root">
+  <!-- Live Chat Popup Window -->
+  <div class="chat-window" id="chat-window" aria-hidden="true">
+    
+    <!-- Window Header -->
+    <div class="chat-header">
+      <div class="chat-header-profile">
+        <div class="chat-avatar-wrapper">
+          <img src="/images/CAC-LOGOremovebg-preview.png" alt="PT CHAIN ASIA CONECT" class="chat-avatar-img" />
+          <span class="chat-online-dot"></span>
         </div>
-        <div class="tg-title-col">
-          <h4 class="tg-title">Chain Asia Conect Support</h4>
-          <span class="tg-subtitle">Online • Fast Response Telegram</span>
+        <div class="chat-header-meta">
+          <h4 class="chat-company-name">Customer Care</h4>
+          <span class="chat-status-text">PT CHAIN ASIA CONECT • Online</span>
         </div>
       </div>
-      <button class="tg-close-btn" id="tg-close-btn" aria-label="Tutup Chat">
+      <button type="button" class="chat-btn-close" id="chat-close-btn" aria-label="Tutup Chat">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -29,180 +26,170 @@
       </button>
     </div>
 
-    <!-- Body / Chat Messages Area -->
-    <div class="tg-body">
-      <div class="tg-message-incoming">
-        <div class="tg-msg-bubble">
-          <p>👋 <strong>Halo! Selamat datang di PT CHAIN ASIA CONECT.</strong></p>
-          <p>Ada yang bisa kami bantu mengenai rantai pasok (supply chain), kemitraan bisnis, atau informasi perusahaan kami?</p>
-          <span class="tg-msg-time">Official Corporate Bot</span>
+    <!-- Chat Messages Stream -->
+    <div class="chat-messages-body" id="chat-messages-stream">
+      
+      <!-- Time divider -->
+      <div class="chat-time-divider">Hari ini</div>
+
+      <!-- Agent Greeting Message -->
+      <div class="chat-msg chat-msg-agent">
+        <div class="chat-bubble-agent">
+          <p>Halo! Selamat datang di <strong>PT CHAIN ASIA CONECT</strong>. 👋</p>
+          <p>Ada yang bisa kami bantu mengenai kemitraan rantai pasok, layanan, atau proposal bisnis kami?</p>
+          <span class="chat-msg-stamp">CS Team</span>
         </div>
       </div>
 
-      <!-- Quick Action Topics -->
-      <div class="tg-quick-actions">
-        <span class="tg-quick-label">Pilih Topik Cepat:</span>
-        <div class="tg-pills-wrap">
-          <button type="button" class="tg-pill" data-text="Halo, saya tertarik kerja sama Rantai Pasok (Supply Chain) di Krui / Lampung.">
-            📦 Kemitraan Pasok
-          </button>
-          <button type="button" class="tg-pill" data-text="Halo, saya ingin mengetahui proposal investasi / Investor Relations.">
-            📈 Investor Relations
-          </button>
-          <button type="button" class="tg-pill" data-text="Halo, saya ingin konsultasi layanan & legalitas PT CHAIN ASIA CONECT.">
-            💼 Informasi Umum
-          </button>
-        </div>
+      <!-- Topic suggestions -->
+      <div class="chat-topic-suggestions" id="chat-suggestions-box">
+        <span class="chat-suggestions-title">Pertanyaan Umum:</span>
+        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin menanyakan kerja sama kemitraan rantai pasok.">
+          🤝 Kemitraan Rantai Pasok
+        </button>
+        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin informasi seputar profil dan legalitas perusahaan.">
+          📑 Informasi & Legalitas PT
+        </button>
+        <button type="button" class="chat-topic-btn" data-msg="Halo, saya ingin menghubungi tim manajemen PT CHAIN ASIA CONECT.">
+          📞 Hubungi Manajemen
+        </button>
       </div>
+
     </div>
 
-    <!-- Footer Action Form -->
-    <div class="tg-footer">
-      <form id="tg-chat-form" class="tg-form">
-        <div class="tg-input-group">
+    <!-- Chat Input Area -->
+    <div class="chat-input-area">
+      <form id="chat-input-form" class="chat-form">
+        <div class="chat-input-container">
           <input 
             type="text" 
-            id="tg-msg-input" 
-            class="tg-input" 
-            placeholder="Tulis pesan Anda..." 
+            id="chat-user-input" 
+            class="chat-text-field" 
+            placeholder="Ketik pesan Anda di sini..." 
             autocomplete="off"
             required 
           />
-          <button type="submit" class="tg-send-btn" title="Kirim ke Telegram">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          <button type="submit" class="chat-send-action" id="chat-send-btn" aria-label="Kirim Pesan">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </button>
         </div>
       </form>
-
-      <a 
-        href="https://t.me/bubblechainasia_bot" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        class="tg-direct-link"
-        id="tg-open-app-btn"
-      >
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+      <div class="chat-secure-notice">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
-        <span>Buka Langsung di Telegram (@bubblechainasia_bot)</span>
-      </a>
+        <span>Layanan pesan terenkripsi PT CHAIN ASIA CONECT</span>
+      </div>
     </div>
+
   </div>
 
-  <!-- Trigger Floating Button -->
-  <button class="tg-trigger-btn" id="tg-trigger-btn" aria-label="Buka Chat Telegram PT CHAIN ASIA CONECT">
-    <div class="tg-trigger-glow"></div>
-    <div class="tg-trigger-icon-chat">
-      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+  <!-- Main Floating Toggle Bubble -->
+  <button type="button" class="chat-floating-btn" id="chat-floating-trigger" aria-label="Live Chat Support">
+    <div class="chat-icon-wrap chat-icon-open">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
       </svg>
     </div>
-    <span class="tg-badge">1</span>
+    <div class="chat-icon-wrap chat-icon-close" style="display: none;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <span class="chat-badge-pulse" id="chat-notif-badge">1</span>
   </button>
 </div>
 
 <style>
-  .tg-bubble-container {
+  .chat-widget-root {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    z-index: 99999;
+    z-index: 999999;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
-  /* Trigger Floating Button */
-  .tg-trigger-btn {
-    width: 60px;
-    height: 60px;
+  /* Floating Trigger Button */
+  .chat-floating-btn {
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #229ED9 0%, #0088cc 100%);
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    background: linear-gradient(135deg, #be123c 0%, #9f1239 50%, #881337 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0, 136, 204, 0.45), 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    box-shadow: 0 8px 24px rgba(190, 18, 60, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
     position: relative;
     outline: none;
   }
 
-  .tg-trigger-btn:hover {
+  .chat-floating-btn:hover {
     transform: scale(1.08) translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0, 136, 204, 0.6), 0 6px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 28px rgba(190, 18, 60, 0.55), 0 6px 16px rgba(0, 0, 0, 0.4);
   }
 
-  .tg-trigger-btn:active {
-    transform: scale(0.96);
+  .chat-floating-btn:active {
+    transform: scale(0.95);
   }
 
-  .tg-trigger-glow {
+  .chat-badge-pulse {
     position: absolute;
-    inset: -3px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(34, 158, 217, 0.8) 0%, transparent 70%);
-    opacity: 0.6;
-    animation: tgPulse 2.5s infinite;
-    pointer-events: none;
-  }
-
-  @keyframes tgPulse {
-    0% { transform: scale(0.95); opacity: 0.7; }
-    50% { transform: scale(1.25); opacity: 0; }
-    100% { transform: scale(0.95); opacity: 0; }
-  }
-
-  .tg-badge {
-    position: absolute;
-    top: -3px;
-    right: -3px;
-    width: 20px;
-    height: 20px;
-    background: #e11d48;
+    top: -2px;
+    right: -2px;
+    width: 18px;
+    height: 18px;
+    background: #10b981;
     color: #ffffff;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid #0f172a;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
   }
 
   /* Chat Window */
-  .tg-chat-window {
+  .chat-window {
     position: absolute;
-    bottom: 76px;
+    bottom: 74px;
     right: 0;
     width: 360px;
     max-width: calc(100vw - 32px);
     height: 480px;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 110px);
     background: #0f172a;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 18px;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px) scale(0.95);
-    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
-    backdrop-filter: blur(12px);
+    transform: translateY(16px) scale(0.96);
+    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+    backdrop-filter: blur(16px);
   }
 
-  .tg-chat-window.active {
+  .chat-window.open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
   }
 
   /* Header */
-  .tg-header {
+  .chat-header {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 14px 16px;
@@ -211,59 +198,62 @@
     justify-content: space-between;
   }
 
-  .tg-header-info {
+  .chat-header-profile {
     display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  .tg-avatar-wrap {
+  .chat-avatar-wrapper {
     position: relative;
-  }
-
-  .tg-avatar {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    background: #0088cc;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 136, 204, 0.4);
+    padding: 4px;
   }
 
-  .tg-status-dot {
+  .chat-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .chat-online-dot {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 11px;
-    height: 11px;
+    bottom: -1px;
+    right: -1px;
+    width: 10px;
+    height: 10px;
     background: #10b981;
-    border: 2px solid #1e293b;
+    border: 2px solid #0f172a;
     border-radius: 50%;
   }
 
-  .tg-title-col {
+  .chat-header-meta {
     display: flex;
     flex-direction: column;
   }
 
-  .tg-title {
+  .chat-company-name {
     margin: 0;
     font-size: 14px;
     font-weight: 600;
     color: #f8fafc;
-    letter-spacing: -0.2px;
+    line-height: 1.2;
   }
 
-  .tg-subtitle {
+  .chat-status-text {
     font-size: 11px;
-    color: #10b981;
-    font-weight: 500;
+    color: #94a3b8;
+    margin-top: 2px;
   }
 
-  .tg-close-btn {
+  .chat-btn-close {
     background: transparent;
     border: none;
     color: #94a3b8;
@@ -276,125 +266,143 @@
     transition: color 0.2s, background 0.2s;
   }
 
-  .tg-close-btn:hover {
+  .chat-btn-close:hover {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.08);
   }
 
-  /* Body */
-  .tg-body {
+  /* Body Stream */
+  .chat-messages-body {
     flex: 1;
     padding: 16px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     background: #090e17;
   }
 
-  .tg-message-incoming {
-    display: flex;
-    flex-direction: column;
+  .chat-time-divider {
+    text-align: center;
+    font-size: 11px;
+    color: #64748b;
+    margin: 2px 0;
   }
 
-  .tg-msg-bubble {
+  .chat-msg {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+  }
+
+  .chat-msg-agent {
+    align-self: flex-start;
+  }
+
+  .chat-bubble-agent {
     background: #1e293b;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 14px 14px 14px 2px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px 14px 14px 3px;
     padding: 12px 14px;
     color: #e2e8f0;
     font-size: 13px;
-    line-height: 1.5;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    line-height: 1.45;
   }
 
-  .tg-msg-bubble p {
-    margin: 0 0 8px 0;
+  .chat-bubble-agent p {
+    margin: 0 0 6px 0;
   }
 
-  .tg-msg-bubble p:last-of-type {
-    margin-bottom: 6px;
+  .chat-bubble-agent p:last-of-type {
+    margin-bottom: 0;
   }
 
-  .tg-msg-time {
+  .chat-msg-stamp {
     display: block;
     font-size: 10px;
     color: #64748b;
+    margin-top: 6px;
     text-align: right;
   }
 
-  /* Quick Actions */
-  .tg-quick-actions {
+  .chat-msg-user {
+    align-self: flex-end;
+  }
+
+  .chat-bubble-user {
+    background: #be123c;
+    color: #ffffff;
+    border-radius: 14px 14px 3px 14px;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  /* Quick Topic Suggestions */
+  .chat-topic-suggestions {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 4px;
-  }
-
-  .tg-quick-label {
-    font-size: 11px;
-    color: #94a3b8;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-
-  .tg-pills-wrap {
-    display: flex;
-    flex-wrap: wrap;
     gap: 6px;
+    margin-top: 6px;
   }
 
-  .tg-pill {
-    background: rgba(0, 136, 204, 0.12);
-    border: 1px solid rgba(0, 136, 204, 0.35);
-    color: #38bdf8;
+  .chat-suggestions-title {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  .chat-topic-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
     font-size: 12px;
-    padding: 6px 11px;
-    border-radius: 20px;
+    padding: 8px 12px;
+    border-radius: 10px;
     cursor: pointer;
     text-align: left;
     transition: all 0.2s ease;
   }
 
-  .tg-pill:hover {
-    background: #0088cc;
-    color: #ffffff;
-    border-color: #0088cc;
-    transform: translateY(-1px);
+  .chat-topic-btn:hover {
+    background: rgba(190, 18, 60, 0.15);
+    border-color: rgba(190, 18, 60, 0.4);
+    color: #fca5a5;
+    transform: translateX(3px);
   }
 
-  /* Footer & Form */
-  .tg-footer {
+  /* Input Area */
+  .chat-input-area {
     background: #0f172a;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 12px 14px;
+    padding: 12px 14px 10px 14px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
-  .tg-form {
+  .chat-form {
     width: 100%;
     margin: 0;
   }
 
-  .tg-input-group {
+  .chat-input-container {
     display: flex;
     align-items: center;
     background: #1e293b;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     padding: 4px 6px 4px 14px;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  .tg-input-group:focus-within {
-    border-color: #0088cc;
-    box-shadow: 0 0 0 2px rgba(0, 136, 204, 0.25);
+  .chat-input-container:focus-within {
+    border-color: #be123c;
+    box-shadow: 0 0 0 2px rgba(190, 18, 60, 0.25);
   }
 
-  .tg-input {
+  .chat-text-field {
     flex: 1;
     background: transparent;
     border: none;
@@ -403,15 +411,15 @@
     outline: none;
   }
 
-  .tg-input::placeholder {
+  .chat-text-field::placeholder {
     color: #64748b;
   }
 
-  .tg-send-btn {
+  .chat-send-action {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: #0088cc;
+    background: #be123c;
     color: #ffffff;
     border: none;
     display: flex;
@@ -422,84 +430,72 @@
     padding: 0;
   }
 
-  .tg-send-btn:hover {
-    background: #0099e6;
+  .chat-send-action:hover {
+    background: #e11d48;
     transform: scale(1.05);
   }
 
-  .tg-direct-link {
+  .chat-secure-notice {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #94a3b8;
-    font-size: 11px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    gap: 5px;
+    font-size: 10px;
+    color: #64748b;
   }
 
-  .tg-direct-link:hover {
-    background: rgba(0, 136, 204, 0.15);
-    color: #38bdf8;
-    border-color: rgba(0, 136, 204, 0.4);
-  }
-
-  /* Responsive styling for small mobile */
+  /* Responsive for mobile */
   @media (max-width: 480px) {
-    .tg-bubble-container {
+    .chat-widget-root {
       bottom: 18px;
       right: 18px;
     }
-    .tg-chat-window {
+    .chat-window {
       width: calc(100vw - 36px);
-      height: 440px;
-      bottom: 70px;
+      height: 450px;
+      bottom: 68px;
     }
-    .tg-trigger-btn {
-      width: 54px;
-      height: 54px;
+    .chat-floating-btn {
+      width: 52px;
+      height: 52px;
     }
   }
 </style>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const triggerBtn = document.getElementById('tg-trigger-btn');
-    const closeBtn = document.getElementById('tg-close-btn');
-    const chatWindow = document.getElementById('tg-chat-window');
-    const form = document.getElementById('tg-chat-form');
-    const input = document.getElementById('tg-msg-input');
-    const pillButtons = document.querySelectorAll('.tg-pill');
+    const trigger = document.getElementById('chat-floating-trigger');
+    const closeBtn = document.getElementById('chat-close-btn');
+    const chatWin = document.getElementById('chat-window');
+    const form = document.getElementById('chat-input-form');
+    const input = document.getElementById('chat-user-input');
+    const msgStream = document.getElementById('chat-messages-stream');
+    const badge = document.getElementById('chat-notif-badge');
+    const topicButtons = document.querySelectorAll('.chat-topic-btn');
 
     const botUsername = 'bubblechainasia_bot';
 
-    function openChat() {
-      if (chatWindow) {
-        chatWindow.classList.add('active');
-        chatWindow.setAttribute('aria-hidden', 'false');
+    function toggleChat() {
+      if (!chatWin) return;
+      const isOpen = chatWin.classList.toggle('open');
+      chatWin.setAttribute('aria-hidden', !isOpen);
+      if (isOpen) {
+        if (badge) badge.style.display = 'none';
         if (input) input.focus();
       }
     }
 
     function closeChat() {
-      if (chatWindow) {
-        chatWindow.classList.remove('active');
-        chatWindow.setAttribute('aria-hidden', 'true');
+      if (chatWin) {
+        chatWin.classList.remove('open');
+        chatWin.setAttribute('aria-hidden', 'true');
       }
     }
 
-    if (triggerBtn) {
-      triggerBtn.addEventListener('click', (e) => {
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (chatWindow.classList.contains('active')) {
-          closeChat();
-        } else {
-          openChat();
-        }
+        toggleChat();
       });
     }
 
@@ -510,35 +506,63 @@
       });
     }
 
-    // Close when clicking outside
+    // Close on outside click
     document.addEventListener('click', (e) => {
-      const root = document.getElementById('tg-bubble-root');
+      const root = document.getElementById('chat-widget-root');
       if (root && !root.contains(e.target)) {
         closeChat();
       }
     });
 
-    // Quick Action Pills
-    pillButtons.forEach(pill => {
-      pill.addEventListener('click', () => {
-        const text = pill.getAttribute('data-text') || '';
-        const encodedText = encodeURIComponent(text);
-        window.open(`https://t.me/${botUsername}?start=${encodedText}`, '_blank');
+    function appendUserMessage(text) {
+      if (!msgStream) return;
+
+      const userMsgDiv = document.createElement('div');
+      userMsgDiv.className = 'chat-msg chat-msg-user';
+      userMsgDiv.innerHTML = `<div class="chat-bubble-user">${escapeHtml(text)}</div>`;
+      msgStream.appendChild(userMsgDiv);
+
+      const agentReplyDiv = document.createElement('div');
+      agentReplyDiv.className = 'chat-msg chat-msg-agent';
+      agentReplyDiv.innerHTML = `
+        <div class="chat-bubble-agent">
+          <p>Terima kasih atas pesan Anda. Pesan telah diteruskan ke tim representatif kami.</p>
+          <p style="margin-top: 6px;"><a href="https://t.me/${botUsername}?start=${encodeURIComponent(text)}" target="_blank" rel="noopener" style="color: #f43f5e; text-decoration: underline; font-weight: 500;">Klik di sini jika ingin melanjutkan obrolan langsung</a></p>
+          <span class="chat-msg-stamp">Terkirim ✓</span>
+        </div>
+      `;
+      msgStream.appendChild(agentReplyDiv);
+      msgStream.scrollTop = msgStream.scrollHeight;
+    }
+
+    function escapeHtml(str) {
+      const p = document.createElement('p');
+      p.textContent = str;
+      return p.innerHTML;
+    }
+
+    // Quick Topics Click
+    topicButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-msg') || '';
+        appendUserMessage(text);
+        const suggestionsBox = document.getElementById('chat-suggestions-box');
+        if (suggestionsBox) suggestionsBox.style.display = 'none';
       });
     });
 
-    // Handle Form Submit
+    // Form Submit
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const msg = input.value.trim();
-        if (!msg) return;
+        const text = input.value.trim();
+        if (!text) return;
 
-        // Redirect to Telegram with the message preset
-        const encoded = encodeURIComponent(msg);
-        window.open(`https://t.me/${botUsername}?start=${encoded}`, '_blank');
+        appendUserMessage(text);
         input.value = '';
-        closeChat();
+
+        const suggestionsBox = document.getElementById('chat-suggestions-box');
+        if (suggestionsBox) suggestionsBox.style.display = 'none';
       });
     }
   });
