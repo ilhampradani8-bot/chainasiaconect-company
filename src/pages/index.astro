@@ -16,162 +16,232 @@ import Footer from '../components/Footer.astro';
     <!-- Section 1: Home Hero -->
     <ComingSoonHero />
 
-    <!-- Section 2: Interactive 3D Corporate Directory Slider -->
-    <section class="fullwidth-section corporate-portal-section" id="portal-directory">
+    <!-- Section 2: Dimensional Interface Cards (DepthFold 3D Glass) -->
+    <section class="corporate-directory-section" id="portal-directory">
       <div class="container">
-        <div class="section-header-slider">
-          <div class="header-text">
-            <span class="section-tag red-text">INTERACTIVE 3D CORPORATE DIRECTORY</span>
-            <h2>Corporate Portal & Operations</h2>
-            <p>Slide left and right to explore our corporate identity, 3D medical software licensing, executive governance, and IPO roadmap.</p>
+        <div class="directory-header">
+          <div class="directory-title-block">
+            <span class="section-tag red-text">DIMENSIONAL CORPORATE ECOSYSTEM</span>
+            <h2>Corporate Directory & Strategic Operations</h2>
+            <p>Interactive dimensional interface cards for PT CHAIN ASIA CONECT's business divisions, governance, and capital roadmap.</p>
           </div>
-
-          <!-- Slider Controls (Left / Right) -->
-          <div class="slider-controls">
-            <button class="slider-btn" id="slide-left-btn" aria-label="Slide Left">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              <span>Prev</span>
-            </button>
-            <button class="slider-btn red-btn" id="slide-right-btn" aria-label="Slide Right">
-              <span>Next</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
+          <div class="directory-meta-badge">
+            <span class="meta-label">LEGAL ENTITY</span>
+            <span class="meta-value">SK AHU-A117353 • NIB 0709260109599</span>
           </div>
         </div>
 
-        <!-- 3D Perspective Card Carousel Viewport -->
-        <div class="cards-3d-viewport">
-          <div class="cards-3d-track" id="portal-slider-track">
-            
-            <!-- Card 01: About Us -->
-            <div class="portal-card-3d">
-              <div class="card-inner-3d">
-                <div class="card-img-box">
-                  <img src="/images/CAC-LOGOremovebg-preview.png" alt="PT CHAIN ASIA CONECT Logo" class="card-img-graphic contain-fit" />
-                  <span class="card-tag-badge">DIRECTORATE</span>
+        <!-- Dimensional Shape Grid -->
+        <div class="shape-grid">
+          
+          <!-- Card 01: Corporate Overview (Crimson) -->
+          <div class="ux-parent ux-parent--crimson">
+            <div class="ux-card">
+              <div class="ux-logo" aria-hidden="true">
+                <span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span>
+                <span class="ux-circle">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 2.2l5.5 3.4L12 10.9 6.5 7.6 12 4.2zM6 9.9l5 3v6.1l-5-3.1V9.9zm12 6.1l-5 3.1v-6.2l5-3v6.1z"/></svg>
+                </span>
+              </div>
+              <div class="ux-glass"></div>
+              <div class="ux-content">
+                <span class="ux-title">Corporate Overview</span>
+                <span class="ux-text">Establishment history, C-H-A-I-N philosophy, Executive Directors, and certified AHU legalities.</span>
+              </div>
+              <div class="ux-bottom">
+                <div class="ux-social">
+                  <span class="ux-tag-badge">AHU-A117353</span>
                 </div>
-                <div class="card-content-3d">
-                  <span class="card-num red-text">01</span>
-                  <h3>About Us (Tentang Kami)</h3>
-                  <p>Company history, vision, mission, C-H-A-I-N core values, Board of Directors profiles, and legal standing.</p>
-                  <a href="/about" class="card-arrow red-text">Learn More About Us →</a>
+                <div class="ux-more">
+                  <a href="/about" class="ux-more-btn"><span>Open</span></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </div>
               </div>
             </div>
-
-            <!-- Card 02: Business & 3D Medical Software -->
-            <div class="portal-card-3d">
-              <div class="card-inner-3d">
-                <div class="card-img-box">
-                  <img src="/images/visualization-tutorial-data-loading-and-3d-visualization.png" alt="3D Medical Diagnostic Cloud" class="card-img-graphic" />
-                  <span class="card-tag-badge red-bg">3D MEDICAL SYSTEM</span>
-                </div>
-                <div class="card-content-3d">
-                  <span class="card-num red-text">02</span>
-                  <h3>Business & Services (Lini Bisnis)</h3>
-                  <p>Enterprise supply chain infrastructure, medical machine engineering, and PACS software 3D cloud licensing.</p>
-                  <a href="/business" class="card-arrow red-text">Explore All Services →</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 03: Investor Relations (IPO Roadmap 2029) -->
-            <div class="portal-card-3d featured-3d">
-              <div class="card-inner-3d">
-                <div class="card-img-box">
-                  <img src="/images/logo-ocbc.png" alt="Corporate Banking & Capital" class="card-img-graphic contain-fit" />
-                  <span class="card-tag-badge red-bg">IPO 2029 ROADMAP</span>
-                </div>
-                <div class="card-content-3d">
-                  <span class="card-num red-text">03</span>
-                  <h3>Investor Relations & Capital</h3>
-                  <p>Founders agreement, 10% Mitra Langit Tabarru' fund, and Go Public (Tbk) initial public offering roadmap: <strong>Coming Soon 2029</strong>.</p>
-                  <a href="/investor-relations" class="card-arrow red-text">View Investor Portal →</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 04: Corporate Governance -->
-            <div class="portal-card-3d">
-              <div class="card-inner-3d">
-                <div class="card-img-box">
-                  <img src="/images/kememnkeu-logo.png" alt="Ministry Authority Emblem" class="card-img-graphic contain-fit" />
-                  <span class="card-tag-badge">GOVERNANCE</span>
-                </div>
-                <div class="card-content-3d">
-                  <span class="card-num red-text">04</span>
-                  <h3>Corporate Governance (Tata Kelola)</h3>
-                  <p>Board Charters, Audit Committee, Corporate Secretary liaison, and Whistleblowing System (WBS).</p>
-                  <a href="/governance" class="card-arrow red-text">View Governance Details →</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 05: Sustainability / ESG -->
-            <div class="portal-card-3d">
-              <div class="card-inner-3d">
-                <div class="card-img-box">
-                  <img src="/images/logo-oss-pemerintah.png" alt="OSS ESG Verification" class="card-img-graphic contain-fit" />
-                  <span class="card-tag-badge">SUSTAINABILITY</span>
-                </div>
-                <div class="card-content-3d">
-                  <span class="card-num red-text">05</span>
-                  <h3>Sustainability & ESG (Keberlanjutan)</h3>
-                  <p>Environmental policy, paperless PACS cloud diagnostics, social impact initiatives, and 10% Mitra Langit CSR fund.</p>
-                  <a href="/sustainability" class="card-arrow red-text">Read Sustainability Report →</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 06: Media & Newsroom -->
-            <div class="portal-card-3d">
-              <div class="card-inner-3d">
-                <div class="card-img-box">
-                  <img src="/images/CAC-LOGOremovebg-preview.png" alt="Official Newsroom Media Kit" class="card-img-graphic contain-fit" />
-                  <span class="card-tag-badge">PRESS RELEASE</span>
-                </div>
-                <div class="card-content-3d">
-                  <span class="card-num red-text">06</span>
-                  <h3>Media & Newsroom (Siaran Pers)</h3>
-                  <p>Official corporate announcements, press releases, media kits, and institutional achievements.</p>
-                  <a href="/newsroom" class="card-arrow red-text">Visit Newsroom →</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 07: Careers -->
-            <div class="portal-card-3d">
-              <div class="card-inner-3d">
-                <div class="card-img-box">
-                  <img src="/images/visualization-tutorial-data-loading-and-3d-visualization.png" alt="Financial Leadership" class="card-img-graphic" />
-                  <span class="card-tag-badge red-bg">CAREERS</span>
-                </div>
-                <div class="card-content-3d">
-                  <span class="card-num red-text">07</span>
-                  <h3>Careers & Recruitment (Karier)</h3>
-                  <p>Executive Board structuring and medical diagnostic software specialist technical talent acquisition.</p>
-                  <a href="/careers" class="card-arrow red-text">View Career Openings →</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 08: Contact Us -->
-            <div class="portal-card-3d">
-              <div class="card-inner-3d">
-                <div class="card-img-box">
-                  <img src="/images/kememnkeu-logo.png" alt="Headquarters Contact" class="card-img-graphic contain-fit" />
-                  <span class="card-tag-badge">HEADQUARTERS</span>
-                </div>
-                <div class="card-content-3d">
-                  <span class="card-num red-text">08</span>
-                  <h3>Contact Us (Hubungi Kami)</h3>
-                  <p>Registered headquarters, Corporate Secretary contact, Investor Relations helpline, and inquiry form.</p>
-                  <a href="/contact" class="card-arrow red-text">Contact Executive Office →</a>
-                </div>
-              </div>
-            </div>
-
           </div>
+
+          <!-- Card 02: Business Lines & Supply Chain (Solar) -->
+          <div class="ux-parent ux-parent--solar">
+            <div class="ux-card">
+              <div class="ux-logo" aria-hidden="true">
+                <span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span>
+                <span class="ux-circle">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><path fill="#fff" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                </span>
+              </div>
+              <div class="ux-glass"></div>
+              <div class="ux-content">
+                <span class="ux-title">Business & Supply Chain</span>
+                <span class="ux-text">Enterprise supply chain integration, regional asset hubs in Krui, and PACS medical imaging tech.</span>
+              </div>
+              <div class="ux-bottom">
+                <div class="ux-social">
+                  <span class="ux-tag-badge">Core Operations</span>
+                </div>
+                <div class="ux-more">
+                  <a href="/business" class="ux-more-btn"><span>Open</span></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 03: Investor Relations (Mint Orb) -->
+          <div class="ux-parent ux-parent--mint">
+            <div class="ux-card">
+              <div class="ux-logo" aria-hidden="true">
+                <span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span>
+                <span class="ux-circle">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                </span>
+              </div>
+              <div class="ux-glass"></div>
+              <div class="ux-content">
+                <span class="ux-title">Investor Relations</span>
+                <span class="ux-text">Founders MoU, 10% Mitra Langit Tabarru' compact, and Initial Public Offering (IPO 2029) roadmap.</span>
+              </div>
+              <div class="ux-bottom">
+                <div class="ux-social">
+                  <span class="ux-tag-badge">Target IPO 2029</span>
+                </div>
+                <div class="ux-more">
+                  <a href="/investor-relations" class="ux-more-btn"><span>Open</span></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 04: Corporate Governance (Violet Chamfer Cut) -->
+          <div class="ux-parent ux-parent--violet ux-parent--cut">
+            <div class="ux-card">
+              <div class="ux-logo" aria-hidden="true">
+                <span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span>
+                <span class="ux-circle">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                </span>
+              </div>
+              <div class="ux-glass"></div>
+              <div class="ux-content">
+                <span class="ux-title">Good Governance</span>
+                <span class="ux-text">5 Pillars of GCG, Board Charters, Corporate Secretary desk, and confidential Whistleblowing System.</span>
+              </div>
+              <div class="ux-bottom">
+                <div class="ux-social">
+                  <span class="ux-tag-badge">5 Pillars GCG</span>
+                </div>
+                <div class="ux-more">
+                  <a href="/governance" class="ux-more-btn"><span>Open</span></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 05: Sustainability & ESG (Ocean) -->
+          <div class="ux-parent ux-parent--ocean">
+            <div class="ux-card">
+              <div class="ux-logo" aria-hidden="true">
+                <span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span>
+                <span class="ux-circle">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-7.07 17.07A10 10 0 0 0 12 22a10 10 0 0 0 7.07-2.93A10 10 0 0 0 12 2z"/></svg>
+                </span>
+              </div>
+              <div class="ux-glass"></div>
+              <div class="ux-content">
+                <span class="ux-title">Sustainability & ESG</span>
+                <span class="ux-text">10% monthly Net Profit allocation for social welfare, orphan support, and paperless DICOM PACS technology.</span>
+              </div>
+              <div class="ux-bottom">
+                <div class="ux-social">
+                  <span class="ux-tag-badge">10% Tabarru'</span>
+                </div>
+                <div class="ux-more">
+                  <a href="/sustainability" class="ux-more-btn"><span>Open</span></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 06: Newsroom (Prism) -->
+          <div class="ux-parent ux-parent--prism">
+            <div class="ux-card">
+              <div class="ux-logo" aria-hidden="true">
+                <span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span>
+                <span class="ux-circle">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2l9 16H3L12 2zm0 4.5L7.5 16h9L12 6.5z"/></svg>
+                </span>
+              </div>
+              <div class="ux-glass"></div>
+              <div class="ux-content">
+                <span class="ux-title">Newsroom & Media</span>
+                <span class="ux-text">Official corporate announcements, verified press releases, media kits, and strategic milestones.</span>
+              </div>
+              <div class="ux-bottom">
+                <div class="ux-social">
+                  <span class="ux-tag-badge">Press Releases</span>
+                </div>
+                <div class="ux-more">
+                  <a href="/newsroom" class="ux-more-btn"><span>Open</span></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 07: Careers (Cut Rose) -->
+          <div class="ux-parent ux-parent--rose ux-parent--cut">
+            <div class="ux-card">
+              <div class="ux-logo" aria-hidden="true">
+                <span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span>
+                <span class="ux-circle">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="#fff"/></svg>
+                </span>
+              </div>
+              <div class="ux-glass"></div>
+              <div class="ux-content">
+                <span class="ux-title">Careers & Talent</span>
+                <span class="ux-text">Executive governance structuring and medical software technical talent recruitment opportunities.</span>
+              </div>
+              <div class="ux-bottom">
+                <div class="ux-social">
+                  <span class="ux-tag-badge">Recruitment</span>
+                </div>
+                <div class="ux-more">
+                  <a href="/careers" class="ux-more-btn"><span>Open</span></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 08: Headquarters Contact (Void Stack) -->
+          <div class="ux-parent ux-parent--void">
+            <div class="ux-card">
+              <div class="ux-logo" aria-hidden="true">
+                <span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span><span class="ux-circle"></span>
+                <span class="ux-circle">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+              </div>
+              <div class="ux-glass"></div>
+              <div class="ux-content">
+                <span class="ux-title">Executive Contact</span>
+                <span class="ux-text">Registered office location, President Director direct desk, and Corporate Secretary inquiry liaison.</span>
+              </div>
+              <div class="ux-bottom">
+                <div class="ux-social">
+                  <span class="ux-tag-badge">Headquarters</span>
+                </div>
+                <div class="ux-more">
+                  <a href="/contact" class="ux-more-btn"><span>Open</span></a>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -264,235 +334,393 @@ import Footer from '../components/Footer.astro';
   <Footer />
 </Layout>
 
-<script>
-  // 3D Card Carousel Slider Interactivity
-  const track = document.getElementById('portal-slider-track');
-  const btnLeft = document.getElementById('slide-left-btn');
-  const btnRight = document.getElementById('slide-right-btn');
-
-  if (track && btnLeft && btnRight) {
-    const scrollAmount = 340; // width of card + gap
-
-    btnLeft.addEventListener('click', () => {
-      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-
-    btnRight.addEventListener('click', () => {
-      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-  }
-</script>
-
 <style>
-  .corporate-portal-section {
+  .corporate-directory-section {
     background: #ffffff;
-    padding: 4rem 0;
+    padding: 4.5rem 0;
     border-top: 1px solid var(--border-light);
-    perspective: 1200px;
   }
 
-  .section-header-slider {
+  .directory-header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    margin-bottom: 2.25rem;
     gap: 2rem;
     flex-wrap: wrap;
   }
 
-  .header-text {
-    max-width: 750px;
+  .directory-title-block {
+    max-width: 760px;
   }
 
-  .header-text h2 {
-    font-size: clamp(2rem, 3.8vw, 2.7rem);
+  .directory-title-block h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.5rem);
     font-weight: 800;
     color: var(--text-dark);
     margin-top: 0.35rem;
+    letter-spacing: -0.02em;
   }
 
-  .header-text p {
-    font-size: 1.05rem;
+  .directory-title-block p {
+    font-size: 1.02rem;
     color: var(--text-muted);
-    margin-top: 0.35rem;
+    margin-top: 0.45rem;
+    line-height: 1.6;
   }
 
-  /* Slider Controls */
-  .slider-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .slider-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 1.1rem;
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
-
-  .slider-btn:hover {
-    border-color: var(--red-primary);
-    color: var(--red-primary);
-    transform: translateY(-1px);
-  }
-
-  .slider-btn.red-btn {
-    background: var(--red-primary);
-    color: #ffffff;
-    border-color: var(--red-primary);
-  }
-
-  .slider-btn.red-btn:hover {
-    background: var(--red-dark);
-  }
-
-  /* 3D Cards Viewport & Track */
-  .cards-3d-viewport {
-    width: 100%;
-    overflow: hidden;
-    padding: 1.5rem 0 2rem 0;
-  }
-
-  .cards-3d-track {
-    display: flex;
-    gap: 1.75rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    padding: 0.5rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--red-primary) transparent;
-  }
-
-  .cards-3d-track::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .cards-3d-track::-webkit-scrollbar-thumb {
-    background: var(--red-primary);
-    border-radius: 3px;
-  }
-
-  /* 3D Individual Card Styling */
-  .portal-card-3d {
-    flex: 0 0 320px;
-    scroll-snap-align: start;
-    perspective: 1000px;
-  }
-
-  .card-inner-3d {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    overflow: hidden;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.3s ease;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  }
-
-  .portal-card-3d:hover .card-inner-3d {
-    transform: rotateY(-6deg) rotateX(3deg) translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 35px rgba(220, 38, 38, 0.12);
-    border-color: var(--red-primary);
-  }
-
-  .portal-card-3d.featured-3d .card-inner-3d {
-    border-top: 4px solid var(--red-primary);
-    background: #fef2f2;
-  }
-
-  .card-img-box {
-    position: relative;
-    height: 160px;
+  .directory-meta-badge {
     background: #f8fafc;
-    border-bottom: 1px solid var(--border-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    overflow: hidden;
-  }
-
-  .card-img-graphic {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .card-img-graphic.contain-fit {
-    object-fit: contain;
-    max-height: 110px;
-  }
-
-  .portal-card-3d:hover .card-img-graphic {
-    transform: scale(1.06);
-  }
-
-  .card-tag-badge {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 0.2rem 0.5rem;
-    background: #1e293b;
-    color: #ffffff;
-    border-radius: 3px;
-    letter-spacing: 0.05em;
-  }
-
-  .card-tag-badge.red-bg {
-    background: var(--red-primary);
-  }
-
-  .card-content-3d {
-    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 0.75rem 1.15rem;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    gap: 0.2rem;
+    text-align: right;
   }
 
-  .card-num {
-    font-size: 0.775rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
+  .directory-meta-badge .meta-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #64748b;
   }
 
-  .card-content-3d h3 {
-    font-size: 1.2rem;
-    font-weight: 800;
+  .directory-meta-badge .meta-value {
+    font-size: 0.85rem;
+    font-weight: 700;
     color: var(--text-dark);
-    margin: 0.35rem 0 0.5rem 0;
+  }
+
+  /* DepthFold Dimensional 3D Shape Grid */
+  .shape-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 1200px) {
+    .shape-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .shape-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Core 3D Shell */
+  .ux-parent {
+    width: 100%;
+    height: 310px;
+    margin-inline: auto;
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+    filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.08));
+  }
+
+  .ux-card {
+    position: relative;
+    height: 100%;
+    border-radius: 44px;
+    background: var(--ux-grad);
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.55s ease;
+    box-shadow: rgba(0, 0, 0, 0) 40px 50px 25px -40px, rgba(0, 0, 0, 0.12) 0 20px 25px -5px;
+  }
+
+  .ux-parent:hover .ux-card {
+    transform: rotate3d(1, 1, 0, 24deg);
+    box-shadow: rgba(0, 0, 0, 0.22) 24px 44px 28px -36px, rgba(220, 38, 38, 0.12) 0 0 50px -10px, rgba(0, 0, 0, 0.1) 0 20px 30px 0;
+  }
+
+  /* Dimensional Themes */
+  .ux-parent--crimson {
+    --ux-grad: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    --ux-title: #7f1d1d;
+    --ux-body: rgba(127, 29, 29, 0.88);
+    --ux-cta: #dc2626;
+    --ux-orbit: rgba(254, 202, 202, 0.4);
+    --ux-fill: #991b1b;
+  }
+
+  .ux-parent--solar {
+    --ux-grad: linear-gradient(135deg, #fbbf24 0%, #f97316 45%, #dc2626 100%);
+    --ux-title: #7c2d12;
+    --ux-body: rgba(124, 45, 18, 0.88);
+    --ux-cta: #c2410c;
+    --ux-orbit: rgba(254, 243, 199, 0.4);
+    --ux-fill: #9a3412;
+  }
+
+  .ux-parent--mint {
+    --ux-grad: linear-gradient(135deg, rgb(0, 255, 214) 0%, rgb(8, 226, 96) 100%);
+    --ux-title: #00894d;
+    --ux-body: rgba(0, 137, 78, 0.88);
+    --ux-cta: #00894d;
+    --ux-orbit: rgba(0, 249, 203, 0.28);
+    --ux-fill: #00894d;
+  }
+
+  .ux-parent--violet {
+    --ux-grad: linear-gradient(145deg, #a855f7 0%, #6366f1 40%, #ec4899 100%);
+    --ux-title: #3b0764;
+    --ux-body: rgba(59, 7, 100, 0.88);
+    --ux-cta: #7c3aed;
+    --ux-orbit: rgba(216, 180, 254, 0.35);
+    --ux-fill: #5b21b6;
+  }
+
+  .ux-parent--ocean {
+    --ux-grad: linear-gradient(155deg, #22d3ee 0%, #0284c7 50%, #1e3a8a 100%);
+    --ux-title: #0c4a6e;
+    --ux-body: rgba(12, 74, 110, 0.88);
+    --ux-cta: #0369a1;
+    --ux-orbit: rgba(125, 211, 252, 0.35);
+    --ux-fill: #0e7490;
+  }
+
+  .ux-parent--prism {
+    --ux-grad: conic-gradient(from 200deg at 65% 35%, #22d3ee, #818cf8, #f472b6, #facc15, #22d3ee);
+    --ux-title: #0f172a;
+    --ux-body: rgba(15, 23, 42, 0.88);
+    --ux-cta: #4338ca;
+    --ux-orbit: rgba(255, 255, 255, 0.4);
+    --ux-fill: #312e81;
+  }
+
+  .ux-parent--rose {
+    --ux-grad: linear-gradient(135deg, #fb7185 0%, #e11d48 50%, #881337 100%);
+    --ux-title: #4c0519;
+    --ux-body: rgba(76, 5, 25, 0.88);
+    --ux-cta: #be123c;
+    --ux-orbit: rgba(255, 228, 230, 0.4);
+    --ux-fill: #9f1239;
+  }
+
+  .ux-parent--void {
+    --ux-grad: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+    --ux-title: #5eead4;
+    --ux-body: rgba(203, 213, 225, 0.88);
+    --ux-cta: #c084fc;
+    --ux-orbit: rgba(167, 139, 250, 0.25);
+    --ux-fill: #c084fc;
+  }
+
+  /* Shape Modifiers */
+  .ux-parent--cut .ux-card {
+    border-radius: 36px;
+    clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+  }
+
+  .ux-parent--cut .ux-glass {
+    border-radius: 32px !important;
+    clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px);
+  }
+
+  /* Glass Layer */
+  .ux-glass {
+    transform-style: preserve-3d;
+    position: absolute;
+    inset: 8px;
+    border-radius: 45px;
+    border-top-right-radius: 100%;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.85) 100%);
+    transform: translate3d(0, 0, 25px);
+    border-inline-start: 1px solid rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+  }
+
+  .ux-parent--void .ux-glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(15, 23, 42, 0.6) 100%);
+    border-color: rgba(148, 163, 184, 0.25);
+  }
+
+  /* Logo Orbits */
+  .ux-logo {
+    position: absolute;
+    inset-inline-end: 0;
+    top: 0;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .ux-circle {
+    display: block;
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    top: 0;
+    inset-inline-end: 0;
+    background: var(--ux-orbit);
+    box-shadow: rgba(100, 100, 111, 0.2) -8px 8px 20px 0;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .ux-circle:nth-child(1) {
+    width: 155px;
+    transform: translate3d(0, 0, 20px);
+    top: 6px;
+    inset-inline-end: 6px;
+  }
+  .ux-circle:nth-child(2) {
+    width: 125px;
+    transform: translate3d(0, 0, 40px);
+    top: 9px;
+    inset-inline-end: 9px;
+    backdrop-filter: blur(4px);
+    transition-delay: 0.05s;
+  }
+  .ux-circle:nth-child(3) {
+    width: 98px;
+    transform: translate3d(0, 0, 60px);
+    top: 15px;
+    inset-inline-end: 15px;
+    transition-delay: 0.1s;
+  }
+  .ux-circle:nth-child(4) {
+    width: 72px;
+    transform: translate3d(0, 0, 80px);
+    top: 21px;
+    inset-inline-end: 21px;
+    transition-delay: 0.15s;
+  }
+  .ux-circle:nth-child(5) {
+    width: 46px;
+    transform: translate3d(0, 0, 100px);
+    top: 27px;
+    inset-inline-end: 27px;
+    display: grid;
+    place-content: center;
+    transition-delay: 0.2s;
+  }
+
+  .ux-circle:nth-child(5) svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+  }
+
+  .ux-parent:hover .ux-circle:nth-child(2) {
+    transform: translate3d(0, 0, 60px);
+  }
+  .ux-parent:hover .ux-circle:nth-child(3) {
+    transform: translate3d(0, 0, 80px);
+  }
+  .ux-parent:hover .ux-circle:nth-child(4) {
+    transform: translate3d(0, 0, 100px);
+  }
+  .ux-parent:hover .ux-circle:nth-child(5) {
+    transform: translate3d(0, 0, 120px);
+  }
+
+  /* Content */
+  .ux-content {
+    padding: 85px 1.5rem 0 1.5rem;
+    transform: translate3d(0, 0, 26px);
+    position: relative;
+    z-index: 3;
+  }
+
+  .ux-title {
+    display: block;
+    color: var(--ux-title);
+    font-weight: 800;
+    font-size: 1.12rem;
+    letter-spacing: -0.01em;
     line-height: 1.25;
   }
 
-  .card-content-3d p {
-    font-size: 0.875rem;
-    color: var(--text-body);
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-    flex: 1;
+  .ux-text {
+    display: block;
+    margin-top: 0.65rem;
+    color: var(--ux-body);
+    font-size: 0.84rem;
+    line-height: 1.45;
+    font-weight: 600;
   }
 
-  .card-arrow {
-    font-size: 0.85rem;
+  /* Bottom Bar */
+  .ux-bottom {
+    padding: 10px 14px;
+    transform-style: preserve-3d;
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translate3d(0, 0, 26px);
+    z-index: 4;
+  }
+
+  .ux-social {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transform-style: preserve-3d;
+  }
+
+  .ux-tag-badge {
+    font-size: 0.68rem;
     font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--ux-fill);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    letter-spacing: 0.3px;
+  }
+
+  .ux-parent--void .ux-tag-badge {
+    background: rgba(15, 23, 42, 0.7);
+    color: #5eead4;
+    border-color: rgba(94, 234, 212, 0.3);
+  }
+
+  .ux-more {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: flex-end;
+    transition: transform 0.2s ease;
+  }
+
+  .ux-more:hover {
+    transform: translate3d(0, 0, 10px);
+  }
+
+  .ux-more-btn {
+    background: none;
+    border: none;
+    color: var(--ux-cta);
+    font-weight: 800;
+    font-size: 0.75rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     text-decoration: none;
-    margin-top: auto;
+  }
+
+  .ux-more svg {
+    fill: none;
+    stroke: var(--ux-cta);
+    stroke-width: 3px;
+    max-height: 14px;
+    width: 16px;
   }
 
   /* Home Summary Sections */
@@ -552,8 +780,9 @@ import Footer from '../components/Footer.astro';
   }
 
   @media (max-width: 640px) {
-    .portal-card-3d {
-      flex: 0 0 280px;
+    .directory-meta-badge {
+      text-align: left;
+      width: 100%;
     }
   }
 </style>

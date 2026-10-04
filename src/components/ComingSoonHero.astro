@@ -2,10 +2,10 @@
 ---
 
 <section class="fullwidth-section hero-section-lux" id="hero">
-  <!-- Lux background image layer -->
+  <!-- Subtle gradient & soft blur layer behind text on the left -->
   <div class="hero-bg-overlay"></div>
 
-  <div class="container hero-container-lux">
+  <div class="hero-container-lux">
     <div class="hero-content-lux">
       <span class="hero-tag-text red-text">PT CHAIN ASIA CONECT • ENTERPRISE EXPANSION & BUSINESS DEVELOPMENT</span>
 
@@ -17,8 +17,8 @@
         PT CHAIN ASIA CONECT solidifies a strategic transformation towards sustainable physical business operations across Indonesia & the Asian region. Integrating supply chain reliability with stable and measurable real physical value.
       </p>
 
-      <!-- Hero Action Buttons with Neumorphism -->
-      <div class="hero-actions-lux" style="display: flex; align-items: center; gap: 1.25rem; margin-top: 2rem; flex-wrap: wrap;">
+      <!-- Hero Action Buttons -->
+      <div class="hero-actions-lux">
         <a href="/contact" class="btn-more-red" data-i18n="hero_btn_consult">
           <span>Consult Business Solutions →</span>
         </a>
@@ -33,58 +33,127 @@
 <style>
   .hero-section-lux {
     position: relative;
-    padding: 6rem 0;
-    background-image: url('/images/lux-bg.jpg');
+    width: 100%;
+    min-height: 94vh;
+    padding: clamp(8.5rem, 14vh, 11rem) 0 clamp(5rem, 10vh, 7.5rem) 0;
+    display: flex;
+    align-items: center;
+    background-image: url('/Gemini_Generated_Image_pj03k2pj03k2pj03.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: center right;
     background-repeat: no-repeat;
     border-bottom: 1px solid var(--border-light);
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .hero-bg-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.92);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.78) 0%,
+      rgba(255, 255, 255, 0.48) 38%,
+      rgba(255, 255, 255, 0.12) 65%,
+      transparent 100%
+    );
     z-index: 0;
+    pointer-events: none;
   }
 
   .hero-container-lux {
     position: relative;
     z-index: 1;
-    max-width: 900px;
+    width: 100%;
+    padding-left: clamp(1.5rem, 6vw, 5.5rem);
+    padding-right: clamp(1.5rem, 4vw, 3rem);
+    box-sizing: border-box;
   }
 
+  /* Clean Left-Corner Typography (No Box/Card) */
   .hero-content-lux {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    max-width: 780px;
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
   }
 
   .hero-tag-text {
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 0.75rem;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
   }
 
   .hero-title-lux {
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-size: clamp(2.4rem, 4.8vw, 3.8rem);
     font-weight: 800;
-    margin: 0.5rem 0 1rem 0;
+    margin: 0.35rem 0 1.25rem 0;
     line-height: 1.15;
     color: var(--text-dark);
+    letter-spacing: -0.02em;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
   }
 
   .hero-lead-lux {
-    font-size: 1.15rem;
-    line-height: 1.85;
+    font-size: clamp(1.05rem, 1.8vw, 1.18rem);
+    line-height: 1.8;
     color: var(--text-body);
+    margin: 0 0 2.25rem 0;
+    max-width: 700px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .hero-actions-lux {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-secondary-clean {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.6rem;
+    background: #ffffff;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.92rem;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary-clean:hover {
+    border-color: var(--red-primary);
+    color: var(--red-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
     .hero-section-lux {
-      padding: 4rem 0;
+      padding: 7.5rem 0 4.5rem 0;
+      min-height: auto;
+      background-position: center;
+    }
+
+    .hero-container-lux {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .hero-bg-overlay {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(2px);
     }
   }
 </style>
