@@ -15,6 +15,24 @@ export interface NewsItem {
   readTime?: string;
 }
 
+// Helper untuk memastikan format URL gambar (termasuk direct link dari Google Drive atau CDN)
+export function formatImageUrl(url: string): string {
+  if (!url) return '';
+  const trimmed = url.trim();
+
+  // Jika URL adalah link share Google Drive, ubah menjadi direct stream image URL
+  const driveFileMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveFileMatch && driveFileMatch[1]) {
+    return `https://lh3.googleusercontent.com/d/${driveFileMatch[1]}`;
+  }
+  const driveIdMatch = trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (driveIdMatch && driveIdMatch[1]) {
+    return `https://lh3.googleusercontent.com/d/${driveIdMatch[1]}`;
+  }
+
+  return trimmed;
+}
+
 export const fallbackNews: NewsItem[] = [
   {
     id: "1",
@@ -116,7 +134,11 @@ export async function fetchAllNews(): Promise<{ news: NewsItem[]; isLive: boolea
 
               const contentVal = r.isiberita || r.isi || r.content || r.ringkasan || r.excerpt || '';
               const excerptVal = r.ringkasan || r.excerpt || r.deskripsi || (contentVal.length > 150 ? contentVal.substring(0, 150) + '...' : contentVal);
-              const imgVal = r.gambarurl || r.gambar || r.foto || r.imageurl || r.image || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80';
+              
+              // Ambil gambar persis dari kolom Google Sheets dan format secara dinamis
+              const rawImg = r.gambarurl || r.gambar || r.foto || r.imageurl || r.image || r.linkgambar || '';
+              const imgVal = formatImageUrl(rawImg) || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80';
+              
               const linkVal = r.link || r.url || (contentVal.startsWith('http') ? contentVal : '');
 
               return {

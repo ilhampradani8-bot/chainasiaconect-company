@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { fetchAllNews, type NewsItem } from '../../lib/news';
+import { fetchAllNews, formatImageUrl, type NewsItem } from '../../lib/news';
 
 export async function getStaticPaths() {
   const { news } = await fetchAllNews();
@@ -12,22 +12,27 @@ export async function getStaticPaths() {
   }));
 }
 
-interface Props {
-  article: NewsItem;
-  allNews: NewsItem[];
+const { id } = Astro.params;
+
+// Ambil data terbaru secara live dan dinamis langsung dari Google Sheets
+const { news } = await fetchAllNews();
+const article = news.find((n) => String(n.id) === String(id)) || Astro.props.article;
+
+if (!article) {
+  return Astro.redirect('/newsroom');
 }
 
-const { article, allNews } = Astro.props;
+// Pastikan gambar artikel menggunakan URL dinamis yang valid
+const dynamicArticleImage = formatImageUrl(article.imageUrl);
 
 // Filter saran berita (kecuali berita saat ini), maksimal 3 artikel
-const suggestions = allNews
+const suggestions = news
   .filter((n) => String(n.id) !== String(article.id))
   .slice(0, 3);
 
 // Format paragraf isi berita
-const paragraphs = article.content
-  ? article.content.split(/\n\n+/).filter((p) => p.trim().length > 0)
-  : [article.excerpt];
+const rawContent = article.content && article.content.trim().length > 0 ? article.content : article.excerpt;
+const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
 ---
 
 <Layout 
@@ -71,7 +76,9 @@ const paragraphs = article.content
 
           <h1 class="article-headline">{article.title}</h1>
 
-          <p class="article-lead">{article.excerpt}</p>
+          {article.excerpt && (
+            <p class="article-lead">{article.excerpt}</p>
+          )}
 
           <div class="author-source-bar">
             <div class="source-avatar">
@@ -97,16 +104,18 @@ const paragraphs = article.content
           </div>
         </header>
 
-        <!-- Featured Media Banner -->
-        {article.imageUrl && (
+        <!-- Featured Media Banner (100% Dinamis dari Spreadsheet) -->
+        {dynamicArticleImage && (
           <figure class="article-featured-media">
             <img 
-              src={article.imageUrl} 
+              src={dynamicArticleImage} 
               alt={article.title} 
               class="featured-img" 
+              loading="eager"
+              referrerpolicy="no-referrer"
             />
             <figcaption class="media-caption">
-              Dokumentasi Publikasi Resmi — PT CHAIN ASIA CONECT
+              Dokumentasi Resmi — PT CHAIN ASIA CONECT
             </figcaption>
           </figure>
         )}
@@ -166,7 +175,13 @@ const paragraphs = article.content
               <a href={`/newsroom/${sug.id}`} class="suggestion-card">
                 {sug.imageUrl && (
                   <div class="sugg-img-box">
-                    <img src={sug.imageUrl} alt={sug.title} class="sugg-img" loading="lazy" />
+                    <img 
+                      src={formatImageUrl(sug.imageUrl)} 
+                      alt={sug.title} 
+                      class="sugg-img" 
+                      loading="lazy" 
+                      referrerpolicy="no-referrer"
+                    />
                   </div>
                 )}
                 <div class="sugg-body">
@@ -318,7 +333,7 @@ const paragraphs = article.content
   }
 
   .article-lead {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     line-height: 1.65;
     color: #334155;
     margin-bottom: 2rem;
@@ -402,7 +417,7 @@ const paragraphs = article.content
 
   .featured-img {
     width: 100%;
-    max-height: 480px;
+    max-height: 520px;
     object-fit: cover;
     display: block;
   }
