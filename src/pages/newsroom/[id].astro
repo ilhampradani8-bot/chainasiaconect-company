@@ -1,0 +1,647 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { fetchAllNews, type NewsItem } from '../../lib/news';
+
+export async function getStaticPaths() {
+  const { news } = await fetchAllNews();
+  return news.map((item) => ({
+    params: { id: String(item.id) },
+    props: { article: item, allNews: news }
+  }));
+}
+
+interface Props {
+  article: NewsItem;
+  allNews: NewsItem[];
+}
+
+const { article, allNews } = Astro.props;
+
+// Filter saran berita (kecuali berita saat ini), maksimal 3 artikel
+const suggestions = allNews
+  .filter((n) => String(n.id) !== String(article.id))
+  .slice(0, 3);
+
+// Format paragraf isi berita
+const paragraphs = article.content
+  ? article.content.split(/\n\n+/).filter((p) => p.trim().length > 0)
+  : [article.excerpt];
+---
+
+<Layout 
+  title={`${article.title} | Newsroom PT CHAIN ASIA CONECT`}
+  description={article.excerpt || article.title}
+>
+  <Header />
+
+  <main class="reading-page-main">
+    <!-- Top Nav & Breadcrumb Bar -->
+    <div class="reading-nav-bar">
+      <div class="container nav-bar-inner">
+        <a href="/newsroom" class="back-link">
+          <svg viewBox="0 0 20 20" fill="currentColor" class="nav-arrow">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+          </svg>
+          <span>Kembali ke Newsroom</span>
+        </a>
+
+        <div class="breadcrumb-trail">
+          <a href="/">Beranda</a>
+          <span class="sep">/</span>
+          <a href="/newsroom">Newsroom</a>
+          <span class="sep">/</span>
+          <span class="current-crumb">{article.tag}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article Core Container -->
+    <article class="article-container">
+      <div class="container article-inner">
+        
+        <!-- Header Info -->
+        <header class="article-header">
+          <div class="article-badge-row">
+            <span class="article-cat-badge">{article.tag}</span>
+            <span class="article-date-meta">{article.date}</span>
+            <span class="read-estimate">• {article.readTime || '3 min baca'}</span>
+          </div>
+
+          <h1 class="article-headline">{article.title}</h1>
+
+          <p class="article-lead">{article.excerpt}</p>
+
+          <div class="author-source-bar">
+            <div class="source-avatar">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+              </svg>
+            </div>
+            <div class="source-info">
+              <span class="source-name">PT CHAIN ASIA CONECT Corporate Communications</span>
+              <span class="source-desk">Divisi Media & Keterbukaan Informasi Perusahaan</span>
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="article-share-tools">
+              <button type="button" class="share-btn copy-btn" id="copy-btn" title="Salin Tautan Berita">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span id="copy-text">Salin Link</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Featured Media Banner -->
+        {article.imageUrl && (
+          <figure class="article-featured-media">
+            <img 
+              src={article.imageUrl} 
+              alt={article.title} 
+              class="featured-img" 
+            />
+            <figcaption class="media-caption">
+              Dokumentasi Publikasi Resmi — PT CHAIN ASIA CONECT
+            </figcaption>
+          </figure>
+        )}
+
+        <!-- Article Prose Body -->
+        <div class="article-prose">
+          {paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+
+          {article.link && article.link !== '#' && (
+            <div class="article-external-box">
+              <div class="ext-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <div class="ext-content">
+                <h4>Dokumen / Rilis Resmi Eksternal Terkait</h4>
+                <p>Akses dokumen rujukan, arsip PDF, atau portal sumber rilis pers resmi berikut ini.</p>
+                <a href={article.link} target="_blank" rel="noopener noreferrer" class="ext-btn">
+                  Buka Dokumen Resmi →
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Corporate Stamp / Sign-off -->
+        <div class="article-signoff">
+          <div class="signoff-seal">
+            <span class="signoff-tag">OFFICIAL CORPORATE PORTAL</span>
+            <span class="signoff-comp">PT CHAIN ASIA CONECT</span>
+            <span class="signoff-meta">SK AHU-A117353.AH.01.30.Tahun 2026 • NIB 0709260109599</span>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Saran News Section (Related Suggestions) -->
+    {suggestions.length > 0 && (
+      <section class="suggestions-section">
+        <div class="container">
+          <div class="suggestions-header">
+            <span class="sugg-tag red-text">REKOMENDASI ARTIKEL</span>
+            <h2 class="sugg-title">Berita & Informasi Lainnya</h2>
+            <p class="sugg-sub">Jelajahi pembaruan korporasi, pencapaian legalitas, dan agenda kemitraan terbaru.</p>
+          </div>
+
+          <div class="suggestions-grid">
+            {suggestions.map((sug) => (
+              <a href={`/newsroom/${sug.id}`} class="suggestion-card">
+                {sug.imageUrl && (
+                  <div class="sugg-img-box">
+                    <img src={sug.imageUrl} alt={sug.title} class="sugg-img" loading="lazy" />
+                  </div>
+                )}
+                <div class="sugg-body">
+                  <div class="sugg-meta">
+                    <span class="sugg-cat red-text">{sug.tag}</span>
+                    <span class="sugg-date">{sug.date}</span>
+                  </div>
+                  <h3 class="sugg-headline">{sug.title}</h3>
+                  <p class="sugg-excerpt">{sug.excerpt}</p>
+                  <span class="sugg-read-more red-text">
+                    Baca Berita →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Copy link functionality
+  const copyBtn = document.getElementById('copy-btn');
+  const copyText = document.getElementById('copy-text');
+  if (copyBtn && copyText) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        copyText.textContent = 'Tersalin!';
+        setTimeout(() => {
+          copyText.textContent = 'Salin Link';
+        }, 2500);
+      }).catch(() => {
+        copyText.textContent = 'Gagal Salin';
+      });
+    });
+  }
+</script>
+
+<style>
+  .reading-page-main {
+    background: #ffffff;
+    padding-top: 5.5rem;
+  }
+
+  /* Navigation Bar */
+  .reading-nav-bar {
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-light);
+    padding: 1rem 0;
+  }
+
+  .nav-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .back-link:hover {
+    color: var(--red-primary, #dc2626);
+  }
+
+  .nav-arrow {
+    width: 18px;
+    height: 18px;
+  }
+
+  .breadcrumb-trail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .breadcrumb-trail a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .breadcrumb-trail a:hover {
+    color: var(--text-dark);
+    text-decoration: underline;
+  }
+
+  .current-crumb {
+    color: var(--red-primary, #dc2626);
+    font-weight: 700;
+  }
+
+  /* Article Layout */
+  .article-container {
+    padding: 3.5rem 0 4.5rem 0;
+  }
+
+  .article-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .article-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .article-cat-badge {
+    background: #fef2f2;
+    color: var(--red-primary, #dc2626);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+  }
+
+  .article-date-meta, .read-estimate {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .article-headline {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-lead {
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: #334155;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  /* Author Source Bar */
+  .author-source-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 2.5rem;
+  }
+
+  .source-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fee2e2;
+    color: var(--red-primary, #dc2626);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .source-avatar svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .source-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+  }
+
+  .source-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .source-desk {
+    font-size: 0.775rem;
+    color: var(--text-muted);
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    background: #f8fafc;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .share-btn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+
+  /* Featured Image */
+  .article-featured-media {
+    margin-bottom: 2.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    background: #f1f5f9;
+  }
+
+  .featured-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .media-caption {
+    padding: 0.75rem 1rem;
+    font-size: 0.775rem;
+    color: var(--text-muted);
+    background: #fafafa;
+    border-top: 1px solid var(--border-light);
+    text-align: center;
+  }
+
+  /* Prose Body */
+  .article-prose {
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: #1e293b;
+    margin-bottom: 3.5rem;
+  }
+
+  .article-prose p {
+    margin-bottom: 1.6rem;
+  }
+
+  /* External Resource Box */
+  .article-external-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--red-primary, #dc2626);
+    border-radius: 6px;
+    margin: 2.5rem 0;
+  }
+
+  .ext-icon {
+    color: var(--red-primary, #dc2626);
+    margin-top: 2px;
+  }
+
+  .ext-content h4 {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.35rem;
+  }
+
+  .ext-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .ext-btn {
+    display: inline-flex;
+    padding: 0.45rem 1rem;
+    background: var(--red-primary, #dc2626);
+    color: #ffffff;
+    font-size: 0.825rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+  }
+
+  .ext-btn:hover {
+    opacity: 0.9;
+  }
+
+  /* Signoff Box */
+  .article-signoff {
+    padding: 2rem;
+    background: #fafafa;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .signoff-seal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .signoff-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--red-primary, #dc2626);
+  }
+
+  .signoff-comp {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-dark);
+  }
+
+  .signoff-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Suggestions Section */
+  .suggestions-section {
+    background: #f8fafc;
+    border-top: 1px solid var(--border-light);
+    padding: 4.5rem 0;
+  }
+
+  .suggestions-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .sugg-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .sugg-title {
+    font-size: clamp(1.75rem, 3vw, 2.3rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .sugg-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .suggestion-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .suggestion-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    border-color: #cbd5e1;
+  }
+
+  .sugg-img-box {
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    background: #f1f5f9;
+  }
+
+  .sugg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .suggestion-card:hover .sugg-img {
+    transform: scale(1.04);
+  }
+
+  .sugg-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .sugg-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sugg-cat {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .sugg-date {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .sugg-headline {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text-dark);
+    margin-bottom: 0.6rem;
+  }
+
+  .sugg-excerpt {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sugg-read-more {
+    margin-top: auto;
+    font-size: 0.825rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 640px) {
+    .author-source-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+    .article-headline {
+      font-size: 1.75rem;
+    }
+  }
+</style>

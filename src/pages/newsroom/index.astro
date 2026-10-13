@@ -2,321 +2,362 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { fetchAllNews, type NewsItem } from '../../lib/news';
 
-// Google Sheets Published CSV Endpoint dari link publik Anda
-const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQa2Ih5iXjRYbgKJsIFlUTwPw4hl0xDIRn5MCTWd6g7UecdJi8jQLj8qKO_GvBG-JWIQ7n5pju2ZG47/pub?gid=0&single=true&output=csv";
+const { news: newsList, isLive: isFromSpreadsheet } = await fetchAllNews();
 
-interface NewsItem {
-  id?: string;
-  tag: string;
-  date: string;
-  title: string;
-  excerpt: string;
-  content?: string;
-  imageUrl?: string;
-  link?: string;
-  status?: string;
-}
-
-// Fallback berita default jika spreadsheet kosong / offline
-const defaultNews: NewsItem[] = [
-  {
-    id: "1",
-    tag: "PRESS RELEASE",
-    date: "SEPTEMBER 18, 2026",
-    title: "PT CHAIN ASIA CONECT Expands Diagnostic PACS Cloud Software Licensing Partnerships",
-    excerpt: "PT CHAIN ASIA CONECT officially announces the deployment expansion of DICOM PACS diagnostic cloud software systems, strengthening regional health center digital infrastructure across Indonesia.",
-    content: "Official operational deployment across regional health hubs.",
-    imageUrl: "/images/visualization-tutorial-data-loading-and-3d-visualization.png",
-    link: "#",
-    status: "published"
-  },
-  {
-    id: "2",
-    tag: "CORPORATE MILESTONE",
-    date: "SEPTEMBER 1, 2026",
-    title: "Formal Entity Registration Completed Under SK Kemenkumham AHU-A117353.AH.01.30.Year 2026",
-    excerpt: "The company achieves complete legal standing as a registered Individual Limited Liability Company (PT Perorangan) under the Ministry of Law and Human Rights RI and NIB 0709260109599.",
-    content: "The establishment decree is recognized under Indonesian law as an officially incorporated commercial entity.",
-    imageUrl: "/images/ornate-bg.jpg",
-    link: "#",
-    status: "published"
-  }
-];
-
-function parseCSV(text: string): Record<string, string>[] {
-  const lines = text.split(/\r?\n/).filter(line => line.trim().length > 0);
-  if (lines.length < 2) return [];
-
-  const parseRow = (row: string): string[] => {
-    const result: string[] = [];
-    let cur = '';
-    let inQuotes = false;
-    for (let i = 0; i < row.length; i++) {
-      const c = row[i];
-      if (c === '"') {
-        if (inQuotes && row[i + 1] === '"') {
-          cur += '"';
-          i++;
-        } else {
-          inQuotes = !inQuotes;
-        }
-      } else if (c === ',' && !inQuotes) {
-        result.push(cur.trim());
-        cur = '';
-      } else {
-        cur += c;
-      }
-    }
-    result.push(cur.trim());
-    return result;
-  };
-
-  const headers = parseRow(lines[0]).map(h => h.toLowerCase().replace(/[\s\-_]+/g, ''));
-  const rows: Record<string, string>[] = [];
-
-  for (let i = 1; i < lines.length; i++) {
-    const values = parseRow(lines[i]);
-    if (values.every(v => v === '')) continue;
-    const entry: Record<string, string> = {};
-    headers.forEach((h, idx) => {
-      entry[h] = values[idx] || '';
-    });
-    rows.push(entry);
-  }
-
-  return rows;
-}
-
-let newsList: NewsItem[] = defaultNews;
-let isFromSpreadsheet = false;
-
-try {
-  const res = await fetch(GOOGLE_SHEET_CSV_URL, { cache: 'no-store' });
-  if (res.ok) {
-    const csvData = await res.text();
-    if (csvData && csvData.trim().length > 0) {
-      const parsedRows = parseCSV(csvData);
-      if (parsedRows.length > 0) {
-        const fetchedNews: NewsItem[] = parsedRows
-          .map((r, idx) => {
-            const rawStatus = (r.status || 'published').toLowerCase().trim();
-            // Skip draft articles
-            if (rawStatus === 'draft') return null;
-
-            const contentVal = r.isiberita || r.isi || r.content || '';
-            const linkVal = r.link || r.url || (contentVal.startsWith('http') ? contentVal : '#');
-            const imgVal = r.gambarurl || r.gambar || r.foto || r.imageurl || r.image || '';
-
-            return {
-              id: r.id || String(idx + 1),
-              tag: r.kategori || r.tag || r.category || 'MEDIA RELEASE',
-              date: r.tanggal || r.date || 'RECENT',
-              title: r.judul || r.title || '',
-              excerpt: r.ringkasan || r.excerpt || r.deskripsi || '',
-              content: contentVal,
-              imageUrl: imgVal,
-              link: linkVal,
-              status: rawStatus
-            };
-          })
-          .filter((item): item is NewsItem => item !== null && Boolean(item.title && item.title.trim() !== ''));
-
-        if (fetchedNews.length > 0) {
-          newsList = fetchedNews;
-          isFromSpreadsheet = true;
-        }
-      }
-    }
-  }
-} catch (err) {
-  console.warn('Google Sheets fetch notice: Using default news list.', err);
-}
+// Pisahkan berita utama (Headline) dan daftar berita lainnya
+const featuredNews = newsList[0];
+const otherNews = newsList.slice(1);
 ---
 
-<Layout title="Newsroom & Press Releases | PT CHAIN ASIA CONECT" description="Official press releases, corporate announcements, media relations, and company milestones from PT CHAIN ASIA CONECT.">
+<Layout 
+  title="Newsroom & Press Releases | PT CHAIN ASIA CONECT" 
+  description="Official press releases, corporate announcements, media relations, and company milestones from PT CHAIN ASIA CONECT."
+>
   <Header />
-  <main>
+  
+  <main class="newsroom-main">
     <!-- Page Hero Banner -->
-    <section class="page-hero-banner">
+    <section class="newsroom-hero">
       <div class="container">
-        <div class="hero-top-row">
-          <span class="hero-tag red-text">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
+        <div class="hero-top-badge-row">
+          <span class="hero-category-tag red-text">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
           {isFromSpreadsheet && (
-            <span class="sheet-sync-pill">
-              <span class="sync-dot"></span> Live Google Sheets Sync
+            <span class="sheet-live-indicator">
+              <span class="live-pulse"></span> Terhubung Live Google Sheets
             </span>
           )}
         </div>
-        <h1 class="page-hero-title">Newsroom <span class="red-text">& Press Releases</span></h1>
-        <p class="page-hero-desc">
-          Official media releases, strategic announcements, corporate milestones, and institutional press coverage for PT CHAIN ASIA CONECT.
+        <h1 class="hero-main-title">Newsroom <span class="red-text">& Corporate Releases</span></h1>
+        <p class="hero-description">
+          Pusat publikasi resmi, pengumuman korporasi, pencapaian legalitas, dan agenda kemitraan strategis PT CHAIN ASIA CONECT.
         </p>
       </div>
     </section>
 
-    <!-- News List -->
-    <section class="fullwidth-section">
+    <!-- Newsroom Content Section -->
+    <section class="newsroom-feed-section">
       <div class="container">
-        <div class="news-grid">
-          {newsList.map((item) => (
-            <article class="news-card">
-              {item.imageUrl && (
-                <div class="news-image-container">
-                  <img 
-                    src={item.imageUrl} 
-                    alt={item.title} 
-                    class="news-thumbnail" 
-                    loading="lazy" 
-                  />
+        
+        <!-- FEATURED HEADLINE (BERITA UTAMA) -->
+        {featuredNews && (
+          <div class="featured-headline-wrap">
+            <span class="section-sub-label red-text">BERITA UTAMA (HEADLINE)</span>
+            <article class="featured-card">
+              <a href={`/newsroom/${featuredNews.id}`} class="featured-img-anchor">
+                <img 
+                  src={featuredNews.imageUrl} 
+                  alt={featuredNews.title} 
+                  class="featured-photo" 
+                  loading="eager" 
+                />
+              </a>
+              <div class="featured-body">
+                <div class="card-meta-line">
+                  <span class="meta-tag red-text">{featuredNews.tag}</span>
+                  <span class="meta-date">{featuredNews.date}</span>
+                  <span class="meta-readtime">• {featuredNews.readTime || '3 min baca'}</span>
                 </div>
-              )}
-              
-              <div class="news-content-box">
-                <div class="card-meta">
-                  <span class="news-tag red-text">{item.tag.toUpperCase()}</span>
-                  <span class="news-date">{item.date.toUpperCase()}</span>
-                </div>
-                
-                <h2 class="news-headline">{item.title}</h2>
-                
-                {item.excerpt && (
-                  <p class="news-excerpt">
-                    {item.excerpt}
-                  </p>
-                )}
-
-                <!-- Full Content Expander if content exists and is not just a link -->
-                {item.content && !item.content.startsWith('http') && item.content !== item.excerpt && (
-                  <details class="news-details-block">
-                    <summary class="news-details-toggle">
-                      <span>Baca Isi Lengkap Berita</span>
-                      <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                      </svg>
-                    </summary>
-                    <div class="news-details-body">
-                      <p>{item.content}</p>
-                    </div>
-                  </details>
-                )}
-
-                <!-- Action Button / Link -->
-                <div class="news-action-row">
-                  {item.link && item.link !== '#' ? (
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" class="news-link red-text">
-                      <span>Buka Dokumen / Link Sumber →</span>
-                    </a>
-                  ) : (
-                    <a href="#" class="news-link red-text" onclick="alert('Membuka arsip rilis resmi PT CHAIN ASIA CONECT...'); return false;">
-                      <span>Arsip Rilis Resmi →</span>
-                    </a>
-                  )}
+                <h2 class="featured-title">
+                  <a href={`/newsroom/${featuredNews.id}`}>{featuredNews.title}</a>
+                </h2>
+                <p class="featured-excerpt">
+                  {featuredNews.excerpt}
+                </p>
+                <div class="card-footer-action">
+                  <a href={`/newsroom/${featuredNews.id}`} class="read-article-btn red-text">
+                    <span>Baca Berita Lengkap →</span>
+                  </a>
                 </div>
               </div>
             </article>
-          ))}
+          </div>
+        )}
+
+        <!-- LIST DAFTAR BERITA (DESKTOP KANAN - KIRI) -->
+        <div class="news-list-container">
+          <div class="feed-header-line">
+            <span class="section-sub-label red-text">SEMUA ARTIKEL & PENGUMUMAN</span>
+            <span class="feed-counter">Total: {newsList.length} Berita</span>
+          </div>
+
+          <div class="split-cards-stack">
+            {newsList.map((item, index) => (
+              <article class="editorial-split-card">
+                <!-- Sisi Kiri: Foto / Media -->
+                <a href={`/newsroom/${item.id}`} class="split-media-col">
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.title} 
+                    class="split-card-img" 
+                    loading="lazy" 
+                  />
+                  <span class="hover-view-pill">Buka Berita</span>
+                </a>
+
+                <!-- Sisi Kanan: Konten Berita -->
+                <div class="split-content-col">
+                  <div class="card-meta-line">
+                    <span class="meta-tag red-text">{item.tag}</span>
+                    <span class="meta-date">{item.date}</span>
+                    <span class="meta-readtime">• {item.readTime || '3 min baca'}</span>
+                  </div>
+
+                  <h3 class="split-card-title">
+                    <a href={`/newsroom/${item.id}`}>{item.title}</a>
+                  </h3>
+
+                  <p class="split-card-excerpt">
+                    {item.excerpt}
+                  </p>
+
+                  <div class="split-card-footer">
+                    <a href={`/newsroom/${item.id}`} class="read-article-btn red-text">
+                      <span>Baca Selengkapnya</span>
+                      <svg viewBox="0 0 20 20" fill="currentColor" class="btn-arrow-icon">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
         </div>
+
       </div>
     </section>
   </main>
+
   <Footer />
 </Layout>
 
 <style>
-  .page-hero-banner {
-    background: #f8fafc;
-    border-bottom: 1px solid var(--border-light);
-    padding: clamp(7.5rem, 12vh, 9rem) 0 3.5rem 0;
+  .newsroom-main {
+    background: #ffffff;
+    min-height: 100vh;
   }
 
-  .hero-top-row {
+  /* Hero Section */
+  .newsroom-hero {
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-light);
+    padding: clamp(7.5rem, 12vh, 8.5rem) 0 3.5rem 0;
+  }
+
+  .hero-top-badge-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     flex-wrap: wrap;
   }
 
-  .hero-tag {
-    font-size: 0.8rem;
-    font-weight: 700;
+  .hero-category-tag {
+    font-size: 0.775rem;
+    font-weight: 800;
     letter-spacing: 0.08em;
-    display: inline-block;
   }
 
-  .sheet-sync-pill {
+  .sheet-live-indicator {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.45rem;
     font-size: 0.72rem;
     font-weight: 700;
     color: #166534;
     background: #dcfce7;
     border: 1px solid #bbf7d0;
-    padding: 0.25rem 0.65rem;
+    padding: 0.3rem 0.75rem;
     border-radius: 999px;
   }
 
-  .sync-dot {
-    width: 6px;
-    height: 6px;
+  .live-pulse {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: #16a34a;
-    display: inline-block;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
   }
 
-  .page-hero-title {
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
+  .hero-main-title {
+    font-size: clamp(2.3rem, 4.2vw, 3.4rem);
     font-weight: 800;
     color: var(--text-dark);
     line-height: 1.15;
   }
 
-  .page-hero-desc {
-    font-size: 1.05rem;
+  .hero-description {
+    font-size: 1.075rem;
     color: var(--text-body);
-    max-width: 800px;
-    margin-top: 0.75rem;
+    max-width: 820px;
+    margin-top: 0.85rem;
     line-height: 1.6;
   }
 
-  .news-grid {
+  /* Content Section */
+  .newsroom-feed-section {
+    padding: 3.5rem 0 5.5rem 0;
+  }
+
+  .section-sub-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.85rem;
+  }
+
+  /* FEATURED HEADLINE CARD */
+  .featured-headline-wrap {
+    margin-bottom: 4rem;
+  }
+
+  .featured-card {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+    border-color: #cbd5e1;
+  }
+
+  .featured-img-anchor {
+    position: relative;
+    overflow: hidden;
+    background: #f1f5f9;
+    min-height: 360px;
+    display: block;
+  }
+
+  .featured-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .featured-card:hover .featured-photo {
+    transform: scale(1.03);
+  }
+
+  .featured-body {
+    padding: 2.75rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card-meta-line {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    background: #fef2f2;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+  }
+
+  .meta-date, .meta-readtime {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .featured-title {
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+
+  .featured-title a {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .featured-title a:hover {
+    color: var(--red-primary, #dc2626);
+  }
+
+  .featured-excerpt {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #475569;
+    margin-bottom: 1.75rem;
+  }
+
+  /* LIST DAFTAR BERITA (KANAN - KIRI) */
+  .feed-header-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .feed-counter {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .split-cards-stack {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 2.5rem 0;
   }
 
-  .news-card {
+  /* EDITORIAL SPLIT CARD (DESKTOP KANAN KIRI) */
+  .editorial-split-card {
+    display: grid;
+    grid-template-columns: 360px 1fr;
     background: #ffffff;
     border: 1px solid var(--border-light);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-    display: flex;
-    flex-direction: row;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
 
-  .news-card:hover {
+  .editorial-split-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
     border-color: #cbd5e1;
   }
 
-  /* Image Thumbnail Box */
-  .news-image-container {
-    width: 320px;
-    min-height: 220px;
-    background: #f1f5f9;
-    flex-shrink: 0;
+  /* Sisi Kiri Foto */
+  .split-media-col {
     position: relative;
     overflow: hidden;
+    background: #f1f5f9;
+    display: block;
+    height: 100%;
+    min-height: 230px;
   }
 
-  .news-thumbnail {
+  .split-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -324,123 +365,115 @@ try {
     transition: transform 0.4s ease;
   }
 
-  .news-card:hover .news-thumbnail {
-    transform: scale(1.03);
+  .editorial-split-card:hover .split-card-img {
+    transform: scale(1.04);
   }
 
-  .news-content-box {
+  .hover-view-pill {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .editorial-split-card:hover .hover-view-pill {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Sisi Kanan Konten */
+  .split-content-col {
     padding: 2rem 2.25rem;
     display: flex;
     flex-direction: column;
-    flex: 1;
     justify-content: center;
   }
 
-  .card-meta {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    margin-bottom: 0.65rem;
-  }
-
-  .news-tag {
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-  }
-
-  .news-date {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 600;
-  }
-
-  .news-headline {
-    font-size: clamp(1.3rem, 2vw, 1.65rem);
+  .split-card-title {
+    font-size: clamp(1.25rem, 1.8vw, 1.55rem);
     font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+  }
+
+  .split-card-title a {
     color: var(--text-dark);
-    margin-bottom: 0.65rem;
-    line-height: 1.3;
+    text-decoration: none;
+    transition: color 0.15s ease;
   }
 
-  .news-excerpt {
+  .split-card-title a:hover {
+    color: var(--red-primary, #dc2626);
+  }
+
+  .split-card-excerpt {
     font-size: 0.95rem;
-    color: var(--text-body);
-    line-height: 1.65;
-    margin-bottom: 1rem;
-  }
-
-  /* Details Dropdown */
-  .news-details-block {
-    margin-bottom: 1rem;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 1.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .news-details-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.6rem 0.9rem;
-    font-size: 0.825rem;
-    font-weight: 700;
-    color: var(--red-primary, #dc2626);
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .chevron-icon {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.2s ease;
-  }
-
-  .news-details-block[open] .chevron-icon {
-    transform: rotate(180deg);
-  }
-
-  .news-details-body {
-    padding: 0.75rem 0.9rem;
-    border-top: 1px solid #e2e8f0;
-    font-size: 0.9rem;
-    line-height: 1.65;
-    color: var(--text-body);
-    background: #ffffff;
-  }
-
-  .news-action-row {
+  .split-card-footer {
     margin-top: auto;
-    padding-top: 0.5rem;
   }
 
-  .news-link {
+  .read-article-btn {
     font-size: 0.85rem;
     font-weight: 700;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    transition: opacity 0.2s ease;
+    gap: 0.4rem;
+    transition: gap 0.2s ease, opacity 0.2s ease;
   }
 
-  .news-link:hover {
-    opacity: 0.8;
-    text-decoration: underline;
+  .read-article-btn:hover {
+    gap: 0.65rem;
+    opacity: 0.85;
   }
 
-  @media (max-width: 860px) {
-    .news-card {
-      flex-direction: column;
+  .btn-arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Responsif Mobile & Tablet */
+  @media (max-width: 900px) {
+    .featured-card {
+      grid-template-columns: 1fr;
     }
 
-    .news-image-container {
-      width: 100%;
-      height: 200px;
+    .featured-img-anchor {
+      min-height: 240px;
     }
 
-    .news-content-box {
+    .featured-body {
+      padding: 1.75rem;
+    }
+
+    .editorial-split-card {
+      grid-template-columns: 1fr;
+    }
+
+    .split-media-col {
+      min-height: 220px;
+      height: 220px;
+    }
+
+    .split-content-col {
       padding: 1.5rem;
     }
   }
