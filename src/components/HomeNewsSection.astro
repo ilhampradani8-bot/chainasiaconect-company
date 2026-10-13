@@ -12,17 +12,17 @@ const top2News = news.slice(0, 2);
     <!-- Section Header -->
     <div class="home-news-header">
       <div class="header-left">
-        <span class="section-tag red-text">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
+        <span class="section-tag red-text" data-i18n="home_news_tag">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
         <h2 class="section-title">
-          Warta Terkini <span class="red-text">& Berita Korporasi</span>
+          <span data-i18n="home_news_title_prefix">Warta Terkini </span><span class="red-text" data-i18n="home_news_title_highlight">& Berita Korporasi</span>
         </h2>
-        <p class="section-subtitle">
+        <p class="section-subtitle" data-i18n="home_news_subtitle">
           Publikasi resmi, rilis media, dan pengumuman strategis PT CHAIN ASIA CONECT yang diperbarui secara langsung.
         </p>
       </div>
       <div class="header-right">
         <a href="/newsroom" class="btn-more-red">
-          <span>Lihat Semua Berita →</span>
+          <span data-i18n="home_news_btn_all">Lihat Semua Berita →</span>
         </a>
       </div>
     </div>
@@ -59,7 +59,7 @@ const top2News = news.slice(0, 2);
 
             <div class="card-action">
               <a href={`/newsroom/${item.slug}`} class="card-link red-text">
-                <span>Baca Berita Selengkapnya</span>
+                <span data-i18n="home_news_read_more">Baca Selengkapnya →</span>
                 <svg viewBox="0 0 20 20" fill="currentColor" class="arrow-icon">
                   <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
                 </svg>
@@ -73,7 +73,7 @@ const top2News = news.slice(0, 2);
     <!-- Mobile Button More (Tampil di bawah grid jika layar HP) -->
     <div class="mobile-more-wrap">
       <a href="/newsroom" class="btn-more-red full-mobile">
-        <span>Buka Semua Berita di Newsroom →</span>
+        <span data-i18n="home_news_btn_all">Lihat Semua Berita →</span>
       </a>
     </div>
 
