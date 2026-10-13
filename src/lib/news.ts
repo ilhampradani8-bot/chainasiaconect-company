@@ -4,6 +4,7 @@ export const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2P
 
 export interface NewsItem {
   id: string;
+  slug: string;
   tag: string;
   date: string;
   title: string;
@@ -13,6 +14,24 @@ export interface NewsItem {
   link?: string;
   status: string;
   readTime?: string;
+}
+
+// Helper untuk membuat slug SEO ramah mesin pencari dari judul rilis
+export function slugify(text: string): string {
+  if (!text) return '';
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/[àáâãäå]/g, 'a')
+    .replace(/[èéêë]/g, 'e')
+    .replace(/[ìíîï]/g, 'i')
+    .replace(/[òóôõö]/g, 'o')
+    .replace(/[ùúûü]/g, 'u')
+    .replace(/[ñ]/g, 'n')
+    .replace(/[^\w\s-]/g, '') // hapus karakter selain huruf, angka, spasi, dash
+    .replace(/[\s_-]+/g, '-') // ganti spasi & underscore jadi 1 dash
+    .replace(/^-+|-+$/g, ''); // bersihkan dash di awal/akhir
 }
 
 // Helper untuk memastikan format URL gambar (termasuk direct link dari Google Drive atau CDN)
@@ -36,39 +55,42 @@ export function formatImageUrl(url: string): string {
 export const fallbackNews: NewsItem[] = [
   {
     id: "1",
+    slug: "pt-chain-asia-conect-perluas-jaringan-rantai-pasok-di-wilayah-krui",
     tag: "PRESS RELEASE",
     date: "14 OKTOBER 2026",
     title: "PT CHAIN ASIA CONECT Memperluas Jaringan Rantai Pasok Terintegrasi di Wilayah Krui",
     excerpt: "Langkah transformasi strategis berorientasi pada keberlanjutan sektor riil guna memperkuat keandalan rantai pasok dan kemitraan B2B di Pesisir Barat.",
     content: "Keputusan strategis PT CHAIN ASIA CONECT untuk merambah sektor bisnis riil di kawasan Krui, Pesisir Barat, merupakan langkah transformasi usaha yang terukur dan berorientasi pada keberlanjutan.\n\nBerbeda dengan model bisnis spekulatif, operasional bisnis fisik di kawasan potensial ini memberikan fondasi yang kokoh melalui arus kas harian yang stabil (real cash flow), ketersediaan aset terwujud, serta pangsa pasar yang terukur secara riil.\n\nKata 'Chain' direorientasikan secara profesional untuk merepresentasikan keandalan Rantai Pasok (Supply Chain) serta integrasi Rantai Nilai Usaha yang saling menguatkan dalam ekosistem bisnis lokal maupun regional bersama para mitra akomodasi, perhotelan, dan industri pendukung.",
-    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://asset.kompas.com/crops/NV9tIhkK0pHK_HOeriHqeHM2egM=/88x0:931x562/1200x800/data/photo/2020/02/27/5e57c7cccd49e.jpg",
     link: "#",
     status: "published",
     readTime: "3 min baca"
   },
   {
     id: "2",
-    tag: "CORPORATE MILESTONE",
-    date: "1 SEPTEMBER 2026",
-    title: "Legalitas Badan Hukum Resmi Disahkan Melalui SK Kemenkumham RI AHU-A117353",
-    excerpt: "PT CHAIN ASIA CONECT resmi terdaftar sebagai entitas Perseroan Perorangan berbadan hukum sah dengan NIB 0709260109599 dan KBLI 62193.",
-    content: "PT CHAIN ASIA CONECT telah terdaftar resmi sebagai PT Perorangan berbadan hukum sah pada 1 September 2026 dengan Nomor Keputusan Menteri Hukum dan HAM RI: AHU-A117353.AH.01.30.Tahun 2026 yang ditetapkan di Jakarta pada tanggal 29 Agustus 2026.\n\nSelain itu, perusahaan juga telah mengantongi Nomor Induk Berusaha (NIB) 0709260109599 pada sistem Online Single Submission (OSS BKPM) dengan klasifikasi KBLI 62193 (Aktivitas Pengembangan Aplikasi Berbasis Teknologi Blockchain & Sistem Terintegrasi).\n\nLegalitas ini mempertegas kepatuhan hukum penuh dan memberikan jaminan kredibilitas tertinggi bagi seluruh mitra korporasi, perbankan, dan pemangku kepentingan strategis.",
-    imageUrl: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
+    slug: "ekspansi-lisensi-perangkat-lunak-diagnostik-pacs-cloud-medis",
+    tag: "PARTNERSHIP",
+    date: "10 OKTOBER 2026",
+    title: "Ekspansi Lisensi Perangkat Lunak Diagnostik PACS & Cloud Medis",
+    excerpt: "Penyediaan lisensi perangkat lunak DICOM PACS untuk fasilitas kesehatan dan laboratorium rujukan regional.",
+    content: "Perusahaan berhasil bernegosiasi dengan perusahaan mitra untuk pembelian DICOMS PACS tingkat tinggi untuk keperluan universitas dan pemenuhan fasilitas.\n\nSebagai bagian dari pilar inovasi teknologi, implementasi lisensi perangkat lunak sistem PACS (Picture Archiving and Communication System) berbasis cloud dengan standar internasional DICOM memfasilitasi transmisi, penyimpanan, dan analisis citra medis diagnostik beresolusi tinggi antar fasilitas kesehatan di daerah.",
+    imageUrl: "https://media.istockphoto.com/id/2190098690/id/foto/pemandangan-sudut-rendah-pada-gedung-perkantoran-modern-dengan-jendela-kaca-biru.jpg?s=1024x1024&w=is&k=20&c=Ez-60nlXTo1QWZiGVRNjgCZaltrMlM6E0S6P5qISuZk=",
     link: "#",
     status: "published",
-    readTime: "2 min baca"
+    readTime: "3 min baca"
   },
   {
     id: "3",
-    tag: "PARTNERSHIP",
-    date: "25 SEPTEMBER 2026",
-    title: "Kemitraan Lisensi Perangkat Lunak Diagnostik Cloud & Standar DICOM PACS Regional",
-    excerpt: "Penguatan kemitraan strategis lisensi perangkat lunak imaging diagnostik PACS untuk mempercepat digitalisasi fasilitas layanan medis regional.",
-    content: "Sebagai bagian dari pilar inovasi teknologi, PT CHAIN ASIA CONECT mengumumkan perluasan implementasi lisensi perangkat lunak sistem PACS (Picture Archiving and Communication System) berbasis cloud dengan standar internasional DICOM.\n\nInisiatif ini dirancang guna memfasilitasi transmisi, penyimpanan, dan analisis citra medis diagnostik beresolusi tinggi antar fasilitas kesehatan di daerah, menghubungkan sentra diagnostik perifer dengan tenaga ahli secara real-time dan aman.",
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+    slug: "rencana-peluncuran-layanan-baru-kuartal-iv-2026",
+    tag: "CORPORATE MILESTONE",
+    date: "20 OKTOBER 2026",
+    title: "Rencana Peluncuran Layanan Baru Kuartal IV 2026",
+    excerpt: "Rencana ekspansi layanan pendukung operasional tahap kedua.",
+    content: "Berita ini merupakan bagian dari roadmap pengembangan usaha PT CHAIN ASIA CONECT untuk memperkuat kehadiran jaringan operasional riil di kawasan regional.",
+    imageUrl: "https://media.istockphoto.com/id/2190098690/id/foto/pemandangan-sudut-rendah-pada-gedung-perkantoran-modern-dengan-jendela-kaca-biru.jpg?s=1024x1024&w=is&k=20&c=Ez-60nlXTo1QWZiGVRNjgCZaltrMlM6E0S6P5qISuZk=",
     link: "#",
     status: "published",
-    readTime: "4 min baca"
+    readTime: "2 min baca"
   }
 ];
 
@@ -135,14 +157,16 @@ export async function fetchAllNews(): Promise<{ news: NewsItem[]; isLive: boolea
               const contentVal = r.isiberita || r.isi || r.content || r.ringkasan || r.excerpt || '';
               const excerptVal = r.ringkasan || r.excerpt || r.deskripsi || (contentVal.length > 150 ? contentVal.substring(0, 150) + '...' : contentVal);
               
-              // Ambil gambar persis dari kolom Google Sheets dan format secara dinamis
               const rawImg = r.gambarurl || r.gambar || r.foto || r.imageurl || r.image || r.linkgambar || '';
               const imgVal = formatImageUrl(rawImg) || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80';
               
               const linkVal = r.link || r.url || (contentVal.startsWith('http') ? contentVal : '');
+              const cleanId = (r.id && r.id.trim()) || String(idx + 1);
+              const generatedSlug = slugify(titleVal) || cleanId;
 
               return {
-                id: (r.id && r.id.trim()) || String(idx + 1),
+                id: cleanId,
+                slug: generatedSlug,
                 tag: (r.kategori || r.tag || r.category || 'PRESS RELEASE').toUpperCase(),
                 date: (r.tanggal || r.date || 'TERBARU').toUpperCase(),
                 title: titleVal,

@@ -6,44 +6,105 @@ import { fetchAllNews, formatImageUrl, type NewsItem } from '../../lib/news';
 
 export async function getStaticPaths() {
   const { news } = await fetchAllNews();
-  return news.map((item) => ({
-    params: { id: String(item.id) },
-    props: { article: item, allNews: news }
-  }));
+  const paths = [];
+  for (const item of news) {
+    // Generate route for SEO Title Slug
+    paths.push({
+      params: { id: item.slug },
+      props: { article: item, allNews: news }
+    });
+    // Juga dukung route numeric id agar backwards-compatible
+    if (item.id && item.id !== item.slug) {
+      paths.push({
+        params: { id: String(item.id) },
+        props: { article: item, allNews: news }
+      });
+    }
+  }
+  return paths;
 }
 
 const { id } = Astro.params;
 
 // Ambil data terbaru secara live dan dinamis langsung dari Google Sheets
 const { news } = await fetchAllNews();
-const article = news.find((n) => String(n.id) === String(id)) || Astro.props.article;
+const article = news.find((n) => n.slug === id || String(n.id) === String(id)) || Astro.props.article;
 
 if (!article) {
   return Astro.redirect('/newsroom');
 }
+
+// Canonical URL SEO ramah Google
+const canonicalUrl = `https://www.chainasiaconect.company/newsroom/${article.slug}`;
 
 // Pastikan gambar artikel menggunakan URL dinamis yang valid
 const dynamicArticleImage = formatImageUrl(article.imageUrl);
 
 // Filter saran berita (kecuali berita saat ini), maksimal 3 artikel
 const suggestions = news
-  .filter((n) => String(n.id) !== String(article.id))
+  .filter((n) => n.slug !== article.slug && String(n.id) !== String(article.id))
   .slice(0, 3);
 
 // Format paragraf isi berita
 const rawContent = article.content && article.content.trim().length > 0 ? article.content : article.excerpt;
 const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
+
+// Rich Schema.org NewsArticle Structured Data untuk Google Search & Google News
+const newsArticleSchema = {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": article.title,
+  "description": article.excerpt,
+  "image": [dynamicArticleImage || "https://www.chainasiaconect.company/images/CAC-LOGO.jpg"],
+  "datePublished": "2026-10-14T08:00:00+07:00",
+  "dateModified": "2026-10-14T08:00:00+07:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl
+  },
+  "author": [
+    {
+      "@type": "Organization",
+      "name": "PT CHAIN ASIA CONECT Corporate Communications",
+      "url": "https://www.chainasiaconect.company"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "PT CHAIN ASIA CONECT",
+    "url": "https://www.chainasiaconect.company",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.chainasiaconect.company/images/CAC-LOGO.jpg"
+    }
+  }
+};
+
+// Siapkan teks share
+const shareText = encodeURIComponent(`${article.title} - PT CHAIN ASIA CONECT`);
+const waShareUrl = `https://api.whatsapp.com/send?text=${shareText}%20${encodeURIComponent(canonicalUrl)}`;
+const xShareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(canonicalUrl)}`;
+const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`;
 ---
 
 <Layout 
   title={`${article.title} | Newsroom PT CHAIN ASIA CONECT`}
   description={article.excerpt || article.title}
+  canonical={canonicalUrl}
+  image={dynamicArticleImage}
+  ogType="article"
+  articleMeta={{
+    publishedTime: "2026-10-14T08:00:00+07:00",
+    author: "PT CHAIN ASIA CONECT Corporate Communications",
+    section: article.tag
+  }}
+  extraSchema={newsArticleSchema}
 >
   <Header />
 
   <main class="reading-page-main">
     <!-- Top Nav & Breadcrumb Bar -->
-    <div class="reading-nav-bar">
+    <nav class="reading-nav-bar" aria-label="Navigasi Berita">
       <div class="container nav-bar-inner">
         <a href="/newsroom" class="back-link">
           <svg viewBox="0 0 20 20" fill="currentColor" class="nav-arrow">
@@ -60,46 +121,62 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
           <span class="current-crumb">{article.tag}</span>
         </div>
       </div>
-    </div>
+    </nav>
 
     <!-- Article Core Container -->
-    <article class="article-container">
+    <article class="article-container" itemscope itemtype="https://schema.org/NewsArticle">
       <div class="container article-inner">
         
         <!-- Header Info -->
         <header class="article-header">
           <div class="article-badge-row">
             <span class="article-cat-badge">{article.tag}</span>
-            <span class="article-date-meta">{article.date}</span>
+            <time class="article-date-meta" datetime="2026-10-14">{article.date}</time>
             <span class="read-estimate">• {article.readTime || '3 min baca'}</span>
           </div>
 
-          <h1 class="article-headline">{article.title}</h1>
+          <h1 class="article-headline" itemprop="headline">{article.title}</h1>
 
           {article.excerpt && (
-            <p class="article-lead">{article.excerpt}</p>
+            <p class="article-lead" itemprop="description">{article.excerpt}</p>
           )}
 
           <div class="author-source-bar">
-            <div class="source-avatar">
+            <div class="source-avatar" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
               </svg>
             </div>
             <div class="source-info">
-              <span class="source-name">PT CHAIN ASIA CONECT Corporate Communications</span>
-              <span class="source-desk">Divisi Media & Keterbukaan Informasi Perusahaan</span>
+              <span class="source-name" itemprop="author">PT CHAIN ASIA CONECT Corporate Communications</span>
+              <span class="source-desk">Divisi Media & Keterbukaan Informasi Publik</span>
             </div>
 
-            <!-- Share Buttons -->
+            <!-- Share Buttons Row -->
             <div class="article-share-tools">
+              <!-- Salin Link -->
               <button type="button" class="share-btn copy-btn" id="copy-btn" title="Salin Tautan Berita">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                   <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                 </svg>
                 <span id="copy-text">Salin Link</span>
               </button>
+
+              <!-- WhatsApp -->
+              <a href={waShareUrl} target="_blank" rel="noopener noreferrer" class="share-btn wa-share" title="Bagikan ke WhatsApp">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+
+              <!-- X / Twitter -->
+              <a href={xShareUrl} target="_blank" rel="noopener noreferrer" class="share-btn x-share" title="Bagikan ke X">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
             </div>
           </div>
         </header>
@@ -113,15 +190,16 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
               class="featured-img" 
               loading="eager"
               referrerpolicy="no-referrer"
+              itemprop="image"
             />
             <figcaption class="media-caption">
-              Dokumentasi Resmi — PT CHAIN ASIA CONECT
+              Dokumentasi Publikasi Resmi — PT CHAIN ASIA CONECT
             </figcaption>
           </figure>
         )}
 
         <!-- Article Prose Body -->
-        <div class="article-prose">
+        <div class="article-prose" itemprop="articleBody">
           {paragraphs.map((p) => (
             <p>{p}</p>
           ))}
@@ -162,7 +240,7 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
 
     <!-- Saran News Section (Related Suggestions) -->
     {suggestions.length > 0 && (
-      <section class="suggestions-section">
+      <section class="suggestions-section" aria-label="Berita Rekomendasi">
         <div class="container">
           <div class="suggestions-header">
             <span class="sugg-tag red-text">REKOMENDASI ARTIKEL</span>
@@ -172,7 +250,7 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
 
           <div class="suggestions-grid">
             {suggestions.map((sug) => (
-              <a href={`/newsroom/${sug.id}`} class="suggestion-card">
+              <a href={`/newsroom/${sug.slug}`} class="suggestion-card">
                 {sug.imageUrl && (
                   <div class="sugg-img-box">
                     <img 
@@ -207,13 +285,14 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
 </Layout>
 
 <script>
-  // Copy link functionality
+  // Copy canonical full link
   const copyBtn = document.getElementById('copy-btn');
   const copyText = document.getElementById('copy-text');
   if (copyBtn && copyText) {
     copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        copyText.textContent = 'Tersalin!';
+      const shareUrl = window.location.href;
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        copyText.textContent = 'Link Tersalin!';
         setTimeout(() => {
           copyText.textContent = 'Salin Link';
         }, 2500);
@@ -349,6 +428,7 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
     margin-bottom: 2.5rem;
+    flex-wrap: wrap;
   }
 
   .source-avatar {
@@ -373,6 +453,7 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
     flex-direction: column;
     gap: 0.15rem;
     flex: 1;
+    min-width: 200px;
   }
 
   .source-name {
@@ -386,17 +467,25 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
     color: var(--text-muted);
   }
 
+  .article-share-tools {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
   .share-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.5rem 0.9rem;
+    padding: 0.45rem 0.85rem;
     background: #f8fafc;
     border: 1px solid var(--border-light);
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--text-dark);
+    text-decoration: none;
     cursor: pointer;
     transition: all 0.15s ease;
   }
@@ -404,6 +493,20 @@ const paragraphs = rawContent.split(/\n\n+/).filter((p) => p.trim().length > 0);
   .share-btn:hover {
     background: #f1f5f9;
     border-color: #cbd5e1;
+  }
+
+  .wa-share {
+    color: #15803d;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+
+  .wa-share:hover {
+    background: #dcfce7;
+  }
+
+  .x-share {
+    padding: 0.45rem 0.65rem;
   }
 
   /* Featured Image */

@@ -45,7 +45,7 @@ const otherNews = newsList.slice(1);
           <div class="featured-headline-wrap">
             <span class="section-sub-label red-text">BERITA UTAMA (HEADLINE)</span>
             <article class="featured-card">
-              <a href={`/newsroom/${featuredNews.id}`} class="featured-img-anchor">
+              <a href={`/newsroom/${featuredNews.slug}`} class="featured-img-anchor">
                 <img 
                   src={featuredNews.imageUrl} 
                   alt={featuredNews.title} 
@@ -61,13 +61,13 @@ const otherNews = newsList.slice(1);
                   <span class="meta-readtime">• {featuredNews.readTime || '3 min baca'}</span>
                 </div>
                 <h2 class="featured-title">
-                  <a href={`/newsroom/${featuredNews.id}`}>{featuredNews.title}</a>
+                  <a href={`/newsroom/${featuredNews.slug}`}>{featuredNews.title}</a>
                 </h2>
                 <p class="featured-excerpt">
                   {featuredNews.excerpt}
                 </p>
                 <div class="card-footer-action">
-                  <a href={`/newsroom/${featuredNews.id}`} class="read-article-btn red-text">
+                  <a href={`/newsroom/${featuredNews.slug}`} class="read-article-btn red-text">
                     <span>Baca Berita Lengkap →</span>
                   </a>
                 </div>
@@ -87,7 +87,7 @@ const otherNews = newsList.slice(1);
             {newsList.map((item, index) => (
               <article class="editorial-split-card">
                 <!-- Sisi Kiri: Foto / Media -->
-                <a href={`/newsroom/${item.id}`} class="split-media-col">
+                <a href={`/newsroom/${item.slug}`} class="split-media-col">
                   <img 
                     src={item.imageUrl} 
                     alt={item.title} 
@@ -107,7 +107,7 @@ const otherNews = newsList.slice(1);
                   </div>
 
                   <h3 class="split-card-title">
-                    <a href={`/newsroom/${item.id}`}>{item.title}</a>
+                    <a href={`/newsroom/${item.slug}`}>{item.title}</a>
                   </h3>
 
                   <p class="split-card-excerpt">
@@ -115,7 +115,7 @@ const otherNews = newsList.slice(1);
                   </p>
 
                   <div class="split-card-footer">
-                    <a href={`/newsroom/${item.id}`} class="read-article-btn red-text">
+                    <a href={`/newsroom/${item.slug}`} class="read-article-btn red-text">
                       <span>Baca Selengkapnya</span>
                       <svg viewBox="0 0 20 20" fill="currentColor" class="btn-arrow-icon">
                         <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
