@@ -1,114 +1,92 @@
 ---
 ---
 
-<section class="fullwidth-section expansion-banner-section" id="expansion-banner">
-  <div class="container text-center">
-    <div class="neu-card-raised banner-neu-box">
-      <div class="neu-pill-inset banner-badge-neu">
-        <span class="neu-dot red-dot"></span>
-        <span class="banner-tag red-text" data-i18n="banner_tag">STRATEGIC EXPANSION & ENTERPRISE SCALING</span>
+<section class="expansion-fullwidth-section" id="expansion-banner">
+  <div class="container">
+    <div class="expansion-minimal-content">
+      
+      <div class="expansion-tag-row">
+        <span class="expansion-pulse-dot"></span>
+        <span class="expansion-tag red-text" data-i18n="banner_tag">EKSPANSI STRATEGIS & PENGEMBANGAN USAHA</span>
       </div>
 
-      <h2 class="banner-title" data-i18n="banner_title">
-        PT CHAIN ASIA CONECT <br /><span class="red-text">Strategic Expansion & Enterprise Scaling Phase</span>
+      <h2 class="expansion-heading" data-i18n="banner_title">
+        PT CHAIN ASIA CONECT <br />
+        <span class="red-text">Perusahaan Utama dalam Fase Ekspansi Usaha & Kemitraan</span>
       </h2>
 
-      <p class="banner-text" data-i18n="banner_desc">
-        As a principal business entity focused on sustainable diversification and enterprise scaling, we are open for strategic B2B collaborations in integrated supply chain infrastructure, high-precision medical machinery engineering & 3D PACS software licensing, and new regional branch operations across Indonesia and Asia.
+      <p class="expansion-desc" data-i18n="banner_desc">
+        Sebagai entitas bisnis yang berfokus pada diversifikasi berkelanjutan dan penskalaan usaha, kami terbuka untuk kolaborasi kemitraan B2B strategis dalam infrastruktur rantai pasok terintegrasi, rekayasa mesin medis presisi & lisensi perangkat lunak 3D PACS, serta operasional jaringan cabang regional di seluruh Indonesia dan Asia.
       </p>
 
-      <div class="banner-actions">
-        <a href="mailto:sales@chainasiaconect.company" class="neu-btn-primary">
-          <span data-i18n="btn_partnership">Inquire Strategic Partnership (sales@chainasiaconect.company)</span>
+      <div class="expansion-actions">
+        <a href="mailto:sales@chainasiaconect.company" class="btn-minimal-primary">
+          <span data-i18n="btn_partnership">Inisiasi Kemitraan Strategis (sales@chainasiaconect.company) →</span>
         </a>
-        <a href="mailto:info@chainasiaconect.company" class="neu-btn-secondary">
+        <a href="mailto:info@chainasiaconect.company" class="btn-minimal-secondary">
           <span data-i18n="btn_contact">info@chainasiaconect.company</span>
         </a>
       </div>
+
     </div>
   </div>
 </section>
 
 <style>
-  .expansion-banner-section {
-    background: #edf2f7;
-    padding: 4.5rem 0;
-    border-top: 1px solid rgba(203, 213, 225, 0.7);
-    border-bottom: 1px solid rgba(203, 213, 225, 0.7);
+  .expansion-fullwidth-section {
+    background: #f8fafc;
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    width: 100%;
   }
 
-  .text-center {
-    text-align: center;
-    max-width: 900px;
+  .expansion-minimal-content {
+    max-width: 860px;
     margin: 0 auto;
+    text-align: center;
   }
 
-  /* Solid Neumorphic Raised Card */
-  .banner-neu-box {
-    background: #edf2f7;
-    border-radius: 16px;
-    padding: 3rem 2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 
-      9px 9px 22px rgba(166, 175, 195, 0.5),
-      -9px -9px 22px rgba(255, 255, 255, 0.95);
-  }
-
-  /* Inset Badge */
-  .banner-badge-neu {
+  .expansion-tag-row {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: #edf2f7;
-    border-radius: 9999px;
-    padding: 0.35rem 0.85rem;
-    border: 1px solid rgba(203, 213, 225, 0.7);
-    box-shadow: 
-      inset 2px 2px 5px rgba(166, 175, 195, 0.5),
-      inset -2px -2px 5px rgba(255, 255, 255, 0.9);
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
-  .neu-dot {
-    width: 8px;
-    height: 8px;
+  .expansion-pulse-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
+    background: var(--red-primary, #dc2626);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
   }
 
-  .red-dot {
-    background: #dc2626;
-  }
-
-  .banner-tag {
-    font-size: 0.75rem;
+  .expansion-tag {
+    font-size: 0.775rem;
     font-weight: 800;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
   }
 
-  .banner-title {
-    font-size: clamp(1.85rem, 4vw, 2.6rem);
+  .expansion-heading {
+    font-size: clamp(2rem, 3.8vw, 2.75rem);
     font-weight: 800;
-    color: #0f172a;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+    line-height: 1.25;
   }
 
-  .banner-title .red-text {
-    color: #dc2626;
-  }
-
-  .banner-text {
-    font-size: 1.025rem;
+  .expansion-desc {
+    font-size: 1.05rem;
     line-height: 1.75;
     color: #475569;
-    margin-bottom: 2rem;
+    margin-bottom: 2.25rem;
     max-width: 780px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .banner-actions {
+  .expansion-actions {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,64 +94,59 @@
     flex-wrap: wrap;
   }
 
-  .neu-btn-primary {
-    padding: 0.85rem 1.6rem;
-    background: #dc2626;
+  .btn-minimal-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.85rem 1.75rem;
+    background: var(--red-primary, #dc2626);
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.925rem;
-    border-radius: 8px;
+    font-size: 0.9rem;
+    border-radius: 6px;
     text-decoration: none;
-    box-shadow: 
-      4px 4px 10px rgba(220, 38, 38, 0.35),
-      -2px -2px 6px rgba(255, 255, 255, 0.8);
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.15s ease;
   }
 
-  .neu-btn-primary:hover {
+  .btn-minimal-primary:hover {
     background: #b91c1c;
-    box-shadow: 
-      2px 2px 6px rgba(220, 38, 38, 0.4),
-      inset 1px 1px 2px rgba(0, 0, 0, 0.2);
-    transform: translateY(1px);
+    transform: translateY(-1px);
   }
 
-  .neu-btn-secondary {
-    padding: 0.85rem 1.6rem;
-    background: #edf2f7;
-    color: #334155;
+  .btn-minimal-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.85rem 1.75rem;
+    background: #ffffff;
+    color: var(--text-dark);
     font-weight: 700;
-    font-size: 0.925rem;
-    border-radius: 8px;
+    font-size: 0.9rem;
+    border-radius: 6px;
     text-decoration: none;
-    border: 1px solid rgba(203, 213, 225, 0.7);
-    box-shadow: 
-      3px 3px 8px rgba(166, 175, 195, 0.35),
-      -3px -3px 8px rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-light);
     transition: all 0.2s ease;
   }
 
-  .neu-btn-secondary:hover {
-    color: #dc2626;
-    background: #ffffff;
-    box-shadow: 
-      1px 1px 4px rgba(166, 175, 195, 0.4),
-      inset 1px 1px 2px rgba(255, 255, 255, 1);
+  .btn-minimal-secondary:hover {
+    color: var(--red-primary, #dc2626);
+    border-color: #cbd5e1;
+    background: #fafafa;
   }
 
   @media (max-width: 640px) {
-    .banner-neu-box {
-      padding: 2rem 1.25rem;
+    .expansion-fullwidth-section {
+      padding: 3.5rem 0;
     }
-    .banner-actions {
+
+    .expansion-actions {
       flex-direction: column;
       width: 100%;
     }
-    .neu-btn-primary,
-    .neu-btn-secondary {
+
+    .btn-minimal-primary,
+    .btn-minimal-secondary {
       width: 100%;
+      justify-content: center;
       text-align: center;
     }
   }
 </style>
-
