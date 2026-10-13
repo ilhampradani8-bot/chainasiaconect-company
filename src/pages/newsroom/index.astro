@@ -2,6 +2,112 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+// Google Sheets Published CSV Endpoint dari link publik Anda
+const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQa2Ih5iXjRYbgKJsIFlUTwPw4hl0xDIRn5MCTWd6g7UecdJi8jQLj8qKO_GvBG-JWIQ7n5pju2ZG47/pub?gid=0&single=true&output=csv";
+
+interface NewsItem {
+  id?: string;
+  tag: string;
+  date: string;
+  title: string;
+  excerpt: string;
+  link?: string;
+}
+
+// Fallback berita default jika spreadsheet kosong / offline
+const defaultNews: NewsItem[] = [
+  {
+    tag: "PRESS RELEASE",
+    date: "SEPTEMBER 18, 2026",
+    title: "PT CHAIN ASIA CONECT Expands Diagnostic PACS Cloud Software Licensing Partnerships",
+    excerpt: "PT CHAIN ASIA CONECT officially announces the deployment expansion of DICOM PACS diagnostic cloud software systems, strengthening regional health center digital infrastructure across Indonesia.",
+    link: "#"
+  },
+  {
+    tag: "CORPORATE MILESTONE",
+    date: "SEPTEMBER 1, 2026",
+    title: "Formal Entity Registration Completed Under SK Kemenkumham AHU-A117353.AH.01.30.Year 2026",
+    excerpt: "The company achieves complete legal standing as a registered Individual Limited Liability Company (PT Perorangan) under the Ministry of Law and Human Rights RI and NIB 0709260109599.",
+    link: "#"
+  }
+];
+
+function parseCSV(text: string): Record<string, string>[] {
+  const lines = text.split(/\r?\n/).filter(line => line.trim().length > 0);
+  if (lines.length < 2) return [];
+
+  const parseRow = (row: string): string[] => {
+    const result: string[] = [];
+    let cur = '';
+    let inQuotes = false;
+    for (let i = 0; i < row.length; i++) {
+      const c = row[i];
+      if (c === '"') {
+        if (inQuotes && row[i + 1] === '"') {
+          cur += '"';
+          i++;
+        } else {
+          inQuotes = !inQuotes;
+        }
+      } else if (c === ',' && !inQuotes) {
+        result.push(cur.trim());
+        cur = '';
+      } else {
+        cur += c;
+      }
+    }
+    result.push(cur.trim());
+    return result;
+  };
+
+  const headers = parseRow(lines[0]).map(h => h.toLowerCase().replace(/[\s\-_]+/g, ''));
+  const rows: Record<string, string>[] = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    const values = parseRow(lines[i]);
+    if (values.every(v => v === '')) continue;
+    const entry: Record<string, string> = {};
+    headers.forEach((h, idx) => {
+      entry[h] = values[idx] || '';
+    });
+    rows.push(entry);
+  }
+
+  return rows;
+}
+
+let newsList: NewsItem[] = defaultNews;
+let isFromSpreadsheet = false;
+
+try {
+  const res = await fetch(GOOGLE_SHEET_CSV_URL, { cache: 'no-store' });
+  if (res.ok) {
+    const csvData = await res.text();
+    if (csvData && csvData.trim().length > 0) {
+      const parsedRows = parseCSV(csvData);
+      if (parsedRows.length > 0) {
+        const fetchedNews: NewsItem[] = parsedRows.map((r, idx) => {
+          return {
+            id: r.id || String(idx + 1),
+            tag: r.kategori || r.tag || r.category || 'MEDIA RELEASE',
+            date: r.tanggal || r.date || 'RECENT',
+            title: r.judul || r.title || 'Untitled Announcement',
+            excerpt: r.ringkasan || r.excerpt || r.deskripsi || r.isi || '',
+            link: r.link || r.url || '#'
+          };
+        }).filter(item => item.title && item.title !== 'Untitled Announcement');
+
+        if (fetchedNews.length > 0) {
+          newsList = fetchedNews;
+          isFromSpreadsheet = true;
+        }
+      }
+    }
+  }
+} catch (err) {
+  console.warn('Google Sheets fetch notice: Using default news list.', err);
+}
 ---
 
 <Layout title="Newsroom & Press Releases | PT CHAIN ASIA CONECT" description="Official press releases, corporate announcements, media relations, and company milestones from PT CHAIN ASIA CONECT.">
@@ -10,7 +116,14 @@ import Footer from '../../components/Footer.astro';
     <!-- Page Hero Banner -->
     <section class="page-hero-banner">
       <div class="container">
-        <span class="hero-tag red-text">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
+        <div class="hero-top-row">
+          <span class="hero-tag red-text">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
+          {isFromSpreadsheet && (
+            <span class="sheet-sync-pill">
+              <span class="sync-dot"></span> Live Google Sheets Sync
+            </span>
+          )}
+        </div>
         <h1 class="page-hero-title">Newsroom <span class="red-text">& Press Releases</span></h1>
         <p class="page-hero-desc">
           Official media releases, strategic announcements, corporate milestones, and institutional press coverage for PT CHAIN ASIA CONECT.
@@ -22,25 +135,27 @@ import Footer from '../../components/Footer.astro';
     <section class="fullwidth-section">
       <div class="container">
         <div class="news-grid">
-          <article class="news-card">
-            <span class="news-tag red-text">PRESS RELEASE</span>
-            <span class="news-date">SEPTEMBER 18, 2026</span>
-            <h2>PT CHAIN ASIA CONECT Expands Diagnostic PACS Cloud Software Licensing Partnerships</h2>
-            <p>
-              PT CHAIN ASIA CONECT officially announces the deployment expansion of DICOM PACS diagnostic cloud software systems, strengthening regional health center digital infrastructure across Indonesia.
-            </p>
-            <a href="#" class="news-link red-text" onclick="alert('Opening official press release document...'); return false;">Read Full Release →</a>
-          </article>
-
-          <article class="news-card">
-            <span class="news-tag red-text">CORPORATE MILESTONE</span>
-            <span class="news-date">SEPTEMBER 1, 2026</span>
-            <h2>Formal Entity Registration Completed Under SK Kemenkumham AHU-A117353.AH.01.30.Year 2026</h2>
-            <p>
-              The company achieves complete legal standing as a registered Individual Limited Liability Company (PT Perorangan) under the Ministry of Law and Human Rights RI and NIB 0709260109599.
-            </p>
-            <a href="#" class="news-link red-text" onclick="alert('Opening legal milestone release...'); return false;">Read Full Release →</a>
-          </article>
+          {newsList.map((item) => (
+            <article class="news-card">
+              <div class="card-meta">
+                <span class="news-tag red-text">{item.tag.toUpperCase()}</span>
+                <span class="news-date">{item.date.toUpperCase()}</span>
+              </div>
+              <h2 class="news-headline">{item.title}</h2>
+              <p class="news-excerpt">
+                {item.excerpt}
+              </p>
+              {item.link && item.link !== '#' ? (
+                <a href={item.link} target="_blank" rel="noopener noreferrer" class="news-link red-text">
+                  Buka Berita / Dokumen →
+                </a>
+              ) : (
+                <a href="#" class="news-link red-text" onclick="alert('Membuka dokumen resmi PT CHAIN ASIA CONECT...'); return false;">
+                  Read Full Release →
+                </a>
+              )}
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -55,12 +170,41 @@ import Footer from '../../components/Footer.astro';
     padding: clamp(7.5rem, 12vh, 9rem) 0 3.5rem 0;
   }
 
+  .hero-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
   .hero-tag {
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    display: block;
-    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .sheet-sync-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+  }
+
+  .sync-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #16a34a;
+    display: inline-block;
   }
 
   .page-hero-title {
@@ -71,7 +215,7 @@ import Footer from '../../components/Footer.astro';
   }
 
   .page-hero-desc {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--text-body);
     max-width: 800px;
     margin-top: 0.75rem;
@@ -81,15 +225,30 @@ import Footer from '../../components/Footer.astro';
   .news-grid {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem 0;
+    gap: 1.75rem;
+    padding: 2.5rem 0;
   }
 
   .news-card {
     background: #ffffff;
     border: 1px solid var(--border-light);
-    padding: 2rem;
-    border-radius: 4px;
+    padding: 2rem 2.25rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .news-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
   }
 
   .news-tag {
@@ -99,28 +258,44 @@ import Footer from '../../components/Footer.astro';
   }
 
   .news-date {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
-    margin-left: 1rem;
+    font-weight: 600;
   }
 
-  .news-card h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
+  .news-headline {
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    font-weight: 700;
     color: var(--text-dark);
-    margin: 0.5rem 0 0.75rem 0;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
   }
 
-  .news-card p {
-    font-size: 1rem;
-    line-height: 1.65;
+  .news-excerpt {
+    font-size: 0.975rem;
     color: var(--text-body);
-    margin-bottom: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
   }
 
   .news-link {
+    font-size: 0.875rem;
     font-weight: 700;
     text-decoration: none;
-    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: opacity 0.2s ease;
+  }
+
+  .news-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .news-card {
+      padding: 1.5rem;
+    }
   }
 </style>
