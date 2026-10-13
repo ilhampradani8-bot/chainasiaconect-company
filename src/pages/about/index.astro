@@ -7,7 +7,10 @@ import LegalSection from '../../components/LegalSection.astro';
 import Footer from '../../components/Footer.astro';
 ---
 
-<Layout title="About Us | PT CHAIN ASIA CONECT Official Portal" description="Learn about PT CHAIN ASIA CONECT history, vision, mission, Board of Directors (President Director Ilham Pradani, S.H. (Cand.)), and corporate legal credentials.">
+<Layout 
+  title="About Us | PT CHAIN ASIA CONECT Official Corporate Portal" 
+  description="Pelajari visi, misi, produk unggulan rantai pasok terintegrasi, lisensi perangkat lunak medis DICOM PACS, dan tata kelola korporasi PT CHAIN ASIA CONECT."
+>
   <Header />
   <main>
     <!-- Page Hero Banner -->
@@ -16,30 +19,112 @@ import Footer from '../../components/Footer.astro';
         <span class="hero-tag red-text">ABOUT OUR CORPORATE ENTITY</span>
         <h1 class="page-hero-title">About <span class="red-text">PT CHAIN ASIA CONECT</span></h1>
         <p class="page-hero-desc">
-          Established to bridge physical business ecosystem growth, medical engineering software licensing, and supply chain infrastructure with complete legal integrity across Indonesia and Asia Region.
+          Entitas korporasi resmi yang bergerak dalam pengembangan ekosistem rantai pasok sektor riil, rekayasa mesin diagnostik presisi, dan lisensi perangkat lunak medis DICOM PACS di Indonesia dan Asia.
         </p>
       </div>
     </section>
 
-    <!-- Company History & Legal Foundation -->
-    <section class="fullwidth-section" id="history">
+    <!-- Core Products & Vision-Mission Section -->
+    <section class="fullwidth-section products-vision-section" id="products-vision">
       <div class="container">
-        <div class="section-intro">
-          <span class="section-tag red-text">CORPORATE HISTORY & FOUNDATION</span>
-          <h2>Founded on Integrity & Sustainable Growth</h2>
-          <p>
-            Officially incorporated on <strong>September 1, 2026</strong> as an Individual Limited Liability Company (PT Perorangan), <strong>PT CHAIN ASIA CONECT</strong> was founded by <strong>Ilham Pradani, S.H. (Cand.)</strong> to establish a transparent, sustainable physical enterprise. We integrate regional supply chains with medical machine engineering systems and PACS software diagnostic cloud licensing.
-          </p>
+        
+        <!-- Part 1: Core Products & Solutions -->
+        <div class="section-block products-block">
+          <div class="section-heading-clean">
+            <span class="section-tag red-text">PORTFOLIO & CORE SOLUTIONS</span>
+            <h2 class="block-title">Lini Produk & Solusi Unggulan</h2>
+            <p class="block-desc">
+              Menghubungkan integrasi rantai pasok sektor riil dengan rekayasa mesin presisi dan lisensi perangkat lunak diagnostik medis berstandar internasional.
+            </p>
+          </div>
+
+          <div class="products-tri-grid">
+            <!-- Product 01 -->
+            <div class="product-item-card">
+              <div class="prod-num-badge red-text">01</div>
+              <h3 class="prod-title">Integrasi Rantai Pasok Sektor Riil</h3>
+              <p class="prod-desc">
+                Penyediaan infrastruktur rantai pasok fisik yang andal, pengelolaan logistik B2B, dan integrasi rantai nilai usaha yang berkelanjutan untuk mendukung sektor akomodasi, perhotelan, dan industri regional.
+              </p>
+            </div>
+
+            <!-- Product 02 -->
+            <div class="product-item-card">
+              <div class="prod-num-badge red-text">02</div>
+              <h3 class="prod-title">Lisensi Perangkat Lunak Diagnostik PACS</h3>
+              <p class="prod-desc">
+                Penyediaan lisensi resmi DICOM PACS (Picture Archiving and Communication System) berbasis cloud dengan keamanan tinggi untuk fasilitas kesehatan, laboratorium, dan sentra diagnostik medis.
+              </p>
+            </div>
+
+            <!-- Product 03 -->
+            <div class="product-item-card">
+              <div class="prod-num-badge red-text">03</div>
+              <h3 class="prod-title">Rekayasa & Pengadaan Mesin Presisi</h3>
+              <p class="prod-desc">
+                Solusi rekayasa mesin medis diagnostik presisi, integrasi sistem teknologi, kalibrasi teknis, serta kepatuhan standar peralatan medis bersertifikasi nasional dan global.
+              </p>
+            </div>
+          </div>
         </div>
+
+        <div class="section-h-divider"></div>
+
+        <!-- Part 2: Vision & Mission -->
+        <div class="section-block vision-mission-block">
+          <div class="section-heading-clean">
+            <span class="section-tag red-text">STRATEGIC DIRECTION</span>
+            <h2 class="block-title">Visi & Misi Perusahaan</h2>
+          </div>
+
+          <div class="vm-split-layout">
+            <!-- Visi Card -->
+            <div class="vision-card">
+              <span class="vm-pill red-text">VISI KORPORASI</span>
+              <h3 class="vm-statement">
+                “Menjadi entitas korporasi terkemuka dan mitra strategis andal yang menghubungkan keandalan rantai pasok sektor riil serta lisensi teknologi diagnostik medis berstandar profesional di Asia.”
+              </h3>
+            </div>
+
+            <!-- Misi Card -->
+            <div class="mission-card">
+              <span class="vm-pill red-text">MISI KORPORASI</span>
+              <ul class="mission-list">
+                <li>
+                  <span class="mission-num">1</span>
+                  <div class="mission-text">
+                    <strong>Keandalan Rantai Pasok</strong>
+                    <p>Membangun integrasi rantai pasok dan kemitraan B2B yang tangguh, efisien, dan berkelanjutan bagi ekosistem bisnis lokal maupun regional.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="mission-num">2</span>
+                  <div class="mission-text">
+                    <strong>Inovasi Diagnostik Digital</strong>
+                    <p>Menghadirkan solusi lisensi perangkat lunak diagnostik DICOM PACS berstandar global untuk memodernisasi infrastruktur kesehatan.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="mission-num">3</span>
+                  <div class="mission-text">
+                    <strong>Integritas & Tata Kelola</strong>
+                    <p>Menegakkan kepatuhan hukum penuh, transparansi, serta standar operasional terbaik dalam seluruh aktivitas usaha perseroan.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Board of Directors Section (Preserved 2 Directors Text Layout) -->
+    <!-- Board of Directors Section -->
     <div id="leadership">
       <DirekturSection />
     </div>
 
-    <!-- Company Philosophy & Values (Preserved CHAIN Identity) -->
+    <!-- Company Philosophy & Values -->
     <div id="vision">
       <CompanyIdentity />
     </div>
@@ -82,21 +167,190 @@ import Footer from '../../components/Footer.astro';
     line-height: 1.6;
   }
 
-  .section-intro {
-    max-width: 850px;
-    padding: 3rem 0;
+  /* Products & Vision Section */
+  .products-vision-section {
+    background: #ffffff;
+    padding: 4.5rem 0;
+    border-bottom: 1px solid var(--border-light);
   }
 
-  .section-intro h2 {
-    font-size: 2.2rem;
+  .section-block {
+    margin-bottom: 2rem;
+  }
+
+  .section-heading-clean {
+    max-width: 780px;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
     font-weight: 800;
-    margin: 0.35rem 0 1rem 0;
-    color: var(--text-dark);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.35rem;
   }
 
-  .section-intro p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--text-body);
+  .block-title {
+    font-size: clamp(1.85rem, 3.2vw, 2.4rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+
+  .block-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* Products Tri Grid */
+  .products-tri-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .product-item-card {
+    background: #fbfcfd;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 2.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .product-item-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+  }
+
+  .prod-num-badge {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: monospace;
+    margin-bottom: 1rem;
+  }
+
+  .prod-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.85rem;
+    line-height: 1.35;
+  }
+
+  .prod-desc {
+    font-size: 0.925rem;
+    color: #475569;
+    line-height: 1.65;
+  }
+
+  /* Horizontal Divider */
+  .section-h-divider {
+    height: 1px;
+    background: var(--border-light);
+    margin: 4rem 0;
+  }
+
+  /* Vision & Mission Split */
+  .vm-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3rem;
+  }
+
+  .vision-card {
+    background: #fef2f2;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: 10px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .vm-pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.25rem;
+  }
+
+  .vm-statement {
+    font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .mission-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+
+  .mission-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mission-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .mission-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: var(--red-primary, #dc2626);
+    font-weight: 800;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .mission-text strong {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .mission-text p {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 960px) {
+    .products-tri-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .vm-split-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .vision-card, .mission-card {
+      padding: 1.75rem;
+    }
   }
 </style>
