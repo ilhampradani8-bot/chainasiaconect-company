@@ -180,6 +180,16 @@ export async function fetchAllNews(): Promise<{ news: NewsItem[]; isLive: boolea
             })
             .filter((item): item is NewsItem => item !== null);
 
+          // Urutkan berita: ID nomor terbesar adalah yang paling baru (di posisi paling atas)
+          items.sort((a, b) => {
+            const numA = parseFloat(a.id);
+            const numB = parseFloat(b.id);
+            if (!isNaN(numA) && !isNaN(numB)) {
+              return numB - numA;
+            }
+            return b.id.localeCompare(a.id, undefined, { numeric: true });
+          });
+
           if (items.length > 0) {
             return { news: items, isLive: true };
           }
@@ -190,5 +200,6 @@ export async function fetchAllNews(): Promise<{ news: NewsItem[]; isLive: boolea
     console.warn('Failed to fetch Google Sheets CSV, using fallback news.', err);
   }
 
-  return { news: fallbackNews, isLive: false };
+  const sortedFallback = [...fallbackNews].sort((a, b) => parseFloat(b.id) - parseFloat(a.id));
+  return { news: sortedFallback, isLive: false };
 }
