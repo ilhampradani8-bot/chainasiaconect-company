@@ -357,57 +357,70 @@
       </div>
       <!-- end of pricing-cards -->
 
-      <!-- Elite Custom Clustering Section as Provided in Template -->
-      <div id="elite-pricing-container">
-        <div id="elite-pricing-sales-text" data-i18n="gromacs_elite_sales_text">
-          Need Multi-Node Clusters, GPU Acceleration (NVIDIA H100/A100), or Dedicated Hospital PACS Cloud?
-        </div>
-
-        <div id="elite-pricing-card" class="price-card">
-          <div class="price-card--header">
-            <h4 data-i18n="gromacs_elite_title">Enterprise Custom</h4>
-          </div>
-
-          <div id="elite-pricing-card--desc" data-i18n="gromacs_elite_desc">
-            Tailor-made High Performance Computing architecture, multi-GPU clusters, and private healthcare cloud infrastructure deployed specifically for your enterprise.
-          </div>
-
-          <div class="price-card--cta">
-            <a class="price-card--cta--button btn elite-cta" href="mailto:sales@chainasiaconect.company?subject=Custom%20HPC%20Cluster%20Inquiry%20-%20PT%20CHAIN%20ASIA%20CONECT">
-              <span data-i18n="gromacs_elite_btn">Contact Engineering Desk</span>
-            </a>
-          </div>
-
-          <div class="price-card--features">
-            <ul class="price-card--features--list">
-              <li class="price-card--features--item">
-                <strong data-i18n="gromacs_elite_f1_title">Multi-Node InfiniBand Fabric</strong>
-                <div class="executive-feature-desc" data-i18n="gromacs_elite_f1_desc">
-                  Ultra-low microsecond latency MPI communication across multiple physical server racks.
-                </div>
-              </li>
-              <li class="price-card--features--item">
-                <strong data-i18n="gromacs_elite_f2_title">GPU Acceleration (NVIDIA Tensor Core)</strong>
-                <div class="executive-feature-desc" data-i18n="gromacs_elite_f2_desc">
-                  Accelerate GROMACS non-bonded force calculations by up to 15x using dedicated enterprise GPUs.
-                </div>
-              </li>
-              <li class="price-card--features--item">
-                <strong data-i18n="gromacs_elite_f3_title">Dedicated Systems Architect SLA</strong>
-                <div class="executive-feature-desc" data-i18n="gromacs_elite_f3_desc">
-                  Named enterprise engineer managing maintenance, Linux kernel tuning, and cluster provisioning.
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="price-card--mobile-features-toggle"></div>
-        </div>
-      </div>
-      <!-- end of elite-pricing-container -->
-
     </div>
     <!-- end of pricing-container -->
+
+  </div>
+  <!-- end of pricing wrapper container -->
+</section>
+
+<!-- Fullwidth Enterprise Custom Section (Edge-to-Edge Full Width Kanan-Kiri, Bukan Model Card) -->
+<section class="enterprise-custom-fullwidth-section" id="enterprise-custom">
+  <div class="container">
+    
+    <!-- Top Row: Title, Description & Action Button -->
+    <div class="custom-header-row">
+      <div class="custom-info-col">
+        <span class="custom-kicker-tag red-text" data-i18n="gromacs_elite_kicker">BESPOKE HPC CLUSTERS & ARCHITECTURE</span>
+        <h3 class="custom-heading" data-i18n="gromacs_elite_title">Enterprise Custom</h3>
+        <p class="custom-desc" data-i18n="gromacs_elite_desc">
+          Tailor-made High Performance Computing architecture, multi-GPU clusters, and private healthcare cloud infrastructure deployed specifically for your enterprise.
+        </p>
+      </div>
+      
+      <div class="custom-cta-col">
+        <a class="btn-custom-desk" href="mailto:sales@chainasiaconect.company?subject=Custom%20HPC%20Cluster%20Inquiry%20-%20PT%20CHAIN%20ASIA%20CONECT">
+          <span data-i18n="gromacs_elite_btn">Contact Engineering Desk →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="custom-divider"></div>
+
+    <!-- Bottom Row: 3 Wide Capabilities Columns -->
+    <div class="custom-features-tri-grid">
+      
+      <div class="custom-feature-col">
+        <div class="custom-feature-badge red-text">01</div>
+        <div class="custom-feature-content">
+          <h4 class="custom-feature-title" data-i18n="gromacs_elite_f1_title">Multi-Node InfiniBand Fabric</h4>
+          <p class="custom-feature-p" data-i18n="gromacs_elite_f1_desc">
+            Ultra-low microsecond latency MPI communication across multiple physical server racks for massive parallelization.
+          </p>
+        </div>
+      </div>
+
+      <div class="custom-feature-col">
+        <div class="custom-feature-badge red-text">02</div>
+        <div class="custom-feature-content">
+          <h4 class="custom-feature-title" data-i18n="gromacs_elite_f2_title">GPU Acceleration (NVIDIA Tensor Core)</h4>
+          <p class="custom-feature-p" data-i18n="gromacs_elite_f2_desc">
+            Accelerate GROMACS non-bonded force calculations by up to 15x using dedicated enterprise GPUs (NVIDIA H100 / A100 / L40S).
+          </p>
+        </div>
+      </div>
+
+      <div class="custom-feature-col">
+        <div class="custom-feature-badge red-text">03</div>
+        <div class="custom-feature-content">
+          <h4 class="custom-feature-title" data-i18n="gromacs_elite_f3_title">Dedicated Systems Architect SLA</h4>
+          <p class="custom-feature-p" data-i18n="gromacs_elite_f3_desc">
+            Named enterprise engineer managing maintenance, Linux kernel tuning, custom PACS integration, and cluster provisioning.
+          </p>
+        </div>
+      </div>
+
+    </div>
 
   </div>
 </section>
@@ -890,105 +903,132 @@
   }
 
   /* ================================================= */
-  /* Elite Custom Enterprise Pricing Container         */
+  /* Fullwidth Enterprise Custom Section (Edge to Edge)*/
   /* ================================================= */
-  #elite-pricing-container {
-    margin-top: 4rem;
+  .enterprise-custom-fullwidth-section {
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 5rem 0;
     position: relative;
+  }
+
+  .enterprise-custom-fullwidth-section .container {
+    width: 100%;
+    max-width: var(--container-width, 1200px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .custom-header-row {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .custom-info-col {
+    flex: 1;
+    max-width: 820px;
+  }
+
+  .custom-kicker-tag {
+    font-size: 0.775rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .custom-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.85rem, 2.7vw, 2.45rem);
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .custom-desc {
+    font-size: 1.05rem;
+    color: #475569;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .custom-cta-col {
+    flex-shrink: 0;
+  }
+
+  .btn-custom-desk {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    gap: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px dashed #cbd5e1;
-  }
-
-  #elite-pricing-sales-text {
-    font-size: 20px;
-    font-family: var(--font-heading, "Raleway", sans-serif);
-    color: #1e293b;
-    line-height: 1.5;
-    font-weight: 800;
-    max-width: 420px;
-    text-align: right;
-  }
-
-  #elite-pricing-card.price-card {
-    max-width: 440px;
+    padding: 0.95rem 1.85rem;
+    background: #dc2626;
     color: #ffffff;
-    position: relative;
+    font-weight: 800;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.25);
+  }
+
+  .btn-custom-desk:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+  }
+
+  .custom-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 3rem 0;
+  }
+
+  .custom-features-tri-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .custom-feature-col {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .custom-feature-badge {
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: var(--font-heading);
+    line-height: 1;
+    color: #dc2626;
+    opacity: 0.95;
+    padding-top: 2px;
+  }
+
+  .custom-feature-content {
+    flex: 1;
+  }
+
+  .custom-feature-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.45rem 0;
+    line-height: 1.35;
+  }
+
+  .custom-feature-p {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
     margin: 0;
-    padding: 28px 32px 24px;
-    background: linear-gradient(135deg, #0f172a 0%, #1e1e2f 100%);
-    box-shadow: 0 10px 28px -6px rgba(15, 23, 42, 0.35);
-    border: 1px solid #334155;
-    border-radius: 12px;
-  }
-
-  #elite-pricing-card.price-card .price-card--header {
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    text-align: left;
-  }
-
-  #elite-pricing-card.price-card .price-card--header h4 {
-    font-size: 24px;
-    font-weight: 800;
-    padding-bottom: 12px;
-    margin-bottom: 12px;
-    border-bottom: 1.5px solid #dc2626;
-    color: #f87171;
-  }
-
-  #elite-pricing-card--desc {
-    font-size: 13px;
-    line-height: 1.5;
-    color: #cbd5e1;
-    padding-bottom: 18px;
-  }
-
-  #elite-pricing-card.price-card .price-card--cta--button.btn.elite-cta {
-    background-color: #dc2626;
-    color: #ffffff;
-    border-color: #dc2626;
-    padding: 12px 20px;
-    font-size: 14px;
-    font-weight: 800;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
-  }
-
-  #elite-pricing-card.price-card .price-card--cta--button.btn.elite-cta:hover {
-    background-color: #b91c1c;
-    border-color: #b91c1c;
-  }
-
-  #elite-pricing-card.price-card .price-card--features {
-    border-top: 1px solid #334155;
-    padding: 16px 0 0;
-  }
-
-  #elite-pricing-card.price-card ul.price-card--features--list {
-    padding: 0;
-  }
-
-  #elite-pricing-card.price-card .price-card--features--item {
-    padding-bottom: 14px;
-    color: #f1f5f9;
-  }
-
-  #elite-pricing-card.price-card .price-card--features--item:before {
-    color: #dc2626 !important;
-  }
-
-  .executive-feature-desc {
-    font-size: 12px;
-    color: #94a3b8;
-    margin-top: 3px;
-    line-height: 1.4;
   }
 
   /* ================================================= */
@@ -1064,31 +1104,50 @@
       display: block;
     }
 
-    #elite-pricing-container {
-      display: flex;
+    .enterprise-custom-fullwidth-section {
+      padding: 3.5rem 0 4rem;
+    }
+
+    .custom-header-row {
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 2rem 1rem 0;
+      align-items: flex-start;
       gap: 1.5rem;
     }
 
-    #elite-pricing-sales-text {
-      text-align: center;
-      max-width: 100%;
-      font-size: 18px;
+    .custom-cta-col {
+      width: 100%;
     }
 
-    #elite-pricing-card.price-card {
-      max-width: 100%;
+    .btn-custom-desk {
       width: 100%;
-      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .custom-divider {
+      margin: 2rem 0;
+    }
+
+    .custom-features-tri-grid {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
     }
   }
 
   @media (max-width: 640px) {
     .gromacs-pricing-wrapper {
       padding: 3rem 0 3.5rem;
+    }
+
+    .enterprise-custom-fullwidth-section {
+      padding: 2.75rem 0 3.25rem;
+    }
+
+    .custom-features-tri-grid {
+      gap: 1.5rem;
+    }
+
+    .custom-feature-col {
+      gap: 0.95rem;
     }
 
     #pricing-container .price-card {
