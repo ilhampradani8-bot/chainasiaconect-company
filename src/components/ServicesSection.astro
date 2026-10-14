@@ -5,11 +5,11 @@
   <div class="container">
     <!-- Section Header (English) -->
     <div class="services-header-clean">
-      <span class="services-tag red-text">OUR SPECIALIZED SERVICES & SOLUTIONS</span>
-      <h2 class="services-title">
-        Enterprise Medical Engineering <br /><span class="red-text">& Software Systems Licensing</span>
+      <span class="services-tag red-text" data-i18n="services_tag">OUR SPECIALIZED SERVICES & SOLUTIONS</span>
+      <h2 class="services-title" data-i18n="services_title">
+        Enterprise Medical Engineering & Software Systems Licensing
       </h2>
-      <p class="services-subtitle">
+      <p class="services-subtitle" data-i18n="services_subtitle">
         Providing high-precision medical machinery engineering, advanced diagnostic software licensing, and enterprise healthcare infrastructure integration.
       </p>
     </div>
@@ -19,10 +19,10 @@
       <div class="service-split-container">
         <!-- Left Text Column -->
         <div class="service-main-info">
-          <span class="service-code red-text">SERVICE DIVISION 01</span>
-          <h3 class="service-name">Advanced Medical Engineering Machines & Precision Diagnostic Software</h3>
+          <span class="service-code red-text" data-i18n="serv_div_code">SERVICE DIVISION 01</span>
+          <h3 class="service-name" data-i18n="serv_div_title">Advanced Medical Engineering Machines & Precision Diagnostic Software</h3>
 
-          <p class="service-description">
+          <p class="service-description" data-i18n="serv_div_desc">
             PT CHAIN ASIA CONECT delivers specialized procurement, engineering integration, and official software licensing for high-value medical diagnostic machinery and healthcare software infrastructure. We connect medical institutions with world-class engineering systems designed for critical diagnostic accuracy and operational reliability.
           </p>
 
@@ -30,31 +30,34 @@
             <div class="highlight-item">
               <span class="highlight-num red-text">•</span>
               <div>
-                <strong>Medical Diagnostic Machine Engineering</strong>
-                <p>Turnkey integration, maintenance, and technical calibration for advanced precision medical machinery and imaging equipment.</p>
+                <strong data-i18n="serv_h1_title">Medical Diagnostic Machine Engineering</strong>
+                <p data-i18n="serv_h1_desc">Turnkey integration, maintenance, and technical calibration for advanced precision medical machinery and imaging equipment.</p>
               </div>
             </div>
 
             <div class="highlight-item">
               <span class="highlight-num red-text">•</span>
               <div>
-                <strong>Enterprise Healthcare Software & DICOM/PACS Licensing</strong>
-                <p>Official enterprise software licensing for medical imaging, diagnostic AI analysis software, and high-security hospital information systems.</p>
+                <strong data-i18n="serv_h2_title">Enterprise Healthcare Software & DICOM/PACS Licensing</strong>
+                <p data-i18n="serv_h2_desc">Official enterprise software licensing for medical imaging, diagnostic AI analysis software, and high-security hospital information systems.</p>
               </div>
             </div>
 
             <div class="highlight-item">
               <span class="highlight-num red-text">•</span>
               <div>
-                <strong>Regulated Medical Equipment Procurement & Compliance</strong>
-                <p>End-to-end supply chain management for certified medical devices and software engineering systems compliant with international healthcare standards.</p>
+                <strong data-i18n="serv_h3_title">Regulated Medical Equipment Procurement & Compliance</strong>
+                <p data-i18n="serv_h3_desc">End-to-end supply chain management for certified medical devices and software engineering systems compliant with international healthcare standards.</p>
               </div>
             </div>
           </div>
 
           <div class="service-action">
             <a href="mailto:sales@chainasiaconect.company" class="btn-red-simple">
-              <span>Inquire Medical Engineering & Software Licensing →</span>
+              <span data-i18n="serv_btn_inquire">Inquire Medical Engineering & Software Licensing →</span>
+            </a>
+            <a href="#gromacs-pricing" class="btn-pricing-shortcut">
+              <span data-i18n="serv_btn_pricing">View GROMACS Cloud Server Pricing (From $900) ↓</span>
             </a>
           </div>
         </div>
@@ -172,24 +175,51 @@
   }
 
   .service-action {
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
   }
 
   .btn-red-simple {
-    padding: 0.65rem 1.4rem;
+    padding: 0.65rem 1.35rem;
     background: var(--red-primary);
     color: #ffffff;
     font-weight: 700;
     font-size: 0.875rem;
-    border-radius: 4px;
-    transition: background var(--transition-smooth);
+    border-radius: 6px;
+    transition: background var(--transition-smooth), transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  }
+
+  .btn-red-simple:hover {
+    background: var(--red-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-pricing-shortcut {
+    padding: 0.65rem 1.35rem;
+    background: #ffffff;
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.875rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     text-decoration: none;
   }
 
-  .btn-red-simple:hover {
-    background: var(--red-dark);
+  .btn-pricing-shortcut:hover {
+    border-color: #dc2626;
+    color: #dc2626;
+    background: #fef2f2;
+    transform: translateY(-1px);
   }
 
   /* Right Image Column */

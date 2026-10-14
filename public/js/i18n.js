@@ -108,7 +108,61 @@ const i18nDictionary = {
     serv_h3_title: "Regulated Medical Equipment Procurement & Compliance",
     serv_h3_desc: "End-to-end supply chain management for certified medical devices and software engineering systems compliant with international healthcare standards.",
     serv_btn_inquire: "Inquire Medical Engineering & Software Licensing →",
+    serv_btn_pricing: "View GROMACS Cloud Server Pricing (From $900) ↓",
     serv_caption: "Medical Software DICOM/PACS 3D Visualization System Integration",
+
+    // GROMACS Cloud Pricing Section
+    gromacs_tag: "HPC & MOLECULAR SIMULATION CLOUD",
+    gromacs_title_prefix: "GROMACS Cloud ",
+    gromacs_title_highlight: "Dedicated Server Pricing",
+    gromacs_subtitle: "Enterprise-grade High Performance Computing (HPC) environments engineered for complex molecular dynamics (MD), biophysical research, and PACS diagnostic computing with guaranteed hardware resources.",
+    gromacs_period: "/ Month (1 Bulan)",
+    gromacs_badge_pop: "★ RECOMMENDED SPECIFICATION",
+
+    // Tier 1 ($900)
+    gromacs_t1_name: "Starter Simulation Cloud",
+    gromacs_t1_desc: "Optimized for initial molecular docking, lightweight GROMACS simulations, and academic research workloads.",
+    gromacs_t1_cpu: "AMD EPYC™ Processor (8 Cores / 16 Threads)",
+    gromacs_t1_ram: "64 GB DDR5 ECC RAM",
+    gromacs_t1_disk: "1 TB Enterprise NVMe PCIe 4.0 SSD",
+    gromacs_t1_net: "1 Gbps Dedicated Port & Unmetered Traffic",
+    gromacs_t1_gromacs: "Pre-installed GROMACS & OpenMPI Stack",
+    gromacs_t1_access: "Full Root & SSH Access with 99.9% SLA",
+
+    // Tier 2 ($1,100)
+    gromacs_t2_name: "Advanced MD Workspace",
+    gromacs_t2_desc: "Ideal for mid-scale biomolecular dynamics, protein-ligand interaction modeling, and sustained simulation queues.",
+    gromacs_t2_cpu: "AMD EPYC™ Processor (12 Cores / 24 Threads)",
+    gromacs_t2_ram: "96 GB DDR5 ECC RAM",
+    gromacs_t2_disk: "2 TB Enterprise NVMe PCIe 4.0 SSD",
+    gromacs_t2_net: "1 Gbps Dedicated Port & Priority Bandwidth",
+    gromacs_t2_gromacs: "Pre-installed GROMACS, CUDA & Slurm Tools",
+    gromacs_t2_access: "Full Root, IPMI/KVM & Automated Backups",
+
+    // Tier 3 ($1,300) - User's exact purchased specification
+    gromacs_t3_name: "Dedicated Server Rental (GROMACS)",
+    gromacs_t3_desc: "Dedicated enterprise infrastructure engineered for demanding molecular dynamics production runs and high-throughput research.",
+    gromacs_t3_cpu: "AMD EPYC Processor, 16 Cores / 32 Threads",
+    gromacs_t3_ram: "128 GB DDR5 ECC RAM",
+    gromacs_t3_disk: "2x 2 TB Enterprise NVMe PCIe 4.0 (RAID 1)",
+    gromacs_t3_net: "10 Gbps Internal / 1 Gbps Dedicated Uplink",
+    gromacs_t3_gromacs: "Dedicated GROMACS MD Engine & PACS Acceleration",
+    gromacs_t3_access: "Dedicated IPMI/KVM, Full Root & 24/7 Monitoring",
+
+    // Tier 4 ($1,500)
+    gromacs_t4_name: "Ultra HPC Enterprise Cluster",
+    gromacs_t4_desc: "Maximum computational throughput for multi-trajectory simulations, cryo-EM integration, and massive enterprise datasets.",
+    gromacs_t4_cpu: "AMD EPYC™ Processor (24 Cores / 48 Threads)",
+    gromacs_t4_ram: "256 GB DDR5 ECC RAM",
+    gromacs_t4_disk: "2x 4 TB Enterprise NVMe PCIe 4.0 (RAID 1)",
+    gromacs_t4_net: "10 Gbps Redundant Uplink & DDoS Shielding",
+    gromacs_t4_gromacs: "Cluster GROMACS Parallelization + Diagnostic AI",
+    gromacs_t4_access: "Enterprise Dedicated SLA 99.95% & Priority Engineer Desk",
+
+    // Action CTA
+    gromacs_btn_order: "Order Dedicated Server →",
+    gromacs_btn_popular: "Rent This Dedicated Server →",
+    gromacs_contact_note: "Need custom GPU or multi-node clustering? Contact our technical engineering team at sales@chainasiaconect.company",
 
     // Market Research & Feasibility Study Section (Business Page & Shared)
     research_badge: "ACTIVE STAGE • MARKET RESEARCH & FEASIBILITY STUDY",
@@ -326,7 +380,61 @@ const i18nDictionary = {
     serv_h3_title: "Pengadaan Alat Medis Teregulasi & Kepatuhan Standar",
     serv_h3_desc: "Manajemen rantai pasok terintegrasi untuk perangkat medis dan sistem software resmi yang patuh pada standar kesehatan internasional.",
     serv_btn_inquire: "Konsultasi Rekayasa Medis & Lisensi Software →",
+    serv_btn_pricing: "Lihat Tarif Server GROMACS Cloud (Mulai $900) ↓",
     serv_caption: "Integrasi Sistem Visualisasi 3D DICOM/PACS Software Medis",
+
+    // GROMACS Cloud Pricing Section
+    gromacs_tag: "KOMPUTASI AWAN HPC & SIMULASI MOLEKULER",
+    gromacs_title_prefix: "Tarif Sewa Server ",
+    gromacs_title_highlight: "GROMACS Cloud Dedicated",
+    gromacs_subtitle: "Infrastruktur komputasi kinerja tinggi (HPC) tingkat perusahaan untuk simulasi dinamika molekuler (MD), riset biofisika, dan komputasi diagnostik PACS dengan jaminan alokasi sumber daya perangkat keras penuh.",
+    gromacs_period: "/ Bulan (1 Month)",
+    gromacs_badge_pop: "★ SPESIFIKASI UTAMA DIREKOMENDASIKAN",
+
+    // Tier 1 ($900)
+    gromacs_t1_name: "Starter Simulation Cloud",
+    gromacs_t1_desc: "Disesuaikan untuk molecular docking awal, simulasi GROMACS skala ringan, dan beban kerja riset akademis.",
+    gromacs_t1_cpu: "Prosesor AMD EPYC™ (8 Cores / 16 Threads)",
+    gromacs_t1_ram: "64 GB DDR5 ECC RAM",
+    gromacs_t1_disk: "1 TB Enterprise NVMe PCIe 4.0 SSD",
+    gromacs_t1_net: "Port Dedicated 1 Gbps & Lalu Lintas Tanpa Kuota",
+    gromacs_t1_gromacs: "Instalasi Siap Pakai GROMACS & OpenMPI Stack",
+    gromacs_t1_access: "Akses Penuh Root & SSH dengan SLA 99.9%",
+
+    // Tier 2 ($1,100)
+    gromacs_t2_name: "Advanced MD Workspace",
+    gromacs_t2_desc: "Ideal untuk dinamika biomolekuler skala menengah, pemodelan interaksi protein-ligan, dan antrean simulasi teratur.",
+    gromacs_t2_cpu: "Prosesor AMD EPYC™ (12 Cores / 24 Threads)",
+    gromacs_t2_ram: "96 GB DDR5 ECC RAM",
+    gromacs_t2_disk: "2 TB Enterprise NVMe PCIe 4.0 SSD",
+    gromacs_t2_net: "Port Dedicated 1 Gbps & Prioritas Bandwidth",
+    gromacs_t2_gromacs: "Instalasi Siap Pakai GROMACS, CUDA & Toolkit Slurm",
+    gromacs_t2_access: "Akses Penuh Root, IPMI/KVM & Pencadangan Otomatis",
+
+    // Tier 3 ($1,300) - Spesifikasi yang dibeli
+    gromacs_t3_name: "Dedicated Server Rental (GROMACS)",
+    gromacs_t3_desc: "Infrastruktur server terdedikasi tingkat perusahaan untuk simulasi dinamika molekuler skala penuh dan riset intensif berakurasi tinggi.",
+    gromacs_t3_cpu: "AMD EPYC Processor, 16 Cores / 32 Threads",
+    gromacs_t3_ram: "128 GB DDR5 ECC RAM",
+    gromacs_t3_disk: "2x 2 TB Enterprise NVMe PCIe 4.0 (RAID 1)",
+    gromacs_t3_net: "Jaringan Internal 10 Gbps / Uplink Dedicated 1 Gbps",
+    gromacs_t3_gromacs: "Mesin GROMACS Dedicated & Akselerasi Sistem PACS",
+    gromacs_t3_access: "Akses Dedicated IPMI/KVM, Full Root & Pemantauan 24/7",
+
+    // Tier 4 ($1,500)
+    gromacs_t4_name: "Ultra HPC Enterprise Cluster",
+    gromacs_t4_desc: "Keluaran komputasi maksimal untuk simulasi multi-trayektori, integrasi Cryo-EM, dan pemrosesan dataset korporasi berskala masif.",
+    gromacs_t4_cpu: "Prosesor AMD EPYC™ (24 Cores / 48 Threads)",
+    gromacs_t4_ram: "256 GB DDR5 ECC RAM",
+    gromacs_t4_disk: "2x 4 TB Enterprise NVMe PCIe 4.0 (RAID 1)",
+    gromacs_t4_net: "Uplink Redundan 10 Gbps & Perlindungan Anti-DDoS",
+    gromacs_t4_gromacs: "Paralelisasi GROMACS Cluster + Akselerasi AI Diagnostik",
+    gromacs_t4_access: "SLA Khusus 99.95% & Tim Rekayasa Teknis Prioritas",
+
+    // Action CTA
+    gromacs_btn_order: "Sewa Dedicated Server →",
+    gromacs_btn_popular: "Pilih & Sewa Paket Ini →",
+    gromacs_contact_note: "Membutuhkan kustomisasi GPU atau clustering multi-node? Hubungi tim rekayasa teknis kami di sales@chainasiaconect.company",
 
     // Market Research & Feasibility Study Section
     research_badge: "TAHAP AKTIF • RISET PASAR & STUDI KELAYAKAN CABANG",
