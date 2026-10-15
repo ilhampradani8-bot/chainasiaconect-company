@@ -95,47 +95,60 @@ export const fallbackNews: NewsItem[] = [
 ];
 
 export function parseCSV(text: string): Record<string, string>[] {
-  const lines = text.split(/\r?\n/).filter(line => line.trim().length > 0);
-  if (lines.length < 2) return [];
+  const rows: string[][] = [];
+  let currentRow: string[] = [];
+  let cur = '';
+  let inQuotes = false;
 
-  const parseRow = (row: string): string[] => {
-    const result: string[] = [];
-    let cur = '';
-    let inQuotes = false;
-    for (let i = 0; i < row.length; i++) {
-      const c = row[i];
-      if (c === '"') {
-        if (inQuotes && row[i + 1] === '"') {
-          cur += '"';
-          i++;
-        } else {
-          inQuotes = !inQuotes;
-        }
-      } else if (c === ',' && !inQuotes) {
-        result.push(cur.trim());
-        cur = '';
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '"') {
+      if (inQuotes && text[i + 1] === '"') {
+        cur += '"';
+        i++;
       } else {
-        cur += c;
+        inQuotes = !inQuotes;
       }
+    } else if (c === ',' && !inQuotes) {
+      currentRow.push(cur.trim());
+      cur = '';
+    } else if ((c === '\n' || c === '\r') && !inQuotes) {
+      if (c === '\r' && text[i + 1] === '\n') {
+        i++;
+      }
+      currentRow.push(cur.trim());
+      cur = '';
+      if (currentRow.some(val => val.length > 0)) {
+        rows.push(currentRow);
+      }
+      currentRow = [];
+    } else {
+      cur += c;
     }
-    result.push(cur.trim());
-    return result;
-  };
+  }
+  if (cur.length > 0 || currentRow.length > 0) {
+    currentRow.push(cur.trim());
+    if (currentRow.some(val => val.length > 0)) {
+      rows.push(currentRow);
+    }
+  }
 
-  const headers = parseRow(lines[0]).map(h => h.toLowerCase().replace(/[\s\-_]+/g, ''));
-  const rows: Record<string, string>[] = [];
+  if (rows.length < 2) return [];
 
-  for (let i = 1; i < lines.length; i++) {
-    const values = parseRow(lines[i]);
+  const headers = rows[0].map(h => h.toLowerCase().replace(/[\s\-_]+/g, ''));
+  const result: Record<string, string>[] = [];
+
+  for (let i = 1; i < rows.length; i++) {
+    const values = rows[i];
     if (values.every(v => v === '')) continue;
     const entry: Record<string, string> = {};
     headers.forEach((h, idx) => {
       entry[h] = values[idx] || '';
     });
-    rows.push(entry);
+    result.push(entry);
   }
 
-  return rows;
+  return result;
 }
 
 export async function fetchAllNews(): Promise<{ news: NewsItem[]; isLive: boolean }> {
