@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { fetchAllNews, formatImageUrl, type NewsItem } from '../../lib/news';
+import { fetchAllNews, formatImageUrl } from '../../lib/news';
 
 export async function getStaticPaths() {
   const { news } = await fetchAllNews();

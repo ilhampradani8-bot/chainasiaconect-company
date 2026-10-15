@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { fetchAllNews, type NewsItem } from '../../lib/news';
+import { fetchAllNews } from '../../lib/news';
 
 const { news: newsList, isLive: isFromSpreadsheet } = await fetchAllNews();
 
@@ -34,51 +34,67 @@ const otherNews = newsList.slice(1);
     <!-- Newsroom Content Section -->
     <section class="newsroom-feed-section">
       <div class="container">
+
+        <!-- Live Sync Status Strip -->
+        <div class="live-status-strip">
+          <div class="live-status-left">
+            <span class="live-indicator-dot"></span>
+            <span id="newsroom-sync-status" class="sync-status-text">Terhubung Langsung ke Google Sheets</span>
+          </div>
+          <button type="button" id="btn-sync-now" class="btn-refresh-live" title="Tarik pembaruan data Google Sheets sekarang">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" id="sync-svg-icon">
+              <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            <span id="sync-btn-text">Refresh Data</span>
+          </button>
+        </div>
         
         <!-- FEATURED HEADLINE (BERITA UTAMA) -->
-        {featuredNews && (
-          <div class="featured-headline-wrap">
-            <span class="section-sub-label red-text">BERITA UTAMA (HEADLINE)</span>
-            <article class="featured-card">
-              <a href={`/newsroom/${featuredNews.slug}`} class="featured-img-anchor">
-                <img 
-                  src={featuredNews.imageUrl} 
-                  alt={featuredNews.title} 
-                  class="featured-photo" 
-                  loading="eager" 
-                  referrerpolicy="no-referrer"
-                />
-              </a>
-              <div class="featured-body">
-                <div class="card-meta-line">
-                  <span class="meta-tag red-text">{featuredNews.tag}</span>
-                  <span class="meta-date">{featuredNews.date}</span>
-                  <span class="meta-readtime">• {featuredNews.readTime || '3 min baca'}</span>
+        <div class="featured-headline-wrap" id="newsroom-featured-container">
+          {featuredNews && (
+            <div>
+              <span class="section-sub-label red-text">BERITA UTAMA (HEADLINE)</span>
+              <article class="featured-card">
+                <a href={`/newsroom/${featuredNews.slug}`} class="featured-img-anchor">
+                  <img 
+                    src={featuredNews.imageUrl} 
+                    alt={featuredNews.title} 
+                    class="featured-photo" 
+                    loading="eager" 
+                    referrerpolicy="no-referrer"
+                  />
+                </a>
+                <div class="featured-body">
+                  <div class="card-meta-line">
+                    <span class="meta-tag red-text">{featuredNews.tag}</span>
+                    <span class="meta-date">{featuredNews.date}</span>
+                    <span class="meta-readtime">• {featuredNews.readTime || '3 min baca'}</span>
+                  </div>
+                  <h2 class="featured-title">
+                    <a href={`/newsroom/${featuredNews.slug}`}>{featuredNews.title}</a>
+                  </h2>
+                  <p class="featured-excerpt">
+                    {featuredNews.excerpt}
+                  </p>
+                  <div class="card-footer-action">
+                    <a href={`/newsroom/${featuredNews.slug}`} class="read-article-btn red-text">
+                      <span>Baca Berita Lengkap →</span>
+                    </a>
+                  </div>
                 </div>
-                <h2 class="featured-title">
-                  <a href={`/newsroom/${featuredNews.slug}`}>{featuredNews.title}</a>
-                </h2>
-                <p class="featured-excerpt">
-                  {featuredNews.excerpt}
-                </p>
-                <div class="card-footer-action">
-                  <a href={`/newsroom/${featuredNews.slug}`} class="read-article-btn red-text">
-                    <span>Baca Berita Lengkap →</span>
-                  </a>
-                </div>
-              </div>
-            </article>
-          </div>
-        )}
+              </article>
+            </div>
+          )}
+        </div>
 
         <!-- LIST DAFTAR BERITA (DESKTOP KANAN - KIRI) -->
         <div class="news-list-container">
           <div class="feed-header-line">
             <span class="section-sub-label red-text">SEMUA ARTIKEL & PENGUMUMAN</span>
-            <span class="feed-counter">Total: {newsList.length} Berita</span>
+            <span class="feed-counter" id="newsroom-feed-counter">Total: {newsList.length} Berita</span>
           </div>
 
-          <div class="split-cards-stack">
+          <div class="split-cards-stack" id="newsroom-cards-stack">
             {newsList.map((item, index) => (
               <article class="editorial-split-card">
                 <!-- Sisi Kiri: Foto / Media -->
@@ -131,6 +147,163 @@ const otherNews = newsList.slice(1);
   <Footer />
 </Layout>
 
+<script>
+  import { GOOGLE_SHEET_CSV_URL, parseCSV, slugify, formatImageUrl } from '../../lib/news';
+
+  async function syncLiveNewsroom() {
+    const statusEl = document.getElementById('newsroom-sync-status');
+    const iconEl = document.getElementById('sync-svg-icon');
+    const counterEl = document.getElementById('newsroom-feed-counter');
+    const stackEl = document.getElementById('newsroom-cards-stack');
+    const featuredEl = document.getElementById('newsroom-featured-container');
+
+    try {
+      if (iconEl) iconEl.classList.add('rotating');
+      if (statusEl) statusEl.textContent = 'Memeriksa pembaruan live Google Sheets...';
+
+      const res = await fetch(`${GOOGLE_SHEET_CSV_URL}&_cb=${Date.now()}`, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Fetch failed');
+      const csv = await res.text();
+      const rows = parseCSV(csv);
+      if (!rows || rows.length === 0) throw new Error('Empty CSV');
+
+      const items = rows
+        .map((r, idx) => {
+          const rawStatus = (r.status || 'published').toLowerCase().trim();
+          if (rawStatus === 'draft') return null;
+          const titleVal = (r.judul || r.title || '').trim();
+          if (!titleVal) return null;
+          const contentVal = (r.isiberita || r.isi || r.content || r.ringkasan || r.excerpt || '').trim();
+          const excerptVal = (r.ringkasan || r.excerpt || r.deskripsi || (contentVal.length > 150 ? contentVal.substring(0, 150) + '...' : contentVal)).trim();
+          const rawImg = (r.gambarurl || r.gambar || r.foto || r.imageurl || r.image || r.linkgambar || '').trim();
+          const imgVal = formatImageUrl(rawImg) || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80';
+          const linkVal = (r.link || r.url || (contentVal.startsWith('http') ? contentVal : '')).trim();
+          const rawId = (r.id && r.id.trim()) || String(idx + 1);
+          const cleanId = rawId.replace(/[^a-zA-Z0-9_-]/g, '') || String(idx + 1);
+          const generatedSlug = slugify(titleVal) || cleanId;
+          return {
+            id: cleanId,
+            slug: generatedSlug,
+            tag: (r.kategori || r.tag || r.category || 'PRESS RELEASE').toUpperCase(),
+            date: (r.tanggal || r.date || 'TERBARU').toUpperCase(),
+            title: titleVal,
+            excerpt: excerptVal,
+            imageUrl: imgVal,
+            readTime: '3 min baca'
+          };
+        })
+        .filter(Boolean);
+
+      items.sort((a, b) => {
+        const numA = parseFloat(a.id);
+        const numB = parseFloat(b.id);
+        if (!isNaN(numA) && !isNaN(numB)) return numB - numA;
+        return b.id.localeCompare(a.id, undefined, { numeric: true });
+      });
+
+      if (items.length > 0) {
+        if (counterEl) {
+          counterEl.textContent = `Total: ${items.length} Berita`;
+        }
+
+        const feat = items[0];
+        if (featuredEl && feat) {
+          featuredEl.innerHTML = `
+            <div>
+              <span class="section-sub-label red-text">BERITA UTAMA (HEADLINE)</span>
+              <article class="featured-card">
+                <a href="/newsroom/${feat.slug}" class="featured-img-anchor">
+                  <img 
+                    src="${feat.imageUrl}" 
+                    alt="${feat.title}" 
+                    class="featured-photo" 
+                    loading="eager" 
+                    referrerpolicy="no-referrer"
+                  />
+                </a>
+                <div class="featured-body">
+                  <div class="card-meta-line">
+                    <span class="meta-tag red-text">${feat.tag}</span>
+                    <span class="meta-date">${feat.date}</span>
+                    <span class="meta-readtime">• ${feat.readTime}</span>
+                  </div>
+                  <h2 class="featured-title">
+                    <a href="/newsroom/${feat.slug}">${feat.title}</a>
+                  </h2>
+                  <p class="featured-excerpt">
+                    ${feat.excerpt}
+                  </p>
+                  <div class="card-footer-action">
+                    <a href="/newsroom/${feat.slug}" class="read-article-btn red-text">
+                      <span>Baca Berita Lengkap →</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+
+        if (stackEl) {
+          stackEl.innerHTML = items.map(item => `
+            <article class="editorial-split-card">
+              <a href="/newsroom/${item.slug}" class="split-media-col">
+                <img 
+                  src="${item.imageUrl}" 
+                  alt="${item.title}" 
+                  class="split-card-img" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer"
+                />
+                <span class="hover-view-pill">Buka Berita</span>
+              </a>
+              <div class="split-content-col">
+                <div class="card-meta-line">
+                  <span class="meta-tag red-text">${item.tag}</span>
+                  <span class="meta-date">${item.date}</span>
+                  <span class="meta-readtime">• ${item.readTime}</span>
+                </div>
+                <h3 class="split-card-title">
+                  <a href="/newsroom/${item.slug}">${item.title}</a>
+                </h3>
+                <p class="split-card-excerpt">
+                  ${item.excerpt}
+                </p>
+                <div class="split-card-footer">
+                  <a href="/newsroom/${item.slug}" class="read-article-btn red-text">
+                    <span>Baca Selengkapnya</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="btn-arrow-icon">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          `).join('');
+        }
+
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        if (statusEl) {
+          statusEl.textContent = `Terhubung Realtime Google Sheets (Sinkron: ${timeStr})`;
+        }
+      }
+    } catch (err) {
+      if (statusEl) statusEl.textContent = 'Terhubung Langsung ke Google Sheets';
+    } finally {
+      if (iconEl) iconEl.classList.remove('rotating');
+    }
+  }
+
+  if (typeof window !== 'undefined') {
+    const btn = document.getElementById('btn-sync-now');
+    if (btn) {
+      btn.addEventListener('click', () => syncLiveNewsroom());
+    }
+    syncLiveNewsroom();
+  }
+</script>
+
 <style>
   .newsroom-main {
     background: #ffffff;
@@ -157,6 +330,66 @@ const otherNews = newsList.slice(1);
     font-size: 0.775rem;
     font-weight: 800;
     letter-spacing: 0.08em;
+  }
+
+  .live-status-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .live-status-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .live-indicator-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: livePulse 2s infinite;
+  }
+
+  .sync-status-text {
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-refresh-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.85rem;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.775rem;
+    font-weight: 700;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-refresh-live:hover {
+    background: #f1f5f9;
+    color: #dc2626;
+    border-color: #dc262644;
+  }
+
+  .rotating {
+    animation: spin 0.8s linear infinite;
   }
 
   .sheet-live-indicator {
