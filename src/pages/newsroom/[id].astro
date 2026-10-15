@@ -80,11 +80,6 @@ const newsArticleSchema = {
   }
 };
 
-// Siapkan teks share
-const shareText = encodeURIComponent(`${article.title} - PT CHAIN ASIA CONECT`);
-const waShareUrl = `https://api.whatsapp.com/send?text=${shareText}%20${encodeURIComponent(canonicalUrl)}`;
-const xShareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(canonicalUrl)}`;
-const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`;
 ---
 
 <Layout 
@@ -151,33 +146,6 @@ const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encode
               <span class="source-name" itemprop="author">PT CHAIN ASIA CONECT Corporate Communications</span>
               <span class="source-desk">Divisi Media & Keterbukaan Informasi Publik</span>
             </div>
-
-            <!-- Share Buttons Row -->
-            <div class="article-share-tools">
-              <!-- Salin Link -->
-              <button type="button" class="share-btn copy-btn" id="copy-btn" title="Salin Tautan Berita">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                </svg>
-                <span id="copy-text">Salin Link</span>
-              </button>
-
-              <!-- WhatsApp -->
-              <a href={waShareUrl} target="_blank" rel="noopener noreferrer" class="share-btn wa-share" title="Bagikan ke WhatsApp">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
-                </svg>
-                <span>WhatsApp</span>
-              </a>
-
-              <!-- X / Twitter -->
-              <a href={xShareUrl} target="_blank" rel="noopener noreferrer" class="share-btn x-share" title="Bagikan ke X">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-            </div>
           </div>
         </header>
 
@@ -226,13 +194,11 @@ const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encode
           )}
         </div>
 
-        <!-- Corporate Stamp / Sign-off -->
-        <div class="article-signoff">
-          <div class="signoff-seal">
-            <span class="signoff-tag">OFFICIAL CORPORATE PORTAL</span>
-            <span class="signoff-comp">PT CHAIN ASIA CONECT</span>
-            <span class="signoff-meta">SK AHU-A117353.AH.01.30.Tahun 2026 • NIB 0709260109599</span>
-          </div>
+        <!-- Corporate Stamp / Sign-off (Clean Imprint - No Card) -->
+        <div class="article-signoff-clean">
+          <span class="signoff-tag">OFFICIAL CORPORATE PORTAL</span>
+          <span class="signoff-comp">PT CHAIN ASIA CONECT</span>
+          <span class="signoff-meta">SK AHU-A117353.AH.01.30.Tahun 2026 • NIB 0709260109599</span>
         </div>
 
       </div>
@@ -284,24 +250,7 @@ const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encode
   <Footer />
 </Layout>
 
-<script>
-  // Copy canonical full link
-  const copyBtn = document.getElementById('copy-btn');
-  const copyText = document.getElementById('copy-text');
-  if (copyBtn && copyText) {
-    copyBtn.addEventListener('click', () => {
-      const shareUrl = window.location.href;
-      navigator.clipboard.writeText(shareUrl).then(() => {
-        copyText.textContent = 'Link Tersalin!';
-        setTimeout(() => {
-          copyText.textContent = 'Salin Link';
-        }, 2500);
-      }).catch(() => {
-        copyText.textContent = 'Gagal Salin';
-      });
-    });
-  }
-</script>
+
 
 <style>
   .reading-page-main {
@@ -387,14 +336,14 @@ const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encode
   }
 
   .article-cat-badge {
-    background: #fef2f2;
+    background: transparent;
     color: var(--red-primary, #dc2626);
-    border: 1px solid rgba(220, 38, 38, 0.2);
-    font-size: 0.75rem;
+    border: none;
+    font-size: 0.8rem;
     font-weight: 800;
-    letter-spacing: 0.05em;
-    padding: 0.25rem 0.65rem;
-    border-radius: 4px;
+    letter-spacing: 0.06em;
+    padding: 0;
+    text-transform: uppercase;
   }
 
   .article-date-meta, .read-estimate {
@@ -465,48 +414,6 @@ const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encode
   .source-desk {
     font-size: 0.775rem;
     color: var(--text-muted);
-  }
-
-  .article-share-tools {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .share-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.45rem 0.85rem;
-    background: #f8fafc;
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .share-btn:hover {
-    background: #f1f5f9;
-    border-color: #cbd5e1;
-  }
-
-  .wa-share {
-    color: #15803d;
-    background: #f0fdf4;
-    border-color: #bbf7d0;
-  }
-
-  .wa-share:hover {
-    background: #dcfce7;
-  }
-
-  .x-share {
-    padding: 0.45rem 0.65rem;
   }
 
   /* Featured Image */
@@ -593,19 +500,14 @@ const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encode
     opacity: 0.9;
   }
 
-  /* Signoff Box */
-  .article-signoff {
-    padding: 2rem;
-    background: #fafafa;
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    text-align: center;
-  }
-
-  .signoff-seal {
+  /* Signoff Clean (No Card Box) */
+  .article-signoff-clean {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.35rem;
   }
 
   .signoff-tag {
@@ -613,6 +515,7 @@ const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encode
     font-weight: 800;
     letter-spacing: 0.08em;
     color: var(--red-primary, #dc2626);
+    margin-bottom: 0.15rem;
   }
 
   .signoff-comp {
@@ -622,8 +525,9 @@ const inShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encode
   }
 
   .signoff-meta {
-    font-size: 0.8rem;
+    font-size: 0.825rem;
     color: var(--text-muted);
+    line-height: 1.5;
   }
 
   /* Suggestions Section */

@@ -12,13 +12,7 @@ const top2News = news.slice(0, 2);
     <!-- Section Header -->
     <div class="home-news-header">
       <div class="header-left">
-        <div class="tag-row">
-          <span class="section-tag red-text" data-i18n="home_news_tag">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
-          <span class="live-pill" id="home-live-pill">
-            <span class="live-dot"></span>
-            <span id="home-news-status">Google Sheets Live Data</span>
-          </span>
-        </div>
+        <span class="section-tag red-text" data-i18n="home_news_tag">MEDIA & OFFICIAL ANNOUNCEMENTS</span>
         <h2 class="section-title">
           <span data-i18n="home_news_title_prefix">Warta Terkini </span><span class="red-text" data-i18n="home_news_title_highlight">& Berita Korporasi</span>
         </h2>
@@ -51,11 +45,12 @@ const top2News = news.slice(0, 2);
                 loading="lazy" 
                 referrerpolicy="no-referrer"
               />
-              <span class="cat-pill">{item.tag}</span>
             </a>
 
             <div class="card-body">
               <div class="card-meta">
+                <span class="meta-tag red-text">{item.tag}</span>
+                <span class="meta-dot">•</span>
                 <time class="meta-date">{item.date}</time>
                 <span class="meta-dot">•</span>
                 <span class="meta-read">{item.readTime || '3 min baca'}</span>
@@ -97,7 +92,6 @@ const top2News = news.slice(0, 2);
   import { GOOGLE_SHEET_CSV_URL, parseCSV, slugify, formatImageUrl } from '../lib/news';
 
   async function syncLiveHomeNews() {
-    const statusEl = document.getElementById('home-news-status');
     const gridEl = document.getElementById('home-news-grid-container');
     if (!gridEl) return;
 
@@ -154,10 +148,11 @@ const top2News = news.slice(0, 2);
                 loading="lazy" 
                 referrerpolicy="no-referrer"
               />
-              <span class="cat-pill">${item.tag}</span>
             </a>
             <div class="card-body">
               <div class="card-meta">
+                <span class="meta-tag red-text">${item.tag}</span>
+                <span class="meta-dot">•</span>
                 <time class="meta-date">${item.date}</time>
                 <span class="meta-dot">•</span>
                 <span class="meta-read">${item.readTime}</span>
@@ -177,10 +172,6 @@ const top2News = news.slice(0, 2);
             </div>
           </article>
         `).join('');
-
-        if (statusEl) {
-          statusEl.textContent = 'Realtime Live Google Sheets';
-        }
       }
     } catch (e) {
       // Keep static SSR content
@@ -211,57 +202,12 @@ const top2News = news.slice(0, 2);
     max-width: 720px;
   }
 
-  .tag-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.5rem;
-  }
-
   .section-tag {
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.08em;
-    display: inline-block;
-  }
-
-  .live-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.2rem 0.6rem;
-    background: #ecfdf5;
-    border: 1px solid #10b98144;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #047857;
-    letter-spacing: 0.02em;
-  }
-
-  .live-dot {
-    width: 7px;
-    height: 7px;
-    background: #10b981;
-    border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-    animation: livePulse 2s infinite;
-  }
-
-  @keyframes livePulse {
-    0% {
-      transform: scale(0.95);
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-    }
-    70% {
-      transform: scale(1);
-      box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
-    }
-    100% {
-      transform: scale(0.95);
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-    }
+    display: block;
+    margin-bottom: 0.5rem;
   }
 
   .news-loading-card {
@@ -375,18 +321,12 @@ const top2News = news.slice(0, 2);
     transform: scale(1.04);
   }
 
-  .cat-pill {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(4px);
-    color: #ffffff;
-    font-size: 0.7rem;
+  .meta-tag {
+    font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.05em;
-    padding: 0.3rem 0.7rem;
-    border-radius: 4px;
+    color: var(--red-primary, #dc2626);
+    text-transform: uppercase;
   }
 
   .card-body {
