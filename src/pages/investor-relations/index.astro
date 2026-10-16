@@ -23,7 +23,6 @@ import Staircase3D from '../../components/Staircase3D.astro';
     <section class="fullwidth-section profit-policy-section">
       <div class="container">
         <div class="section-header-clean">
-          <span class="section-tag red-text">EXECUTIVE PARTNERSHIP & PROFIT DISTRIBUTION</span>
           <h2>Founders Agreement & Profit Allocation Policy</h2>
           <p>Established under the formal MoU between President Director <strong>Ilham Pradani, S.H. (Cand.)</strong> and Vice President Director <strong>Putri Wulandari, S.T.</strong></p>
         </div>
@@ -60,27 +59,23 @@ import Staircase3D from '../../components/Staircase3D.astro';
       </div>
     </section>
 
-    <!-- Prominent Coming Soon 2029 IPO Section (with Left Corner 3D Gray Staircase & Progress Line) -->
+    <!-- Prominent Coming Soon 2029 IPO Section (Dense, Fullheight 3D Gray Staircase & Horizontal Progress Line) -->
     <section class="fullwidth-section ipo-banner-section">
-      <!-- 3D Slate Gray Staircase (Compact Left Corner, Flush Top-to-Bottom) -->
-      <Staircase3D align="left" id="ipo-staircase-3d" opacity={0.92} scale={0.82} />
+      <!-- 3D Slate Gray Staircase (Flush Top-to-Bottom, Full Height of Section) -->
+      <Staircase3D align="left" id="ipo-staircase-3d" opacity={0.95} scale={1} />
 
       <div class="container ipo-container-relative">
         <div class="ipo-editorial-wrap">
-          <div class="ipo-badge-row">
-            <span class="ipo-tag red-bg">INITIAL PUBLIC OFFERING (IPO) ROADMAP</span>
-            <span class="ipo-year red-text">TARGET LISTING: COMING SOON 2029</span>
-          </div>
-          
-          <h2 class="ipo-main-title">Transforming towards Public Listed Corporation (Tbk)</h2>
+          <!-- 1 Single Title per Section -->
+          <h2 class="ipo-main-title">Initial Public Offering (IPO) Roadmap: Target Go Public 2029</h2>
           
           <p class="ipo-lead-desc">
-            As a registered Individual Limited Liability Company (PT Perorangan) under SK Kemenkumham AHU-A117353.AH.01.30.Year 2026, <strong>PT CHAIN ASIA CONECT</strong> is executing a strategic multi-year roadmap. We are establishing audit frameworks, corporate secretary functions, and financial accounting standards targeting public listing (Tbk) on Bursa Efek Indonesia (IDX) in <strong>2029</strong>.
+            As a registered Individual Limited Liability Company (PT Perorangan) under SK Kemenkumham AHU-A117353.AH.01.30.Year 2026, <strong>PT CHAIN ASIA CONECT</strong> is executing a strategic multi-year roadmap targeting public listing (Tbk) on Bursa Efek Indonesia (IDX) in <strong>2029</strong>.
           </p>
 
-          <!-- Interactive Corporate Progress Line Track -->
+          <!-- Interactive Corporate Progress Line Track (Dense, No Cards for Text) -->
           <div class="progress-timeline-wrapper">
-            <!-- Global Track Bar with Active Status (Sharp Fullwidth Dense) -->
+            <!-- Progress Status Bar (Pure Typography & Gradient Rail, No Card Box) -->
             <div class="progress-track-bar">
               <div class="track-header-row">
                 <div class="track-status-indicator">
@@ -90,7 +85,7 @@ import Staircase3D from '../../components/Staircase3D.astro';
                   <span class="status-pct-red">35% PROGRESS</span>
                 </div>
                 <div class="track-pct-box">
-                  <span class="track-pct-text">Overall Roadmap Target: <strong class="red-text">2029 Tbk Listing</strong></span>
+                  <span class="track-pct-text">Overall Roadmap Target: <strong class="red-text">2029 Tbk Listing (IDX)</strong></span>
                 </div>
               </div>
               <div class="progress-rail-line" aria-label="Roadmap progression bar">
@@ -98,87 +93,55 @@ import Staircase3D from '../../components/Staircase3D.astro';
               </div>
             </div>
 
-            <!-- Connected Step Nodes on Progress Line -->
-            <div class="progress-nodes-list">
-              
+            <!-- Horizontal Connected Step Milestones (Dense Grid, Pure Typography, NO Cards) -->
+            <div class="progress-dense-steps">
               <!-- Step 01: 2026 Active -->
-              <div class="progress-node-item node-completed">
-                <div class="node-spine">
-                  <div class="node-circle active-circle">
-                    <svg viewBox="0 0 20 20" fill="currentColor" class="node-check-svg">
-                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                    </svg>
-                  </div>
-                  <div class="node-line-segment active-line"></div>
+              <div class="dense-step-item active">
+                <div class="step-head-row">
+                  <span class="step-badge-code red-text">PHASE 01</span>
+                  <span class="step-badge-status status-green">✓ ACTIVE & VERIFIED</span>
                 </div>
-                <div class="node-details">
-                  <div class="node-tag-row">
-                    <span class="node-badge-code red-text">PHASE 01</span>
-                    <span class="node-badge-year green-badge">2026 • CURRENT ACTIVE</span>
-                  </div>
-                  <h3 class="node-heading">Entity Establishment & Legal Governance</h3>
-                  <p class="node-paragraph">SK Kemenkumham AHU-A117353, NIB 0709260109599, KBLI 62193, Corporate Bank OCBC, and formal Founders MoU.</p>
-                  <div class="node-checklist">
-                    <span class="chk-item">✓ SK Kemenkumham Verified</span>
-                    <span class="chk-item">✓ Bank OCBC Operational</span>
-                    <span class="chk-item">✓ 10% Mitra Langit Enacted</span>
-                  </div>
+                <div class="step-title-row">
+                  <strong class="step-year">2026</strong>
+                  <h3 class="step-heading">Entity & Legal Governance</h3>
                 </div>
+                <p class="step-desc">SK Kemenkumham AHU-A117353, NIB 0709260109599, KBLI 62193, Corporate Bank OCBC, Founders MoU, & 10% Mitra Langit Tabarru'.</p>
               </div>
 
               <!-- Step 02: 2027-2028 Scaling -->
-              <div class="progress-node-item node-scaling">
-                <div class="node-spine">
-                  <div class="node-circle pending-circle">
-                    <span class="node-number-txt">02</span>
-                  </div>
-                  <div class="node-line-segment"></div>
+              <div class="dense-step-item">
+                <div class="step-head-row">
+                  <span class="step-badge-code">PHASE 02</span>
+                  <span class="step-badge-status status-slate">○ SCALING ECOSYSTEM</span>
                 </div>
-                <div class="node-details">
-                  <div class="node-tag-row">
-                    <span class="node-badge-code">PHASE 02</span>
-                    <span class="node-badge-year slate-badge">2027 – 2028 • SCALING</span>
-                  </div>
-                  <h3 class="node-heading">Ecosystem Scaling & Financial Audit</h3>
-                  <p class="node-paragraph">Scaling medical machine engineering, PACS software cloud licensing, and annual KAP auditing distribution.</p>
-                  <div class="node-checklist">
-                    <span class="chk-item pending">○ Annual KAP Audit Readiness</span>
-                    <span class="chk-item pending">○ PACS Cloud Multi-Year Enterprise Licenses</span>
-                    <span class="chk-item pending">○ Dedicated Corsec Desk</span>
-                  </div>
+                <div class="step-title-row">
+                  <strong class="step-year">2027–2028</strong>
+                  <h3 class="step-heading">Ecosystem & KAP Audit</h3>
                 </div>
+                <p class="step-desc">Scaling medical devices & PACS cloud software licensing, dedicated corsec desk, and annual KAP financial audit readiness.</p>
               </div>
 
               <!-- Step 03: 2029 Target Tbk -->
-              <div class="progress-node-item node-target">
-                <div class="node-spine">
-                  <div class="node-circle target-circle">
-                    <span class="node-star-txt">★</span>
-                  </div>
+              <div class="dense-step-item target">
+                <div class="step-head-row">
+                  <span class="step-badge-code red-text">PHASE 03</span>
+                  <span class="step-badge-status status-red">★ TARGET GO PUBLIC</span>
                 </div>
-                <div class="node-details">
-                  <div class="node-tag-row">
-                    <span class="node-badge-code red-text">PHASE 03</span>
-                    <span class="node-badge-year red-badge">2029 • TARGET GO PUBLIC</span>
-                  </div>
-                  <h3 class="node-heading">Tbk Transformation (Initial Public Offering)</h3>
-                  <p class="node-paragraph">Registration filing with OJK and Bursa Efek Indonesia (BEI / IDX) for Initial Public Offering, unlocking public equity participation.</p>
-                  <div class="node-checklist">
-                    <span class="chk-item target-chk">★ Listing on Indonesia Stock Exchange (IDX)</span>
-                    <span class="chk-item target-chk">★ Public Shareholder Distribution</span>
-                  </div>
+                <div class="step-title-row">
+                  <strong class="step-year red-text">2029</strong>
+                  <h3 class="step-heading">Tbk Transformation (IPO)</h3>
                 </div>
+                <p class="step-desc">Registration filing with OJK and Bursa Efek Indonesia (IDX) for Initial Public Offering, unlocking public equity participation.</p>
               </div>
-
             </div>
           </div>
 
-          <!-- Neumorphic Action Buttons -->
+          <!-- Action Buttons (Only Buttons have Cards/Pills, Sharp Corners) -->
           <div class="ipo-action-buttons">
-            <a href="mailto:corsec@chainasiaconnect.co.id" class="btn-more-red">
+            <a href="mailto:corsec@chainasiaconnect.co.id" class="btn-sharp-primary">
               <span>Inquire Investor Relations Desk →</span>
             </a>
-            <a href="mailto:ilhampradani-sh@chainasiaconnect.co.id" class="btn-secondary-clean">
+            <a href="mailto:ilhampradani-sh@chainasiaconnect.co.id" class="btn-sharp-secondary">
               <span>President Director Office</span>
             </a>
           </div>
@@ -316,86 +279,60 @@ import Staircase3D from '../../components/Staircase3D.astro';
     font-size: 1rem;
     line-height: 1.75;
     color: var(--text-body);
-    margin: 0;
-  }
-
-  /* Fullwidth IPO Roadmap Section with Left-Corner 3D Gray Staircase */
+    ma  /* Fullwidth IPO Roadmap Section with Left-Corner 3D Gray Staircase */
   .ipo-banner-section {
     position: relative;
     background: #f8fafc;
-    padding: 3.25rem 0 3.75rem 0; /* Compact & proportional */
+    padding: 2.75rem 0 3rem 0; /* Dense & compact */
     border-bottom: 1px solid var(--border-light);
     overflow: hidden;
+    min-height: 410px;
+    display: flex;
+    align-items: center;
   }
 
   .ipo-container-relative {
     position: relative;
     z-index: 2;
+    width: 100%;
   }
 
   .ipo-editorial-wrap {
-    max-width: 860px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: clamp(0px, 8vw, 130px); /* Gives room for the left corner stairs */
-  }
-
-  .ipo-badge-row {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .ipo-tag {
-    font-size: 0.72rem;
-    font-weight: 800;
-    padding: 0.3rem 0.65rem;
-    border-radius: 0; /* Sharp */
-  }
-
-  .ipo-tag.red-bg {
-    background: var(--red-primary);
-    color: #ffffff;
-  }
-
-  .ipo-year {
-    font-size: 0.9rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
+    width: 100%;
+    margin: 0;
+    padding-left: clamp(140px, 18vw, 240px); /* Seamless clearance for left stairs without big empty gap */
   }
 
   .ipo-main-title {
-    font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
     font-weight: 800;
     color: var(--text-dark);
-    margin-bottom: 0.65rem;
+    margin: 0 0 0.5rem 0;
     line-height: 1.2;
   }
 
   .ipo-lead-desc {
-    font-size: 0.98rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: var(--text-body);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    max-width: 950px;
   }
 
-  /* Progress Line Timeline System (Sharp Fullwidth Dense) */
+  /* Progress Line Timeline System (Dense, No Card background for text) */
   .progress-timeline-wrapper {
-    margin: 1.5rem 0 2rem 0;
+    margin: 1.25rem 0 1.5rem 0;
     width: 100%;
   }
 
+  /* Track Bar: Pure Typography & Line, NO CARD BOX */
   .progress-track-bar {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 0; /* Sharp, not rounded */
-    padding: 1.15rem 1.35rem; /* Dense & compact */
-    margin-bottom: 2rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 1.25rem;
     width: 100%;
-    max-width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
   }
 
   .track-header-row {
@@ -404,10 +341,9 @@ import Staircase3D from '../../components/Staircase3D.astro';
     align-items: center;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.6rem;
   }
 
-  /* No card/pill for status - pure colored typography */
   .track-status-indicator {
     display: inline-flex;
     align-items: center;
@@ -431,8 +367,8 @@ import Staircase3D from '../../components/Staircase3D.astro';
   }
 
   .track-beacon-dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background: #22c55e;
     border-radius: 50%;
     box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
@@ -460,183 +396,143 @@ import Staircase3D from '../../components/Staircase3D.astro';
     width: 100%;
     height: 6px;
     background: #e2e8f0;
-    border-radius: 0; /* Sharp */
+    border-radius: 0;
     overflow: hidden;
-    position: relative;
   }
 
   .progress-rail-fill {
     height: 100%;
-    background: linear-gradient(90deg, #16a34a 0%, var(--red-primary) 70%, #f43f5e 100%);
+    background: linear-gradient(90deg, #16a34a 0%, var(--red-primary) 70%, #dc2626 100%);
     border-radius: 0;
     transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Progress Nodes Track */
-  .progress-nodes-list {
+  /* Dense 3-Column Milestone Grid: Pure Typography, NO CARDS */
+  .progress-dense-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .dense-step-item {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    position: relative;
+    gap: 0.35rem;
   }
 
-  .progress-node-item {
-    display: flex;
-    gap: 1.75rem;
-    position: relative;
-    padding-bottom: 2rem;
-  }
-
-  .progress-node-item:last-child {
-    padding-bottom: 0;
-  }
-
-  /* Progress Spine / Line */
-  .node-spine {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 34px;
-    flex-shrink: 0;
-  }
-
-  .node-circle {
-    width: 34px;
-    height: 34px;
-    border-radius: 0; /* Sharp, not rounded */
+  .step-head-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: #ffffff;
-    border: 2px solid #cbd5e1;
-    z-index: 2;
-    transition: all 0.3s ease;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
   }
 
-  .active-circle {
-    border-color: #16a34a;
-    background: #f0fdf4;
+  .step-badge-code {
+    color: var(--text-muted);
+  }
+
+  .status-green {
     color: #16a34a;
-    box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.15);
   }
 
-  .node-check-svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .pending-circle {
-    border-color: #94a3b8;
-    background: #f8fafc;
+  .status-slate {
     color: #64748b;
   }
 
-  .node-number-txt {
-    font-size: 0.85rem;
-    font-weight: 800;
-  }
-
-  .target-circle {
-    border-color: var(--red-primary);
-    background: #fef2f2;
+  .status-red {
     color: var(--red-primary);
-    box-shadow: 0 0 0 5px rgba(220, 38, 38, 0.15);
   }
 
-  .node-star-txt {
-    font-size: 1.1rem;
-    font-weight: 900;
-    line-height: 1;
-  }
-
-  .node-line-segment {
-    width: 3px;
-    flex-grow: 1;
-    background: #cbd5e1;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    border-radius: 2px;
-  }
-
-  .node-line-segment.active-line {
-    background: linear-gradient(180deg, #16a34a 0%, #cbd5e1 100%);
-  }
-
-  /* Node Details */
-  .node-details {
-    flex-grow: 1;
-    padding-top: 0.2rem;
-  }
-
-  .node-tag-row {
+  .step-title-row {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.4rem;
+    align-items: baseline;
+    gap: 0.5rem;
     flex-wrap: wrap;
   }
 
-  .node-badge-code {
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
+  .step-year {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--text-dark);
   }
 
-  .node-badge-year {
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.2rem 0.6rem;
-    border-radius: 0; /* Sharp */
-  }
-
-  .node-heading {
-    font-size: 1.35rem;
+  .step-heading {
+    font-size: 0.95rem;
     font-weight: 800;
     color: var(--text-dark);
-    margin: 0.2rem 0 0.5rem 0;
-    line-height: 1.25;
+    margin: 0;
   }
 
-  .node-paragraph {
-    font-size: 0.98rem;
+  .step-desc {
+    font-size: 0.82rem;
+    line-height: 1.55;
     color: var(--text-body);
-    line-height: 1.7;
-    margin: 0 0 0.85rem 0;
+    margin: 0;
   }
 
-  .node-checklist {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-
-  .chk-item {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #166534;
-    background: #f0fdf4;
-    border: 1px solid #dcfce7;
-    padding: 0.25rem 0.65rem;
-    border-radius: 0; /* Sharp */
-  }
-
-  .chk-item.pending {
-    color: #64748b;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-  }
-
-  .chk-item.target-item {
-    color: var(--red-primary);
-    background: #fef2f2;
-    border: 1px solid #fee2e2;
-  }
-
+  /* Action Buttons: Only buttons get card/button styling (Sharp Corners) */
   .ipo-action-buttons {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1rem;
+    margin-top: 1.5rem;
     flex-wrap: wrap;
-    padding-top: 1.5rem;
+  }
+
+  .btn-sharp-primary,
+  .btn-sharp-secondary {
+    border-radius: 0 !important; /* Sharp corners */
+    font-family: inherit;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.75rem 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .btn-sharp-primary {
+    background: var(--red-primary);
+    color: #ffffff;
+    border: 1px solid var(--red-primary);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  }
+
+  .btn-sharp-primary:hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+    transform: translateY(-2px);
+  }
+
+  .btn-sharp-secondary {
+    background: #ffffff;
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+  }
+
+  .btn-sharp-secondary:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .ipo-editorial-wrap {
+      padding-left: 0;
+    }
+    .progress-dense-steps {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
   }
 
   @media (max-width: 768px) {
@@ -644,19 +540,12 @@ import Staircase3D from '../../components/Staircase3D.astro';
       grid-template-columns: 1fr;
       gap: 0.75rem;
     }
-    .progress-node-item {
-      gap: 1rem;
-    }
-    .node-circle {
-      width: 32px;
-      height: 32px;
-    }
     .ipo-action-buttons {
       flex-direction: column;
       align-items: stretch;
     }
-    .ipo-action-buttons .btn-more-red,
-    .ipo-action-buttons .btn-secondary-clean {
+    .ipo-action-buttons .btn-sharp-primary,
+    .ipo-action-buttons .btn-sharp-secondary {
       width: 100%;
       text-align: center;
     }
