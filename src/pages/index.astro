@@ -9,6 +9,7 @@ import GromacsPricingSection from '../components/GromacsPricingSection.astro';
 import LegalSection from '../components/LegalSection.astro';
 import HomeNewsSection from '../components/HomeNewsSection.astro';
 import ComingSoonBanner from '../components/ComingSoonBanner.astro';
+import Staircase3D from '../components/Staircase3D.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -293,9 +294,12 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
 
-    <!-- Section 5: Investor Relations & IPO 2029 Summary - Fullwidth Clean -->
-    <section class="home-summary-section scroll-reveal" id="home-investor-summary">
-      <div class="container">
+    <!-- Section 5: Investor Relations & IPO 2029 Summary (with 3D White Staircase & Progress Line) -->
+    <section class="home-summary-section investor-summary-staircase-wrap scroll-reveal" id="home-investor-summary">
+      <!-- Stationary 3D Pure White Animated Staircase Backdrop -->
+      <Staircase3D align="right" id="home-investor-staircase" opacity={0.88} />
+
+      <div class="container investor-container-relative">
         <div class="section-row-header">
           <div class="header-left">
             <span class="section-tag red-text">INVESTOR RELATIONS & IPO ROADMAP</span>
@@ -311,6 +315,42 @@ import Footer from '../components/Footer.astro';
           <p class="summary-desc">
             PT CHAIN ASIA CONECT operates under an executive founders agreement between President Director <strong>Ilham Pradani, S.H. (Cand.)</strong> and Vice President Director <strong>Putri Wulandari, S.T.</strong>, allocating <strong>10% of Net Profit to Mitra Langit Tabarru' Fund</strong> and targeting <strong>Initial Public Offering (IPO) in 2029</strong>.
           </p>
+
+          <!-- Connected Roadmap Progress Line Preview -->
+          <div class="home-progress-rail-wrap">
+            <div class="home-progress-bar-head">
+              <span class="home-status-tag">
+                <span class="home-beacon-dot"></span> STAGE 1 ACTIVE & VERIFIED (35% PROGRESS)
+              </span>
+              <span class="home-target-tag red-text">Target IDX Listing: 2029 (Tbk)</span>
+            </div>
+            <div class="home-progress-track">
+              <div class="home-progress-fill" style="width: 35%;"></div>
+            </div>
+            <div class="home-progress-steps">
+              <div class="home-step-item active">
+                <span class="step-dot completed">✓</span>
+                <div class="step-meta">
+                  <strong class="step-yr">2026</strong>
+                  <span class="step-lbl">Legal Governance & Foundation</span>
+                </div>
+              </div>
+              <div class="home-step-item">
+                <span class="step-dot pending">02</span>
+                <div class="step-meta">
+                  <strong class="step-yr">2027–2028</strong>
+                  <span class="step-lbl">Scaling & KAP Financial Audit</span>
+                </div>
+              </div>
+              <div class="home-step-item target">
+                <span class="step-dot target">★</span>
+                <div class="step-meta">
+                  <strong class="step-yr red-text">2029</strong>
+                  <span class="step-lbl">Tbk Initial Public Offering (IPO)</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -938,6 +978,144 @@ import Footer from '../components/Footer.astro';
     margin-bottom: 1.5rem;
     max-width: 950px;
     text-align: left;
+  }
+
+  .investor-summary-staircase-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .investor-container-relative {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Home Progress Rail Preview */
+  .home-progress-rail-wrap {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-top: 1.75rem;
+    max-width: 900px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  }
+
+  .home-progress-bar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .home-status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #15803d;
+  }
+
+  .home-beacon-dot {
+    width: 7px;
+    height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+  }
+
+  .home-target-tag {
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .home-progress-track {
+    width: 100%;
+    height: 7px;
+    background: #e2e8f0;
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+
+  .home-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #16a34a 0%, var(--red-primary) 70%, #f43f5e 100%);
+    border-radius: 9999px;
+  }
+
+  .home-progress-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .home-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .step-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .step-dot.completed {
+    background: #f0fdf4;
+    border: 1.5px solid #16a34a;
+    color: #16a34a;
+  }
+
+  .step-dot.pending {
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    color: #64748b;
+  }
+
+  .step-dot.target {
+    background: #fef2f2;
+    border: 1.5px solid var(--red-primary);
+    color: var(--red-primary);
+  }
+
+  .step-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .step-yr {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-dark);
+  }
+
+  .step-lbl {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .home-progress-steps {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
   }
 
   .btn-more-red {

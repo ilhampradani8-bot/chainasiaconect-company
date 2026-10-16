@@ -1,0 +1,310 @@
+---
+interface Props {
+  id?: string;
+  className?: string;
+  align?: 'right' | 'center' | 'left';
+  opacity?: number;
+}
+
+const {
+  id = "staircase-3d",
+  className = "",
+  align = "right",
+  opacity = 0.92
+} = Astro.props;
+
+const steps = Array.from({ length: 20 }, (_, i) => i + 1);
+---
+
+<div class={`staircase-sticky-backdrop align-${align} ${className}`} id={id} style={`--bg-opacity: ${opacity};`} aria-hidden="true">
+  <div class="staircase-perspective-viewport">
+    <div class="staircase-window">
+      <div class="panel">
+        <div class="panel_frame"></div>
+        <div class="panel_back"></div>
+      </div>
+      <div class="pillar">
+        <div class="ref"></div>
+      </div>
+      <div class="wall"></div>
+      
+      {steps.map((stepNum) => (
+        <div class="step" style={`--i: ${stepNum};`}>
+          <div class="step_inner">
+            <div class="step_top"></div>
+            <div class="step_side"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Stationary Sticky Container: locks in place behind content as user scrolls */
+  .staircase-sticky-backdrop {
+    position: sticky;
+    top: 140px;
+    height: 0;
+    width: 100%;
+    display: flex;
+    pointer-events: none;
+    z-index: 0;
+    opacity: var(--bg-opacity, 0.92);
+    transition: opacity 0.5s ease;
+  }
+
+  .staircase-sticky-backdrop.align-right {
+    justify-content: flex-end;
+    padding-right: clamp(1rem, 6vw, 5rem);
+  }
+
+  .staircase-sticky-backdrop.align-center {
+    justify-content: center;
+  }
+
+  .staircase-sticky-backdrop.align-left {
+    justify-content: flex-start;
+    padding-left: clamp(1rem, 6vw, 5rem);
+  }
+
+  /* 3D Perspective Box */
+  .staircase-perspective-viewport {
+    width: 320px;
+    height: 420px;
+    perspective: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.06));
+  }
+
+  /* Scoped 3D Elements */
+  .staircase-window {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    transform-style: preserve-3d;
+  }
+
+  .staircase-window div {
+    position: absolute;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  /* Panel & Architectural Frame - Pure White Aesthetics */
+  .staircase-window .panel_frame {
+    top: -150px;
+    left: -150px;
+    width: 75px;
+    height: 98px;
+    border: 150px solid #f8fafc;
+    box-sizing: content-box;
+    transform: translate3d(112.5px, 151px, 300px);
+    border-radius: 152px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.08) inset;
+    pointer-events: none;
+  }
+
+  .staircase-window .panel_back {
+    width: 1000px;
+    height: 1200px;
+    background: linear-gradient(220deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
+    transform: translate3d(-50%, -50%, -250px);
+    border-radius: 16px;
+  }
+
+  /* Central White Architectural Pillar */
+  .staircase-window .pillar {
+    width: 100px;
+    height: 400px;
+    background: linear-gradient(220deg, #ffffff 0%, #f1f5f9 45%, #cbd5e1 100%);
+    overflow: hidden;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.04);
+  }
+
+  .staircase-window .pillar .ref {
+    left: 45%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 100%);
+    transform: translateZ(1px);
+    filter: blur(10px);
+    mix-blend-mode: screen;
+  }
+
+  .staircase-window .pillar::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.02) 15%, rgba(255, 255, 255, 0.8) 50%);
+  }
+
+  .staircase-window .pillar::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(300deg, rgba(148, 163, 184, 0.4) 0%, rgba(255, 255, 255, 0) 40%);
+  }
+
+  /* Architectural Side Wall */
+  .staircase-window .wall {
+    width: 159px;
+    height: 400px;
+    background: linear-gradient(220deg, #ffffff 0%, #f8fafc 40%, #e2e8f0 100%);
+    transform: translate(100px, 256px);
+  }
+
+  .staircase-window .wall::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg, rgba(148, 163, 184, 0.15) 0%, rgba(255, 255, 255, 0.6) 8%);
+  }
+
+  /* Pure White Spiral Stairs */
+  .staircase-window .step {
+    transform: rotateY(-50deg);
+    animation: stepAnimation 10000ms calc(var(--i) * -500ms) linear infinite;
+  }
+
+  .staircase-window .step_inner {
+    transform: translateX(99.4px);
+  }
+
+  /* Step Top Tread - White Marble Texture */
+  .staircase-window .step_top {
+    width: 150px;
+    height: 37px;
+    background: linear-gradient(220deg, #ffffff 0%, #f8fafc 55%, #e2e8f0 100%);
+    transform-origin: 0 100%;
+    transform: translateY(-37px) rotateX(90deg);
+    box-shadow: 0 -1px 3px rgba(255, 255, 255, 0.8) inset;
+  }
+
+  .staircase-window .step .step_top::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 0%, rgba(203, 213, 225, 0.5) 100%);
+    animation: stepShadow 10000ms calc(var(--i) * -500ms) linear infinite;
+  }
+
+  .staircase-window .step .step_top::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    opacity: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 100%);
+    transform: translate3d(-100%, 0, -1px);
+    animation: stepRefrection 10000ms calc(var(--i) * -500ms) linear infinite;
+  }
+
+  /* Step Side Riser - White Marble */
+  .staircase-window .step_side {
+    width: 150px;
+    height: 20px;
+    background: linear-gradient(195deg, #ffffff 0%, #e2e8f0 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .staircase-window .step .step_side::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    opacity: 1;
+    transform: translateZ(1px);
+    animation: stepColor 10000ms calc(var(--i) * -500ms) linear infinite;
+  }
+
+  .staircase-window .step .step_side::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    opacity: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%);
+    transform: translate3d(-100%, 0, -1px);
+    animation: stepRefrection 10000ms calc(var(--i) * -500ms) linear infinite;
+  }
+
+  /* Spiral Staircase 3D Orbit Keyframes */
+  @keyframes stepAnimation {
+    0% {
+      transform: translateY(0) rotateY(90deg);
+    }
+    100% {
+      transform: translateY(400px) rotateY(-90deg);
+    }
+  }
+
+  @keyframes stepColor {
+    0% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes stepRefrection {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes stepShadow {
+    0% {
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        0% 40%,
+        30% 100%,
+        0 100%
+      );
+    }
+    100% {
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        125% 80%,
+        60% 100%,
+        0 100%
+      );
+    }
+  }
+
+  @media (max-width: 900px) {
+    .staircase-sticky-backdrop {
+      opacity: 0.6;
+      justify-content: center !important;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+    .staircase-perspective-viewport {
+      transform: scale(0.75);
+    }
+  }
+</style>
