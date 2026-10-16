@@ -80,15 +80,17 @@ import Staircase3D from '../../components/Staircase3D.astro';
 
           <!-- Interactive Corporate Progress Line Track -->
           <div class="progress-timeline-wrapper">
-            <!-- Global Track Bar with Active Status -->
+            <!-- Global Track Bar with Active Status (Sharp Fullwidth Dense) -->
             <div class="progress-track-bar">
               <div class="track-header-row">
-                <div class="track-status-badge">
+                <div class="track-status-indicator">
                   <span class="track-beacon-dot"></span>
-                  <span class="track-status-txt">STAGE 1 ACTIVE & VERIFIED</span>
+                  <span class="status-txt-green">STAGE 1 ACTIVE & VERIFIED</span>
+                  <span class="status-sep">|</span>
+                  <span class="status-pct-red">35% PROGRESS</span>
                 </div>
                 <div class="track-pct-box">
-                  <span class="track-pct-text">Overall Roadmap Progress: <strong class="red-text">35%</strong></span>
+                  <span class="track-pct-text">Overall Roadmap Target: <strong class="red-text">2029 Tbk Listing</strong></span>
                 </div>
               </div>
               <div class="progress-rail-line" aria-label="Roadmap progression bar">
@@ -377,18 +379,21 @@ import Staircase3D from '../../components/Staircase3D.astro';
     margin-bottom: 2.75rem;
   }
 
-  /* Progress Line Timeline System */
+  /* Progress Line Timeline System (Sharp Fullwidth Dense) */
   .progress-timeline-wrapper {
-    margin: 2.5rem 0 3.5rem 0;
+    margin: 2rem 0 3rem 0;
+    width: 100%;
   }
 
   .progress-track-bar {
     background: #ffffff;
     border: 1px solid var(--border-light);
-    border-radius: 14px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    border-radius: 0; /* Sharp, not rounded */
+    padding: 1.15rem 1.35rem; /* Dense & compact */
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
   }
 
   .track-header-row {
@@ -397,26 +402,35 @@ import Staircase3D from '../../components/Staircase3D.astro';
     align-items: center;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-bottom: 0.85rem;
+    margin-bottom: 0.75rem;
   }
 
-  .track-status-badge {
+  /* No card/pill for status - pure colored typography */
+  .track-status-indicator {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    padding: 0.3rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-weight: 800;
-    color: #15803d;
     letter-spacing: 0.04em;
   }
 
+  .status-txt-green {
+    color: #15803d;
+  }
+
+  .status-sep {
+    color: #cbd5e1;
+    font-weight: 400;
+  }
+
+  .status-pct-red {
+    color: var(--red-primary);
+  }
+
   .track-beacon-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     background: #22c55e;
     border-radius: 50%;
     box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
@@ -442,9 +456,9 @@ import Staircase3D from '../../components/Staircase3D.astro';
 
   .progress-rail-line {
     width: 100%;
-    height: 8px;
+    height: 6px;
     background: #e2e8f0;
-    border-radius: 9999px;
+    border-radius: 0; /* Sharp */
     overflow: hidden;
     position: relative;
   }
@@ -452,7 +466,7 @@ import Staircase3D from '../../components/Staircase3D.astro';
   .progress-rail-fill {
     height: 100%;
     background: linear-gradient(90deg, #16a34a 0%, var(--red-primary) 70%, #f43f5e 100%);
-    border-radius: 9999px;
+    border-radius: 0;
     transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -467,7 +481,7 @@ import Staircase3D from '../../components/Staircase3D.astro';
     display: flex;
     gap: 1.75rem;
     position: relative;
-    padding-bottom: 2.25rem;
+    padding-bottom: 2rem;
   }
 
   .progress-node-item:last-child {
@@ -479,14 +493,14 @@ import Staircase3D from '../../components/Staircase3D.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 36px;
+    width: 34px;
     flex-shrink: 0;
   }
 
   .node-circle {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border-radius: 0; /* Sharp, not rounded */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -569,7 +583,7 @@ import Staircase3D from '../../components/Staircase3D.astro';
     font-size: 0.72rem;
     font-weight: 700;
     padding: 0.2rem 0.6rem;
-    border-radius: 9999px;
+    border-radius: 0; /* Sharp */
   }
 
   .node-heading {
@@ -600,7 +614,7 @@ import Staircase3D from '../../components/Staircase3D.astro';
     background: #f0fdf4;
     border: 1px solid #dcfce7;
     padding: 0.25rem 0.65rem;
-    border-radius: 6px;
+    border-radius: 0; /* Sharp */
   }
 
   .chk-item.pending {
