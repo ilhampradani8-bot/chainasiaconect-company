@@ -112,6 +112,51 @@ import Footer from '../../components/Footer.astro';
               </div>
             </div>
           </div>
+    <!-- Regional Operational Hub & Maps Section (Krui, Pesisir Barat) -->
+    <section class="fullwidth-section contact-map-section">
+      <div class="container">
+        <div class="section-map-header">
+          <h2>Peta Wilayah Operasional Jaringan</h2>
+          <p>Hub logistik, perizinan berusaha, dan infrastruktur komputasi regional PT CHAIN ASIA CONECT di Pesisir Barat, Lampung.</p>
+        </div>
+
+        <div class="contact-map-fullwidth-card">
+          <div class="map-sharp-header">
+            <div class="map-header-status">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--red-primary)" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <strong class="map-title-txt">Peta Wilayah Operasional: Krui, Pesisir Barat, Lampung</strong>
+            </div>
+            <a href="https://maps.google.com/maps?q=Krui,%20Pesisir%20Barat,%20Lampung,%20Indonesia" target="_blank" rel="noopener noreferrer" class="map-open-external red-text">
+              Buka di Google Maps ↗
+            </a>
+          </div>
+
+          <div class="map-iframe-wrapper">
+            <iframe
+              src="https://maps.google.com/maps?q=Krui,%20Pesisir%20Barat,%20Lampung,%20Indonesia&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="450"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Peta Lokasi Kantor Krui, Pesisir Barat, Lampung - PT CHAIN ASIA CONECT"
+              class="krui-map-iframe"
+            ></iframe>
+          </div>
+
+          <div class="map-sharp-footer">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#64748b" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span class="map-footer-text">
+              <strong>Hub Regional Operasional:</strong> Krui, Pesisir Barat, Lampung — Koridor Jaringan Rantai Pasok & Lisensi Perangkat Lunak.
+            </span>
+          </div>
         </div>
       </div>
     </section>
@@ -381,5 +426,107 @@ import Footer from '../../components/Footer.astro';
       align-items: flex-start;
       gap: 0.1rem;
     }
+    .map-iframe-wrapper {
+      min-height: 320px;
+      height: 320px;
+    }
+  }
+
+  /* Regional Operational Map Section */
+  .contact-map-section {
+    background: #f8fafc;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    padding: 3.5rem 0 4rem 0;
+  }
+
+  .section-map-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-map-header h2 {
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .section-map-header p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .contact-map-fullwidth-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 0 !important; /* Sharp corners */
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  }
+
+  .map-sharp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+    background: #ffffff;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .map-header-status {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .map-title-txt {
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    font-weight: 800;
+  }
+
+  .map-open-external {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .map-open-external:hover {
+    text-decoration: underline;
+  }
+
+  .map-iframe-wrapper {
+    width: 100%;
+    background: #e2e8f0;
+    min-height: 420px;
+    height: 420px;
+    position: relative;
+  }
+
+  .krui-map-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .map-sharp-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.9rem 1.5rem;
+    background: #f8fafc;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .map-footer-text {
+    font-size: 0.82rem;
+    color: var(--text-body);
+    line-height: 1.5;
   }
 </style>

@@ -185,7 +185,7 @@ a[href^="http"],
   color: var(--red-primary);
 }
 
-/* Neumorphic & Modern Corporate Button System */
+/* High-Contrast Modern Corporate Button System (No Washed-Out White Glare) */
 .btn-red,
 .btn-more-red,
 .btn-red-simple,
@@ -198,16 +198,17 @@ a[href^="http"],
   padding: 0.85rem 1.85rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid #b91c1c;
   background: #dc2626;
   color: #ffffff !important;
   text-decoration: none;
   box-shadow: 
-    4px 4px 12px rgba(220, 38, 38, 0.35),
-    -3px -3px 8px rgba(255, 255, 255, 0.7);
+    0 4px 16px rgba(185, 28, 28, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -217,11 +218,12 @@ a[href^="http"],
 .btn-primary-clean:hover,
 .btn-neu-red:hover {
   background: #b91c1c;
+  border-color: #991b1b;
   color: #ffffff !important;
   transform: translateY(-2px);
   box-shadow: 
-    6px 6px 16px rgba(220, 38, 38, 0.45),
-    -4px -4px 10px rgba(255, 255, 255, 0.9);
+    0 8px 24px rgba(185, 28, 28, 0.52),
+    0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 .btn-red:active,
@@ -230,12 +232,10 @@ a[href^="http"],
 .btn-primary-clean:active,
 .btn-neu-red:active {
   transform: translateY(1px);
-  box-shadow: 
-    inset 2px 2px 6px rgba(0, 0, 0, 0.25),
-    inset -2px -2px 6px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Secondary Neumorphic Button (Light / Raised) */
+/* Secondary High-Contrast Clean Button */
 .btn-secondary-clean,
 .btn-outline-simple,
 .btn-neu-light,
@@ -247,16 +247,16 @@ a[href^="http"],
   padding: 0.85rem 1.85rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  background: #f1f5f9;
-  color: var(--text-dark) !important;
+  border: 1.5px solid #94a3b8;
+  background: #ffffff;
+  color: #0f172a !important;
   text-decoration: none;
   box-shadow: 
-    4px 4px 10px rgba(166, 175, 195, 0.4),
-    -4px -4px 10px rgba(255, 255, 255, 0.95);
+    0 4px 14px rgba(15, 23, 42, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.05);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -264,15 +264,22 @@ a[href^="http"],
 .btn-outline-simple:hover,
 .btn-neu-light:hover,
 .slider-btn:hover {
-  background: #ffffff;
+  background: #f8fafc;
+  border-color: #dc2626;
   color: #dc2626 !important;
   transform: translateY(-2px);
   box-shadow: 
-    6px 6px 14px rgba(166, 175, 195, 0.5),
-    -6px -6px 14px rgba(255, 255, 255, 1);
+    0 8px 20px rgba(220, 38, 38, 0.2),
+    0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
 .btn-secondary-clean:active,
+.btn-outline-simple:active,
+.btn-neu-light:active,
+.slider-btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 .btn-outline-simple:active,
 .btn-neu-light:active,
 .slider-btn:active {
