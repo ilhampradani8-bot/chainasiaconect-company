@@ -62,8 +62,8 @@ import Staircase3D from '../../components/Staircase3D.astro';
 
     <!-- Prominent Coming Soon 2029 IPO Section (with Stationary 3D White Staircase & Progress Line) -->
     <section class="fullwidth-section ipo-banner-section">
-      <!-- Stationary 3D Pure White Animated Staircase Backdrop -->
-      <Staircase3D align="right" id="ipo-staircase-3d" opacity={0.88} />
+      <!-- Stationary 3D Pure White Animated Staircase Backdrop (Fullwidth Centered Behind Text) -->
+      <Staircase3D align="center" id="ipo-staircase-3d" opacity={0.72} scale={1.8} />
 
       <div class="container ipo-container-relative">
         <div class="ipo-editorial-wrap">
@@ -332,7 +332,8 @@ import Staircase3D from '../../components/Staircase3D.astro';
   }
 
   .ipo-editorial-wrap {
-    max-width: 820px;
+    max-width: 900px;
+    margin: 0 auto;
   }
 
   .ipo-badge-row {
