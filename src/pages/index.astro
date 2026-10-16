@@ -294,10 +294,10 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
 
-    <!-- Section 5: Investor Relations & IPO 2029 Summary (with 3D White Staircase & Progress Line) -->
+    <!-- Section 5: Investor Relations & IPO 2029 Summary (with Left Corner 3D Gray Staircase & Progress Line) -->
     <section class="home-summary-section investor-summary-staircase-wrap scroll-reveal" id="home-investor-summary">
-      <!-- Stationary 3D Pure White Animated Staircase Backdrop (Fullwidth Centered Behind Text) -->
-      <Staircase3D align="center" id="home-investor-staircase" opacity={0.72} scale={1.8} />
+      <!-- 3D Slate Gray Staircase (Compact Left Corner, Flush Top-to-Bottom) -->
+      <Staircase3D align="left" id="home-investor-staircase" opacity={0.92} scale={0.82} />
 
       <div class="container investor-container-relative">
         <div class="section-row-header">
@@ -1104,11 +1104,13 @@ import Footer from '../components/Footer.astro';
   .investor-summary-staircase-wrap {
     position: relative;
     overflow: hidden;
+    padding: 3.25rem 0 3.75rem 0 !important; /* Compact section height */
   }
 
   .investor-container-relative {
     position: relative;
     z-index: 2;
+    padding-left: clamp(0px, 8vw, 130px); /* Gives room for the left-corner stairs */
   }
 
   /* ===================================================

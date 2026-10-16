@@ -2,7 +2,7 @@
 interface Props {
   id?: string;
   className?: string;
-  align?: 'center' | 'right' | 'left' | 'fullwidth';
+  align?: 'left' | 'center' | 'right';
   scale?: number;
   opacity?: number;
 }
@@ -10,30 +10,29 @@ interface Props {
 const {
   id = "staircase-3d",
   className = "",
-  align = "center",
-  scale = 1.7,
-  opacity = 0.75
+  align = "left",
+  scale = 0.82,
+  opacity = 0.92
 } = Astro.props;
 
 const steps = Array.from({ length: 20 }, (_, i) => i + 1);
 ---
 
 <div
-  class={`staircase-sticky-backdrop align-${align} ${className}`}
+  class={`staircase-section-backdrop align-${align} ${className}`}
   id={id}
   style={`--bg-opacity: ${opacity}; --custom-scale: ${scale};`}
   aria-hidden="true"
 >
   <div class="staircase-perspective-viewport">
     <div class="staircase-window">
-      <!-- Ambient Ethereal Radial Glow -->
-      <div class="panel_ambient_glow"></div>
-
+      <!-- Gray Architectural Central Pillar -->
       <div class="pillar">
         <div class="ref"></div>
       </div>
       <div class="wall"></div>
       
+      <!-- 20 Slate Gray 3D Steps -->
       {steps.map((stepNum) => (
         <div class="step" style={`--i: ${stepNum};`}>
           <div class="step_inner">
@@ -47,51 +46,56 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
 </div>
 
 <style>
-  /* Fullwidth Stationary Sticky Container: locks in place behind text as user scrolls */
-  .staircase-sticky-backdrop {
-    position: sticky;
-    top: 12vh;
-    height: 0;
-    width: 100%;
+  /* Left Corner Section Backdrop: Flush top-to-bottom and left edge */
+  .staircase-section-backdrop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+    opacity: var(--bg-opacity, 0.92);
+    transition: opacity 0.4s ease;
+  }
+
+  .staircase-section-backdrop.align-left {
+    left: 0;
+    right: auto;
+    justify-content: flex-start;
+  }
+
+  .staircase-section-backdrop.align-right {
+    left: auto;
+    right: 0;
+    justify-content: flex-end;
+  }
+
+  .staircase-section-backdrop.align-center {
     left: 0;
     right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    z-index: 0;
-    opacity: var(--bg-opacity, 0.75);
-    overflow: visible;
-    transition: opacity 0.5s ease;
-  }
-
-  .staircase-sticky-backdrop.align-center,
-  .staircase-sticky-backdrop.align-fullwidth {
+    width: 100%;
     justify-content: center;
   }
 
-  .staircase-sticky-backdrop.align-right {
-    justify-content: flex-end;
-    padding-right: clamp(2rem, 8vw, 8rem);
-  }
-
-  .staircase-sticky-backdrop.align-left {
-    justify-content: flex-start;
-    padding-left: clamp(2rem, 8vw, 8rem);
-  }
-
-  /* 3D Perspective Box - Centered & Scaled to fill background */
+  /* Compact 3D Viewport - Scaled down for left corner */
   .staircase-perspective-viewport {
-    width: 340px;
-    height: 440px;
-    perspective: 480px;
+    width: 260px;
+    height: 380px;
+    perspective: 380px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     transform-style: preserve-3d;
-    transform: scale(var(--custom-scale, 1.7));
-    transform-origin: center center;
-    filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.05));
+    transform: scale(var(--custom-scale, 0.82));
+    transform-origin: left center;
+    margin-left: -15px;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.09));
   }
 
   /* Scoped 3D Elements */
@@ -108,32 +112,22 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     backface-visibility: hidden;
   }
 
-  /* Ambient Ethereal Glow behind the 3D spiral stairs */
-  .staircase-window .panel_ambient_glow {
-    width: 900px;
-    height: 900px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.6) 45%, rgba(248, 250, 252, 0) 75%);
-    transform: translate3d(-50%, -50%, -200px);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  /* Central White Architectural Pillar */
+  /* Architectural Pillar - Slate Gray Tone */
   .staircase-window .pillar {
     width: 100px;
     height: 400px;
-    background: linear-gradient(220deg, #ffffff 0%, #f1f5f9 45%, #cbd5e1 100%);
+    background: linear-gradient(220deg, #cbd5e1 0%, #94a3b8 40%, #64748b 100%);
     overflow: hidden;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.05);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.12);
   }
 
   .staircase-window .pillar .ref {
     left: 45%;
     width: 45%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.15) 100%);
     transform: translateZ(1px);
-    filter: blur(10px);
+    filter: blur(8px);
     mix-blend-mode: screen;
   }
 
@@ -142,7 +136,7 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.02) 15%, rgba(255, 255, 255, 0.8) 50%);
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.05) 15%, rgba(255, 255, 255, 0.5) 50%);
   }
 
   .staircase-window .pillar::after {
@@ -150,14 +144,14 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(300deg, rgba(148, 163, 184, 0.35) 0%, rgba(255, 255, 255, 0) 40%);
+    background: linear-gradient(300deg, rgba(30, 41, 59, 0.45) 0%, rgba(255, 255, 255, 0) 35%);
   }
 
-  /* Architectural Side Wall */
+  /* Architectural Side Wall - Slate Gray */
   .staircase-window .wall {
     width: 159px;
     height: 400px;
-    background: linear-gradient(220deg, #ffffff 0%, #f8fafc 40%, #e2e8f0 100%);
+    background: linear-gradient(220deg, #cbd5e1 0%, #94a3b8 45%, #64748b 100%);
     transform: translate(100px, 256px);
   }
 
@@ -166,10 +160,10 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(270deg, rgba(148, 163, 184, 0.12) 0%, rgba(255, 255, 255, 0.6) 8%);
+    background: linear-gradient(270deg, rgba(51, 65, 85, 0.25) 0%, rgba(255, 255, 255, 0.4) 8%);
   }
 
-  /* Pure White Spiral Stairs */
+  /* 3D Rotating Steps - Slate Gray Contrast */
   .staircase-window .step {
     transform: rotateY(-50deg);
     animation: stepAnimation 10000ms calc(var(--i) * -500ms) linear infinite;
@@ -179,14 +173,14 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     transform: translateX(99.4px);
   }
 
-  /* Step Top Tread - White Marble */
+  /* Step Top Tread - Visible Architectural Gray Slate */
   .staircase-window .step_top {
     width: 150px;
     height: 37px;
-    background: linear-gradient(220deg, #ffffff 0%, #f8fafc 55%, #e2e8f0 100%);
+    background: linear-gradient(220deg, #e2e8f0 0%, #cbd5e1 45%, #94a3b8 100%);
     transform-origin: 0 100%;
     transform: translateY(-37px) rotateX(90deg);
-    box-shadow: 0 -1px 3px rgba(255, 255, 255, 0.8) inset;
+    box-shadow: 0 -1px 3px rgba(255, 255, 255, 0.6) inset;
   }
 
   .staircase-window .step .step_top::before {
@@ -194,7 +188,7 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(-20deg, rgba(255, 255, 255, 0.9) 0%, rgba(203, 213, 225, 0.5) 100%);
+    background: linear-gradient(-20deg, rgba(255, 255, 255, 0.6) 0%, rgba(71, 85, 105, 0.5) 100%);
     animation: stepShadow 10000ms calc(var(--i) * -500ms) linear infinite;
   }
 
@@ -206,17 +200,17 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     width: 50%;
     height: 100%;
     opacity: 0;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%);
     transform: translate3d(-100%, 0, -1px);
     animation: stepRefrection 10000ms calc(var(--i) * -500ms) linear infinite;
   }
 
-  /* Step Side Riser - White Marble */
+  /* Step Side Riser - Deep Slate Shading */
   .staircase-window .step_side {
     width: 150px;
     height: 20px;
-    background: linear-gradient(195deg, #ffffff 0%, #e2e8f0 100%);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(195deg, #94a3b8 0%, #64748b 55%, #475569 100%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   }
 
   .staircase-window .step .step_side::before {
@@ -224,7 +218,7 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #ffffff;
+    background: #64748b;
     opacity: 1;
     transform: translateZ(1px);
     animation: stepColor 10000ms calc(var(--i) * -500ms) linear infinite;
@@ -238,12 +232,12 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     width: 50%;
     height: 100%;
     opacity: 0;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%);
     transform: translate3d(-100%, 0, -1px);
     animation: stepRefrection 10000ms calc(var(--i) * -500ms) linear infinite;
   }
 
-  /* Spiral Staircase 3D Orbit Keyframes */
+  /* Keyframe Animations */
   @keyframes stepAnimation {
     0% {
       transform: translateY(0) rotateY(90deg);
@@ -258,10 +252,10 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
       opacity: 1;
     }
     60% {
-      opacity: 0;
+      opacity: 0.1;
     }
     100% {
-      opacity: 0;
+      opacity: 0.1;
     }
   }
 
@@ -273,7 +267,7 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
       opacity: 0;
     }
     100% {
-      opacity: 1;
+      opacity: 0.9;
     }
   }
 
@@ -298,22 +292,25 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
     }
   }
 
-  @media (max-width: 992px) {
-    .staircase-sticky-backdrop {
-      opacity: 0.55;
-      top: 15vh;
+  @media (max-width: 900px) {
+    .staircase-section-backdrop {
+      opacity: 0.35;
+      width: 180px;
     }
     .staircase-perspective-viewport {
-      transform: scale(1.25);
+      transform: scale(0.65);
+      margin-left: -35px;
     }
   }
 
-  @media (max-width: 640px) {
-    .staircase-sticky-backdrop {
-      opacity: 0.45;
+  @media (max-width: 600px) {
+    .staircase-section-backdrop {
+      opacity: 0.2;
+      width: 140px;
     }
     .staircase-perspective-viewport {
-      transform: scale(0.95);
+      transform: scale(0.5);
+      margin-left: -50px;
     }
   }
 </style>

@@ -60,10 +60,10 @@ import Staircase3D from '../../components/Staircase3D.astro';
       </div>
     </section>
 
-    <!-- Prominent Coming Soon 2029 IPO Section (with Stationary 3D White Staircase & Progress Line) -->
+    <!-- Prominent Coming Soon 2029 IPO Section (with Left Corner 3D Gray Staircase & Progress Line) -->
     <section class="fullwidth-section ipo-banner-section">
-      <!-- Stationary 3D Pure White Animated Staircase Backdrop (Fullwidth Centered Behind Text) -->
-      <Staircase3D align="center" id="ipo-staircase-3d" opacity={0.72} scale={1.8} />
+      <!-- 3D Slate Gray Staircase (Compact Left Corner, Flush Top-to-Bottom) -->
+      <Staircase3D align="left" id="ipo-staircase-3d" opacity={0.92} scale={0.82} />
 
       <div class="container ipo-container-relative">
         <div class="ipo-editorial-wrap">
@@ -319,11 +319,11 @@ import Staircase3D from '../../components/Staircase3D.astro';
     margin: 0;
   }
 
-  /* Fullwidth IPO Roadmap Section with Stationary 3D White Staircase */
+  /* Fullwidth IPO Roadmap Section with Left-Corner 3D Gray Staircase */
   .ipo-banner-section {
     position: relative;
     background: #f8fafc;
-    padding: 5rem 0 6rem 0;
+    padding: 3.25rem 0 3.75rem 0; /* Compact & proportional */
     border-bottom: 1px solid var(--border-light);
     overflow: hidden;
   }
@@ -334,23 +334,25 @@ import Staircase3D from '../../components/Staircase3D.astro';
   }
 
   .ipo-editorial-wrap {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(0px, 8vw, 130px); /* Gives room for the left corner stairs */
   }
 
   .ipo-badge-row {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.85rem;
+    margin-bottom: 0.75rem;
     flex-wrap: wrap;
   }
 
   .ipo-tag {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    padding: 0.35rem 0.75rem;
-    border-radius: 9999px;
+    padding: 0.3rem 0.65rem;
+    border-radius: 0; /* Sharp */
   }
 
   .ipo-tag.red-bg {
@@ -359,29 +361,29 @@ import Staircase3D from '../../components/Staircase3D.astro';
   }
 
   .ipo-year {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 800;
     letter-spacing: 0.05em;
   }
 
   .ipo-main-title {
-    font-size: clamp(2rem, 4vw, 2.7rem);
+    font-size: clamp(1.85rem, 3.2vw, 2.35rem);
     font-weight: 800;
     color: var(--text-dark);
-    margin-bottom: 1rem;
+    margin-bottom: 0.65rem;
     line-height: 1.2;
   }
 
   .ipo-lead-desc {
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-size: 0.98rem;
+    line-height: 1.7;
     color: var(--text-body);
-    margin-bottom: 2.75rem;
+    margin-bottom: 1.5rem;
   }
 
   /* Progress Line Timeline System (Sharp Fullwidth Dense) */
   .progress-timeline-wrapper {
-    margin: 2rem 0 3rem 0;
+    margin: 1.5rem 0 2rem 0;
     width: 100%;
   }
 
