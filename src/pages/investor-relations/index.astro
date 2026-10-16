@@ -279,11 +279,14 @@ import Staircase3D from '../../components/Staircase3D.astro';
     font-size: 1rem;
     line-height: 1.75;
     color: var(--text-body);
-    ma  /* Fullwidth IPO Roadmap Section with Left-Corner 3D Gray Staircase */
+    margin: 0;
+  }
+
+  /* Fullwidth IPO Roadmap Section with Background 3D Staircase */
   .ipo-banner-section {
     position: relative;
     background: #f8fafc;
-    padding: 2.75rem 0 3rem 0; /* Dense & compact */
+    padding: 3rem 0;
     border-bottom: 1px solid var(--border-light);
     overflow: hidden;
     min-height: 410px;
@@ -293,14 +296,15 @@ import Staircase3D from '../../components/Staircase3D.astro';
 
   .ipo-container-relative {
     position: relative;
-    z-index: 2;
+    z-index: 10; /* Text clearly in front of background staircase */
     width: 100%;
   }
 
   .ipo-editorial-wrap {
     width: 100%;
     margin: 0;
-    padding-left: clamp(140px, 18vw, 240px); /* Seamless clearance for left stairs without big empty gap */
+    position: relative;
+    z-index: 10; /* Teks di depan */
   }
 
   .ipo-main-title {
