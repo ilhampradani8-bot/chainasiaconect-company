@@ -12,6 +12,7 @@ const i18nDictionary = {
     nav_careers: "Careers",
     nav_contact: "Contact",
     nav_scf: "SCF (Coming Soon)",
+    nav_coming_more: "More Initiatives",
     select_language: "Language / Bahasa:",
 
     // SCF Platform Translations (English)
@@ -51,7 +52,7 @@ const i18nDictionary = {
     scf_cta_title: "Inquire About SCF Partnerships & Co-Financing",
     scf_cta_desc: "For institutional syndication, accredited underwriting inquiries, or corporate treasury partnerships, contact our Investor Relations & Capital Markets desk directly.",
     btn_view_ir: "Explore Investor Relations Portal →",
-    btn_scf_desk: "Contact SCF Desk (investor@chainasiaconect.company)",
+    btn_scf_desk: "Contact SCF Desk (investor@chainasiaconnect.co.id)",
 
     // Hero Section
     hero_tag: "PT CHAIN ASIA CONECT • ENTERPRISE EXPANSION & BUSINESS DEVELOPMENT",
@@ -179,7 +180,7 @@ const i18nDictionary = {
     // Action CTA & Elite
     gromacs_btn_order: "Order Dedicated Server",
     gromacs_btn_popular: "Rent This Dedicated Server",
-    gromacs_contact_note: "Need custom GPU or multi-node clustering? Contact our technical engineering team at sales@chainasiaconect.company",
+    gromacs_contact_note: "Need custom GPU or multi-node clustering? Contact our technical engineering team at sales@chainasiaconnect.co.id",
     gromacs_elite_sales_text: "Need Multi-Node Clusters, GPU Acceleration (NVIDIA H100/A100), or Dedicated Hospital PACS Cloud?",
     gromacs_elite_title: "Enterprise Custom",
     gromacs_elite_desc: "Tailor-made High Performance Computing architecture, multi-GPU clusters, and private healthcare cloud infrastructure deployed specifically for your enterprise.",
@@ -285,8 +286,8 @@ const i18nDictionary = {
     banner_tag: "STRATEGIC EXPANSION & ENTERPRISE SCALING",
     banner_title: "PT CHAIN ASIA CONECT — Strategic Expansion & Business Development Phase",
     banner_desc: "As a principal business entity focused on sustainable diversification and enterprise scaling, we are open for strategic B2B collaborations in integrated supply chain infrastructure, high-precision medical machinery engineering & 3D PACS software licensing, and new regional branch operations across Indonesia and Asia.",
-    btn_partnership: "Inquire Strategic Partnership (sales@chainasiaconect.company)",
-    btn_contact: "Contact Executive Office (info@chainasiaconect.company)",
+    btn_partnership: "Inquire Strategic Partnership (sales@chainasiaconnect.co.id)",
+    btn_contact: "Contact Executive Office (info@chainasiaconnect.co.id)",
 
     // Footer
     footer_desc: "Dedicated to strengthening supply chain networks, physical business ecosystems, medical machine engineering, and PACS software diagnostic licensing across Indonesia & Asia Region.",
@@ -311,6 +312,7 @@ const i18nDictionary = {
     nav_careers: "Karier",
     nav_contact: "Kontak",
     nav_scf: "SCF (Segera Hadir)",
+    nav_coming_more: "Lainnya / Segera Hadir",
     select_language: "Bahasa / Language:",
 
     // SCF Platform Translations (Indonesian)
@@ -350,7 +352,7 @@ const i18nDictionary = {
     scf_cta_title: "Konsultasi Kemitraan & Co-Financing SCF",
     scf_cta_desc: "Untuk sindikasi institusi, penjaminan emisi terakreditasi, atau kemitraan treasury perusahaan, hubungi langsung unit Hubungan Investor kami.",
     btn_view_ir: "Jelajahi Portal Hubungan Investor →",
-    btn_scf_desk: "Hubungi Tim SCF (investor@chainasiaconect.company)",
+    btn_scf_desk: "Hubungi Tim SCF (investor@chainasiaconnect.co.id)",
 
     // Hero Section
     hero_tag: "PT CHAIN ASIA CONECT • EKSPANSI PERUSAHAAN & PENGEMBANGAN USAHA",
@@ -478,7 +480,7 @@ const i18nDictionary = {
     // Action CTA & Elite
     gromacs_btn_order: "Sewa Dedicated Server",
     gromacs_btn_popular: "Pilih & Sewa Paket Ini",
-    gromacs_contact_note: "Membutuhkan kustomisasi GPU atau clustering multi-node? Hubungi tim rekayasa teknis kami di sales@chainasiaconect.company",
+    gromacs_contact_note: "Membutuhkan kustomisasi GPU atau clustering multi-node? Hubungi tim rekayasa teknis kami di sales@chainasiaconnect.co.id",
     gromacs_elite_sales_text: "Membutuhkan Cluster Multi-Node, Akselerasi GPU (NVIDIA H100/A100), atau Cloud PACS Rumah Sakit Khusus?",
     gromacs_elite_title: "Kustom Enterprise",
     gromacs_elite_desc: "Arsitektur Komputasi Kinerja Tinggi (HPC) tailor-made, cluster multi-GPU, dan infrastruktur cloud kesehatan privat yang dideploy khusus untuk institusi Anda.",
@@ -584,8 +586,8 @@ const i18nDictionary = {
     banner_tag: "EKSPANSI STRATEGIS & PENGEMBANGAN USAHA",
     banner_title: "PT CHAIN ASIA CONECT — Perusahaan Utama dalam Fase Ekspansi Usaha & Kemitraan",
     banner_desc: "Sebagai entitas bisnis utama yang berfokus pada pengembangan diversifikasi dan ekspansi usaha terukur, kami siap menjalin kolaborasi strategis dalam ekosistem supply chain terintegrasi, rekayasa mesin medis diagnostik presisi tinggi & lisensi software PACS 3D, serta pembukaan unit cabang baru di seluruh Indonesia dan kawasan Asia.",
-    btn_partnership: "Ajukan Kemitraan Strategis (sales@chainasiaconect.company)",
-    btn_contact: "Hubungi Kantor Manajemen (info@chainasiaconect.company)",
+    btn_partnership: "Ajukan Kemitraan Strategis (sales@chainasiaconnect.co.id)",
+    btn_contact: "Hubungi Kantor Manajemen (info@chainasiaconnect.co.id)",
 
     // Footer
     footer_desc: "Berdedikasi untuk memperkuat jaringan rantai pasok, ekosistem bisnis fisik, rekayasa mesin medis, dan lisensi software diagnostik PACS di seluruh Indonesia & kawasan Asia.",

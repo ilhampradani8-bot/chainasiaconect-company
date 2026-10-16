@@ -55,6 +55,14 @@ body {
   font-family: var(--font-body);
 }
 
+main {
+  position: relative;
+  z-index: 10;
+  background-color: var(--bg-white);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  min-height: 100vh;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -314,4 +322,33 @@ a[href^="http"],
     padding-top: 6.5rem !important;
   }
 }
+
+/* ===================================================
+   SMOOTH SCROLL REVEAL ANIMATIONS
+   =================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 

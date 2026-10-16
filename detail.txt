@@ -22,11 +22,11 @@ Panduan Komunikasi Eksternal & Mitra
 Penyusunan identitas perusahaan ini dirancang untuk memberikan artikulasi nilai merek yang lugas, profesional, serta memiliki relevansi yang kuat terhadap fokus pengembangan usaha PT CHAIN ASIA CONECT.
 
 footer
-info@chainasiaconect.company
-sales@chainasiaconect.company
+info@chainasiaconnect.co.id
+sales@chainasiaconnect.co.id
 hello@ilhampradani.me 
 wa +6288971071138
-webiste : https://www.chainasiaconect.company   
+webiste : https://www.chainasiaconnect.co.id   
 website owner : https://ilhampradani.me
 Direktur Utmama: Ilham Pradani
 push ke : https://github.com/ilhampradani8-bot/chainasiaconect-company.git

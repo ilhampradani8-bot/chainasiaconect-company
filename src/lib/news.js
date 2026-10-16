@@ -21,10 +21,15 @@ export function slugify(text) {
     .replace(/^-+|-+$/g, '');
 }
 
-// Helper untuk memastikan format URL gambar (termasuk direct link Google Drive)
+// Helper untuk memastikan format URL gambar (termasuk direct link Google Drive dan link relatif)
 export function formatImageUrl(url) {
-  if (!url) return '';
+  if (!url) return 'https://www.chainasiaconnect.co.id/images/CAC-LOGO.jpg';
   const trimmed = url.trim();
+  if (!trimmed) return 'https://www.chainasiaconnect.co.id/images/CAC-LOGO.jpg';
+
+  if (trimmed.startsWith('/') && !trimmed.startsWith('//')) {
+    return `https://www.chainasiaconnect.co.id${trimmed}`;
+  }
 
   const driveFileMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
   if (driveFileMatch && driveFileMatch[1]) {
@@ -36,6 +41,51 @@ export function formatImageUrl(url) {
   }
 
   return trimmed;
+}
+
+// Helper untuk konversi format tanggal Indonesia ("15 OKTOBER 2026") ke ISO 8601 ("2026-10-15T08:00:00+07:00")
+export function parseDateToISO(dateStr) {
+  if (!dateStr) return new Date().toISOString();
+  
+  const monthMap = {
+    'januari': '01', 'jan': '01',
+    'februari': '02', 'feb': '02',
+    'maret': '03', 'mar': '03',
+    'april': '04', 'apr': '04',
+    'mei': '05', 'may': '05',
+    'juni': '06', 'jun': '06',
+    'juli': '07', 'jul': '07',
+    'agustus': '08', 'agu': '08', 'aug': '08',
+    'september': '09', 'sep': '09',
+    'oktober': '10', 'okt': '10', 'oct': '10',
+    'november': '11', 'nov': '11',
+    'desember': '12', 'des': '12', 'dec': '12'
+  };
+
+  const clean = dateStr.toLowerCase().trim();
+  const match = clean.match(/(\d{1,2})\s+([a-z]+)\s+(\d{4})/);
+  if (match) {
+    const day = match[1].padStart(2, '0');
+    const month = monthMap[match[2]] || '01';
+    const year = match[3];
+    return `${year}-${month}-${day}T08:00:00+07:00`;
+  }
+
+  const isoMatch = clean.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (isoMatch) {
+    return `${isoMatch[1]}-${isoMatch[2]}-${isoMatch[3]}T08:00:00+07:00`;
+  }
+
+  return new Date().toISOString();
+}
+
+// Helper untuk menghitung estimasi waktu membaca secara dinamis berdasarkan jumlah kata (~180 kata/menit)
+export function calculateReadTime(text) {
+  if (!text) return '1 min baca';
+  const clean = text.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  const wordCount = clean ? clean.split(' ').filter(Boolean).length : 0;
+  const minutes = Math.max(1, Math.ceil(wordCount / 180));
+  return `${minutes} min baca`;
 }
 
 // RFC 4180 compliant CSV parser yang mendukung baris baru di dalam tanda kutip sel
@@ -102,6 +152,7 @@ export async function fetchAllNews() {
     const cacheBusterUrl = `${GOOGLE_SHEET_CSV_URL}&_t=${Date.now()}`;
     const res = await fetch(cacheBusterUrl, {
       cache: 'no-store',
+      signal: AbortSignal.timeout(6000),
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
         'Pragma': 'no-cache'
@@ -143,7 +194,7 @@ export async function fetchAllNews() {
                 imageUrl: imgVal,
                 link: linkVal,
                 status: rawStatus,
-                readTime: '3 min baca'
+                readTime: (r.waktubaca || r.readtime || calculateReadTime(contentVal || excerptVal))
               };
             })
             .filter(Boolean);

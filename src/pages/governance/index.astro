@@ -18,45 +18,147 @@ import Footer from '../../components/Footer.astro';
       </div>
     </section>
 
-    <!-- Governance Framework Pillars -->
-    <section class="fullwidth-section">
+    <!-- Governance Framework Pillars (3D CoverFlow) -->
+    <section class="fullwidth-section governance-coverflow-section">
       <div class="container">
-        <div class="section-intro">
-          <span class="section-tag red-text">OUR GOVERNANCE PRINCIPLES</span>
-          <h2>The 5 Pillars of Governance Compliance</h2>
-          <div class="pillars-grid">
-            <div class="pillar-card">
-              <span class="pillar-num red-text">01</span>
-              <h4>Transparency</h4>
-              <p>Timely disclosure of clear, accurate, and accessible corporate information.</p>
-            </div>
-            <div class="pillar-card">
-              <span class="pillar-num red-text">02</span>
-              <h4>Accountability</h4>
-              <p>Clarity of board duties, management responsibilities, and operational performance metrics.</p>
-            </div>
-            <div class="pillar-card">
-              <span class="pillar-num red-text">03</span>
-              <h4>Responsibility</h4>
-              <p>Full compliance with Indonesian laws, Kemenkumham decrees, and environmental regulations.</p>
-            </div>
-            <div class="pillar-card">
-              <span class="pillar-num red-text">04</span>
-              <h4>Independence</h4>
-              <p>Independent oversight free from conflicts of interest across decision-making levels.</p>
-            </div>
-            <div class="pillar-card">
-              <span class="pillar-num red-text">05</span>
-              <h4>Fairness</h4>
-              <p>Equal protection and consideration for all business partners and stakeholders.</p>
-            </div>
+        <div class="section-intro text-center">
+          <h2 class="pillars-title">The 5 Pillars of Governance Compliance</h2>
+        </div>
+
+        <!-- 3D CoverFlow Stage -->
+        <div class="coverflow-stage" id="coverflow-stage" aria-label="3D Coverflow 5 Pillars of Governance">
+          <div id="coverflow" class="coverflow-container">
+            <!-- Pillar 1 -->
+            <section class="cover-card" data-index="0" tabindex="0" role="button" aria-label="Pillar 1: Transparency">
+              <div class="card-inner">
+                <div class="card-top">
+                  <span class="card-pillar-num red-text">01</span>
+                  <div class="card-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="9"></circle>
+                      <path d="M12 3a9 9 0 0 1 9 9"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="card-title">Transparency</h3>
+                <p class="card-desc">
+                  Keterbukaan informasi material dan relevan secara tepat waktu, akurat, jelas, dan mudah diakses oleh seluruh pemegang saham serta pemangku kepentingan.
+                </p>
+                <div class="card-footer-tag">Keterbukaan Informasi</div>
+              </div>
+            </section>
+
+            <!-- Pillar 2 -->
+            <section class="cover-card" data-index="1" tabindex="0" role="button" aria-label="Pillar 2: Accountability">
+              <div class="card-inner">
+                <div class="card-top">
+                  <span class="card-pillar-num red-text">02</span>
+                  <div class="card-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="card-title">Accountability</h3>
+                <p class="card-desc">
+                  Kejelasan fungsi, hak, kewajiban, dan wewenang dewan direksi serta komisaris agar pengelolaan perusahaan terlaksana secara efektif dan dapat dipertanggungjawabkan.
+                </p>
+                <div class="card-footer-tag">Akuntabilitas Kinerja</div>
+              </div>
+            </section>
+
+            <!-- Pillar 3 -->
+            <section class="cover-card" data-index="2" tabindex="0" role="button" aria-label="Pillar 3: Responsibility">
+              <div class="card-inner">
+                <div class="card-top">
+                  <span class="card-pillar-num red-text">03</span>
+                  <div class="card-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="card-title">Responsibility</h3>
+                <p class="card-desc">
+                  Kepatuhan mutlak terhadap regulasi hukum Republik Indonesia, SK Kemenkumham AHU-A117353, OSS NIB 0709260109599, serta tanggung jawab sosial & kelestarian lingkungan.
+                </p>
+                <div class="card-footer-tag">Tanggung Jawab Hukum</div>
+              </div>
+            </section>
+
+            <!-- Pillar 4 -->
+            <section class="cover-card" data-index="3" tabindex="0" role="button" aria-label="Pillar 4: Independence">
+              <div class="card-inner">
+                <div class="card-top">
+                  <span class="card-pillar-num red-text">04</span>
+                  <div class="card-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="card-title">Independence</h3>
+                <p class="card-desc">
+                  Pengelolaan korporasi secara independen dan profesional tanpa benturan kepentingan (conflict of interest) maupun tekanan dari pihak manapun yang bertentangan dengan hukum.
+                </p>
+                <div class="card-footer-tag">Kemandirian Pengawasan</div>
+              </div>
+            </section>
+
+            <!-- Pillar 5 -->
+            <section class="cover-card" data-index="4" tabindex="0" role="button" aria-label="Pillar 5: Fairness">
+              <div class="card-inner">
+                <div class="card-top">
+                  <span class="card-pillar-num red-text">05</span>
+                  <div class="card-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="card-title">Fairness</h3>
+                <p class="card-desc">
+                  Keadilan dan kesetaraan dalam memenuhi hak-hak pemangku kepentingan yang timbul berdasarkan perjanjian, kontrak kemitraan, dan peraturan perundang-undangan yang berlaku.
+                </p>
+                <div class="card-footer-tag">Kewajaran & Kesetaraan</div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <!-- Minimalist Left-Right Controls (No numbered indicators) -->
+        <div class="coverflow-controls-wrapper">
+          <div class="coverflow-nav-buttons">
+            <button id="prev-pillar" class="cover-nav-btn" aria-label="Sebelumnya">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span>Sebelumnya</span>
+            </button>
+
+            <button id="next-pillar" class="cover-nav-btn" aria-label="Selanjutnya">
+              <span>Selanjutnya</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Board Charters (Piagam Dewan) -->
-    <section class="fullwidth-section bg-light-clean" id="charters">
+    <!-- Board Charters (Piagam Dewan) - Fullwidth Editorial Layout -->
+    <section class="fullwidth-section editorial-section bg-light-clean" id="charters">
       <div class="container">
         <div class="section-header-clean">
           <span class="section-tag red-text">BOARD GUIDELINES & CHARTERS</span>
@@ -64,24 +166,24 @@ import Footer from '../../components/Footer.astro';
           <p>Formal operational frameworks defining duties, authorities, and code of conduct for governing boards.</p>
         </div>
 
-        <div class="charters-grid">
-          <div class="charter-card">
+        <div class="editorial-columns">
+          <div class="editorial-col">
             <h3>Board of Directors Charter (Piagam Direksi)</h3>
             <p>Outlines executive leadership authority, operational execution, strategic planning, and risk management led by President Director <strong>Ilham Pradani, S.H. (Cand.)</strong>.</p>
-            <a href="#" class="btn-pdf-link red-text" onclick="alert('Downloading Board of Directors Charter PDF...'); return false;">View Charter Document (PDF) →</a>
+            <a href="#" class="action-btn-clean" onclick="alert('Downloading Board of Directors Charter PDF...'); return false;">View Charter Document (PDF) →</a>
           </div>
 
-          <div class="charter-card">
+          <div class="editorial-col">
             <h3>Board of Commissioners Charter (Piagam Komisaris)</h3>
             <p>Defines supervisory duties, oversight mechanisms, independent monitoring of company performance, and review of annual financial statements.</p>
-            <a href="#" class="btn-pdf-link red-text" onclick="alert('Downloading Board of Commissioners Charter PDF...'); return false;">View Charter Document (PDF) →</a>
+            <a href="#" class="action-btn-clean" onclick="alert('Downloading Board of Commissioners Charter PDF...'); return false;">View Charter Document (PDF) →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Supporting Committees -->
-    <section class="fullwidth-section" id="committees">
+    <!-- Supporting Committees - Fullwidth Editorial Layout -->
+    <section class="fullwidth-section editorial-section" id="committees">
       <div class="container">
         <div class="section-header-clean">
           <span class="section-tag red-text">SUPPORTING COMMITTEES</span>
@@ -89,19 +191,19 @@ import Footer from '../../components/Footer.astro';
           <p>Dedicated committees ensuring financial integrity and equitable executive structuring.</p>
         </div>
 
-        <div class="committee-stack">
-          <div class="committee-box">
+        <div class="committees-flow">
+          <div class="committee-entry">
             <h4>1. Audit Committee (Komite Audit)</h4>
             <p>
               Responsible for reviewing internal financial controls, quarterly reporting accuracy, and liaising with Independent External Public Accounting Firms (KAP).
             </p>
             <div class="committee-meta">
-              <span>Chairperson: <strong>Internal Audit Unit</strong></span> | 
+              <span>Chairperson: <strong>Internal Audit Unit</strong></span> • 
               <span>Members: <strong>Financial Advisory Experts</strong></span>
             </div>
           </div>
 
-          <div class="committee-box">
+          <div class="committee-entry">
             <h4>2. Nomination & Remuneration Committee (Komite Nominasi & Remunerasi)</h4>
             <p>
               Establishes transparent evaluation criteria, executive compensation structures, and strategic talent acquisition for subsidiary management and regional branch leadership.
@@ -114,54 +216,46 @@ import Footer from '../../components/Footer.astro';
       </div>
     </section>
 
-    <!-- Corporate Secretary Section -->
-    <section class="fullwidth-section bg-light-clean" id="corsec">
+    <!-- Corporate Secretary Section - Fullwidth Editorial Layout -->
+    <section class="fullwidth-section editorial-section bg-light-clean" id="corsec">
       <div class="container">
-        <div class="corsec-wrapper">
-          <div class="corsec-info">
-            <span class="section-tag red-text">OFFICIAL LIAISON & COMPLIANCE</span>
-            <h2>Corporate Secretary (Sekretaris Perusahaan)</h2>
-            <p>
-              The Corporate Secretary acts as the official liaison officer between PT CHAIN ASIA CONECT, regulatory authorities, partners, and the public.
-            </p>
-            <div class="corsec-contacts">
-              <div class="contact-row">
-                <span class="c-label">Official CorSec Email:</span>
-                <a href="mailto:corsec@chainasiaconect.company" class="c-link red-text">corsec@chainasiaconect.company</a>
-              </div>
-              <div class="contact-row">
-                <span class="c-label">General Contact:</span>
-                <a href="mailto:info@chainasiaconect.company" class="c-link">info@chainasiaconect.company</a>
-              </div>
-              <div class="contact-row">
-                <span class="c-label">Executive Office:</span>
-                <span class="c-val">PT CHAIN ASIA CONECT Headquarters, Indonesia</span>
-              </div>
+        <div class="corsec-editorial">
+          <span class="section-tag red-text">OFFICIAL LIAISON & COMPLIANCE</span>
+          <h2>Corporate Secretary (Sekretaris Perusahaan)</h2>
+          <p class="corsec-lead">
+            The Corporate Secretary acts as the official liaison officer between PT CHAIN ASIA CONECT, regulatory authorities, partners, and the public.
+          </p>
+          <div class="corsec-list">
+            <div class="corsec-item">
+              <span class="c-label">Official CorSec Email:</span>
+              <a href="mailto:corsec@chainasiaconnect.co.id" class="c-link red-text">corsec@chainasiaconnect.co.id</a>
+            </div>
+            <div class="corsec-item">
+              <span class="c-label">General Contact:</span>
+              <a href="mailto:info@chainasiaconnect.co.id" class="c-link">info@chainasiaconnect.co.id</a>
+            </div>
+            <div class="corsec-item">
+              <span class="c-label">Executive Office:</span>
+              <span class="c-val">PT CHAIN ASIA CONECT Headquarters, Indonesia</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Whistleblowing System (WBS) & Ethics -->
-    <section class="fullwidth-section" id="wbs">
+    <!-- Whistleblowing System (WBS) & Ethics - Fullwidth Clean, No Card Border/Side Line -->
+    <section class="fullwidth-section editorial-section" id="wbs">
       <div class="container">
-        <div class="section-header-clean">
+        <div class="wbs-fullwidth-wrap">
           <span class="section-tag red-text">ETHICS & INTEGRITY REPORTING</span>
           <h2>Whistleblowing System (WBS) & Code of Conduct</h2>
-          <p>A secure, confidential mechanism for reporting any violations of law, ethics, or financial misconduct.</p>
-        </div>
-
-        <div class="wbs-card">
-          <div class="wbs-text">
-            <h3>Confidential Misconduct Reporting Channel</h3>
-            <p>
-              PT CHAIN ASIA CONECT enforces a strict zero-tolerance policy against fraud, bribery, corruption, or regulatory non-compliance. All employees, vendors, and public partners can submit confidential reports directly to our Internal Audit Committee.
-            </p>
-            <div class="wbs-channel">
-              <span>Secure WBS Email:</span>
-              <a href="mailto:wbs@chainasiaconect.company" class="wbs-email red-text">wbs@chainasiaconect.company</a>
-            </div>
+          <h3 class="wbs-subheading">Confidential Misconduct Reporting Channel</h3>
+          <p class="wbs-statement">
+            PT CHAIN ASIA CONECT enforces a strict zero-tolerance policy against fraud, bribery, corruption, or regulatory non-compliance. All employees, vendors, and public partners can submit confidential reports directly to our Internal Audit Committee.
+          </p>
+          <div class="wbs-action-row">
+            <span class="wbs-label">Secure WBS Email:</span>
+            <a href="mailto:wbs@chainasiaconnect.co.id" class="wbs-action-button">wbs@chainasiaconnect.co.id</a>
           </div>
         </div>
       </div>
@@ -200,60 +294,222 @@ import Footer from '../../components/Footer.astro';
     line-height: 1.6;
   }
 
-  .section-intro h2 {
-    font-size: 2.2rem;
+  .section-intro {
+    margin-bottom: 1.5rem;
+  }
+
+  .pillars-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
     font-weight: 800;
-    margin: 0.35rem 0 1.5rem 0;
     color: var(--text-dark);
+    margin: 0;
   }
 
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+  /* ===================================================
+     3D COVERFLOW PILLARS SECTION (Clean, Minimal, No Card Lines)
+     =================================================== */
+  .governance-coverflow-section {
+    padding: 3.5rem 0 4rem 0;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-light);
+    overflow: hidden;
   }
 
-  .pillar-card {
+  .coverflow-stage {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    margin: 2rem 0 1.5rem 0;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .coverflow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .cover-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 360px;
+    margin-left: -160px;
+    margin-top: -180px;
     background: #ffffff;
-    border: 1px solid var(--border-light);
-    padding: 1.5rem;
-    border-radius: 4px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.25, 1), 
+                box-shadow 0.45s cubic-bezier(0.2, 0.8, 0.25, 1), 
+                opacity 0.45s ease;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
   }
 
-  .pillar-num {
-    font-size: 0.8rem;
+  .cover-card:hover {
+    box-shadow: 0 18px 38px -6px rgba(0, 0, 0, 0.14);
+  }
+
+  .cover-card:focus-visible {
+    outline: 2px solid var(--red-primary);
+    outline-offset: 3px;
+  }
+
+  /* Active center card: clean depth and elevation without border lines */
+  .cover-card.active-center {
+    border: none;
+    box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.18), 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-inner {
+    height: 100%;
+    padding: 2.2rem 1.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background: #ffffff;
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-pillar-num {
+    font-size: 1.85rem;
     font-weight: 800;
-    letter-spacing: 0.1em;
+    line-height: 1;
+    color: var(--red-primary);
   }
 
-  .pillar-card h4 {
-    font-size: 1.2rem;
+  .card-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #fef2f2;
+    color: var(--red-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .cover-card:hover .card-icon-wrap {
+    transform: scale(1.06);
+  }
+
+  .card-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .card-title {
+    font-size: 1.45rem;
     font-weight: 800;
     color: var(--text-dark);
-    margin: 0.35rem 0 0.5rem 0;
+    margin: 1.25rem 0 0.5rem 0;
   }
 
-  .pillar-card p {
-    font-size: 0.875rem;
+  .card-desc {
+    font-size: 0.95rem;
     color: var(--text-body);
-    line-height: 1.5;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .card-footer-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: 0.75rem;
+  }
+
+  .cover-card.active-center .card-footer-tag {
+    color: var(--red-primary);
+  }
+
+  /* Minimalist Controls */
+  .coverflow-controls-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.25rem;
+  }
+
+  .coverflow-nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    justify-content: center;
+  }
+
+  .cover-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #0f172a;
+    color: #ffffff;
+    border: none;
+    padding: 0.65rem 1.35rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+
+  .cover-nav-btn:hover {
+    background: var(--red-primary);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.25);
+  }
+
+  .cover-nav-btn:active {
+    transform: translateY(0);
+  }
+
+  .cover-nav-btn svg {
+    stroke-width: 2;
+  }
+
+  /* ===================================================
+     EDITORIAL SECTIONS (Full-width Clean Layouts, No Boxed Cards)
+     =================================================== */
+  .editorial-section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border-light);
   }
 
   .bg-light-clean {
     background: #f8fafc;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
-    padding: 3.5rem 0;
   }
 
   .section-header-clean {
-    max-width: 800px;
+    max-width: 850px;
     margin-bottom: 2rem;
   }
 
   .section-header-clean h2 {
-    font-size: 2rem;
+    font-size: 1.95rem;
     font-weight: 800;
     color: var(--text-dark);
     margin-top: 0.35rem;
@@ -265,99 +521,107 @@ import Footer from '../../components/Footer.astro';
     margin-top: 0.35rem;
   }
 
-  .charters-grid {
+  /* Board Charters: clean 2-column editorial */
+  .editorial-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 3.5rem;
   }
 
-  .charter-card {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
-    padding: 1.75rem;
-  }
-
-  .charter-card h3 {
+  .editorial-col h3 {
     font-size: 1.3rem;
     font-weight: 800;
     color: var(--text-dark);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.65rem;
   }
 
-  .charter-card p {
-    font-size: 0.95rem;
+  .editorial-col p {
+    font-size: 0.98rem;
     color: var(--text-body);
-    line-height: 1.6;
+    line-height: 1.65;
     margin-bottom: 1.25rem;
   }
 
-  .btn-pdf-link {
+  .action-btn-clean {
+    display: inline-flex;
+    align-items: center;
     font-weight: 700;
-    text-decoration: none;
     font-size: 0.9rem;
+    color: var(--red-primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
   }
 
-  .committee-stack {
+  .action-btn-clean:hover {
+    text-decoration: underline;
+  }
+
+  /* Committees Flow: clean vertical stack */
+  .committees-flow {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .committee-box {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
-    padding: 1.5rem;
-  }
-
-  .committee-box h4 {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    margin-bottom: 0.35rem;
-  }
-
-  .committee-box p {
-    font-size: 0.95rem;
-    color: var(--text-body);
-    line-height: 1.6;
-    margin-bottom: 0.85rem;
-  }
-
-  .committee-meta {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  .corsec-wrapper {
+    gap: 2.5rem;
     max-width: 850px;
   }
 
-  .corsec-contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-    margin-top: 1.5rem;
-    background: #ffffff;
-    padding: 1.5rem;
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
+  .committee-entry h4 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0.45rem;
   }
 
-  .contact-row {
+  .committee-entry p {
+    font-size: 0.98rem;
+    color: var(--text-body);
+    line-height: 1.65;
+    margin-bottom: 0.65rem;
+  }
+
+  .committee-meta {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  /* Corporate Secretary editorial */
+  .corsec-editorial {
+    max-width: 850px;
+  }
+
+  .corsec-editorial h2 {
+    font-size: 1.95rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0.35rem 0 0.65rem 0;
+  }
+
+  .corsec-lead {
+    font-size: 1.05rem;
+    color: var(--text-body);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+
+  .corsec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .corsec-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    font-size: 0.95rem;
+    gap: 1.5rem;
+    font-size: 0.98rem;
   }
 
   .c-label {
-    width: 170px;
-    font-size: 0.8rem;
+    width: 180px;
+    font-size: 0.82rem;
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
   .c-link {
@@ -366,62 +630,239 @@ import Footer from '../../components/Footer.astro';
     text-decoration: none;
   }
 
-  .wbs-card {
-    background: #f8fafc;
-    border: 1px solid var(--border-light);
-    border-left: 4px solid var(--red-primary);
-    border-radius: 4px;
-    padding: 2rem;
+  .c-val {
+    color: var(--text-body);
+    font-weight: 500;
   }
 
-  .wbs-text h3 {
+  /* Whistleblowing System (WBS) - Fullwidth clean, no card, button for action */
+  .wbs-fullwidth-wrap {
+    max-width: 900px;
+  }
+
+  .wbs-fullwidth-wrap h2 {
+    font-size: 1.95rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0.35rem 0 1.25rem 0;
+  }
+
+  .wbs-subheading {
     font-size: 1.35rem;
     font-weight: 800;
     color: var(--text-dark);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.65rem;
   }
 
-  .wbs-text p {
-    font-size: 0.95rem;
-    line-height: 1.65;
+  .wbs-statement {
+    font-size: 1.02rem;
+    line-height: 1.7;
     color: var(--text-body);
-    margin-bottom: 1.25rem;
+    margin-bottom: 2rem;
   }
 
-  .wbs-channel {
+  .wbs-action-row {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .wbs-label {
     font-size: 0.95rem;
     font-weight: 700;
-  }
-
-  .c-link {
-    font-weight: 700;
     color: var(--text-dark);
-    text-decoration: none;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
   }
 
-  .wbs-email {
-    font-size: clamp(0.9rem, 3.8vw, 1.1rem);
+  .wbs-action-button {
+    display: inline-flex;
+    align-items: center;
+    background: #0f172a;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
     text-decoration: none;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
   }
 
-  @media (max-width: 640px) {
-    .charters-grid {
+  .wbs-action-button:hover {
+    background: var(--red-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .editorial-columns {
       grid-template-columns: 1fr;
+      gap: 2rem;
     }
-    .contact-row, .wbs-channel {
+    .corsec-item {
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.2rem;
+      gap: 0.25rem;
     }
     .c-label {
       width: 100%;
     }
+    .coverflow-stage {
+      height: 440px;
+      perspective: 700px;
+      -webkit-perspective: 700px;
+    }
+    .cover-card {
+      width: 280px;
+      height: 350px;
+      margin-left: -140px;
+      margin-top: -175px;
+    }
+    .card-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .coverflow-stage {
+      height: 400px;
+    }
+    .cover-card {
+      width: 255px;
+      height: 340px;
+      margin-left: -127px;
+      margin-top: -170px;
+    }
   }
 </style>
+
+<script>
+  function setupCoverflow() {
+    const stage = document.getElementById('coverflow-stage');
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.cover-card'));
+    const prevBtn = document.getElementById('prev-pillar');
+    const nextBtn = document.getElementById('next-pillar');
+
+    if (!cards.length) return;
+
+    // Start with middle pillar (03 Responsibility - index 2) for balanced 3D perspective
+    let currentIndex = 2;
+
+    function render() {
+      const isMobile = window.innerWidth <= 640;
+      const isTablet = window.innerWidth <= 900;
+      const offset = isMobile ? 38 : (isTablet ? 48 : 56);
+      const rotation = isMobile ? 32 : 42;
+      const baseZ = 10;
+      const maxZ = 60;
+
+      cards.forEach((card, i) => {
+        if (i < currentIndex) {
+          // Cards to the left
+          const diff = currentIndex - i;
+          const scale = Math.max(0.78, 1 - diff * 0.08);
+          const opacity = Math.max(0.42, 1 - diff * 0.22);
+          card.style.transform = `translateX(-${offset * diff}%) rotateY(${rotation}deg) scale(${scale})`;
+          card.style.zIndex = String(baseZ + i);
+          card.style.opacity = String(opacity);
+          card.classList.remove('active-center');
+          card.setAttribute('aria-selected', 'false');
+        } else if (i === currentIndex) {
+          // Center active card
+          card.style.transform = `translateX(0%) rotateY(0deg) translateZ(120px) scale(1.05)`;
+          card.style.zIndex = String(maxZ);
+          card.style.opacity = '1';
+          card.classList.add('active-center');
+          card.setAttribute('aria-selected', 'true');
+        } else {
+          // Cards to the right
+          const diff = i - currentIndex;
+          const scale = Math.max(0.78, 1 - diff * 0.08);
+          const opacity = Math.max(0.42, 1 - diff * 0.22);
+          card.style.transform = `translateX(${offset * diff}%) rotateY(-${rotation}deg) scale(${scale})`;
+          card.style.zIndex = String(baseZ + (cards.length - i));
+          card.style.opacity = String(opacity);
+          card.classList.remove('active-center');
+          card.setAttribute('aria-selected', 'false');
+        }
+      });
+    }
+
+    function goToPrev() {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      render();
+    }
+
+    function goToNext() {
+      currentIndex = (currentIndex + 1) % cards.length;
+      render();
+    }
+
+    // Button controls
+    prevBtn?.addEventListener('click', goToPrev);
+    nextBtn?.addEventListener('click', goToNext);
+
+    // Click directly on cards
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        currentIndex = idx;
+        render();
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          currentIndex = idx;
+          render();
+        }
+      });
+    });
+
+    // Keyboard navigation (ArrowLeft & ArrowRight)
+    document.addEventListener('keydown', (e) => {
+      const activeEl = document.activeElement;
+      const isNearCoverflow = stage?.contains(activeEl) || 
+                              document.querySelector('.coverflow-controls-wrapper')?.contains(activeEl);
+
+      if (isNearCoverflow || (window.scrollY > 150 && window.scrollY < 900)) {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          goToPrev();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          goToNext();
+        }
+      }
+    });
+
+    // Touch swipe support for mobile/tablets
+    let touchStartX = 0;
+    stage?.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    stage?.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          goToPrev();
+        } else {
+          goToNext();
+        }
+      }
+    }, { passive: true });
+
+    // Window resize handler
+    window.addEventListener('resize', render);
+
+    // Initial render
+    render();
+  }
+
+  // Run on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCoverflow);
+  } else {
+    setupCoverflow();
+  }
+</script>

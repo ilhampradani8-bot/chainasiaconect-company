@@ -1,5 +1,5 @@
 # robots.txt for PT CHAIN ASIA CONECT
-# Website: https://www.chainasiaconect.company/
+# Website: https://www.chainasiaconnect.co.id/
 
 # Default Crawlers (Allow Full Indexing)
 User-agent: *
@@ -52,4 +52,4 @@ User-agent: CCBot
 Allow: /
 
 # Sitemap Index Declaration
-Sitemap: https://www.chainasiaconect.company/sitemap.xml
+Sitemap: https://www.chainasiaconnect.co.id/sitemap.xml

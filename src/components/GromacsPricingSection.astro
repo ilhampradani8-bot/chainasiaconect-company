@@ -65,7 +65,7 @@
           </div>
 
           <div class="price-card--cta">
-            <a class="price-card--cta--button btn" href="mailto:sales@chainasiaconect.company?subject=Order%20GROMACS%20Starter%20HPC%20($900/mo)">
+            <a class="price-card--cta--button btn" href="mailto:sales@chainasiaconnect.co.id?subject=Order%20GROMACS%20Starter%20HPC%20($900/mo)">
               <span data-i18n="gromacs_btn_order">Order Dedicated Server</span>
             </a>
           </div>
@@ -141,7 +141,7 @@
           </div>
 
           <div class="price-card--cta">
-            <a class="price-card--cta--button btn" href="mailto:sales@chainasiaconect.company?subject=Order%20GROMACS%20Advanced%20MD%20($1,100/mo)">
+            <a class="price-card--cta--button btn" href="mailto:sales@chainasiaconnect.co.id?subject=Order%20GROMACS%20Advanced%20MD%20($1,100/mo)">
               <span data-i18n="gromacs_btn_order">Order Dedicated Server</span>
             </a>
           </div>
@@ -218,7 +218,7 @@
           </div>
 
           <div class="price-card--cta">
-            <a class="price-card--cta--button btn hero-btn" href="mailto:sales@chainasiaconect.company?subject=Order%20Dedicated%20Server%20Rental%20(GROMACS)%20AMD%20EPYC%2016C/32T%20128GB%20DDR5%20($1,300/mo)">
+            <a class="price-card--cta--button btn hero-btn" href="mailto:sales@chainasiaconnect.co.id?subject=Order%20Dedicated%20Server%20Rental%20(GROMACS)%20AMD%20EPYC%2016C/32T%20128GB%20DDR5%20($1,300/mo)">
               <span data-i18n="gromacs_btn_popular">Rent This Dedicated Server</span>
             </a>
           </div>
@@ -294,7 +294,7 @@
           </div>
 
           <div class="price-card--cta">
-            <a class="price-card--cta--button btn" href="mailto:sales@chainasiaconect.company?subject=Order%20GROMACS%20Ultra%20HPC%20($1,500/mo)">
+            <a class="price-card--cta--button btn" href="mailto:sales@chainasiaconnect.co.id?subject=Order%20GROMACS%20Ultra%20HPC%20($1,500/mo)">
               <span data-i18n="gromacs_btn_order">Order Dedicated Server</span>
             </a>
           </div>
@@ -375,7 +375,7 @@
       </div>
       
       <div class="custom-cta-col">
-        <a class="btn-custom-desk" href="mailto:sales@chainasiaconect.company?subject=Custom%20HPC%20Cluster%20Inquiry%20-%20PT%20CHAIN%20ASIA%20CONECT">
+        <a class="btn-custom-desk" href="mailto:sales@chainasiaconnect.co.id?subject=Custom%20HPC%20Cluster%20Inquiry%20-%20PT%20CHAIN%20ASIA%20CONECT">
           <span data-i18n="gromacs_elite_btn">Contact Engineering Desk →</span>
         </a>
       </div>
@@ -434,8 +434,8 @@
 
   .pricing-intro-header {
     max-width: 860px;
-    margin: 0 auto 1.5rem auto;
-    text-align: center;
+    margin: 0 0 2rem 0;
+    text-align: left;
   }
 
   .pricing-top-tag {
@@ -459,7 +459,7 @@
     font-size: 1rem;
     color: var(--text-muted);
     line-height: 1.65;
-    margin: 0 auto;
+    margin: 0;
   }
 
   #pricing-container * {
@@ -622,16 +622,23 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     border: 1px solid #e2e8f0;
     border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.12s linear, opacity 0.12s linear, box-shadow 0.25s ease, border-color 0.2s ease;
+    will-change: transform, opacity;
     position: relative;
     margin: 0;
     flex: 1 1 0;
     min-width: 0;
+    transform-style: preserve-3d;
+  }
+
+  .pricing-intro-header,
+  #pricing-switch {
+    will-change: transform, opacity;
+    transition: transform 0.12s linear, opacity 0.12s linear;
   }
 
   #pricing-container .price-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 14px 32px -4px rgba(0, 0, 0, 0.12);
     border-color: #cbd5e1;
   }
 
@@ -1217,10 +1224,178 @@
       });
     }
 
+    // Scroll-Driven Magnetic Convergence & Dispersion Animation
+    function setupMagneticConvergence() {
+      const section = document.getElementById('gromacs-pricing');
+      const cards = Array.from(document.querySelectorAll('#pricing-cards .price-card'));
+      const header = document.querySelector('.pricing-intro-header');
+      const switcher = document.getElementById('pricing-switch');
+
+      if (!section || !cards.length) return;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      let isTicking = false;
+
+      function updateScrub() {
+        const rect = section.getBoundingClientRect();
+        const vh = window.innerHeight || 800;
+
+        // Outside active view range: skip calculation
+        if (rect.bottom < -120 || rect.top > vh + 120) {
+          isTicking = false;
+          return;
+        }
+
+        // Section center relative to viewport center
+        const sectionCenter = rect.top + rect.height * 0.42;
+        const viewportCenter = vh / 2;
+        const diff = sectionCenter - viewportCenter;
+
+        const isDesktop = window.innerWidth >= 1024;
+        const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+        const intensity = isDesktop ? 1 : (isTablet ? 0.6 : 0.2);
+
+        if (diff > 0) {
+          // CONVERGING PHASE (coming from bottom towards center)
+          const ratio = Math.min(1, Math.max(0, diff / (vh * 0.65)));
+
+          // Card 0 (Starter HPC): comes from far left
+          if (cards[0]) {
+            const tx = -ratio * 150 * intensity;
+            const ty = ratio * 35;
+            const rot = -ratio * 4.5 * intensity;
+            const op = Math.max(0.12, 1 - ratio * 0.85);
+            cards[0].style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+            cards[0].style.opacity = String(op);
+          }
+
+          // Card 1 (Professional Simulation): comes from mid-left / below
+          if (cards[1]) {
+            const tx = -ratio * 65 * intensity;
+            const ty = ratio * 60;
+            const rot = -ratio * 2.5 * intensity;
+            const op = Math.max(0.15, 1 - ratio * 0.75);
+            cards[1].style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+            cards[1].style.opacity = String(op);
+          }
+
+          // Card 2 (Advanced Research): comes from mid-right / below
+          if (cards[2]) {
+            const tx = ratio * 65 * intensity;
+            const ty = ratio * 60;
+            const rot = ratio * 2.5 * intensity;
+            const op = Math.max(0.15, 1 - ratio * 0.75);
+            cards[2].style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+            cards[2].style.opacity = String(op);
+          }
+
+          // Card 3 (Ultra HPC): comes from far right
+          if (cards[3]) {
+            const tx = ratio * 150 * intensity;
+            const ty = ratio * 35;
+            const rot = ratio * 4.5 * intensity;
+            const op = Math.max(0.12, 1 - ratio * 0.85);
+            cards[3].style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+            cards[3].style.opacity = String(op);
+          }
+
+          // Header & switch entrance
+          if (header) {
+            header.style.transform = `translate3d(0, -${ratio * 20}px, 0)`;
+            header.style.opacity = String(Math.max(0.2, 1 - ratio * 0.75));
+          }
+          if (switcher) {
+            switcher.style.transform = `scale(${1 - ratio * 0.08})`;
+            switcher.style.opacity = String(Math.max(0.2, 1 - ratio * 0.75));
+          }
+
+        } else {
+          // DISPERSING PHASE (scrolling past center towards top)
+          const outRatio = Math.min(1, Math.max(0, -diff / (vh * 0.65)));
+
+          // Card 0: disperses outwards to left
+          if (cards[0]) {
+            const tx = -outRatio * 170 * intensity;
+            const ty = -outRatio * 45;
+            const rot = -outRatio * 5.5 * intensity;
+            const op = Math.max(0, 1 - outRatio * 1.35);
+            cards[0].style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+            cards[0].style.opacity = String(op);
+          }
+
+          // Card 1: disperses upwards & slightly left
+          if (cards[1]) {
+            const tx = -outRatio * 75 * intensity;
+            const ty = -outRatio * 70;
+            const rot = -outRatio * 3 * intensity;
+            const op = Math.max(0, 1 - outRatio * 1.35);
+            cards[1].style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+            cards[1].style.opacity = String(op);
+          }
+
+          // Card 2: disperses upwards & slightly right
+          if (cards[2]) {
+            const tx = outRatio * 75 * intensity;
+            const ty = -outRatio * 70;
+            const rot = outRatio * 3 * intensity;
+            const op = Math.max(0, 1 - outRatio * 1.35);
+            cards[2].style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+            cards[2].style.opacity = String(op);
+          }
+
+          // Card 3: disperses outwards to right
+          if (cards[3]) {
+            const tx = outRatio * 170 * intensity;
+            const ty = -outRatio * 45;
+            const rot = outRatio * 5.5 * intensity;
+            const op = Math.max(0, 1 - outRatio * 1.35);
+            cards[3].style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`;
+            cards[3].style.opacity = String(op);
+          }
+
+          // Header & switch disperse
+          if (header) {
+            header.style.transform = `translate3d(0, -${outRatio * 35}px, 0)`;
+            header.style.opacity = String(Math.max(0, 1 - outRatio * 1.4));
+          }
+          if (switcher) {
+            switcher.style.transform = `scale(${1 - outRatio * 0.08})`;
+            switcher.style.opacity = String(Math.max(0, 1 - outRatio * 1.4));
+          }
+        }
+
+        isTicking = false;
+      }
+
+      function requestTick() {
+        if (!isTicking) {
+          window.requestAnimationFrame(updateScrub);
+          isTicking = true;
+        }
+      }
+
+      window.addEventListener('scroll', requestTick, { passive: true });
+      window.addEventListener('resize', requestTick, { passive: true });
+      
+      // Hook into Lenis if available
+      if (window.lenis) {
+        window.lenis.on('scroll', requestTick);
+      }
+
+      updateScrub();
+    }
+
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initPricingToggle);
+      document.addEventListener('DOMContentLoaded', () => {
+        initPricingToggle();
+        setupMagneticConvergence();
+      });
     } else {
       initPricingToggle();
+      setupMagneticConvergence();
     }
   })();
 </script>

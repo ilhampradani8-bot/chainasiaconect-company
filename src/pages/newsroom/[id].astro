@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { fetchAllNews, formatImageUrl } from '../../lib/news';
+import { fetchAllNews, formatImageUrl, parseDateToISO } from '../../lib/news';
 
 export async function getStaticPaths() {
   const { news } = await fetchAllNews();
@@ -35,15 +35,18 @@ if (!article) {
 }
 
 // Canonical URL SEO ramah Google
-const canonicalUrl = `https://www.chainasiaconect.company/newsroom/${article.slug}`;
+const canonicalUrl = `https://www.chainasiaconnect.co.id/newsroom/${article.slug}`;
 
 // Pastikan gambar artikel menggunakan URL dinamis yang valid
 const dynamicArticleImage = formatImageUrl(article.imageUrl);
 
-// Filter saran berita (kecuali berita saat ini), maksimal 3 artikel
+// Konversi tanggal berita ke format standar ISO 8601 untuk Google News & Search Console
+const isoPublishedDate = parseDateToISO(article.date);
+
+// Filter saran berita (kecuali berita saat ini), maksimal 5 artikel
 const suggestions = news
   .filter((n) => n.slug !== article.slug && String(n.id) !== String(article.id))
-  .slice(0, 3);
+  .slice(0, 5);
 
 // Format paragraf isi berita
 const rawContent = article.content && article.content.trim().length > 0 ? article.content : article.excerpt;
@@ -55,9 +58,9 @@ const newsArticleSchema = {
   "@type": "NewsArticle",
   "headline": article.title,
   "description": article.excerpt,
-  "image": [dynamicArticleImage || "https://www.chainasiaconect.company/images/CAC-LOGO.jpg"],
-  "datePublished": "2026-10-14T08:00:00+07:00",
-  "dateModified": "2026-10-14T08:00:00+07:00",
+  "image": [dynamicArticleImage],
+  "datePublished": isoPublishedDate,
+  "dateModified": isoPublishedDate,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": canonicalUrl
@@ -66,16 +69,16 @@ const newsArticleSchema = {
     {
       "@type": "Organization",
       "name": "PT CHAIN ASIA CONECT Corporate Communications",
-      "url": "https://www.chainasiaconect.company"
+      "url": "https://www.chainasiaconnect.co.id"
     }
   ],
   "publisher": {
     "@type": "Organization",
     "name": "PT CHAIN ASIA CONECT",
-    "url": "https://www.chainasiaconect.company",
+    "url": "https://www.chainasiaconnect.co.id",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.chainasiaconect.company/images/CAC-LOGO.jpg"
+      "url": "https://www.chainasiaconnect.co.id/images/CAC-LOGO.jpg"
     }
   }
 };
@@ -89,7 +92,7 @@ const newsArticleSchema = {
   image={dynamicArticleImage}
   ogType="article"
   articleMeta={{
-    publishedTime: "2026-10-14T08:00:00+07:00",
+    publishedTime: isoPublishedDate,
     author: "PT CHAIN ASIA CONECT Corporate Communications",
     section: article.tag
   }}
@@ -204,41 +207,39 @@ const newsArticleSchema = {
       </div>
     </article>
 
-    <!-- Saran News Section (Related Suggestions) -->
+    <!-- Saran News Section (Full-Width Clean Newspaper List - No Sidebar, No Boxed Card) -->
     {suggestions.length > 0 && (
       <section class="suggestions-section" aria-label="Berita Rekomendasi">
-        <div class="container">
-          <div class="suggestions-header">
-            <span class="sugg-tag red-text">REKOMENDASI ARTIKEL</span>
-            <h2 class="sugg-title">Berita & Informasi Lainnya</h2>
-            <p class="sugg-sub">Jelajahi pembaruan korporasi, pencapaian legalitas, dan agenda kemitraan terbaru.</p>
+        <div class="container suggestions-fullwidth-wrap">
+          <div class="suggestions-header-bar">
+            <h2 class="suggestions-heading">Berita Rekomendasi</h2>
+            <span class="suggestions-sub">Pembaruan korporasi, pencapaian, dan agenda kemitraan terkini PT CHAIN ASIA CONECT.</span>
           </div>
-
-          <div class="suggestions-grid">
+          
+          <div class="articles-clean-list">
             {suggestions.map((sug) => (
-              <a href={`/newsroom/${sug.slug}`} class="suggestion-card">
-                {sug.imageUrl && (
-                  <div class="sugg-img-box">
+              <a href={`/newsroom/${sug.slug}`} class="article-row-link">
+                <article class="article-row">
+                  <div class="article-thumb-box">
                     <img 
                       src={formatImageUrl(sug.imageUrl)} 
                       alt={sug.title} 
-                      class="sugg-img" 
                       loading="lazy" 
                       referrerpolicy="no-referrer"
+                      class="article-thumb-img"
                     />
                   </div>
-                )}
-                <div class="sugg-body">
-                  <div class="sugg-meta">
-                    <span class="sugg-cat red-text">{sug.tag}</span>
-                    <span class="sugg-date">{sug.date}</span>
+                  <div class="article-content-box">
+                    <div class="article-meta-line">
+                      <span class="meta-tag red-text">{sug.tag}</span>
+                      <span class="meta-date">{sug.date}</span>
+                      <span class="meta-readtime">• {sug.readTime}</span>
+                    </div>
+                    <h3 class="article-title">{sug.title}</h3>
+                    <p class="article-excerpt">{sug.excerpt || sug.content}</p>
+                    <span class="article-arrow-cta red-text">Baca Selengkapnya →</span>
                   </div>
-                  <h3 class="sugg-headline">{sug.title}</h3>
-                  <p class="sugg-excerpt">{sug.excerpt}</p>
-                  <span class="sugg-read-more red-text">
-                    Baca Berita →
-                  </span>
-                </div>
+                </article>
               </a>
             ))}
           </div>
@@ -530,130 +531,156 @@ const newsArticleSchema = {
     line-height: 1.5;
   }
 
-  /* Suggestions Section */
+  /* Suggestions Section (Full-Width Clean Newspaper List - No Sidebar, No Boxed Card) */
   .suggestions-section {
-    background: #f8fafc;
-    border-top: 1px solid var(--border-light);
-    padding: 4.5rem 0;
+    background-color: #fafafa;
+    padding: 3.5rem 0 5rem 0;
+    border-top: 1px solid var(--border-light, #e2e8f0);
+    width: 100%;
   }
 
-  .suggestions-header {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto 3rem auto;
+  .suggestions-fullwidth-wrap {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
   }
 
-  .sugg-tag {
-    font-size: 0.75rem;
+  .suggestions-header-bar {
+    margin-bottom: 2rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 2px solid #222;
+  }
+
+  .suggestions-heading {
+    font-size: clamp(1.6rem, 2.5vw, 2.1rem);
     font-weight: 800;
-    letter-spacing: 0.08em;
-    display: block;
-    margin-bottom: 0.35rem;
+    color: #111;
+    margin: 0 0 0.35rem 0;
+    line-height: 1.2;
   }
 
-  .sugg-title {
-    font-size: clamp(1.75rem, 3vw, 2.3rem);
-    font-weight: 800;
-    color: var(--text-dark);
-    margin-bottom: 0.5rem;
-  }
-
-  .sugg-sub {
+  .suggestions-sub {
     font-size: 0.95rem;
-    color: var(--text-muted);
+    color: var(--text-muted, #64748b);
   }
 
-  .suggestions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-  }
-
-  .suggestion-card {
-    background: #ffffff;
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
+  .articles-clean-list {
     display: flex;
     flex-direction: column;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-
-  .suggestion-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-    border-color: #cbd5e1;
-  }
-
-  .sugg-img-box {
     width: 100%;
-    height: 190px;
-    overflow: hidden;
-    background: #f1f5f9;
   }
 
-  .sugg-img {
+  .article-row-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+  }
+
+  .article-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.15s ease;
+  }
+
+  .article-row-link:hover .article-row {
+    background-color: #f4f4f5;
+  }
+
+  .article-thumb-box {
+    flex: 0 0 180px;
+    width: 180px;
+    height: 120px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+  }
+
+  .article-thumb-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    display: block;
+    transition: transform 0.25s ease;
   }
 
-  .suggestion-card:hover .sugg-img {
-    transform: scale(1.04);
+  .article-row-link:hover .article-thumb-img {
+    transform: scale(1.03);
   }
 
-  .sugg-body {
-    padding: 1.5rem;
+  .article-content-box {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    min-width: 0;
   }
 
-  .sugg-meta {
+  .article-meta-line {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
-    margin-bottom: 0.5rem;
+    gap: 0.65rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.75rem;
   }
 
-  .sugg-cat {
-    font-size: 0.7rem;
+  .article-meta-line .meta-tag {
     font-weight: 800;
     letter-spacing: 0.05em;
   }
 
-  .sugg-date {
-    font-size: 0.72rem;
-    color: var(--text-muted);
+  .article-meta-line .meta-date,
+  .article-meta-line .meta-readtime {
+    color: var(--text-muted, #64748b);
+    font-weight: 500;
   }
 
-  .sugg-headline {
+  .article-title {
     font-size: 1.15rem;
     font-weight: 700;
     line-height: 1.35;
-    color: var(--text-dark);
-    margin-bottom: 0.6rem;
+    color: #1e293b;
+    margin: 0 0 0.4rem 0;
+    transition: color 0.15s ease;
   }
 
-  .sugg-excerpt {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.55;
-    margin-bottom: 1.25rem;
+  .article-row-link:hover .article-title {
+    color: var(--red-primary, #dc2626);
+  }
+
+  .article-excerpt {
+    font-size: 0.925rem;
+    line-height: 1.5;
+    color: #475569;
+    margin: 0 0 0.5rem 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .sugg-read-more {
-    margin-top: auto;
-    font-size: 0.825rem;
+  .article-arrow-cta {
+    font-size: 0.8rem;
     font-weight: 700;
+    margin-top: auto;
+  }
+
+  @media (max-width: 640px) {
+    .article-row {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .article-thumb-box {
+      flex: none;
+      width: 100%;
+      height: 180px;
+    }
   }
 
   @media (max-width: 640px) {

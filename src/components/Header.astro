@@ -16,11 +16,58 @@
         <a href="/about" class="nav-capsule-item" data-i18n="nav_about">About Us</a>
         <a href="/business" class="nav-capsule-item" data-i18n="nav_business">Business & Services</a>
         <a href="/investor-relations" class="nav-capsule-item" data-i18n="nav_investor">Investor Relations</a>
-        <a href="/scf" class="nav-capsule-item" data-i18n="nav_scf">SCF (Coming Soon)</a>
         <a href="/governance" class="nav-capsule-item" data-i18n="nav_governance">Governance</a>
-        <a href="/sustainability" class="nav-capsule-item" data-i18n="nav_esg">ESG & CSR</a>
         <a href="/newsroom" class="nav-capsule-item" data-i18n="nav_newsroom">Newsroom</a>
-        <a href="/careers" class="nav-capsule-item" data-i18n="nav_careers">Careers</a>
+
+        <!-- Minimalist Initiatives & Coming Soon Dropdown (SCF, ESG, Careers) -->
+        <div class="nav-dropdown-wrapper" id="nav-coming-dropdown">
+          <button type="button" class="nav-capsule-item nav-dropdown-trigger" id="dropdown-trigger-btn" aria-expanded="false" aria-haspopup="true">
+            <span data-i18n="nav_coming_more">More Initiatives</span>
+            <svg class="dropdown-chevron-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          
+          <div class="nav-dropdown-menu" id="nav-dropdown-popover">
+            <a href="/scf" class="nav-dropdown-link">
+              <div class="dd-link-icon scf-color">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div class="dd-link-info">
+                <div class="dd-link-title-row">
+                  <span class="dd-link-title" data-i18n="nav_scf">SCF Platform</span>
+                  <span class="dd-pill-badge">Coming Soon</span>
+                </div>
+                <span class="dd-link-desc">Supply Chain Financing Ecosystem</span>
+              </div>
+            </a>
+
+            <a href="/sustainability" class="nav-dropdown-link">
+              <div class="dd-link-icon esg-color">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="dd-link-info">
+                <div class="dd-link-title-row">
+                  <span class="dd-link-title" data-i18n="nav_esg">ESG & Sustainability</span>
+                </div>
+                <span class="dd-link-desc">10% Tabarru' Fund & Mitra Langit</span>
+              </div>
+            </a>
+
+            <a href="/careers" class="nav-dropdown-link">
+              <div class="dd-link-icon career-color">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <div class="dd-link-info">
+                <div class="dd-link-title-row">
+                  <span class="dd-link-title" data-i18n="nav_careers">Careers & Recruitment</span>
+                </div>
+                <span class="dd-link-desc">Corporate Positions & Talent Pool</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <a href="/contact" class="nav-capsule-item" data-i18n="nav_contact">Contact</a>
       </nav>
 
@@ -60,11 +107,20 @@
       <a href="/about" class="mobile-item" data-i18n="nav_about">About Us</a>
       <a href="/business" class="mobile-item" data-i18n="nav_business">Business & Services</a>
       <a href="/investor-relations" class="mobile-item" data-i18n="nav_investor">Investor Relations</a>
-      <a href="/scf" class="mobile-item" style="color: #dc2626; font-weight: 800;" data-i18n="nav_scf">SCF Platform (Coming Soon)</a>
       <a href="/governance" class="mobile-item" data-i18n="nav_governance">Corporate Governance</a>
-      <a href="/sustainability" class="mobile-item" data-i18n="nav_esg">Sustainability & ESG</a>
       <a href="/newsroom" class="mobile-item" data-i18n="nav_newsroom">Newsroom</a>
-      <a href="/careers" class="mobile-item" data-i18n="nav_careers">Careers</a>
+
+      <!-- Grouped Initiatives Section in Mobile Drawer -->
+      <div class="mobile-initiatives-card">
+        <div class="mobile-card-title">More Initiatives</div>
+        <a href="/scf" class="mobile-sub-link">
+          <span data-i18n="nav_scf">SCF Platform</span>
+          <span class="mobile-badge-red">Coming Soon</span>
+        </a>
+        <a href="/sustainability" class="mobile-sub-link" data-i18n="nav_esg">ESG & Sustainability</a>
+        <a href="/careers" class="mobile-sub-link" data-i18n="nav_careers">Careers & Recruitment</a>
+      </div>
+
       <a href="/contact" class="mobile-item" data-i18n="nav_contact">Contact Us</a>
     </div>
   </div>
@@ -81,7 +137,7 @@
       drawer.classList.toggle('active');
     });
 
-    document.querySelectorAll('.mobile-item').forEach(link => {
+    document.querySelectorAll('.mobile-item, .mobile-sub-link').forEach(link => {
       link.addEventListener('click', () => {
         drawer.classList.remove('active');
       });
@@ -89,8 +145,27 @@
 
     // Close on click outside
     document.addEventListener('click', (e) => {
-      if (!drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+      if (!drawer.contains(e.target as Node) && !toggleBtn.contains(e.target as Node)) {
         drawer.classList.remove('active');
+      }
+    });
+  }
+
+  // Desktop Coming Soon / Initiatives Dropdown
+  const dropdownWrapper = document.getElementById('nav-coming-dropdown');
+  const dropdownBtn = document.getElementById('dropdown-trigger-btn');
+
+  if (dropdownWrapper && dropdownBtn) {
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdownWrapper.classList.toggle('is-open');
+      dropdownBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdownWrapper.contains(e.target as Node)) {
+        dropdownWrapper.classList.remove('is-open');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
       }
     });
   }
@@ -166,15 +241,222 @@
     border-radius: 9999px;
     transition: all 0.2s ease;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
-  .nav-capsule-item:hover {
+  .nav-capsule-item:hover,
+  .nav-dropdown-wrapper:hover .nav-dropdown-trigger,
+  .nav-dropdown-wrapper.is-open .nav-dropdown-trigger {
     color: var(--red-primary);
     background: #ffffff;
     box-shadow: 
       0 3px 8px rgba(0, 0, 0, 0.06),
       inset 0 1px 1px rgba(255, 255, 255, 1);
     transform: translateY(-1px);
+  }
+
+  /* Dropdown Styles */
+  .nav-dropdown-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .nav-dropdown-trigger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .dropdown-chevron-icon {
+    transition: transform 0.25s ease;
+  }
+
+  .nav-dropdown-wrapper:hover .dropdown-chevron-icon,
+  .nav-dropdown-wrapper.is-open .dropdown-chevron-icon {
+    transform: rotate(180deg);
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.65rem);
+    right: 0;
+    min-width: 295px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 0.6rem;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.16), 0 8px 18px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                visibility 0.25s ease;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  /* Triangle pointer */
+  .nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 32px;
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-left: 1px solid rgba(226, 232, 240, 0.95);
+    border-top: 1px solid rgba(226, 232, 240, 0.95);
+    transform: rotate(45deg);
+  }
+
+  /* Hover & Active opening */
+  .nav-dropdown-wrapper:hover .nav-dropdown-menu,
+  .nav-dropdown-wrapper:focus-within .nav-dropdown-menu,
+  .nav-dropdown-wrapper.is-open .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .nav-dropdown-link:hover {
+    background: #f8fafc;
+    transform: translateX(2px);
+  }
+
+  .dd-link-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .dd-link-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .scf-color {
+    background: #fef2f2;
+    color: var(--red-primary);
+  }
+
+  .esg-color {
+    background: #ecfdf5;
+    color: #059669;
+  }
+
+  .career-color {
+    background: #f0fdf4;
+    color: #16a34a;
+  }
+
+  .dd-link-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .dd-link-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dd-link-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+
+  .dd-pill-badge {
+    font-size: 0.62rem;
+    font-weight: 800;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    background: #fee2e2;
+    color: #dc2626;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .dd-link-desc {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+
+  /* Mobile Initiatives Card */
+  .mobile-initiatives-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin: 0.35rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .mobile-card-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 0.2rem;
+  }
+
+  .mobile-sub-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-sub-link:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .mobile-sub-link:hover {
+    color: var(--red-primary);
+  }
+
+  .mobile-badge-red {
+    font-size: 0.62rem;
+    font-weight: 800;
+    padding: 0.15rem 0.45rem;
+    border-radius: 999px;
+    background: #fee2e2;
+    color: #dc2626;
+    text-transform: uppercase;
   }
 
   /* Neumorphic Language Switcher [ EN | ID ] */

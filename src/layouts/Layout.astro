@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import 'lenis/dist/lenis.css';
 import TelegramChatBubble from '../components/TelegramChatBubble.astro';
 
 interface Props {
@@ -19,8 +20,8 @@ interface Props {
 const {
   title = "PT CHAIN ASIA CONECT | Official Corporate Portal",
   description = "PT CHAIN ASIA CONECT - Officially registered legal entity (SK Kemenkumham AHU-A117353.AH.01.30, NIB 0709260109599, KBLI 62193, NPWP 10.000.000.1-094.6336). President Director: Ilham Pradani, S.H. (Cand.). Enterprise Supply Chain, Medical Engineering Machine & Diagnostic Software Systems Licensing across Indonesia & Asia Region.",
-  canonical = "https://www.chainasiaconect.company/",
-  image = "https://www.chainasiaconect.company/images/CAC-LOGO.jpg",
+  canonical = "https://www.chainasiaconnect.co.id/",
+  image = "https://www.chainasiaconnect.co.id/images/CAC-LOGO.jpg",
   ogType = "website",
   articleMeta,
   extraSchema
@@ -32,11 +33,11 @@ const schemaData = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://www.chainasiaconect.company/#organization",
+      "@id": "https://www.chainasiaconnect.co.id/#organization",
       "name": "PT CHAIN ASIA CONECT",
       "legalName": "PT CHAIN ASIA CONECT",
-      "url": "https://www.chainasiaconect.company/",
-      "logo": "https://www.chainasiaconect.company/images/CAC-LOGO.jpg",
+      "url": "https://www.chainasiaconnect.co.id/",
+      "logo": "https://www.chainasiaconnect.co.id/images/CAC-LOGO.jpg",
       "description": description,
       "foundingDate": "2026-09-01",
       "taxID": "10.000.000.1-094.6336",
@@ -58,19 +59,19 @@ const schemaData = {
       "contactPoint": [
         {
           "@type": "ContactPoint",
-          "email": "ilhampradani@chainasiaconect.company",
+          "email": "ilhampradani-sh@chainasiaconnect.co.id",
           "contactType": "president director desk",
           "availableLanguage": ["English", "Indonesian"]
         },
         {
           "@type": "ContactPoint",
-          "email": "putriwulandari@chainasiaconect.company",
+          "email": "putriwulandari-st@chainasiaconnect.co.id",
           "contactType": "vice president director desk",
           "availableLanguage": ["English", "Indonesian"]
         },
         {
           "@type": "ContactPoint",
-          "email": "info@chainasiaconect.company",
+          "email": "info@chainasiaconnect.co.id",
           "contactType": "customer service",
           "availableLanguage": ["English", "Indonesian"]
         }
@@ -78,11 +79,11 @@ const schemaData = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://www.chainasiaconect.company/#website",
-      "url": "https://www.chainasiaconect.company/",
+      "@id": "https://www.chainasiaconnect.co.id/#website",
+      "url": "https://www.chainasiaconnect.co.id/",
       "name": "PT CHAIN ASIA CONECT",
       "publisher": {
-        "@id": "https://www.chainasiaconect.company/#organization"
+        "@id": "https://www.chainasiaconnect.co.id/#organization"
       },
       "inLanguage": "en-US"
     }
@@ -115,7 +116,7 @@ const schemaData = {
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="keywords" content="PT CHAIN ASIA CONECT, Ilham Pradani, Medical Engineering Machine, Diagnostic Software Licensing, DICOM PACS Licensing, Supply Chain Indonesia, Real Business Ecosystem Asia, NIB 0709260109599, SK Kemenkumham AHU-A117353, chainasiaconect.company" />
+    <meta name="keywords" content="PT CHAIN ASIA CONECT, Ilham Pradani, Medical Engineering Machine, Diagnostic Software Licensing, DICOM PACS Licensing, Supply Chain Indonesia, Real Business Ecosystem Asia, NIB 0709260109599, SK Kemenkumham AHU-A117353, chainasiaconnect.co.id" />
     <meta name="author" content="Ilham Pradani, S.H. (Cand.) - PT CHAIN ASIA CONECT" />
     <meta name="publisher" content="PT CHAIN ASIA CONECT" />
     <meta name="copyright" content="PT CHAIN ASIA CONECT" />
@@ -154,6 +155,73 @@ const schemaData = {
     <slot />
     <TelegramChatBubble />
     <script is:inline src="/js/i18n.js"></script>
+    <script>
+      import Lenis from 'lenis';
+
+      function initLenis() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+
+        const lenis = new Lenis({
+          duration: 1.3, // Silky slow-motion inertia scroll
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          wheelMultiplier: 0.9,
+          touchMultiplier: 1.4,
+        });
+
+        // Expose globally so components can hook into lenis scroll events
+        (window as any).lenis = lenis;
+
+        function raf(time: number) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLenis);
+      } else {
+        initLenis();
+      }
+    </script>
+    <script is:inline>
+      function initScrollReveal() {
+        const revealElements = document.querySelectorAll('.reveal-on-scroll, section > .container');
+        if (!('IntersectionObserver' in window)) {
+          revealElements.forEach(el => el.classList.add('is-revealed'));
+          return;
+        }
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -30px 0px'
+        });
+        revealElements.forEach(el => {
+          if (!el.classList.contains('reveal-on-scroll')) {
+            el.classList.add('reveal-on-scroll');
+          }
+          observer.observe(el);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollReveal);
+      } else {
+        initScrollReveal();
+      }
+    </script>
   </body>
 </html>
 

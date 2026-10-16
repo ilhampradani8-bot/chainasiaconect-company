@@ -11,8 +11,8 @@ Official corporate web portal for **PT CHAIN ASIA CONECT**, built with [Astro](h
 - **NIB**: `0709260109599` (KBLI 62193 — Aktivitas Pengembangan Aplikasi Berbasis Teknologi Blockchain & Rantai Pasok)
 - **NPWP**: `10.000.000.1-094.6336`
 - **Director / Founder**: Ilham Pradani
-- **Official Domain**: [https://www.chainasiaconect.company](https://www.chainasiaconect.company)
-- **Email Inquiries**: `info@chainasiaconect.company` | `sales@chainasiaconect.company` | `hello@ilhampradani.me`
+- **Official Domain**: [https://www.chainasiaconnect.co.id](https://www.chainasiaconnect.co.id)
+- **Email Inquiries**: `info@chainasiaconnect.co.id` | `sales@chainasiaconnect.co.id` | `hello@ilhampradani.me`
 - **WhatsApp Support**: `+6288971071138`
 
 ---

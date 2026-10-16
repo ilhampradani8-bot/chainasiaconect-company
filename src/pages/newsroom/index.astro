@@ -134,7 +134,7 @@ const otherNews = newsList.slice(1);
 </Layout>
 
 <script>
-  import { GOOGLE_SHEET_CSV_URL, parseCSV, slugify, formatImageUrl } from '../../lib/news';
+  import { GOOGLE_SHEET_CSV_URL, parseCSV, slugify, formatImageUrl, calculateReadTime } from '../../lib/news';
 
   async function syncLiveNewsroom() {
     const counterEl = document.getElementById('newsroom-feed-counter');
@@ -170,7 +170,7 @@ const otherNews = newsList.slice(1);
             title: titleVal,
             excerpt: excerptVal,
             imageUrl: imgVal,
-            readTime: '3 min baca'
+            readTime: (r.waktubaca || r.readtime || calculateReadTime(contentVal || excerptVal))
           };
         })
         .filter(Boolean);

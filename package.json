@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.0"
+    "astro": "^4.15.0",
+    "lenis": "^1.3.27"
   },
   "devDependencies": {
     "isomorphic-git": "^1.42.2",

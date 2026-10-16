@@ -18,8 +18,11 @@ import Footer from '../components/Footer.astro';
     <!-- Section 1: Home Hero -->
     <ComingSoonHero />
 
-    <!-- Section 2: Dimensional Interface Cards (DepthFold 3D Glass) -->
+    <!-- Section 2: Dimensional Interface Cards (DepthFold 3D Glass & Parallax Curtain Overlay) -->
     <section class="corporate-directory-section" id="portal-directory">
+      <div class="directory-curtain-handle" aria-hidden="true">
+        <span class="handle-bar"></span>
+      </div>
       <div class="container">
         <div class="directory-header">
           <div class="directory-title-block">
@@ -249,81 +252,207 @@ import Footer from '../components/Footer.astro';
     </section>
 
     <!-- Section 3: About Us Summary (Board of Directors & Philosophy) -->
-    <section class="home-summary-section" id="home-about-summary">
+    <section class="home-summary-section scroll-reveal" id="home-about-summary">
       <div class="container">
-        <DirekturSection />
-        <CompanyIdentity />
-        <div class="section-more-action">
-          <a href="/about" class="btn-more-red">
-            <span>Learn More About Us & Legal Standing →</span>
-          </a>
+        <div class="section-row-header">
+          <div class="header-left">
+            <span class="section-tag red-text">CORPORATE STANDING & LEADERSHIP</span>
+            <h2>About Us & Executive Governance</h2>
+          </div>
+          <div class="header-right">
+            <a href="/about" class="btn-more-red">
+              <span>Learn More About Us & Legal Standing →</span>
+            </a>
+          </div>
+        </div>
+        <div class="section-detail-body">
+          <DirekturSection />
+          <CompanyIdentity />
         </div>
       </div>
     </section>
 
     <!-- Section 4: Business & Services Summary -->
-    <section class="home-summary-section bg-light-clean" id="home-services-summary">
+    <section class="home-summary-section bg-light-clean scroll-reveal" id="home-services-summary">
       <div class="container">
-        <ServicesSection />
-        <GromacsPricingSection />
-        <div class="section-more-action">
-          <a href="/business" class="btn-more-red">
-            <span>Explore All Business Lines & 3D Licensing →</span>
-          </a>
+        <div class="section-row-header">
+          <div class="header-left">
+            <span class="section-tag red-text">SPECIALIZED SOLUTIONS & INFRASTRUCTURE</span>
+            <h2>Business Operations & High Performance Computing</h2>
+          </div>
+          <div class="header-right">
+            <a href="/business" class="btn-more-red">
+              <span>Explore All Business Lines & 3D Licensing →</span>
+            </a>
+          </div>
+        </div>
+        <div class="section-detail-body">
+          <ServicesSection />
+          <GromacsPricingSection />
         </div>
       </div>
     </section>
 
-    <!-- Section 5: Investor Relations & IPO 2029 Summary -->
-    <section class="home-summary-section" id="home-investor-summary">
+    <!-- Section 5: Investor Relations & IPO 2029 Summary - Fullwidth Clean -->
+    <section class="home-summary-section scroll-reveal" id="home-investor-summary">
       <div class="container">
-        <div class="home-summary-card">
-          <span class="section-tag red-text">INVESTOR RELATIONS & IPO ROADMAP</span>
-          <h2>Founders Agreement & Go Public Plan 2029</h2>
-          <p class="summary-desc">
-            PT CHAIN ASIA CONECT operates under an executive founders agreement between President Director <strong>Ilham Pradani, S.H. (Cand.)</strong> and Vice President Director <strong>Putri Wulandari, S.T.</strong>, allocating <strong>10% of Net Profit to Mitra Langit Tabarru' Fund</strong> and targeting <strong>Initial Public Offering (IPO) in 2029</strong>.
-          </p>
-          <div class="section-more-action text-left">
+        <div class="section-row-header">
+          <div class="header-left">
+            <span class="section-tag red-text">INVESTOR RELATIONS & IPO ROADMAP</span>
+            <h2>Founders Agreement & Go Public Plan 2029</h2>
+          </div>
+          <div class="header-right">
             <a href="/investor-relations" class="btn-more-red">
               <span>View Full Investor Relations Portal →</span>
             </a>
           </div>
         </div>
+        <div class="section-detail-body">
+          <p class="summary-desc">
+            PT CHAIN ASIA CONECT operates under an executive founders agreement between President Director <strong>Ilham Pradani, S.H. (Cand.)</strong> and Vice President Director <strong>Putri Wulandari, S.T.</strong>, allocating <strong>10% of Net Profit to Mitra Langit Tabarru' Fund</strong> and targeting <strong>Initial Public Offering (IPO) in 2029</strong>.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Section 6: Governance Summary -->
-    <section class="home-summary-section bg-light-clean" id="home-governance-summary">
+    <!-- Section 6: Governance Summary with 3D CoverFlow 5 Pillars -->
+    <section class="home-summary-section bg-light-clean scroll-reveal" id="home-governance-summary">
       <div class="container">
-        <div class="home-summary-card">
-          <span class="section-tag red-text">GOOD CORPORATE GOVERNANCE</span>
-          <h2>5 Pillars of Governance & Corporate Secretary</h2>
-          <p class="summary-desc">
-            Operating under strict transparency, accountability, and legal compliance (SK Kemenkumham AHU-A117353, NIB 0709260109599) with dedicated Corporate Secretary liaison and confidential Whistleblowing System (WBS).
-          </p>
-          <div class="section-more-action text-left">
+        <div class="section-row-header">
+          <div class="header-left">
+            <span class="section-tag red-text">GOOD CORPORATE GOVERNANCE</span>
+            <h2>5 Pillars of Governance & Corporate Secretary</h2>
+          </div>
+          <div class="header-right">
             <a href="/governance" class="btn-more-red">
               <span>View Corporate Governance Details →</span>
             </a>
           </div>
         </div>
+        <div class="section-detail-body">
+          <p class="summary-desc">
+            Operating under strict transparency, accountability, and legal compliance (SK Kemenkumham AHU-A117353, NIB 0709260109599) with dedicated Corporate Secretary liaison and confidential Whistleblowing System (WBS).
+          </p>
+
+          <!-- 3D Model CoverFlow: The 5 Pillars of Governance on Home -->
+          <div class="coverflow-stage" id="governance-coverflow-stage" aria-label="3D Coverflow 5 Pillars of Governance">
+            <div id="governance-coverflow" class="coverflow-container">
+              <!-- Pillar 1 -->
+              <section class="gov-cover-card" data-index="0" tabindex="0" role="button" aria-label="Pillar 1: Transparency">
+                <div class="gov-card-inner">
+                  <div class="gov-card-top">
+                    <span class="gov-card-num red-text">01</span>
+                    <div class="gov-card-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                  </div>
+                  <h3 class="gov-card-title">Transparency</h3>
+                  <p class="gov-card-desc">Keterbukaan informasi material dan relevan secara tepat waktu, akurat, jelas, dan mudah diakses oleh seluruh pemangku kepentingan.</p>
+                  <div class="gov-card-tag">Keterbukaan Informasi</div>
+                </div>
+              </section>
+
+              <!-- Pillar 2 -->
+              <section class="gov-cover-card" data-index="1" tabindex="0" role="button" aria-label="Pillar 2: Accountability">
+                <div class="gov-card-inner">
+                  <div class="gov-card-top">
+                    <span class="gov-card-num red-text">02</span>
+                    <div class="gov-card-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                  </div>
+                  <h3 class="gov-card-title">Accountability</h3>
+                  <p class="gov-card-desc">Kejelasan fungsi, hak, kewajiban, dan wewenang dewan direksi serta komisaris agar pengelolaan terlaksana secara efektif dan dapat dipertanggungjawabkan.</p>
+                  <div class="gov-card-tag">Akuntabilitas Kinerja</div>
+                </div>
+              </section>
+
+              <!-- Pillar 3 -->
+              <section class="gov-cover-card" data-index="2" tabindex="0" role="button" aria-label="Pillar 3: Responsibility">
+                <div class="gov-card-inner">
+                  <div class="gov-card-top">
+                    <span class="gov-card-num red-text">03</span>
+                    <div class="gov-card-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                  </div>
+                  <h3 class="gov-card-title">Responsibility</h3>
+                  <p class="gov-card-desc">Kepatuhan mutlak terhadap regulasi hukum RI, SK Kemenkumham AHU-A117353, OSS NIB 0709260109599, serta tanggung jawab sosial & kelestarian lingkungan.</p>
+                  <div class="gov-card-tag">Tanggung Jawab Hukum</div>
+                </div>
+              </section>
+
+              <!-- Pillar 4 -->
+              <section class="gov-cover-card" data-index="3" tabindex="0" role="button" aria-label="Pillar 4: Independence">
+                <div class="gov-card-inner">
+                  <div class="gov-card-top">
+                    <span class="gov-card-num red-text">04</span>
+                    <div class="gov-card-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                  </div>
+                  <h3 class="gov-card-title">Independence</h3>
+                  <p class="gov-card-desc">Pengelolaan korporasi secara independen dan profesional tanpa benturan kepentingan maupun tekanan dari pihak manapun yang bertentangan dengan hukum.</p>
+                  <div class="gov-card-tag">Kemandirian Pengawasan</div>
+                </div>
+              </section>
+
+              <!-- Pillar 5 -->
+              <section class="gov-cover-card" data-index="4" tabindex="0" role="button" aria-label="Pillar 5: Fairness">
+                <div class="gov-card-inner">
+                  <div class="gov-card-top">
+                    <span class="gov-card-num red-text">05</span>
+                    <div class="gov-card-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                  </div>
+                  <h3 class="gov-card-title">Fairness</h3>
+                  <p class="gov-card-desc">Keadilan dan kesetaraan dalam memenuhi hak-hak pemangku kepentingan yang timbul berdasarkan perjanjian dan peraturan perundang-undangan.</p>
+                  <div class="gov-card-tag">Kewajaran & Kesetaraan</div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- Minimalist Left-Right Controls -->
+          <div class="coverflow-controls-wrapper">
+            <div class="coverflow-nav-buttons">
+              <button id="gov-prev-pillar" class="cover-nav-btn" aria-label="Sebelumnya">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                <span>Sebelumnya</span>
+              </button>
+              <button id="gov-next-pillar" class="cover-nav-btn" aria-label="Selanjutnya">
+                <span>Selanjutnya</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Section 7: Sustainability & ESG Summary -->
-    <section class="home-summary-section" id="home-esg-summary">
+    <!-- Section 7: Sustainability & ESG Summary - Fullwidth Clean -->
+    <section class="home-summary-section scroll-reveal" id="home-esg-summary">
       <div class="container">
-        <div class="home-summary-card">
-          <span class="section-tag red-text">SUSTAINABILITY & MITRA LANGIT</span>
-          <h2>ESG Strategy & 10% Tabarru' Social Welfare</h2>
-          <p class="summary-desc">
-            Empowering regional communities in Krui, Pesisir Barat, Lampung through monthly social welfare support, paperless DICOM/PACS medical software cloud licensing, and micro-business guidance.
-          </p>
-          <div class="section-more-action text-left">
+        <div class="section-row-header">
+          <div class="header-left">
+            <span class="section-tag red-text">SUSTAINABILITY & MITRA LANGIT</span>
+            <h2>ESG Strategy & 10% Tabarru' Social Welfare</h2>
+          </div>
+          <div class="header-right">
             <a href="/sustainability" class="btn-more-red">
               <span>Read Full Sustainability & ESG Report →</span>
             </a>
           </div>
+        </div>
+        <div class="section-detail-body">
+          <p class="summary-desc">
+            Empowering regional communities in Krui, Pesisir Barat, Lampung through monthly social welfare support, paperless DICOM/PACS medical software cloud licensing, and micro-business guidance.
+          </p>
         </div>
       </div>
     </section>
@@ -341,31 +470,60 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
+  /* ===================================================
+     CORPORATE DIRECTORY (3D Glass Cards Showcase & Parallax Curtain Overlay)
+     =================================================== */
   .corporate-directory-section {
+    position: relative;
+    z-index: 10;
     background: #ffffff;
-    padding: 4.5rem 0;
-    border-top: 1px solid var(--border-light);
+    padding: 3.5rem 0 4.5rem 0;
+    border-top: 1px solid rgba(226, 232, 240, 0.95);
+    border-bottom: 1px solid var(--border-light);
+    border-top-left-radius: 36px;
+    border-top-right-radius: 36px;
+    box-shadow: 0 -25px 60px -10px rgba(0, 0, 0, 0.14), 0 -8px 24px -5px rgba(0, 0, 0, 0.08);
+    margin-top: -30px;
+  }
+
+  .corporate-directory-section > .container {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .directory-curtain-handle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    pointer-events: none;
+  }
+
+  .handle-bar {
+    width: 52px;
+    height: 5px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    transition: background 0.3s ease;
+  }
+
+  .corporate-directory-section:hover .handle-bar {
+    background: #cbd5e1;
   }
 
   .directory-header {
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
     margin-bottom: 2.25rem;
-    gap: 2rem;
     flex-wrap: wrap;
-  }
-
-  .directory-title-block {
-    max-width: 760px;
   }
 
   .directory-title-block h2 {
     font-size: clamp(1.9rem, 3.5vw, 2.5rem);
     font-weight: 800;
     color: var(--text-dark);
-    margin-top: 0.35rem;
-    letter-spacing: -0.02em;
+    margin: 0.35rem 0 0 0;
   }
 
   .directory-title-block p {
@@ -729,9 +887,11 @@ import Footer from '../components/Footer.astro';
     width: 16px;
   }
 
-  /* Home Summary Sections */
+  /* ===================================================
+     UNIFIED SECTION HEADER ROW (Title Left, Button Right, Detail Below)
+     =================================================== */
   .home-summary-section {
-    padding: 3.5rem 0;
+    padding: 4.5rem 0;
     border-top: 1px solid var(--border-light);
   }
 
@@ -739,56 +899,450 @@ import Footer from '../components/Footer.astro';
     background: #f8fafc;
   }
 
-  .home-summary-card {
-    max-width: 850px;
+  .section-row-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
   }
 
-  .home-summary-card h2 {
-    font-size: 2.2rem;
+  .header-left {
+    max-width: 780px;
+    text-align: left;
+  }
+
+  .header-left h2 {
+    font-size: clamp(1.85rem, 3.5vw, 2.35rem);
     font-weight: 800;
     color: var(--text-dark);
-    margin: 0.35rem 0 0.75rem 0;
+    margin: 0.35rem 0 0 0;
+    line-height: 1.25;
+    text-align: left;
+  }
+
+  .header-right {
+    flex-shrink: 0;
+  }
+
+  .section-detail-body {
+    width: 100%;
+    text-align: left;
   }
 
   .summary-desc {
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--text-body);
     margin-bottom: 1.5rem;
-  }
-
-  .section-more-action {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-  }
-
-  .section-more-action.text-left {
-    justify-content: flex-start;
+    max-width: 950px;
+    text-align: left;
   }
 
   .btn-more-red {
-    padding: 0.7rem 1.6rem;
+    padding: 0.75rem 1.65rem;
     background: var(--red-primary);
     color: #ffffff;
     font-weight: 700;
     font-size: 0.9rem;
-    border-radius: 4px;
+    border-radius: 50px;
     text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.25);
   }
 
   .btn-more-red:hover {
     background: var(--red-dark);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
   }
 
-  @media (max-width: 640px) {
+  /* ===================================================
+     3D COVERFLOW (5 Pillars of Governance on Home)
+     =================================================== */
+  .coverflow-stage {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    margin: 2rem 0 1.5rem 0;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .coverflow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .gov-cover-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 360px;
+    margin-left: -160px;
+    margin-top: -180px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.25, 1), 
+                box-shadow 0.45s cubic-bezier(0.2, 0.8, 0.25, 1), 
+                opacity 0.45s ease;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+  }
+
+  .gov-cover-card:hover {
+    box-shadow: 0 18px 38px -6px rgba(0, 0, 0, 0.14);
+  }
+
+  .gov-cover-card:focus-visible {
+    outline: 2px solid var(--red-primary);
+    outline-offset: 3px;
+  }
+
+  .gov-cover-card.active-center {
+    border: none;
+    box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.18), 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+  }
+
+  .gov-card-inner {
+    height: 100%;
+    padding: 2.2rem 1.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background: #ffffff;
+  }
+
+  .gov-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .gov-card-num {
+    font-size: 1.85rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--red-primary);
+  }
+
+  .gov-card-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #fef2f2;
+    color: var(--red-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .gov-cover-card:hover .gov-card-icon-wrap {
+    transform: scale(1.06);
+  }
+
+  .gov-card-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .gov-card-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 1.25rem 0 0.5rem 0;
+  }
+
+  .gov-card-desc {
+    font-size: 0.95rem;
+    color: var(--text-body);
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .gov-card-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  /* Minimalist Controls */
+  .coverflow-controls-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.25rem;
+  }
+
+  .coverflow-nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    justify-content: center;
+  }
+
+  .cover-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #0f172a;
+    color: #ffffff;
+    border: none;
+    padding: 0.65rem 1.35rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+  }
+
+  .cover-nav-btn:hover {
+    background: var(--red-primary);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.25);
+  }
+
+  .cover-nav-btn:active {
+    transform: translateY(0);
+  }
+
+  .cover-nav-btn svg {
+    stroke-width: 2;
+  }
+
+  /* Smooth Scroll Reveal Animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .section-row-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .coverflow-stage {
+      height: 440px;
+      perspective: 700px;
+      -webkit-perspective: 700px;
+    }
+    .gov-cover-card {
+      width: 280px;
+      height: 350px;
+      margin-left: -140px;
+      margin-top: -175px;
+    }
+    .gov-card-title {
+      font-size: 1.25rem;
+    }
     .directory-meta-badge {
       text-align: left;
       width: 100%;
     }
+    .corporate-directory-section {
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      margin-top: -20px;
+      padding: 2.75rem 0 3.5rem 0;
+      box-shadow: 0 -18px 40px -8px rgba(0, 0, 0, 0.12);
+    }
+    .handle-bar {
+      width: 40px;
+      height: 4px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .coverflow-stage {
+      height: 400px;
+    }
+    .gov-cover-card {
+      width: 255px;
+      height: 340px;
+      margin-left: -127px;
+      margin-top: -170px;
+    }
   }
 </style>
+
+<script>
+  function setupGovernanceCoverflow() {
+    const stage = document.getElementById('governance-coverflow-stage');
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.gov-cover-card'));
+    const prevBtn = document.getElementById('gov-prev-pillar');
+    const nextBtn = document.getElementById('gov-next-pillar');
+
+    if (!cards.length) return;
+
+    // Start with middle pillar (index 2: Responsibility)
+    let currentIndex = 2;
+
+    function render() {
+      const isMobile = window.innerWidth <= 640;
+      const isTablet = window.innerWidth <= 900;
+      const offset = isMobile ? 38 : (isTablet ? 46 : 54);
+      const rotation = isMobile ? 28 : 38;
+      const baseZ = 10;
+      const maxZ = 60;
+
+      cards.forEach((card, i) => {
+        if (i < currentIndex) {
+          const diff = currentIndex - i;
+          const scale = Math.max(0.75, 1 - diff * 0.08);
+          const opacity = Math.max(0.35, 1 - diff * 0.22);
+          card.style.transform = `translateX(-${offset * diff}%) rotateY(${rotation}deg) scale(${scale})`;
+          card.style.zIndex = String(baseZ + i);
+          card.style.opacity = String(opacity);
+          card.classList.remove('active-center');
+          card.setAttribute('aria-selected', 'false');
+        } else if (i === currentIndex) {
+          card.style.transform = `translateX(0%) rotateY(0deg) translateZ(120px) scale(1.05)`;
+          card.style.zIndex = String(maxZ);
+          card.style.opacity = '1';
+          card.classList.add('active-center');
+          card.setAttribute('aria-selected', 'true');
+        } else {
+          const diff = i - currentIndex;
+          const scale = Math.max(0.75, 1 - diff * 0.08);
+          const opacity = Math.max(0.35, 1 - diff * 0.22);
+          card.style.transform = `translateX(${offset * diff}%) rotateY(-${rotation}deg) scale(${scale})`;
+          card.style.zIndex = String(baseZ + (cards.length - i));
+          card.style.opacity = String(opacity);
+          card.classList.remove('active-center');
+          card.setAttribute('aria-selected', 'false');
+        }
+      });
+    }
+
+    function goToPrev() {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      render();
+    }
+
+    function goToNext() {
+      currentIndex = (currentIndex + 1) % cards.length;
+      render();
+    }
+
+    prevBtn?.addEventListener('click', goToPrev);
+    nextBtn?.addEventListener('click', goToNext);
+
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        currentIndex = idx;
+        render();
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          currentIndex = idx;
+          render();
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      const activeEl = document.activeElement;
+      const isNearCoverflow = stage?.contains(activeEl) || 
+                              document.querySelector('.coverflow-controls-wrapper')?.contains(activeEl);
+
+      if (isNearCoverflow) {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          goToPrev();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          goToNext();
+        }
+      }
+    });
+
+    let touchStartX = 0;
+    stage?.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    stage?.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          goToPrev();
+        } else {
+          goToNext();
+        }
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', render);
+    render();
+  }
+
+  // Scroll reveal observer
+  function setupScrollReveal() {
+    const targets = document.querySelectorAll('.scroll-reveal');
+    if (!targets.length) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      targets.forEach((el) => observer.observe(el));
+    } else {
+      targets.forEach((el) => el.classList.add('revealed'));
+    }
+  }
+
+  function init() {
+    setupGovernanceCoverflow();
+    setupScrollReveal();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+</script>

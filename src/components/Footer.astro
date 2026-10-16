@@ -1,7 +1,11 @@
 ---
 ---
 
-<footer class="footer" id="contact">
+<!-- Spacer in document flow reserving the exact height of the stationary fixed footer -->
+<div class="footer-reveal-spacer" id="footer-reveal-spacer" aria-hidden="true"></div>
+
+<!-- Stationary Reveal Apple-Style Black Parallax Footer -->
+<footer class="footer is-fixed-parallax" id="footer-main">
   <div class="container footer-top">
     <!-- Column 1: Brand & Corporate Standing -->
     <div class="footer-col footer-brand">
@@ -16,10 +20,14 @@
         <span>President Director: <strong class="red-text">Ilham Pradani, S.H. (Cand.)</strong></span><br />
         <span>Vice President Director: <strong class="red-text">Putri Wulandari, S.T.</strong></span>
       </div>
-      <div class="legal-badge-list">
-        <span class="legal-pill">AHU-A117353</span>
-        <span class="legal-pill">NIB 0709260109599</span>
-        <span class="legal-pill">KBLI 62193</span>
+      
+      <!-- Clean Minimal Meta (No Cards/Pills) -->
+      <div class="legal-meta-clean">
+        <span>SK AHU-A117353</span>
+        <span class="meta-sep">•</span>
+        <span>NIB 0709260109599</span>
+        <span class="meta-sep">•</span>
+        <span>KBLI 62193</span>
       </div>
     </div>
 
@@ -51,24 +59,23 @@
     <!-- Column 4: Official Email Directory & Banking Partner -->
     <div class="footer-col">
       <h4 class="footer-heading">Banking Relationship</h4>
-      <div class="banking-partner-box">
+      <!-- Clean Transparent Logo (No Card Box) -->
+      <div class="banking-partner-clean">
         <span class="banking-label">Corporate Banking Partner:</span>
-        <img src="/images/logo-ocbc.png" alt="OCBC Bank Logo" class="ocbc-logo" />
+        <img src="/images/logo-ocbc.png" alt="OCBC Bank Logo" class="ocbc-logo-clean" />
       </div>
 
-      <h4 class="footer-heading" style="margin-top: 1.25rem;">Official Email Directory</h4>
+      <h4 class="footer-heading" style="margin-top: 1.35rem;">Official Email Directory</h4>
       <ul class="footer-info-list">
         <li>
           <div class="email-stack">
-            <a href="mailto:ilhampradani@chainasiaconect.company"><strong class="red-text">ilhampradani</strong>@chainasiaconect.company</a>
-            <a href="mailto:putriwulandari@chainasiaconect.company"><strong class="red-text">putriwulandari</strong>@chainasiaconect.company</a>
-            <a href="mailto:corsec@chainasiaconect.company"><strong>corsec</strong>@chainasiaconect.company</a>
+            <a href="mailto:ilhampradani-sh@chainasiaconnect.co.id"><strong class="red-text">ilhampradani-sh</strong>@chainasiaconnect.co.id</a>
+            <a href="mailto:putriwulandari-st@chainasiaconnect.co.id"><strong class="red-text">putriwulandari-st</strong>@chainasiaconnect.co.id</a>
+            <a href="mailto:corsec@chainasiaconnect.co.id"><strong>corsec</strong>@chainasiaconnect.co.id</a>
             <a href="mailto:info@chainasiaconnect.co.id"><strong>info</strong>@chainasiaconnect.co.id</a>
             <a href="mailto:sales@chainasiaconnect.co.id"><strong>sales</strong>@chainasiaconnect.co.id</a>
-            <a href="mailto:info@chainasiaconect.company"><strong>info</strong>@chainasiaconect.company</a>
-            <a href="mailto:sales@chainasiaconect.company"><strong>sales</strong>@chainasiaconect.company</a>
-            <a href="mailto:wbs@chainasiaconect.company"><strong>wbs</strong>@chainasiaconect.company</a>
-            <a href="mailto:hello@chainasiaconect.company"><strong>hello</strong>@chainasiaconect.company</a>
+            <a href="mailto:wbs@chainasiaconnect.co.id"><strong>wbs</strong>@chainasiaconnect.co.id</a>
+            <a href="mailto:hello@chainasiaconnect.co.id"><strong>hello</strong>@chainasiaconnect.co.id</a>
           </div>
         </li>
       </ul>
@@ -90,19 +97,39 @@
 </footer>
 
 <style>
+  .footer-reveal-spacer {
+    display: block;
+    width: 100%;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  /* Apple iPhone / iTunes / iOS Pure Black Parallax Footer */
   .footer {
     position: relative;
-    background: #ffffff;
-    border-top: 1px solid var(--border-light);
-    padding-top: 3.5rem;
-    margin-top: auto;
+    background: #000000;
+    background: linear-gradient(180deg, #121216 0%, #000000 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 4.5rem;
+    color: #86868b;
+    box-sizing: border-box;
+  }
+
+  .footer.is-fixed-parallax {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: auto;
   }
 
   .footer-top {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1.2fr 1.25fr;
-    gap: 2.25rem;
-    padding-bottom: 3rem;
+    grid-template-columns: 1.35fr 1fr 1.2fr 1.25fr;
+    gap: 2.75rem;
+    padding-bottom: 3.5rem;
   }
 
   .footer-logo {
@@ -113,92 +140,102 @@
   }
 
   .footer-logo-img {
-    height: 38px;
+    height: 42px;
     width: auto;
     object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
   }
 
   .footer-brand-title {
     font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 800;
-    color: var(--text-dark);
+    color: #f5f5f7;
+    letter-spacing: -0.01em;
   }
 
   .footer-desc {
-    font-size: 0.875rem;
+    font-size: 0.88rem;
     line-height: 1.65;
-    color: var(--text-body);
-    margin-bottom: 0.85rem;
+    color: #86868b;
+    margin-bottom: 1.1rem;
   }
 
   .executive-tag {
-    font-size: 0.825rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
+    font-size: 0.84rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #a1a1a6;
   }
 
-  .legal-badge-list {
+  /* Clean Non-Card Meta Text */
+  .legal-meta-clean {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.5rem;
+    font-size: 0.76rem;
+    color: #86868b;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
-  .legal-pill {
-    font-size: 0.675rem;
-    font-weight: 600;
-    padding: 0.2rem 0.5rem;
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
-    border-radius: 4px;
-    color: var(--text-muted);
+  .meta-sep {
+    color: #424245;
   }
 
   .footer-heading {
     font-family: var(--font-heading);
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 1.1rem;
+    color: #f5f5f7;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.01em;
   }
 
-  /* Banking Partner OCBC Box */
-  .banking-partner-box {
+  /* Direct Transparent OCBC Logo (No Box/Card) */
+  .banking-partner-clean {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
   .banking-label {
-    font-size: 0.775rem;
-    color: var(--text-muted);
+    font-size: 0.78rem;
+    color: #86868b;
     font-weight: 600;
   }
 
-  .ocbc-logo {
+  .ocbc-logo-clean {
     height: 38px;
     width: auto;
-    max-width: 140px;
+    max-width: 160px;
     object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
   }
 
   .footer-links {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
   }
 
   .footer-links a {
-    font-size: 0.875rem;
-    color: var(--text-body);
-    transition: color var(--transition-smooth);
+    font-size: 0.88rem;
+    color: #a1a1a6;
+    transition: color 0.2s ease, transform 0.2s ease;
     text-decoration: none;
+    display: inline-block;
   }
 
   .footer-links a:hover {
-    color: var(--red-primary);
+    color: #ffffff;
+    transform: translateX(3px);
   }
 
   .footer-info-list {
@@ -206,39 +243,41 @@
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    padding: 0;
+    margin: 0;
   }
 
   .footer-info-list li {
     display: flex;
     align-items: flex-start;
     gap: 0.65rem;
-    font-size: 0.825rem;
-    color: var(--text-body);
+    font-size: 0.84rem;
+    color: #86868b;
   }
 
   .email-stack {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.4rem;
   }
 
   .email-stack a {
-    color: var(--text-dark);
-    transition: color var(--transition-smooth);
+    color: #f5f5f7;
+    transition: color 0.2s ease;
     text-decoration: none;
-    font-size: 0.825rem;
+    font-size: 0.84rem;
     overflow-wrap: anywhere;
     word-break: break-word;
   }
 
   .email-stack a:hover {
-    color: var(--red-primary);
+    color: #ef4444;
   }
 
   .footer-bottom {
-    background: var(--bg-light);
-    border-top: 1px solid var(--border-light);
-    padding: 1rem 0;
+    background: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.25rem 0;
   }
 
   .footer-bottom-container {
@@ -246,21 +285,26 @@
     align-items: center;
     justify-content: space-between;
     font-size: 0.8rem;
-    color: var(--text-muted);
+    color: #86868b;
+  }
+
+  .footer-bottom-container .copyright {
+    color: #86868b;
   }
 
   .footer-legal-links {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .footer-legal-links a {
-    color: var(--text-muted);
+    color: #86868b;
     text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   .footer-legal-links a:hover {
-    color: var(--red-primary);
+    color: #f5f5f7;
   }
 
   @media (max-width: 992px) {
@@ -270,34 +314,37 @@
   }
 
   @media (max-width: 640px) {
+    .footer {
+      padding-top: 3.5rem;
+    }
     .footer-top {
       grid-template-columns: 1fr;
       gap: 1.75rem;
-      padding-bottom: 2rem;
+      padding-bottom: 2.25rem;
     }
     .footer-brand-title {
-      font-size: clamp(0.9rem, 3.8vw, 1.05rem);
+      font-size: clamp(0.95rem, 3.8vw, 1.15rem);
       overflow-wrap: anywhere;
     }
     .footer-desc {
-      font-size: clamp(0.8rem, 3.2vw, 0.875rem);
+      font-size: clamp(0.82rem, 3.2vw, 0.88rem);
       overflow-wrap: anywhere;
     }
     .executive-tag {
-      font-size: clamp(0.75rem, 3vw, 0.825rem);
+      font-size: clamp(0.78rem, 3vw, 0.84rem);
       overflow-wrap: anywhere;
     }
     .footer-heading {
-      font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+      font-size: clamp(0.88rem, 3.5vw, 0.95rem);
       margin-bottom: 0.75rem;
     }
     .footer-links a {
-      font-size: clamp(0.8rem, 3.2vw, 0.875rem);
+      font-size: clamp(0.82rem, 3.2vw, 0.88rem);
       overflow-wrap: anywhere;
       word-break: break-word;
     }
     .email-stack a {
-      font-size: clamp(0.75rem, 3.2vw, 0.825rem);
+      font-size: clamp(0.78rem, 3.2vw, 0.84rem);
       overflow-wrap: anywhere !important;
       word-break: break-word !important;
     }
@@ -305,7 +352,7 @@
       flex-direction: column;
       gap: 0.65rem;
       text-align: center;
-      font-size: clamp(0.7rem, 2.8vw, 0.8rem);
+      font-size: clamp(0.72rem, 2.8vw, 0.8rem);
     }
     .footer-legal-links {
       flex-wrap: wrap;
@@ -314,3 +361,40 @@
     }
   }
 </style>
+
+<script>
+  function setupFooterParallax() {
+    const footer = document.getElementById('footer-main');
+    const spacer = document.getElementById('footer-reveal-spacer');
+    if (!footer || !spacer) return;
+
+    function syncFooterHeight() {
+      const footerHeight = footer.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      // Fixed reveal parallax: stationary at bottom, revealed as main content lifts up
+      if (window.innerWidth > 768 || footerHeight <= viewportHeight) {
+        footer.classList.add('is-fixed-parallax');
+        spacer.style.height = `${footerHeight}px`;
+        spacer.style.display = 'block';
+      } else {
+        // Fallback for very small mobile viewport where footer exceeds full screen
+        footer.classList.remove('is-fixed-parallax');
+        spacer.style.height = '0px';
+        spacer.style.display = 'none';
+      }
+    }
+
+    if (window.ResizeObserver) {
+      new ResizeObserver(syncFooterHeight).observe(footer);
+    }
+    window.addEventListener('resize', syncFooterHeight, { passive: true });
+    syncFooterHeight();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFooterParallax);
+  } else {
+    setupFooterParallax();
+  }
+</script>
