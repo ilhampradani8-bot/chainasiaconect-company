@@ -21,9 +21,6 @@ import Footer from '../components/Footer.astro';
 
     <!-- Section 2: Dimensional Interface Cards (DepthFold 3D Glass & Parallax Curtain Overlay) -->
     <section class="corporate-directory-section" id="portal-directory">
-      <div class="directory-curtain-handle" aria-hidden="true">
-        <span class="handle-bar"></span>
-      </div>
       <div class="container">
         <div class="directory-header">
           <div class="directory-title-block">
@@ -625,7 +622,7 @@ import Footer from '../components/Footer.astro';
     z-index: 10;
     background: #ffffff;
     padding: 3.5rem 0 4.5rem 0;
-    border-top: 1px solid rgba(226, 232, 240, 0.95);
+    border-top: none;
     border-bottom: 1px solid var(--border-light);
     border-top-left-radius: 36px;
     border-top-right-radius: 36px;
@@ -636,25 +633,6 @@ import Footer from '../components/Footer.astro';
   .corporate-directory-section > .container {
     opacity: 1 !important;
     transform: none !important;
-  }
-
-  .directory-curtain-handle {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-    pointer-events: none;
-  }
-
-  .handle-bar {
-    width: 52px;
-    height: 5px;
-    border-radius: 999px;
-    background: #e2e8f0;
-    transition: background 0.3s ease;
-  }
-
-  .corporate-directory-section:hover .handle-bar {
-    background: #cbd5e1;
   }
 
   .directory-header {
@@ -722,6 +700,19 @@ import Footer from '../components/Footer.astro';
   @media (min-width: 768px) and (max-width: 1199px) {
     .shape-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .shape-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .ux-parent {
+      height: 295px;
+    }
+    .ux-parent:hover .ux-card {
+      transform: rotate3d(1, 1, 0, 12deg);
     }
   }
 
@@ -1487,6 +1478,8 @@ import Footer from '../components/Footer.astro';
     align-items: center;
     user-select: none;
     -webkit-user-select: none;
+    overflow: hidden;
+    contain: paint;
   }
 
   .coverflow-container {
@@ -1690,10 +1683,6 @@ import Footer from '../components/Footer.astro';
       margin-top: -20px;
       padding: 2.75rem 0 3.5rem 0;
       box-shadow: 0 -18px 40px -8px rgba(0, 0, 0, 0.12);
-    }
-    .handle-bar {
-      width: 40px;
-      height: 4px;
     }
   }
 

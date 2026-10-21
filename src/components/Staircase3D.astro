@@ -306,12 +306,14 @@ const steps = Array.from({ length: 20 }, (_, i) => i + 1);
 
   @media (max-width: 600px) {
     .staircase-section-backdrop {
-      opacity: 0.2;
-      width: 140px;
+      opacity: 0.16;
+      width: 110px;
+      overflow: hidden;
+      pointer-events: none;
     }
     .staircase-perspective-viewport {
-      transform: scale(0.5);
-      margin-left: -50px;
+      transform: scale(0.42);
+      margin-left: -55px;
     }
   }
 </style>

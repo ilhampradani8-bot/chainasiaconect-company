@@ -372,13 +372,13 @@
       const footerHeight = footer.offsetHeight;
       const viewportHeight = window.innerHeight;
 
-      // Fixed reveal parallax: stationary at bottom, revealed as main content lifts up
-      if (window.innerWidth > 768 || footerHeight <= viewportHeight) {
+      // Fixed reveal parallax: active on desktop only when footer fits nicely in viewport
+      if (window.innerWidth > 768 && footerHeight <= viewportHeight) {
         footer.classList.add('is-fixed-parallax');
         spacer.style.height = `${footerHeight}px`;
         spacer.style.display = 'block';
       } else {
-        // Fallback for very small mobile viewport where footer exceeds full screen
+        // Natural document flow on mobile to prevent viewport clipping and scroll traps
         footer.classList.remove('is-fixed-parallax');
         spacer.style.height = '0px';
         spacer.style.display = 'none';

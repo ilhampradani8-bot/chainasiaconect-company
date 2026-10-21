@@ -4,4 +4,12 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://www.chainasiaconnect.co.id',
   compressHTML: true,
+  server: {
+    host: true,
+  },
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
 });

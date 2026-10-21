@@ -568,17 +568,19 @@
   /* Responsive Mobile */
   @media (max-width: 480px) {
     .apple-chat-root {
-      bottom: 18px;
-      right: 18px;
+      bottom: 16px;
+      right: 16px;
     }
     .apple-chat-window {
-      width: calc(100vw - 36px);
-      height: 460px;
-      bottom: 70px;
+      width: calc(100vw - 32px);
+      height: min(480px, calc(100vh - 96px));
+      bottom: 68px;
+      right: 0;
+      border-radius: 16px;
     }
     .apple-floating-trigger {
-      width: 54px;
-      height: 54px;
+      width: 52px;
+      height: 52px;
     }
   }
 </style>

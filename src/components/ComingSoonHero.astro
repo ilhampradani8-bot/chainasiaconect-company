@@ -174,19 +174,53 @@
 
   @media (max-width: 768px) {
     .hero-section-lux {
-      padding: 7.5rem 0 4.5rem 0;
+      padding: 6.85rem 0 3.75rem 0;
       min-height: auto;
       background-position: center;
     }
 
     .hero-container-lux {
-      padding-left: 1.25rem;
-      padding-right: 1.25rem;
+      padding-left: 1.15rem;
+      padding-right: 1.15rem;
     }
 
     .hero-bg-overlay {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(2px);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .hero-tag-text {
+      font-size: clamp(0.72rem, 2.7vw, 0.82rem);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title-lux {
+      font-size: clamp(1.85rem, 6.8vw, 2.85rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-lead-lux {
+      font-size: clamp(0.95rem, 3.6vw, 1.08rem);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-actions-lux {
+      flex-direction: column;
+      width: 100%;
+      gap: 0.75rem;
+    }
+
+    .hero-actions-lux .btn-more-red,
+    .hero-actions-lux .btn-secondary-clean {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      justify-content: center;
+      padding: 0.85rem 1.25rem;
     }
   }
 </style>

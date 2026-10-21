@@ -143,6 +143,12 @@ a[href^="http"],
   padding: 0 1.5rem;
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1.15rem;
+  }
+}
+
 /* Fullwidth Sections */
 .fullwidth-section {
   width: 100%;
@@ -328,11 +334,50 @@ a[href^="http"],
   .page-hero-banner {
     padding-top: 6.5rem !important;
   }
+  
+  .fullwidth-section {
+    padding: 2.75rem 0 !important;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  h1 {
+    font-size: clamp(1.85rem, 6.5vw, 2.8rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5.2vw, 2.2rem);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 4.4vw, 1.7rem);
+  }
+
+  .btn-red,
+  .btn-more-red,
+  .btn-red-simple,
+  .btn-primary-clean,
+  .btn-neu-red,
+  .btn-secondary-clean,
+  .btn-outline-simple,
+  .btn-neu-light,
+  .slider-btn {
+    min-height: 44px;
+    padding: 0.75rem 1.4rem;
+  }
 }
 
-/* ===================================================
-   SMOOTH SCROLL REVEAL ANIMATIONS
-   =================================================== */
+/* Touch & Tap Polish */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Smooth Scroll Reveal Animations */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(28px);
@@ -357,5 +402,6 @@ a[href^="http"],
     transition: none !important;
   }
 }
+
 
 
